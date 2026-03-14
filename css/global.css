@@ -1227,15 +1227,124 @@ textarea.form-input { resize: vertical; min-height: 120px; line-height: 1.6; }
 /* ============================================================
    CTA BANNER
    ============================================================ */
-.cta-section {
-  background: var(--navy);
-  padding: var(--section-v) 0;
-  text-align: center;
+/* ============================================================
+   FOOTER CTA  (.fcta) — CargoWave full-bleed blue split
+   ============================================================ */
+.fcta {
+  background: var(--blue);
+  overflow: hidden;
+  position: relative;
 }
 
-.cta-section h2 { color: white; margin-bottom: 12px; }
-.cta-section p  { color: rgba(255,255,255,0.65); margin-bottom: 32px; max-width: 520px; margin-left: auto; margin-right: auto; }
+.fcta__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: end;
+  min-height: 380px;
+  padding-left: clamp(20px, 6vw, 96px);
+}
 
+.fcta__text {
+  padding: 88px 48px 88px 0;
+}
+
+.fcta__title {
+  font-family: var(--heading);
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 700;
+  color: white;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  max-width: 540px;
+  margin-bottom: 18px;
+}
+
+.fcta__sub {
+  color: rgba(255,255,255,0.78);
+  font: 400 17px/1.6 var(--body);
+  max-width: 400px;
+  margin-bottom: 36px;
+}
+
+.fcta__btns {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.fcta__btn-main {
+  display: inline-flex;
+  align-items: center;
+  padding: 15px 30px;
+  background: white;
+  color: var(--navy);
+  font: 600 15px var(--body);
+  border-radius: 100px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  white-space: nowrap;
+}
+.fcta__btn-main:hover {
+  background: var(--bg-soft);
+  transform: translateY(-1px);
+}
+
+.fcta__btn-arrow {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+}
+.fcta__btn-arrow:hover {
+  background: rgba(255,255,255,0.15);
+  border-color: white;
+  transform: translateY(-1px);
+}
+
+.fcta__img {
+  align-self: end;
+  margin-top: -80px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.fcta__img img {
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 16px 16px 0 0;
+}
+
+@media (max-width: 860px) {
+  .fcta__inner {
+    grid-template-columns: 1fr;
+    padding-left: clamp(20px, 5vw, 48px);
+  }
+  .fcta__text {
+    padding: 72px 48px 40px 0;
+  }
+  .fcta__img {
+    margin-top: 40px;
+    justify-content: center;
+  }
+  .fcta__img img {
+    max-width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 12px 12px 0 0;
+  }
+}
+
+/* Legacy alias kept for inner pages */
 .cta-trust {
   display: flex;
   align-items: center;
