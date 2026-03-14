@@ -2004,12 +2004,12 @@ body:has(.fshero) #nav:not(.scrolled) .nav__links a {
 .sc-header__title {
   font-family: var(--heading);
   font-size: clamp(36px, 4.5vw, 64px);
-  font-weight: 800;
+  font-weight: 500;
   color: var(--navy);
   line-height: 1.1;
   letter-spacing: -0.03em;
   margin-top: 10px;
-  max-width: 560px;
+  max-width: 900px;
 }
 
 /* ── Arrow buttons (top-right, aligned with card tops) ── */
@@ -2171,7 +2171,7 @@ body:has(.fshero) #nav:not(.scrolled) .nav__links a {
 
 .sc-card__title {
   font-family: var(--heading);
-  font-size: clamp(18px, 1.8vw, 22px);
+  font-size: clamp(22px, 2.4vw, 30px);
   font-weight: 700;
   color: white;
   line-height: 1.2;
