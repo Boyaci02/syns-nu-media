@@ -2003,13 +2003,13 @@ body:has(.fshero) #nav:not(.scrolled) .nav__links a {
 
 .sc-header__title {
   font-family: var(--heading);
-  font-size: clamp(28px, 3.2vw, 42px);
-  font-weight: 700;
+  font-size: clamp(36px, 4.5vw, 64px);
+  font-weight: 800;
   color: var(--navy);
-  line-height: 1.18;
-  letter-spacing: -0.022em;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
   margin-top: 10px;
-  max-width: 460px;
+  max-width: 560px;
 }
 
 /* ── Arrow buttons (top-right, aligned with card tops) ── */
@@ -2091,9 +2091,9 @@ body:has(.fshero) #nav:not(.scrolled) .nav__links a {
 /* ── Cards: wide landscape format ── */
 .sc-card {
   flex-shrink: 0;
-  /* Width: ~2.4 cards visible at once so 3rd is ~70% clipped */
+  /* Square cards — ~2.4 visible at once so 3rd is partially clipped */
   width: clamp(280px, 36vw, 460px);
-  height: clamp(260px, 30vw, 340px);
+  height: clamp(280px, 36vw, 460px);
   border-radius: 16px;
   overflow: hidden;
   position: relative;
@@ -2198,12 +2198,12 @@ body:has(.fshero) #nav:not(.scrolled) .nav__links a {
   }
 
   .sc-header__title {
-    font-size: clamp(22px, 5vw, 30px);
+    font-size: clamp(28px, 6vw, 40px);
   }
 
   .sc-card {
     width: clamp(240px, 64vw, 320px);
-    height: clamp(220px, 44vw, 280px);
+    height: clamp(240px, 64vw, 320px);
   }
 }
 
@@ -2227,7 +2227,7 @@ body:has(.fshero) #nav:not(.scrolled) .nav__links a {
 
   .sc-card {
     width: 78vw;
-    height: 240px;
+    height: 78vw;
     border-radius: 14px;
   }
 
