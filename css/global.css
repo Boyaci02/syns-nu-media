@@ -1255,7 +1255,7 @@ textarea.form-input { resize: vertical; min-height: 120px; line-height: 1.6; }
   grid-template-columns: 1fr;
   align-items: center;
   min-height: 75vh;
-  padding: clamp(64px, 8vw, 120px) clamp(20px, 6vw, 96px);
+  padding: clamp(20px, 6vw, 96px);
   position: relative;
   z-index: 1;
 }
@@ -1266,7 +1266,7 @@ textarea.form-input { resize: vertical; min-height: 120px; line-height: 1.6; }
 
 .fcta__title {
   font-family: var(--heading);
-  font-size: clamp(32px, 4vw, 56px);
+  font-size: clamp(42px, 6vw, 80px);
   font-weight: 700;
   color: white;
   line-height: 1.08;
