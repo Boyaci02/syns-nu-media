@@ -3,630 +3,317 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kundcase — Syns Nu Media</title>
-  <meta name="description" content="Se riktiga resultat för riktiga restauranger. +40% bokningar, 8 000 nya följare, 4.9 stjärnor. Läs våra kundcase och se hur Syns Nu Media hjälper restauranger att växa.">
-  <link rel="canonical" href="https://synsnumedia.se/kundcase">
-
+  <title>Kundcase | Syns Nu Media</title>
+  <meta name="description" content="Se hur vi har hjälpt svenska restauranger att växa online. Riktiga resultat från riktiga restauranger.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/pages.css">
-
-  <style>
-    /* ---- Kundcase — page-specific ---- */
-
-    /* Featured case section */
-    .case-featured {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 72px;
-      align-items: center;
-    }
-
-    .case-featured__meta {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .case-featured__restaurant {
-      font-family: var(--heading);
-      font-size: clamp(26px, 3.5vw, 40px);
-      color: var(--black);
-      line-height: 1.15;
-    }
-
-    .case-featured__tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .case-featured__quote {
-      font-family: var(--heading);
-      font-size: clamp(17px, 2vw, 22px);
-      line-height: 1.45;
-      color: var(--black);
-      font-style: italic;
-      border-left: 3px solid var(--yellow);
-      padding-left: 20px;
-    }
-
-    .case-featured__stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      margin-top: 8px;
-    }
-
-    .case-featured__stat {
-      background: var(--cream);
-      padding: 20px 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .case-featured__stat-value {
-      font-family: var(--heading);
-      font-size: clamp(22px, 2.5vw, 30px);
-      color: var(--black);
-      line-height: 1;
-    }
-
-    .case-featured__stat-label {
-      font: 400 12px/1.3 var(--body);
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    /* Stats strip */
-    .stats-strip {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: rgba(255,255,255,0.1);
-    }
-
-    .stats-strip__item {
-      background: var(--dark);
-      padding: 48px 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      text-align: center;
-      align-items: center;
-    }
-
-    .stats-strip__value {
-      font-family: var(--heading);
-      font-size: clamp(44px, 5vw, 72px);
-      color: var(--white);
-      line-height: 1;
-    }
-
-    .stats-strip__suffix {
-      color: var(--yellow);
-    }
-
-    .stats-strip__label {
-      font: 400 13px/1.4 var(--body);
-      color: rgba(255,255,255,0.45);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      max-width: 160px;
-    }
-
-    /* Case grid cards */
-    .case-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
-    }
-
-    .case-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-
-    .case-card__img {
-      aspect-ratio: 16/10;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .case-card__placeholder {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: flex-end;
-      padding: 20px;
-    }
-
-    .case-card__placeholder span {
-      font: 600 12px/1 var(--body);
-      color: rgba(255,255,255,0.7);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .case-card__body {
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      flex: 1;
-    }
-
-    .case-card__tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .case-card__name {
-      font-family: var(--heading);
-      font-size: 20px;
-      color: var(--black);
-    }
-
-    .case-card__result {
-      font: 400 14px/1.5 var(--body);
-      color: var(--mid);
-      flex: 1;
-    }
-
-    .case-card__stat {
-      display: inline-flex;
-      align-items: baseline;
-      gap: 4px;
-      margin-top: 4px;
-    }
-
-    .case-card__stat-value {
-      font-family: var(--heading);
-      font-size: 28px;
-      color: var(--black);
-    }
-
-    .case-card__stat-label {
-      font: 500 12px/1 var(--body);
-      color: var(--muted);
-      letter-spacing: 0.04em;
-    }
-
-    /* Marquee text logos */
-    .marquee-name {
-      font: 700 18px/1 var(--body);
-      letter-spacing: 0.04em;
-      color: var(--mid);
-      white-space: nowrap;
-      opacity: 0.5;
-      transition: opacity 0.2s;
-      padding: 4px 0;
-    }
-
-    .marquee-name:hover { opacity: 1; }
-
-    .marquee-divider {
-      color: var(--yellow);
-      font-size: 20px;
-      flex-shrink: 0;
-    }
-
-    @media (max-width: 900px) {
-      .case-featured { grid-template-columns: 1fr; gap: 40px; }
-      .case-featured__stats { grid-template-columns: repeat(3, 1fr); }
-      .stats-strip { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 560px) {
-      .case-featured__stats { grid-template-columns: 1fr; }
-    }
-  </style>
 </head>
 <body>
 
-<div class="cursor-dot"></div>
-<div class="cursor-ring"></div>
-
-<!-- NAV -->
-<nav id="nav" role="navigation" aria-label="Huvudnavigering">
+<nav id="nav">
   <div class="nav__inner">
-    <a class="nav__logo" href="index.html" aria-label="Syns Nu Media — Hem">
-      <img src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/68ebad7a0d699e0abc5558c1.png" alt="Syns Nu Media logotyp" width="160" height="38">
+    <a class="nav__logo" href="index.html">
+      <img src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/68ebad7a0d699e0abc5558c1.png" alt="Syns Nu Media" width="160" height="40">
     </a>
-    <div class="nav__links" role="menubar">
-      <a href="index.html" role="menuitem">Hem</a>
-      <div class="nav__dropdown" role="menuitem">
-        <span class="nav__dropdown-toggle" tabindex="0" aria-haspopup="true">
-          Tjänster
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><polyline points="6 9 12 15 18 9"/></svg>
-        </span>
-        <div class="nav__dropdown-menu" role="menu">
-          <a href="sociala-medier.html" role="menuitem">Sociala Medier</a>
-          <a href="hemsida.html" role="menuitem">Webbdesign</a>
+    <div class="nav__links">
+      <a href="index.html">Hem</a>
+      <div class="nav__dropdown">
+        <a href="#">Tjänster ▾</a>
+        <div class="nav__dropdown-menu">
+          <a href="sociala-medier.html">📱 Sociala Medier</a>
+          <a href="hemsida.html">🌐 Webbdesign & SEO</a>
         </div>
       </div>
-      <a href="om-oss.html" role="menuitem">Om oss</a>
-      <a href="kundcase.html" role="menuitem" class="active">Kundcase</a>
-      <a href="blogg.html" role="menuitem">Blogg</a>
-      <a href="jobb.html" role="menuitem">Jobb</a>
+      <a href="om-oss.html">Om oss</a>
+      <a href="kundcase.html" class="active">Kundcase</a>
+      <a href="blogg.html">Blogg</a>
+      <a href="jobb.html">Jobb</a>
     </div>
     <div class="nav__cta">
-      <a href="kontakt.html" class="btn btn--black btn--sm">Kontakta oss</a>
+      <a href="kontakt.html" class="btn btn--blue btn--sm">Boka gratis möte</a>
     </div>
-    <button id="hamburger" aria-label="Öppna meny" aria-expanded="false" aria-controls="mobile-menu">
+    <button id="hamburger" aria-label="Meny" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
-<!-- Mobile menu -->
-<div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobilmeny">
-  <nav class="mobile-menu__links">
+<div id="mobile-menu">
+  <nav>
     <a href="index.html">Hem</a>
     <a href="sociala-medier.html">Sociala Medier</a>
-    <a href="hemsida.html">Webbdesign</a>
+    <a href="hemsida.html">Webbdesign & SEO</a>
     <a href="om-oss.html">Om oss</a>
     <a href="kundcase.html">Kundcase</a>
     <a href="blogg.html">Blogg</a>
     <a href="jobb.html">Jobb</a>
-    <a href="kontakt.html">Kontakt</a>
+    <a href="kontakt.html" class="btn btn--blue" style="margin-top:16px;display:inline-block;">Boka gratis möte</a>
   </nav>
-  <a href="kontakt.html" class="btn btn--yellow">Boka gratis möte</a>
 </div>
 
-<!-- ============================================================
-     1. PAGE HERO
-     ============================================================ -->
-<header class="page-hero">
-  <div class="page-hero__inner">
-    <div>
-      <div class="section-label page-hero__label">— Kundcase —</div>
-      <h1>Resultat som talar <em>för sig själva</em></h1>
-      <p class="page-hero__sub">Riktiga resultat för riktiga restauranger.</p>
-    </div>
-    <div class="page-hero__pixel" aria-hidden="true">
-      <div class="pixel-deco pixel-deco--light">
-        <span></span><span></span><span></span>
-        <span></span><span></span><span></span>
-        <span></span><span></span><span></span>
-      </div>
-    </div>
-  </div>
-  <div class="page-hero__yellow-strip"></div>
-</header>
-
-<!-- ============================================================
-     2. FEATURED CASE — SPLIT
-     ============================================================ -->
-<section class="section section--white">
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero__blob"></div>
   <div class="container">
-    <div class="case-featured reveal">
-
-      <!-- Left: video -->
-      <div class="video-wrap">
-        <video src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/66fae28a5cef956031c6d083.mp4"
-               loop muted playsinline preload="metadata"
-               aria-label="Videoclip från Restaurang Mezze kampanj">
-        </video>
-        <div class="video-overlay" aria-label="Spela video">
-          <div class="video-play-btn" role="button" tabindex="0" aria-label="Spela video">
-            ▶
-          </div>
-        </div>
-      </div>
-
-      <!-- Right: case details -->
-      <div class="case-featured__meta">
-        <div>
-          <div class="section-label" style="margin-bottom:12px;">— Utvalt case —</div>
-          <h3 class="case-featured__restaurant">Restaurang Mezze</h3>
-        </div>
-
-        <div class="case-featured__tags">
-          <span class="tag">#SocialaMediaer</span>
-          <span class="tag">#Fotografi</span>
-          <span class="tag">#Instagram</span>
-        </div>
-
-        <blockquote class="case-featured__quote">
-          "Syns Nu Media förvandlade vår Instagram på tre månader. Vi är fullbokade nästan varje kväll nu — något vi aldrig upplevt förut."
-        </blockquote>
-
-        <div style="font: 400 14px/1 var(--body);color:var(--mid);">
-          — Ali Hassan, Ägare, Restaurang Mezze
-        </div>
-
-        <div class="case-featured__stats">
-          <div class="case-featured__stat">
-            <div class="case-featured__stat-value">+40%</div>
-            <div class="case-featured__stat-label">Bokningar</div>
-          </div>
-          <div class="case-featured__stat">
-            <div class="case-featured__stat-value">8 000</div>
-            <div class="case-featured__stat-label">Nya följare</div>
-          </div>
-          <div class="case-featured__stat">
-            <div class="case-featured__stat-value">4.9★</div>
-            <div class="case-featured__stat-label">Google-betyg</div>
-          </div>
-        </div>
-
-        <a href="kontakt.html" class="btn btn--black">Få samma resultat →</a>
-      </div>
-
+    <div class="page-hero__inner reveal">
+      <span class="section-eyebrow">Kundcase</span>
+      <h1>Riktiga resultat från riktiga restauranger</h1>
+      <p class="page-hero__subtitle">Se hur vi hjälpt svenska restauranger att öka sin räckvidd, fler bokningar och starkare varumärken online.</p>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     3. STATS STRIP
-     ============================================================ -->
-<section class="section--dark" style="padding:0;">
-  <div class="stats-strip reveal">
-    <div class="stats-strip__item">
-      <div class="stats-strip__value">
-        <span data-count="90">0</span><span class="stats-strip__suffix">+</span>
+<!-- FEATURED CASE -->
+<section class="section">
+  <div class="container">
+    <div class="featured-case reveal">
+      <div class="featured-case__video">
+        <div class="video-wrap" style="height:100%;border-radius:0;">
+          <video src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/66fae28a5cef956031c6d083.mp4" preload="metadata" playsinline style="height:100%;object-fit:cover;"></video>
+          <div class="video-overlay">
+            <button class="video-play-btn" aria-label="Spela upp video">▶</button>
+          </div>
+        </div>
       </div>
-      <div class="stats-strip__label">Restauranger hjälpta</div>
-    </div>
-    <div class="stats-strip__item">
-      <div class="stats-strip__value">
-        +<span data-count="40">0</span><span class="stats-strip__suffix">%</span>
+      <div>
+        <span class="badge badge--blue" style="margin-bottom:16px;">Utvalt case</span>
+        <h2 style="margin-bottom:16px;">Restaurang Mezze — från osynlig till ikonisk</h2>
+        <p style="color:var(--muted);line-height:1.7;margin-bottom:24px;">Ahmed Khalil hade en fantastisk libanesisk restaurang i Göteborg — men ingen visste om den. På 90 dagar förvandlade vi deras digitala närvaro helt.</p>
+        <div class="featured-case__stats">
+          <div class="featured-case__stat">
+            <span class="featured-case__stat-val">+3 000</span>
+            <span class="featured-case__stat-label">Instagram-följare</span>
+          </div>
+          <div class="featured-case__stat">
+            <span class="featured-case__stat-val">+40%</span>
+            <span class="featured-case__stat-label">Fler bokningar</span>
+          </div>
+          <div class="featured-case__stat">
+            <span class="featured-case__stat-val">150K+</span>
+            <span class="featured-case__stat-label">TikTok-visningar</span>
+          </div>
+          <div class="featured-case__stat">
+            <span class="featured-case__stat-val">#1</span>
+            <span class="featured-case__stat-label">Google Ranking</span>
+          </div>
+        </div>
       </div>
-      <div class="stats-strip__label">Genomsnittlig ökning i bokningar</div>
-    </div>
-    <div class="stats-strip__item">
-      <div class="stats-strip__value">
-        <span data-count="4.9">0</span><span class="stats-strip__suffix">★</span>
-      </div>
-      <div class="stats-strip__label">Genomsnittligt kundbetyg</div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     4. CASE GRID
-     ============================================================ -->
-<section class="section section--cream">
+<!-- CASE GRID -->
+<section class="section section--soft">
   <div class="container">
-    <div class="reveal" style="margin-bottom:48px;">
-      <div class="section-label">— Fler case —</div>
-      <h2>Fler framgångshistorier</h2>
+    <div class="section-header reveal" style="text-align:center;margin-bottom:48px;">
+      <span class="section-eyebrow">Fler cases</span>
+      <h2>Ännu fler framgångshistorier</h2>
     </div>
-
-    <div class="feature-grid-2 reveal-stagger">
-
-      <!-- Sushi Palace -->
+    <div class="case-grid reveal-stagger">
       <div class="case-card">
-        <div class="case-card__img">
-          <div class="case-card__placeholder" style="background:linear-gradient(160deg,#1a2a3b 0%,#2d4a7a 100%);">
-            <span>Sushi Palace</span>
-          </div>
-        </div>
+        <div class="case-card__photo" style="background:linear-gradient(135deg,#f093fb,#f5576c);">🍣</div>
         <div class="case-card__body">
-          <div class="case-card__tags">
-            <span class="tag">#SocialaMediaer</span>
-            <span class="tag">#TikTok</span>
-          </div>
-          <h3 class="case-card__name">Sushi Palace</h3>
-          <p class="case-card__result">Från noll närvaro på sociala medier till 12 000 Instagram-följare och konstant fullsatta bord på fredag och lördag.</p>
-          <div class="case-card__stat">
-            <span class="case-card__stat-value">+65%</span>
-            <span class="case-card__stat-label">fler bordsbokningar</span>
+          <span class="badge badge--blue">Webbdesign & SEO</span>
+          <h3>Sushi Palace</h3>
+          <p>Ny hemsida + lokal SEO-strategi. Nu rankar de #1 på Google för "sushi Stockholm" och har trefaldigat sin online-bokningstrafik.</p>
+          <div class="case-card__stats">
+            <div>
+              <span class="case-card__stat-val">3×</span>
+              <span class="case-card__stat-label">Online-bokningar</span>
+            </div>
+            <div>
+              <span class="case-card__stat-val">#1</span>
+              <span class="case-card__stat-label">Google ranking</span>
+            </div>
           </div>
         </div>
       </div>
-
-      <!-- Pizzeria Roma -->
       <div class="case-card">
-        <div class="case-card__img">
-          <div class="case-card__placeholder" style="background:linear-gradient(160deg,#3b1a1a 0%,#8b3a2a 100%);">
-            <span>Pizzeria Roma</span>
-          </div>
-        </div>
+        <div class="case-card__photo" style="background:linear-gradient(135deg,#4facfe,#00f2fe);">🍕</div>
         <div class="case-card__body">
-          <div class="case-card__tags">
-            <span class="tag">#Webbdesign</span>
-            <span class="tag">#Google</span>
-          </div>
-          <h3 class="case-card__name">Pizzeria Roma</h3>
-          <p class="case-card__result">Ny hemsida med online-beställning och Google-optimering ledde till 3x fler beställningar via webben på tre månader.</p>
-          <div class="case-card__stat">
-            <span class="case-card__stat-value">3x</span>
-            <span class="case-card__stat-label">fler onlinebeställningar</span>
+          <span class="badge badge--orange">Sociala Medier</span>
+          <h3>Pizzeria Roma</h3>
+          <p>TikTok-strategi med veckovisa matlagningsvideor. Deras "pizza-pull" video gick viralt med 500 000 visningar på 48 timmar.</p>
+          <div class="case-card__stats">
+            <div>
+              <span class="case-card__stat-val">500K</span>
+              <span class="case-card__stat-label">Viral video-views</span>
+            </div>
+            <div>
+              <span class="case-card__stat-val">+60%</span>
+              <span class="case-card__stat-label">Helgomsättning</span>
+            </div>
           </div>
         </div>
       </div>
-
-      <!-- Tapas Bar Madrid -->
       <div class="case-card">
-        <div class="case-card__img">
-          <div class="case-card__placeholder" style="background:linear-gradient(160deg,#2a1a3b 0%,#6a3a9a 100%);">
-            <span>Tapas Bar Madrid</span>
-          </div>
-        </div>
+        <div class="case-card__photo" style="background:linear-gradient(135deg,#43e97b,#38f9d7);">☕</div>
         <div class="case-card__body">
-          <div class="case-card__tags">
-            <span class="tag">#Instagram</span>
-            <span class="tag">#Menyfoto</span>
-          </div>
-          <h3 class="case-card__name">Tapas Bar Madrid</h3>
-          <p class="case-card__result">Professionell matfotografering och dagliga Instagram-inlägg skapade en kö på 45 minuter under helgkvällar.</p>
-          <div class="case-card__stat">
-            <span class="case-card__stat-value">+55%</span>
-            <span class="case-card__stat-label">i omsättning</span>
+          <span class="badge badge--green">Helhetspaket</span>
+          <h3>Café Linnéa</h3>
+          <p>Komplett rebrand med ny hemsida, sociala medier och fotosessioner. Från 200 till 5 000 Instagram-följare på 4 månader.</p>
+          <div class="case-card__stats">
+            <div>
+              <span class="case-card__stat-val">25×</span>
+              <span class="case-card__stat-label">Följartillväxt</span>
+            </div>
+            <div>
+              <span class="case-card__stat-val">+35%</span>
+              <span class="case-card__stat-label">Ökad omsättning</span>
+            </div>
           </div>
         </div>
       </div>
-
-      <!-- Café Stockholm -->
       <div class="case-card">
-        <div class="case-card__img">
-          <div class="case-card__placeholder" style="background:linear-gradient(160deg,#1a3b2a 0%,#2a7a5a 100%);">
-            <span>Café Stockholm</span>
-          </div>
-        </div>
+        <div class="case-card__photo" style="background:linear-gradient(135deg,#fa709a,#fee140);">🥗</div>
         <div class="case-card__body">
-          <div class="case-card__tags">
-            <span class="tag">#SocialaMediaer</span>
-            <span class="tag">#Annonsering</span>
-          </div>
-          <h3 class="case-card__name">Café Stockholm</h3>
-          <p class="case-card__result">Riktade Instagram-annonser och innehållsstrategi förvandlade ett litet café till ett av Stockholms mest fotograferade ställen.</p>
-          <div class="case-card__stat">
-            <span class="case-card__stat-value">18k</span>
-            <span class="case-card__stat-label">nya följare på 6 månader</span>
+          <span class="badge badge--pink">Annonsering</span>
+          <h3>Green Bowl</h3>
+          <p>Meta Ads-kampanj riktad mot hälsomedvetna 25–40-åringar i Stockholm. 6× avkastning på annonsspend under lansering.</p>
+          <div class="case-card__stats">
+            <div>
+              <span class="case-card__stat-val">6×</span>
+              <span class="case-card__stat-label">ROAS</span>
+            </div>
+            <div>
+              <span class="case-card__stat-val">2 500+</span>
+              <span class="case-card__stat-label">Nya kunder</span>
+            </div>
           </div>
         </div>
       </div>
-
+      <div class="case-card">
+        <div class="case-card__photo" style="background:linear-gradient(135deg,#a18cd1,#fbc2eb);">🍔</div>
+        <div class="case-card__body">
+          <span class="badge badge--blue">Sociala Medier</span>
+          <h3>Burger Brothers</h3>
+          <p>Instagram-strategi med "behind the scenes"-innehåll och influencer-samarbeten. Nu en av Malmös mest followade matrestauranger.</p>
+          <div class="case-card__stats">
+            <div>
+              <span class="case-card__stat-val">12K</span>
+              <span class="case-card__stat-label">IG-följare</span>
+            </div>
+            <div>
+              <span class="case-card__stat-val">+55%</span>
+              <span class="case-card__stat-label">Lunch-trafik</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-card__photo" style="background:linear-gradient(135deg,#fd7043,#ff8a65);">🥙</div>
+        <div class="case-card__body">
+          <span class="badge badge--orange">Webbdesign</span>
+          <h3>Istanbul Kebab</h3>
+          <p>Ny hemsida med digital meny och online-beställning. Direkt-beställningar ökade med 200% och köerna på plats minskade.</p>
+          <div class="case-card__stats">
+            <div>
+              <span class="case-card__stat-val">+200%</span>
+              <span class="case-card__stat-label">Online-ordrar</span>
+            </div>
+            <div>
+              <span class="case-card__stat-val">4.8★</span>
+              <span class="case-card__stat-label">Google rating</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     5. REVIEWS
-     ============================================================ -->
-<section class="section section--white">
+<!-- PARTNER MARQUEE -->
+<section class="section">
   <div class="container">
-    <div class="reveal" style="margin-bottom:48px;text-align:center;">
-      <h2>Vad kunderna säger</h2>
+    <div class="section-header reveal" style="text-align:center;margin-bottom:40px;">
+      <span class="section-eyebrow">Våra partners</span>
+      <h2>Restauranger vi jobbat med</h2>
     </div>
-
-    <div class="feature-grid-3 reveal-stagger">
-
-      <div class="review-card">
-        <div class="review-card__stars" aria-label="5 av 5 stjärnor">★★★★★</div>
-        <p class="review-card__text">"På tre månader ökade våra bokningar med 40%. Teamet på Syns Nu Media förstår verkligen restaurangbranschen och vad som fungerar på sociala medier."</p>
-        <div class="review-card__author">
-          <div class="review-card__avatar" aria-hidden="true">AH</div>
-          <div>
-            <div class="review-card__name">Ali Hassan</div>
-            <div class="review-card__role">Restaurang Mezze</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-card__stars" aria-label="5 av 5 stjärnor">★★★★★</div>
-        <p class="review-card__text">"Vår nya hemsida är fantastisk — snabb, snygg och kunderna hittar oss enkelt på Google. Antalet online-beställningar har tredubblats sedan vi bytte."</p>
-        <div class="review-card__author">
-          <div class="review-card__avatar" aria-hidden="true">MR</div>
-          <div>
-            <div class="review-card__name">Marco Rossi</div>
-            <div class="review-card__role">Pizzeria Roma</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-card__stars" aria-label="5 av 5 stjärnor">★★★★★</div>
-        <p class="review-card__text">"Jag var skeptisk från början men resultaten talar för sig själva. Vi är nu ett av de mest taggade caféerna i Stockholm. Rekommenderar Syns Nu Media varmt!"</p>
-        <div class="review-card__author">
-          <div class="review-card__avatar" aria-hidden="true">ES</div>
-          <div>
-            <div class="review-card__name">Emma Sjögren</div>
-            <div class="review-card__role">Café Stockholm</div>
-          </div>
-        </div>
-      </div>
-
+  </div>
+  <div class="partner-strip reveal">
+    <div class="partner-strip__track">
+      <span class="partner-strip__item">🍕 Pizzeria Roma</span>
+      <span class="partner-strip__item">🍣 Sushi Palace</span>
+      <span class="partner-strip__item">🥙 Restaurang Mezze</span>
+      <span class="partner-strip__item">☕ Café Linnéa</span>
+      <span class="partner-strip__item">🥗 Green Bowl</span>
+      <span class="partner-strip__item">🍔 Burger Brothers</span>
+      <span class="partner-strip__item">🍕 Pizzeria Roma</span>
+      <span class="partner-strip__item">🍣 Sushi Palace</span>
+      <span class="partner-strip__item">🥙 Restaurang Mezze</span>
+      <span class="partner-strip__item">☕ Café Linnéa</span>
+      <span class="partner-strip__item">🥗 Green Bowl</span>
+      <span class="partner-strip__item">🍔 Burger Brothers</span>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     6. PARTNER LOGOS MARQUEE
-     ============================================================ -->
-<section class="section section--cream">
-  <div class="container" style="margin-bottom:48px;">
-    <div class="reveal" style="text-align:center;">
-      <div class="section-label">— Våra partners —</div>
-      <h2>Restauranger vi hjälpt</h2>
-    </div>
-  </div>
-
-  <div class="marquee-wrap reveal">
-    <div class="marquee-track">
-      <!-- First set -->
-      <span class="marquee-name">Restaurang Mezze</span>
-      <span class="marquee-divider" aria-hidden="true">✦</span>
-      <span class="marquee-name">Sushi Palace</span>
-      <span class="marquee-divider" aria-hidden="true">✦</span>
-      <span class="marquee-name">Pizzeria Roma</span>
-      <span class="marquee-divider" aria-hidden="true">✦</span>
-      <span class="marquee-name">Tapas Bar Madrid</span>
-      <span class="marquee-divider" aria-hidden="true">✦</span>
-      <span class="marquee-name">Café Stockholm</span>
-      <span class="marquee-divider" aria-hidden="true">✦</span>
-      <span class="marquee-name">Smak &amp; Doft</span>
-      <span class="marquee-divider" aria-hidden="true">✦</span>
-      <!-- Duplicate for seamless loop -->
-      <span class="marquee-name">Restaurang Mezze</span>
-      <span class="marquee-divider" aria-hidden="true">✦</span>
-      <span class="marquee-name">Sushi Palace</span>
-      <span class="marquee-divider" aria-hidden="true">✦</span>
-      <span class="marquee-name">Pizzeria Roma</span>
-      <span class="marquee-divider" aria-hidden="true">✦</span>
-      <span class="marquee-name">Tapas Bar Madrid</span>
-      <span class="marquee-divider" aria-hidden="true">✦</span>
-      <span class="marquee-name">Café Stockholm</span>
-      <span class="marquee-divider" aria-hidden="true">✦</span>
-      <span class="marquee-name">Smak &amp; Doft</span>
-      <span class="marquee-divider" aria-hidden="true">✦</span>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     7. CTA BANNER
-     ============================================================ -->
-<section class="cta-banner">
+<!-- CTA -->
+<section class="cta-section">
   <div class="container">
-    <div class="reveal">
-      <h2>Vill du ha samma resultat?</h2>
-      <p>Boka ett gratis strategimöte och se hur vi kan hjälpa just din restaurang att växa.</p>
-      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-        <a href="kontakt.html" class="btn btn--black btn--lg">Boka gratis möte</a>
-        <a href="om-oss.html" class="btn btn--outline btn--lg">Lär känna oss</a>
+    <div class="cta-section__inner reveal">
+      <h2>Din restaurang kan vara nästa framgångshistoria</h2>
+      <p>Boka ett gratis strategimöte och se hur vi kan hjälpa just din restaurang.</p>
+      <a href="kontakt.html" class="btn btn--blue btn--lg">Boka gratis möte</a>
+      <div class="cta-section__trust">
+        <span>✓ Inga bindningstider</span>
+        <span>✓ Resultat inom 30 dagar</span>
+        <span>✓ 90+ nöjda restauranger</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="site-footer">
+<footer class="footer">
   <div class="container">
-    <div class="footer__top">
-      <div class="footer__left">
-        <img src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/68ebad7a0d699e0abc5558c1.png" alt="Syns Nu Media" width="140" height="34" style="filter:brightness(0) invert(1);margin-bottom:16px;">
-        <h2 style="font-size:28px;">Syns Nu Media</h2>
-        <p style="margin-top:8px;color:rgba(255,255,255,0.45);font-size:14px;max-width:260px;line-height:1.6;">Sveriges ledande marknadsföringsbyrå för restauranger.</p>
+    <div class="footer__grid">
+      <div class="footer__col footer__col--brand">
+        <a href="index.html"><img src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/68ebad7a0d699e0abc5558c1.png" alt="Syns Nu Media" width="160" height="40" style="filter:brightness(0) invert(1);"></a>
+        <p class="footer__tagline">Sveriges specialistbyrå för restaurangmarknadsföring.</p>
+        <div class="footer__social">
+          <a href="#" class="footer__social-icon" aria-label="Instagram">IG</a>
+          <a href="#" class="footer__social-icon" aria-label="TikTok">TT</a>
+          <a href="#" class="footer__social-icon" aria-label="Facebook">FB</a>
+        </div>
       </div>
-      <div class="footer__right">
-        <div class="footer__col"><h5>Tjänster</h5><a href="sociala-medier.html">Sociala Medier</a><a href="hemsida.html">Webbdesign</a><a href="sociala-medier.html">Menyfoto</a><a href="qopla-erbjudande.html">Qopla-erbjudande</a></div>
-        <div class="footer__col"><h5>Företaget</h5><a href="om-oss.html">Om oss</a><a href="kundcase.html">Kundcase</a><a href="blogg.html">Blogg</a><a href="jobb.html">Jobba hos oss</a></div>
-        <div class="footer__col"><h5>Kontakt</h5><address><a href="mailto:hej@synsnumedia.se">hej@synsnumedia.se</a><a href="kontakt.html">Boka möte</a><span style="display:block;margin-top:4px;color:rgba(255,255,255,0.45);font-size:13px;">Stockholm, Sverige</span></address></div>
+      <div class="footer__col">
+        <h4>Tjänster</h4>
+        <ul>
+          <li><a href="sociala-medier.html">Sociala Medier</a></li>
+          <li><a href="hemsida.html">Webbdesign & SEO</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Företaget</h4>
+        <ul>
+          <li><a href="om-oss.html">Om oss</a></li>
+          <li><a href="kundcase.html">Kundcase</a></li>
+          <li><a href="blogg.html">Blogg</a></li>
+          <li><a href="jobb.html">Jobb</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="mailto:hej@syns-nu.se">hej@syns-nu.se</a></li>
+          <li><a href="tel:0700000000">070 000 00 00</a></li>
+          <li><a href="kontakt.html" class="btn btn--blue btn--sm" style="margin-top:12px;display:inline-block;">Boka möte</a></li>
+        </ul>
       </div>
     </div>
     <div class="footer__bottom">
-      <span class="footer__copy">© 2025 Syns Nu Media.</span>
-      <div class="footer__social">
-        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-      </div>
+      <p>© 2025 Syns Nu Media. Alla rättigheter förbehållna.</p>
     </div>
   </div>
 </footer>
-<a class="whatsapp-fab" href="https://wa.me/46XXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="white" width="26" height="26"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+<a href="https://wa.me/46700000000" class="whatsapp-fab" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
 <script src="js/main.js"></script>
 </body>
 </html>

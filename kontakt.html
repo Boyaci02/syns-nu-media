@@ -3,427 +3,267 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kontakt — Syns Nu Media</title>
-  <meta name="description" content="Boka ett gratis 30-minuters strategimöte med Syns Nu Media. Inga förpliktelser — vi berättar hur vi kan hjälpa din restaurang att växa online.">
-  <link rel="canonical" href="https://synsnumedia.se/kontakt">
-
+  <title>Kontakt | Syns Nu Media</title>
+  <meta name="description" content="Kontakta Syns Nu Media. Boka ett gratis 30-minutersmöte och låt oss ta din restaurang till nästa nivå online.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/pages.css">
-
-  <style>
-    /* ---- Kontakt — page-specific ---- */
-
-    /* Contact info column */
-    .contact-info {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    .contact-info__heading {
-      font-size: clamp(22px, 3vw, 32px);
-      margin-bottom: 8px;
-    }
-
-    .contact-info__sub {
-      font-size: 15px;
-      color: var(--mid);
-      line-height: 1.7;
-      margin-bottom: 40px;
-      max-width: 380px;
-    }
-
-    .contact-info__row {
-      display: flex;
-      gap: 16px;
-      padding: 18px 0;
-      border-bottom: 1px solid var(--border);
-      align-items: flex-start;
-    }
-
-    .contact-info__row:first-of-type { border-top: 1px solid var(--border); }
-
-    .contact-info__icon {
-      width: 40px;
-      height: 40px;
-      background: var(--yellow);
-      border-radius: var(--radius);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      flex-shrink: 0;
-    }
-
-    .contact-info__body {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .contact-info__label {
-      font: 600 11px/1 var(--body);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .contact-info__value {
-      font: 400 15px/1.4 var(--body);
-      color: var(--black);
-    }
-
-    .contact-info__value a {
-      color: var(--black);
-      transition: color 0.2s;
-    }
-    .contact-info__value a:hover { color: var(--mid); }
-
-    /* Contact form card */
-    .contact-form-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 48px 40px;
-      box-shadow: var(--shadow);
-    }
-
-    .contact-form-card h3 {
-      font-size: clamp(20px, 2.5vw, 26px);
-      margin-bottom: 6px;
-    }
-
-    .contact-form-card > p {
-      color: var(--mid);
-      font-size: 14px;
-      margin-bottom: 28px;
-    }
-
-    /* Map container */
-    .map-container {
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      border: 1px solid var(--border);
-    }
-
-    .map-container iframe {
-      display: block;
-      width: 100%;
-      height: 420px;
-      border: none;
-    }
-
-    .map-label {
-      margin-top: 16px;
-      font: 500 13px/1 var(--body);
-      color: var(--muted);
-      letter-spacing: 0.04em;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    @media (max-width: 768px) {
-      .contact-form-card { padding: 32px 24px; }
-    }
-  </style>
 </head>
 <body>
 
-<div class="cursor-dot"></div>
-<div class="cursor-ring"></div>
-
-<!-- NAV -->
-<nav id="nav" role="navigation" aria-label="Huvudnavigering">
+<nav id="nav">
   <div class="nav__inner">
-    <a class="nav__logo" href="index.html" aria-label="Syns Nu Media — Hem">
-      <img src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/68ebad7a0d699e0abc5558c1.png" alt="Syns Nu Media logotyp" width="160" height="38">
+    <a class="nav__logo" href="index.html">
+      <img src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/68ebad7a0d699e0abc5558c1.png" alt="Syns Nu Media" width="160" height="40">
     </a>
-    <div class="nav__links" role="menubar">
-      <a href="index.html" role="menuitem">Hem</a>
-      <div class="nav__dropdown" role="menuitem">
-        <span class="nav__dropdown-toggle" tabindex="0" aria-haspopup="true">
-          Tjänster
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><polyline points="6 9 12 15 18 9"/></svg>
-        </span>
-        <div class="nav__dropdown-menu" role="menu">
-          <a href="sociala-medier.html" role="menuitem">Sociala Medier</a>
-          <a href="hemsida.html" role="menuitem">Webbdesign</a>
+    <div class="nav__links">
+      <a href="index.html">Hem</a>
+      <div class="nav__dropdown">
+        <a href="#">Tjänster ▾</a>
+        <div class="nav__dropdown-menu">
+          <a href="sociala-medier.html">📱 Sociala Medier</a>
+          <a href="hemsida.html">🌐 Webbdesign & SEO</a>
         </div>
       </div>
-      <a href="om-oss.html" role="menuitem">Om oss</a>
-      <a href="kundcase.html" role="menuitem">Kundcase</a>
-      <a href="blogg.html" role="menuitem">Blogg</a>
-      <a href="jobb.html" role="menuitem">Jobb</a>
+      <a href="om-oss.html">Om oss</a>
+      <a href="kundcase.html">Kundcase</a>
+      <a href="blogg.html">Blogg</a>
+      <a href="jobb.html">Jobb</a>
     </div>
     <div class="nav__cta">
-      <a href="kontakt.html" class="btn btn--black btn--sm active">Kontakta oss</a>
+      <a href="kontakt.html" class="btn btn--blue btn--sm active">Boka gratis möte</a>
     </div>
-    <button id="hamburger" aria-label="Öppna meny" aria-expanded="false" aria-controls="mobile-menu">
+    <button id="hamburger" aria-label="Meny" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
-<!-- Mobile menu -->
-<div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobilmeny">
-  <nav class="mobile-menu__links">
+<div id="mobile-menu">
+  <nav>
     <a href="index.html">Hem</a>
     <a href="sociala-medier.html">Sociala Medier</a>
-    <a href="hemsida.html">Webbdesign</a>
+    <a href="hemsida.html">Webbdesign & SEO</a>
     <a href="om-oss.html">Om oss</a>
     <a href="kundcase.html">Kundcase</a>
     <a href="blogg.html">Blogg</a>
     <a href="jobb.html">Jobb</a>
-    <a href="kontakt.html">Kontakt</a>
+    <a href="kontakt.html" class="btn btn--blue" style="margin-top:16px;display:inline-block;">Boka gratis möte</a>
   </nav>
-  <a href="kontakt.html" class="btn btn--yellow">Boka gratis möte</a>
 </div>
 
-<!-- ============================================================
-     1. PAGE HERO
-     ============================================================ -->
-<header class="page-hero">
-  <div class="page-hero__inner">
-    <div>
-      <div class="section-label page-hero__label">— Kontakt —</div>
-      <h1>Låt oss prata om din <em>restaurang</em></h1>
-      <p class="page-hero__sub">Boka ett gratis 30-minuters strategimöte. Inga förpliktelser.</p>
-    </div>
-    <div class="page-hero__pixel" aria-hidden="true">
-      <div class="pixel-deco pixel-deco--light">
-        <span></span><span></span><span></span>
-        <span></span><span></span><span></span>
-        <span></span><span></span><span></span>
-      </div>
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero__blob"></div>
+  <div class="container">
+    <div class="page-hero__inner reveal">
+      <span class="section-eyebrow">Kontakt</span>
+      <h1>Låt oss hjälpa din restaurang att växa</h1>
+      <p class="page-hero__subtitle">Boka ett gratis 30-minutersmöte. Inga förpliktelser — bara konkreta råd och en tydlig plan.</p>
     </div>
   </div>
-  <div class="page-hero__yellow-strip"></div>
-</header>
+</section>
 
-<!-- ============================================================
-     2. CONTACT MAIN — SPLIT
-     ============================================================ -->
-<section class="section section--cream">
+<!-- CONTACT GRID -->
+<section class="section">
   <div class="container">
-    <div class="split-section reveal">
-
-      <!-- Left: contact info -->
-      <div class="contact-info">
-        <h2 class="contact-info__heading">Hör av dig</h2>
-        <p class="contact-info__sub">Vi svarar inom 24 timmar på vardagar. Boka ett möte så berättar vi mer om hur vi kan hjälpa just din restaurang.</p>
-
-        <div class="contact-info__row">
-          <div class="contact-info__icon" aria-hidden="true">📍</div>
-          <div class="contact-info__body">
-            <span class="contact-info__label">Adress</span>
-            <span class="contact-info__value">Sveavägen 20, Stockholm</span>
+    <div class="contact-grid reveal">
+      <!-- INFO -->
+      <div>
+        <span class="section-eyebrow">Kontaktuppgifter</span>
+        <h2 style="margin-bottom:32px;">Vi svarar alltid inom 24 timmar</h2>
+        <div class="contact-info__item">
+          <div class="icon-chip icon-chip--blue" style="flex-shrink:0;">📧</div>
+          <div>
+            <h4>E-post</h4>
+            <p><a href="mailto:hej@syns-nu.se" style="color:var(--blue);">hej@syns-nu.se</a></p>
+          </div>
+        </div>
+        <div class="contact-info__item">
+          <div class="icon-chip icon-chip--green" style="flex-shrink:0;">📱</div>
+          <div>
+            <h4>Telefon & WhatsApp</h4>
+            <p><a href="tel:0700000000" style="color:var(--blue);">070 000 00 00</a></p>
+          </div>
+        </div>
+        <div class="contact-info__item">
+          <div class="icon-chip icon-chip--orange" style="flex-shrink:0;">🕐</div>
+          <div>
+            <h4>Öppettider</h4>
+            <p>Mån–Fre: 09:00–17:00<br>Vi svarar på WhatsApp även helger</p>
+          </div>
+        </div>
+        <div class="contact-info__item">
+          <div class="icon-chip icon-chip--pink" style="flex-shrink:0;">📍</div>
+          <div>
+            <h4>Vi jobbar med hela Sverige</h4>
+            <p>Möten på distans (Zoom/Teams) eller på plats i din restaurang</p>
           </div>
         </div>
 
-        <div class="contact-info__row">
-          <div class="contact-info__icon" aria-hidden="true">✉️</div>
-          <div class="contact-info__body">
-            <span class="contact-info__label">E-post</span>
-            <span class="contact-info__value"><a href="mailto:hej@synsnumedia.se">hej@synsnumedia.se</a></span>
-          </div>
-        </div>
-
-        <div class="contact-info__row">
-          <div class="contact-info__icon" aria-hidden="true">📞</div>
-          <div class="contact-info__body">
-            <span class="contact-info__label">Telefon</span>
-            <span class="contact-info__value"><a href="tel:+46708880198">070-888 01 98</a></span>
-          </div>
-        </div>
-
-        <div class="contact-info__row">
-          <div class="contact-info__icon" aria-hidden="true">📸</div>
-          <div class="contact-info__body">
-            <span class="contact-info__label">Instagram</span>
-            <span class="contact-info__value"><a href="https://instagram.com/synsnumedia" target="_blank" rel="noopener">@synsnumedia</a></span>
-          </div>
-        </div>
-
-        <div class="contact-info__row">
-          <div class="contact-info__icon" aria-hidden="true">🕐</div>
-          <div class="contact-info__body">
-            <span class="contact-info__label">Öppettider</span>
-            <span class="contact-info__value">Mån–Fre: 09:00–17:00</span>
-          </div>
+        <!-- Trust badges -->
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:32px;">
+          <span class="badge badge--green">✓ Inga bindningstider</span>
+          <span class="badge badge--blue">✓ Svar inom 24 tim</span>
+          <span class="badge badge--orange">✓ Gratis strategimöte</span>
         </div>
       </div>
 
-      <!-- Right: contact form -->
-      <div class="contact-form-card reveal reveal-delay-2">
-        <h3>Boka ditt gratis strategimöte</h3>
-        <p>Fyll i formuläret — vi hör av oss inom 24 timmar.</p>
-
-        <form class="contact-form" novalidate>
-          <div class="form-grid">
+      <!-- FORM -->
+      <div class="contact-form-box">
+        <h2 style="font-size:22px;margin-bottom:8px;">Skicka ett meddelande</h2>
+        <p style="color:var(--muted);font-size:14px;margin-bottom:24px;">Vi återkommer inom 24 timmar.</p>
+        <form class="contact-form">
+          <div class="form-row">
             <div class="form-group">
-              <label class="form-label" for="namn">Ditt namn</label>
-              <input class="form-control" type="text" id="namn" name="namn" placeholder="Anna Andersson" required autocomplete="name">
+              <label class="form-label">Namn *</label>
+              <input type="text" class="form-input" placeholder="Ditt namn" required>
             </div>
             <div class="form-group">
-              <label class="form-label" for="epost">E-postadress</label>
-              <input class="form-control" type="email" id="epost" name="epost" placeholder="anna@restaurang.se" required autocomplete="email">
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="telefon">Telefonnummer</label>
-              <input class="form-control" type="tel" id="telefon" name="telefon" placeholder="070-000 00 00" autocomplete="tel">
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="restaurang">Restaurangnamn</label>
-              <input class="form-control" type="text" id="restaurang" name="restaurang" placeholder="Restaurang Bella">
-            </div>
-            <div class="form-group form-grid--full">
-              <label class="form-label" for="meddelande">Berätta om din restaurang och dina mål</label>
-              <textarea class="form-control" id="meddelande" name="meddelande" rows="5" placeholder="Vi har öppnat nyligen och vill öka vår synlighet på Instagram och Google..."></textarea>
+              <label class="form-label">Restaurangnamn *</label>
+              <input type="text" class="form-input" placeholder="Din restaurang" required>
             </div>
           </div>
-          <div style="margin-top:20px;">
-            <button type="submit" class="btn btn--black btn--lg" style="width:100%;justify-content:center;">
-              Boka gratis möte →
-            </button>
-            <p style="font-size:12px;color:var(--muted);margin-top:12px;text-align:center;line-height:1.5;">
-              Inga förpliktelser. Vi hör av oss inom 24 timmar.
-            </p>
+          <div class="form-group" style="margin-top:16px;">
+            <label class="form-label">E-post *</label>
+            <input type="email" class="form-input" placeholder="din@email.se" required>
           </div>
+          <div class="form-group" style="margin-top:16px;">
+            <label class="form-label">Telefon</label>
+            <input type="tel" class="form-input" placeholder="070 000 00 00">
+          </div>
+          <div class="form-group" style="margin-top:16px;">
+            <label class="form-label">Vad kan vi hjälpa dig med?</label>
+            <select class="form-input">
+              <option value="">Välj tjänst...</option>
+              <option>Sociala Medier (Instagram, TikTok, Facebook)</option>
+              <option>Webbdesign & SEO</option>
+              <option>Menyfotografering</option>
+              <option>Betald annonsering</option>
+              <option>Flera tjänster / Helhetspaket</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-top:16px;">
+            <label class="form-label">Berätta om din restaurang</label>
+            <textarea class="form-input" rows="4" placeholder="Restaurangtyp, stad, nuvarande utmaningar och vad du vill uppnå..."></textarea>
+          </div>
+          <button type="submit" class="btn btn--blue" style="width:100%;margin-top:20px;padding:16px;">Skicka meddelande →</button>
+          <p style="font-size:12px;color:var(--muted);text-align:center;margin-top:12px;">Inga bindningstider · Svar inom 24 timmar</p>
         </form>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     3. FAQ ACCORDION
-     ============================================================ -->
-<section class="section section--white">
-  <div class="container" style="max-width:800px;">
-    <div class="reveal" style="text-align:center;margin-bottom:48px;">
-      <div class="section-label">— Vanliga frågor —</div>
-      <h2>Svar på dina frågor</h2>
-    </div>
-
-    <div class="accordion reveal">
-
-      <div class="accordion__item">
-        <button class="accordion__trigger" aria-expanded="false">
-          Hur lång är bindningstiden?
-          <span class="accordion__icon" aria-hidden="true">+</span>
-        </button>
-        <div class="accordion__body" role="region">
-          <div class="accordion__body-inner">
-            Vi har ingen bindningstid. Du kan avsluta samarbetet med en månads varsel. Vi tror att bra resultat är den enda anledningen du ska stanna — inte ett papper.
-          </div>
-        </div>
-      </div>
-
-      <div class="accordion__item">
-        <button class="accordion__trigger" aria-expanded="false">
-          Hur snabbt ser vi resultat?
-          <span class="accordion__icon" aria-hidden="true">+</span>
-        </button>
-        <div class="accordion__body" role="region">
-          <div class="accordion__body-inner">
-            De flesta kunder ser tydliga förbättringar i engagemang och räckvidd redan efter 4–6 veckor. Bokningar och omsättning brukar öka märkbart inom 2–3 månader. Vi är transparenta med framstegen varje vecka.
-          </div>
-        </div>
-      </div>
-
-      <div class="accordion__item">
-        <button class="accordion__trigger" aria-expanded="false">
-          Jobbar ni med alla typer av restauranger?
-          <span class="accordion__icon" aria-hidden="true">+</span>
-        </button>
-        <div class="accordion__body" role="region">
-          <div class="accordion__body-inner">
-            Ja! Vi jobbar med allt från snabbmatskedjor och lunchrestauranger till fine dining och streetfood. Det viktiga är att du har en bra produkt och vill växa — resten fixar vi.
-          </div>
-        </div>
-      </div>
-
-      <div class="accordion__item">
-        <button class="accordion__trigger" aria-expanded="false">
-          Vad kostar det?
-          <span class="accordion__icon" aria-hidden="true">+</span>
-        </button>
-        <div class="accordion__body" role="region">
-          <div class="accordion__body-inner">
-            Vi skräddarsyr alla paket utifrån din restaurangs behov och storlek. Priserna börjar från 3 500 kr/mån för sociala medier och från 4 500 kr för en ny hemsida. Boka ett gratis möte så går vi igenom vad som passar dig bäst.
-          </div>
-        </div>
-      </div>
-
-      <div class="accordion__item">
-        <button class="accordion__trigger" aria-expanded="false">
-          Hur ser processen ut?
-          <span class="accordion__icon" aria-hidden="true">+</span>
-        </button>
-        <div class="accordion__body" role="region">
-          <div class="accordion__body-inner">
-            1. Gratis strategimöte (30 min) — vi lyssnar och analyserar. 2. Vi presenterar en skräddarsydd plan med tydliga mål. 3. Uppstart inom 7 dagar. 4. Löpande arbete med veckovis rapport och månatlig genomgång. Inga långa onboardingprocesser.
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     4. MAP
-     ============================================================ -->
-<section class="section section--cream">
+<!-- FAQ ACCORDION -->
+<section class="section section--soft">
   <div class="container">
-    <div class="reveal">
-      <div class="map-container">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d16034.22936044285!2d18.0422!3d59.3346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f9d600d0c4e05%3A0x1b0b4a3e5c5f0f0!2sStockholm%2C%20Sverige!5e0!3m2!1ssv!2sse!4v1700000000000"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Syns Nu Media kontor i Stockholm"
-          aria-label="Karta över Stockholm där Syns Nu Media håller till">
-        </iframe>
+    <div class="section-header reveal" style="text-align:center;margin-bottom:48px;">
+      <span class="section-eyebrow">FAQ</span>
+      <h2>Vanliga frågor</h2>
+    </div>
+    <div class="faq-accordion accordion reveal">
+      <div class="accordion__item">
+        <button class="accordion__trigger">Hur lång tid tar det innan jag ser resultat?</button>
+        <div class="accordion__body">
+          <div class="accordion__body-inner">
+            <p>De flesta kunder ser tydliga resultat inom 30–60 dagar. Sociala medier kan ge snabba effekter inom de första veckorna, medan SEO vanligtvis tar 3–6 månader att ge organisk trafik. Vi sätter realistiska förväntningar från start.</p>
+          </div>
+        </div>
       </div>
-      <div class="map-label">
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Sveavägen 20, Stockholm — Vi håller möten digitalt och på plats
+      <div class="accordion__item">
+        <button class="accordion__trigger">Är det bindningstider?</button>
+        <div class="accordion__body">
+          <div class="accordion__body-inner">
+            <p>Nej — inga bindningstider. Du kan avsluta samarbetet med en månads varsel. Vi tror på att behålla kunder genom resultat, inte kontrakt.</p>
+          </div>
+        </div>
+      </div>
+      <div class="accordion__item">
+        <button class="accordion__trigger">Jobbar ni med alla typer av restauranger?</button>
+        <div class="accordion__body">
+          <div class="accordion__body-inner">
+            <p>Ja — pizzerior, sushirestauranger, fine dining, caféer, kebabrestauranger, hamburgare, asiatisk mat och mer. Vi är specialiserade på restaurangbranschen, inte en specifik kökstyp.</p>
+          </div>
+        </div>
+      </div>
+      <div class="accordion__item">
+        <button class="accordion__trigger">Hur fungerar fotosessionerna?</button>
+        <div class="accordion__body">
+          <div class="accordion__body-inner">
+            <p>Vi besöker din restaurang månadsvis (beroende på paket) och fotograferar maträtter, miljö och personal. Vi tar hand om allt — belysning, styling och redigering. Du behöver bara se till att maten ser bra ut!</p>
+          </div>
+        </div>
+      </div>
+      <div class="accordion__item">
+        <button class="accordion__trigger">Kan jag godkänna innehåll innan det publiceras?</button>
+        <div class="accordion__body">
+          <div class="accordion__body-inner">
+            <p>Absolut. Vi delar en innehållskalender i förväg och du godkänner allt innan det går ut. De flesta kunder väljer att lita fullt ut på oss efter ett par månader, men du bestämmer alltid.</p>
+          </div>
+        </div>
+      </div>
+      <div class="accordion__item">
+        <button class="accordion__trigger">Vad händer om jag inte är nöjd?</button>
+        <div class="accordion__body">
+          <div class="accordion__body-inner">
+            <p>Vi tar feedback på allvar och justerar strategin omgående. Om vi inte levererar det vi lovat, diskuterar vi alltid en lösning — oavsett om det handlar om kompensation eller anpassade åtgärder.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="site-footer">
+<footer class="footer">
   <div class="container">
-    <div class="footer__top">
-      <div class="footer__left">
-        <img src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/68ebad7a0d699e0abc5558c1.png" alt="Syns Nu Media" width="140" height="34" style="filter:brightness(0) invert(1);margin-bottom:16px;">
-        <h2 style="font-size:28px;">Syns Nu Media</h2>
-        <p style="margin-top:8px;color:rgba(255,255,255,0.45);font-size:14px;max-width:260px;line-height:1.6;">Sveriges ledande marknadsföringsbyrå för restauranger.</p>
+    <div class="footer__grid">
+      <div class="footer__col footer__col--brand">
+        <a href="index.html"><img src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/68ebad7a0d699e0abc5558c1.png" alt="Syns Nu Media" width="160" height="40" style="filter:brightness(0) invert(1);"></a>
+        <p class="footer__tagline">Sveriges specialistbyrå för restaurangmarknadsföring.</p>
+        <div class="footer__social">
+          <a href="#" class="footer__social-icon" aria-label="Instagram">IG</a>
+          <a href="#" class="footer__social-icon" aria-label="TikTok">TT</a>
+          <a href="#" class="footer__social-icon" aria-label="Facebook">FB</a>
+        </div>
       </div>
-      <div class="footer__right">
-        <div class="footer__col"><h5>Tjänster</h5><a href="sociala-medier.html">Sociala Medier</a><a href="hemsida.html">Webbdesign</a><a href="sociala-medier.html">Menyfoto</a><a href="qopla-erbjudande.html">Qopla-erbjudande</a></div>
-        <div class="footer__col"><h5>Företaget</h5><a href="om-oss.html">Om oss</a><a href="kundcase.html">Kundcase</a><a href="blogg.html">Blogg</a><a href="jobb.html">Jobba hos oss</a></div>
-        <div class="footer__col"><h5>Kontakt</h5><address><a href="mailto:hej@synsnumedia.se">hej@synsnumedia.se</a><a href="kontakt.html">Boka möte</a><span style="display:block;margin-top:4px;color:rgba(255,255,255,0.45);font-size:13px;">Stockholm, Sverige</span></address></div>
+      <div class="footer__col">
+        <h4>Tjänster</h4>
+        <ul>
+          <li><a href="sociala-medier.html">Sociala Medier</a></li>
+          <li><a href="hemsida.html">Webbdesign & SEO</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Företaget</h4>
+        <ul>
+          <li><a href="om-oss.html">Om oss</a></li>
+          <li><a href="kundcase.html">Kundcase</a></li>
+          <li><a href="blogg.html">Blogg</a></li>
+          <li><a href="jobb.html">Jobb</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="mailto:hej@syns-nu.se">hej@syns-nu.se</a></li>
+          <li><a href="tel:0700000000">070 000 00 00</a></li>
+          <li><a href="kontakt.html" class="btn btn--blue btn--sm" style="margin-top:12px;display:inline-block;">Boka möte</a></li>
+        </ul>
       </div>
     </div>
     <div class="footer__bottom">
-      <span class="footer__copy">© 2025 Syns Nu Media.</span>
-      <div class="footer__social">
-        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-      </div>
+      <p>© 2025 Syns Nu Media. Alla rättigheter förbehållna.</p>
     </div>
   </div>
 </footer>
-<a class="whatsapp-fab" href="https://wa.me/46XXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="white" width="26" height="26"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+<a href="https://wa.me/46700000000" class="whatsapp-fab" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
 <script src="js/main.js"></script>
 </body>
 </html>

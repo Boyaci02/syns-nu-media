@@ -3,139 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sociala Medier för Restauranger — Syns Nu Media</title>
-  <meta name="description" content="Instagram, TikTok och Facebook — vi skapar innehåll som engagerar och konverterar gäster. Professionell hantering av sociala medier för restauranger.">
-  <link rel="canonical" href="https://synsnumedia.se/sociala-medier">
-
+  <title>Sociala Medier för Restauranger | Syns Nu Media</title>
+  <meta name="description" content="Vi hanterar din restaurangs Instagram, TikTok och Facebook. Professionellt innehåll, fler följare och fler gäster.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/pages.css">
-
-  <style>
-    /* ---- Page-specific overrides ---- */
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .compare-wrap {
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-    }
-
-    /* Video section two-col */
-    .video-section-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-    }
-
-    .video-section-grid blockquote {
-      font-family: var(--heading);
-      font-size: clamp(20px, 2.5vw, 30px);
-      color: var(--white);
-      font-style: italic;
-      line-height: 1.35;
-      margin: 20px 0;
-    }
-
-    .video-author-block {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-top: 8px;
-    }
-
-    .video-author-avatar {
-      width: 44px; height: 44px;
-      background: var(--yellow);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font: 700 15px var(--body);
-      color: var(--black);
-      flex-shrink: 0;
-    }
-
-    .video-author-avatar + div strong {
-      display: block;
-      font: 600 15px/1.2 var(--body);
-      color: var(--white);
-    }
-
-    .video-author-avatar + div span {
-      font: 400 13px/1 var(--body);
-      color: rgba(255,255,255,0.45);
-    }
-
-    /* Contact form layout */
-    .contact-layout {
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 80px;
-      align-items: start;
-    }
-
-    .contact-info h2 { margin-bottom: 16px; }
-    .contact-info p  { font-size: 16px; line-height: 1.7; }
-
-    .contact-info__detail {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--mid);
-      font-size: 15px;
-      margin-top: 12px;
-    }
-
-    .contact-info__detail .icon {
-      font-size: 18px;
-    }
-
-    .form-card {
-      background: var(--cream);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 40px;
-    }
-
-    .form-row-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .form-submit-wrap {
-      margin-top: 8px;
-    }
-
-    @media (max-width: 900px) {
-      .reviews-grid          { grid-template-columns: 1fr; }
-      .video-section-grid    { grid-template-columns: 1fr; }
-      .contact-layout        { grid-template-columns: 1fr; gap: 40px; }
-      .form-row-2            { grid-template-columns: 1fr; }
-    }
-  </style>
 </head>
 <body>
 
-<!-- Custom cursor -->
-<div class="cursor-dot"></div>
-<div class="cursor-ring"></div>
 <nav id="nav">
   <div class="nav__inner">
-    <a class="nav__logo" href="index.html"><img src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/68ebad7a0d699e0abc5558c1.png" alt="Syns Nu Media" width="160" height="38"></a>
+    <a class="nav__logo" href="index.html">
+      <img src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/68ebad7a0d699e0abc5558c1.png" alt="Syns Nu Media" width="160" height="40">
+    </a>
     <div class="nav__links">
       <a href="index.html">Hem</a>
       <div class="nav__dropdown">
-        <span class="nav__dropdown-toggle" tabindex="0">Tjänster <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><polyline points="6 9 12 15 18 9"/></svg></span>
+        <a href="#" class="active">Tjänster ▾</a>
         <div class="nav__dropdown-menu">
-          <a href="sociala-medier.html">Sociala Medier</a>
-          <a href="hemsida.html">Webbdesign</a>
+          <a href="sociala-medier.html">📱 Sociala Medier</a>
+          <a href="hemsida.html">🌐 Webbdesign & SEO</a>
         </div>
       </div>
       <a href="om-oss.html">Om oss</a>
@@ -143,152 +32,133 @@
       <a href="blogg.html">Blogg</a>
       <a href="jobb.html">Jobb</a>
     </div>
-    <div class="nav__cta"><a href="kontakt.html" class="btn btn--black btn--sm">Kontakta oss</a></div>
-    <button id="hamburger" aria-label="Öppna meny" aria-expanded="false"><span></span><span></span><span></span></button>
+    <div class="nav__cta">
+      <a href="kontakt.html" class="btn btn--blue btn--sm">Boka gratis möte</a>
+    </div>
+    <button id="hamburger" aria-label="Meny" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
 <div id="mobile-menu">
-  <nav class="mobile-menu__links">
-    <a href="index.html">Hem</a><a href="sociala-medier.html">Sociala Medier</a><a href="hemsida.html">Webbdesign</a><a href="om-oss.html">Om oss</a><a href="kundcase.html">Kundcase</a><a href="blogg.html">Blogg</a><a href="jobb.html">Jobb</a><a href="kontakt.html">Kontakt</a>
+  <nav>
+    <a href="index.html">Hem</a>
+    <a href="sociala-medier.html">Sociala Medier</a>
+    <a href="hemsida.html">Webbdesign & SEO</a>
+    <a href="om-oss.html">Om oss</a>
+    <a href="kundcase.html">Kundcase</a>
+    <a href="blogg.html">Blogg</a>
+    <a href="jobb.html">Jobb</a>
+    <a href="kontakt.html" class="btn btn--blue" style="margin-top:16px;display:inline-block;">Boka gratis möte</a>
   </nav>
-  <a href="kontakt.html" class="btn btn--yellow">Boka gratis möte</a>
 </div>
 
-<!-- ============================================================
-     1. PAGE HERO
-     ============================================================ -->
+<!-- PAGE HERO -->
 <section class="page-hero">
-  <div class="page-hero__inner">
+  <div class="page-hero__blob"></div>
+  <div class="container">
+    <div class="page-hero__inner reveal">
+      <span class="section-eyebrow">Sociala Medier</span>
+      <h1>Din restaurang på varje feed — varje dag</h1>
+      <p class="page-hero__subtitle">Vi skapar, publicerar och optimerar professionellt innehåll på Instagram, TikTok och Facebook så att du kan fokusera på maten.</p>
+      <div class="page-hero__cta">
+        <a href="kontakt.html" class="btn btn--blue btn--lg">Boka gratis möte</a>
+        <a href="#priser" class="btn btn--white btn--lg">Se priser ↓</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center;margin-bottom:48px;">
+      <span class="section-eyebrow">Vad ingår</span>
+      <h2>Allt din restaurang behöver på sociala medier</h2>
+      <p class="section-subtitle">Från strategi till publicering — vi hanterar hela flödet.</p>
+    </div>
+    <div class="feature-grid reveal-stagger">
+      <div class="feature-card">
+        <div class="icon-chip icon-chip--blue">📱</div>
+        <h3>Innehållsstrategi</h3>
+        <p>En skräddarsydd plan baserad på din restaurang, målgrupp och lokala konkurrens. Vi vet vad som funkar.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-chip icon-chip--orange">📸</div>
+        <h3>Professionell foto & video</h3>
+        <p>Månatliga besök på plats för att fotografera maträtter, miljö och personal. Riktigt innehåll — inte stock-bilder.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-chip icon-chip--green">🎬</div>
+        <h3>TikTok & Reels</h3>
+        <p>Korta, engagerande videoklipp som visar upp din restaurangs personlighet och rätter. Algoritm-optimerade.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-chip icon-chip--pink">📊</div>
+        <h3>Månadsrapport</h3>
+        <p>Tydlig rapport varje månad med räckvidd, följartillväxt, engagemang och vad vi planerar härnäst.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-chip icon-chip--blue">💬</div>
+        <h3>Community Management</h3>
+        <p>Vi svarar på kommentarer och DMs åt dig. Snabb respons bygger förtroende och ger fler bokningar.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-chip icon-chip--orange">🎯</div>
+        <h3>Betald annonsering</h3>
+        <p>Riktade Instagram- och Facebook-annonser som når matälskare i ditt område vid rätt tidpunkt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE TABLE -->
+<section class="section section--soft">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center;margin-bottom:40px;">
+      <span class="section-eyebrow">Jämförelse</span>
+      <h2>Syns Nu Media vs. göra det själv</h2>
+    </div>
     <div class="reveal">
-      <span class="section-label section-label--light">Sociala Medier</span>
-      <h1>Vi fyller din <em>restaurang</em> med följare</h1>
-      <p class="page-hero__sub">Instagram, TikTok och Facebook — vi skapar innehåll som engagerar och konverterar gäster.</p>
-      <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:32px;">
-        <a href="kontakt.html" class="btn btn--yellow btn--lg">Boka gratis möte</a>
-        <a href="kundcase.html" class="btn btn--outline-light">Se kundcase</a>
-      </div>
-    </div>
-    <div class="page-hero__pixel pixel-deco pixel-deco--light" aria-hidden="true">
-      <span></span><span></span><span></span>
-      <span></span><span></span><span></span>
-      <span></span><span></span><span></span>
-    </div>
-  </div>
-  <div class="page-hero__yellow-strip"></div>
-</section>
-
-<!-- ============================================================
-     2. FEATURES — section--white
-     ============================================================ -->
-<section class="section section--white">
-  <div class="container">
-    <div class="reveal" style="margin-bottom:48px;">
-      <span class="section-label">Varför välja oss</span>
-      <h2>Allt du behöver i ett paket</h2>
-    </div>
-    <div class="feature-grid-4 reveal-stagger">
-      <div class="feature-card">
-        <div class="feature-card__icon" aria-hidden="true">📸</div>
-        <h4>Professionellt innehåll</h4>
-        <p>Bilder och videor som sticker ut i flödet och speglar din restaurangs personlighet och kvalitet.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-card__icon" aria-hidden="true">📊</div>
-        <h4>Månatlig rapportering</h4>
-        <p>Tydliga rapporter varje månad — räckvidd, engagemang och hur innehållet driver gäster till dig.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-card__icon" aria-hidden="true">🎯</div>
-        <h4>Riktade annonser</h4>
-        <p>Vi når rätt målgrupp vid rätt tidpunkt med annonsering som omvandlar exponering till bokningar.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-card__icon" aria-hidden="true">🔄</div>
-        <h4>Ingen bindningstid</h4>
-        <p>Frihet att avsluta när du vill. Vi behåller dig för att vi levererar resultat — inte för att du är låst.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     3. CHANNEL CARDS — section--cream
-     ============================================================ -->
-<section class="section section--cream">
-  <div class="container">
-    <div class="reveal" style="margin-bottom:48px; text-align:center;">
-      <span class="section-label">Plattformar</span>
-      <h2>Vi hanterar alla dina kanaler</h2>
-    </div>
-    <div class="feature-grid-3 reveal-stagger">
-      <div class="channel-card">
-        <div class="channel-card__icon channel-card__icon--ig" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="white" width="24" height="24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </div>
-        <h4>Instagram</h4>
-        <p>Professionellt feed, stories och reels som bygger följare och lockar nya gäster till ditt bord varje vecka.</p>
-      </div>
-      <div class="channel-card">
-        <div class="channel-card__icon channel-card__icon--tt" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="white" width="24" height="24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-        </div>
-        <h4>TikTok</h4>
-        <p>Virala kortvideor som når tusentals potentiella gäster organiskt — det snabbaste sättet att synas lokalt.</p>
-      </div>
-      <div class="channel-card">
-        <div class="channel-card__icon channel-card__icon--fb" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="white" width="24" height="24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-        </div>
-        <h4>Facebook</h4>
-        <p>Bygg en aktiv community, kör riktade lokalannonser och hantera din sida professionellt med engagerande innehåll.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     4. COMPARE TABLE — section--white
-     ============================================================ -->
-<section class="section section--white">
-  <div class="container">
-    <div class="reveal" style="margin-bottom:48px;">
-      <span class="section-label">Jämförelse</span>
-      <h2>Varför inte göra det själv?</h2>
-    </div>
-    <div class="compare-wrap reveal">
       <table class="compare-table">
         <thead>
           <tr>
-            <th>Vad du behöver</th>
+            <th>Funktion</th>
             <th>Syns Nu Media</th>
-            <th>Gör det själv</th>
+            <th>Göra det själv</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Konsistent innehåll varje vecka</td>
-            <td class="yes">✓</td>
-            <td class="no">✗</td>
+            <td>Professionellt foto & video</td>
+            <td><span class="compare-check">✓</span> Ingår varje månad</td>
+            <td><span class="compare-x">✗</span> Kräver utrustning & tid</td>
           </tr>
           <tr>
-            <td>Professionell fotografering</td>
-            <td class="yes">✓</td>
-            <td class="no">✗</td>
+            <td>Publicering & schemaläggning</td>
+            <td><span class="compare-check">✓</span> Optimal timing</td>
+            <td><span class="compare-x">✗</span> Manuellt & glöms ofta</td>
           </tr>
           <tr>
-            <td>Engagement-strategi &amp; community management</td>
-            <td class="yes">✓</td>
-            <td class="no">✗</td>
+            <td>Strategisk innehållsplan</td>
+            <td><span class="compare-check">✓</span> Branschspecialiserad</td>
+            <td><span class="compare-x">✗</span> Svårt utan erfarenhet</td>
           </tr>
           <tr>
-            <td>Analys &amp; optimering av innehåll</td>
-            <td class="yes">✓</td>
-            <td class="no">✗</td>
+            <td>Annonsoptimering</td>
+            <td><span class="compare-check">✓</span> A/B-testning ingår</td>
+            <td><span class="compare-x">✗</span> Slösar vanligtvis budget</td>
           </tr>
           <tr>
-            <td>Spara din tid som kökschef</td>
-            <td class="yes">✓</td>
-            <td class="no">✗</td>
+            <td>Månadsrapporter & analys</td>
+            <td><span class="compare-check">✓</span> Transparent data</td>
+            <td><span class="compare-x">✗</span> Svårt att tolka statistik</td>
+          </tr>
+          <tr>
+            <td>Tid för dig att fokusera på maten</td>
+            <td><span class="compare-check">✓</span> Fullt avlastad</td>
+            <td><span class="compare-x">✗</span> 10–15 tim/vecka</td>
           </tr>
         </tbody>
       </table>
@@ -296,144 +166,121 @@
   </div>
 </section>
 
-<!-- ============================================================
-     5. PRICING — section--cream
-     ============================================================ -->
-<section class="section section--cream">
+<!-- PRICING -->
+<section id="priser" class="section">
   <div class="container">
-    <div class="reveal" style="margin-bottom:48px; text-align:center;">
-      <span class="section-label">Priser</span>
-      <h2>Välj ditt paket</h2>
-      <p style="margin-top:12px; max-width:480px; margin-left:auto; margin-right:auto;">Inga dolda kostnader. Ingen bindningstid. Byt paket när som helst.</p>
+    <div class="section-header reveal" style="text-align:center;margin-bottom:16px;">
+      <span class="section-eyebrow">Priser</span>
+      <h2>Välj det paket som passar din restaurang</h2>
+      <p class="section-subtitle">Inga bindningstider. Avsluta när du vill.</p>
     </div>
     <div class="pricing-grid reveal-stagger">
-
-      <!-- Basic -->
       <div class="pricing-card">
-        <h3 style="font-size:22px; margin-bottom:4px;">Basic</h3>
-        <div class="pricing-card__price">2 990</div>
-        <p class="pricing-card__per">kr / månad</p>
-        <div class="pricing-card__features">
-          <span class="pricing-card__feature">3 inlägg per vecka</span>
-          <span class="pricing-card__feature">1 plattform</span>
-          <span class="pricing-card__feature">Månadsrapport</span>
-          <span class="pricing-card__feature">Ingen bindningstid</span>
-        </div>
-        <a href="kontakt.html" class="btn btn--outline" style="width:100%; justify-content:center;">Kom igång</a>
+        <div class="pricing-name">Start</div>
+        <div class="pricing-price">4 900<span> kr/mån</span></div>
+        <ul class="pricing-features">
+          <li>1 plattform (Instagram eller TikTok)</li>
+          <li>12 inlägg per månad</li>
+          <li>Månatlig fotosession (2 tim)</li>
+          <li>Community management vardagar</li>
+          <li>Månadsrapport</li>
+        </ul>
+        <a href="kontakt.html" class="btn btn--outline" style="width:100%;text-align:center;">Kom igång</a>
       </div>
-
-      <!-- Pro (featured) -->
       <div class="pricing-card pricing-card--featured">
-        <div class="pricing-card__badge">Mest populär</div>
-        <h3 style="font-size:22px; margin-bottom:4px; color:var(--white);">Pro</h3>
-        <div class="pricing-card__price">4 990</div>
-        <p class="pricing-card__per">kr / månad</p>
-        <div class="pricing-card__features">
-          <span class="pricing-card__feature">Dagligt innehåll</span>
-          <span class="pricing-card__feature">3 plattformar</span>
-          <span class="pricing-card__feature">Annonser ingår</span>
-          <span class="pricing-card__feature">Prioriterad support</span>
-          <span class="pricing-card__feature">Månadsrapport</span>
-        </div>
-        <a href="kontakt.html" class="btn btn--yellow" style="width:100%; justify-content:center;">Välj Pro</a>
+        <div class="pricing-badge">Populärast</div>
+        <div class="pricing-name">Tillväxt</div>
+        <div class="pricing-price">8 900<span> kr/mån</span></div>
+        <ul class="pricing-features">
+          <li>3 plattformar (IG + TikTok + FB)</li>
+          <li>20 inlägg + 4 Reels/TikToks per månad</li>
+          <li>Månatlig fotosession (4 tim)</li>
+          <li>Community management 7 dagar</li>
+          <li>Meta Ads budget upp till 2 000 kr/mån</li>
+          <li>Veckovis rapport + strategimöte</li>
+        </ul>
+        <a href="kontakt.html" class="btn btn--blue" style="width:100%;text-align:center;">Boka nu</a>
       </div>
-
-      <!-- Turbo -->
       <div class="pricing-card">
-        <h3 style="font-size:22px; margin-bottom:4px;">Turbo</h3>
-        <div class="pricing-card__price">7 990</div>
-        <p class="pricing-card__per">kr / månad</p>
-        <div class="pricing-card__features">
-          <span class="pricing-card__feature">Allt i Pro</span>
-          <span class="pricing-card__feature">Menyfotografering</span>
-          <span class="pricing-card__feature">Dedikerad strateg</span>
-          <span class="pricing-card__feature">Videoproduktion</span>
-          <span class="pricing-card__feature">Influencer-samarbeten</span>
-        </div>
-        <a href="kontakt.html" class="btn btn--outline" style="width:100%; justify-content:center;">Kom igång</a>
+        <div class="pricing-name">Premium</div>
+        <div class="pricing-price">14 900<span> kr/mån</span></div>
+        <ul class="pricing-features">
+          <li>Alla plattformar</li>
+          <li>Obegränsat antal inlägg</li>
+          <li>Veckovis fotosession</li>
+          <li>Dedikerad account manager</li>
+          <li>Meta + Google Ads upp till 10 000 kr/mån</li>
+          <li>Influencer-samarbeten</li>
+        </ul>
+        <a href="kontakt.html" class="btn btn--outline" style="width:100%;text-align:center;">Kontakta oss</a>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     6. VIDEO — section--dark
-     ============================================================ -->
+<!-- VIDEO TESTIMONIAL -->
 <section class="section section--dark">
   <div class="container">
-    <div class="video-section-grid">
+    <div class="hero-grid">
       <div class="video-wrap reveal">
-        <video
-          src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/66fae28a5cef956031c6d083.mp4"
-          preload="metadata"
-          playsinline
-        ></video>
+        <video src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/66fae28a5cef956031c6d083.mp4" preload="metadata" playsinline></video>
         <div class="video-overlay">
-          <button class="video-play-btn" aria-label="Spela video">
-            <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-          </button>
+          <button class="video-play-btn" aria-label="Spela upp video">▶</button>
         </div>
       </div>
-
-      <div class="reveal reveal-delay-2">
-        <span class="section-label section-label--light">Kundberättelse</span>
-        <blockquote>"Syns Nu Media transformerade vår online-närvaro. Resultaten kom snabbare än vi vågade hoppas."</blockquote>
-        <div class="video-section__stars" style="color:var(--yellow); font-size:16px; letter-spacing:3px; margin-bottom:16px;">★★★★★</div>
-        <div class="video-author-block">
-          <div class="video-author-avatar">G</div>
-          <div>
-            <strong>Garo</strong>
-            <span>Östermalmsgrillen by Garo, Stockholm</span>
-          </div>
-        </div>
-        <div style="margin-top:32px;">
-          <a href="kundcase.html" class="btn btn--yellow">Läs hela kundcaset</a>
-        </div>
+      <div class="reveal">
+        <span class="section-eyebrow" style="color:var(--blue-light);">Kundberättelse</span>
+        <h2 style="color:white;">Restaurang Mezze fick 3 000 nya följare på 60 dagar</h2>
+        <blockquote style="color:rgba(255,255,255,0.75);font-style:italic;font-size:18px;border-left:3px solid var(--blue);padding-left:20px;margin:24px 0;">"Sedan vi anlitade Syns Nu Media har vår Instagram exploderat. Vi syns i Göteborgs matscen på ett helt nytt sätt."</blockquote>
+        <p style="color:rgba(255,255,255,0.6);margin-bottom:4px;font-weight:600;">Ahmed Khalil</p>
+        <p style="color:rgba(255,255,255,0.5);font-size:14px;margin:0;">Ägare, Restaurang Mezze, Göteborg</p>
+        <div style="margin-top:10px;color:#F59E0B;font-size:20px;">★★★★★</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     7. REVIEWS — section--cream
-     ============================================================ -->
-<section class="section section--cream">
+<!-- REVIEWS -->
+<section class="section">
   <div class="container">
-    <div class="reveal" style="margin-bottom:48px; text-align:center;">
+    <div class="section-header reveal" style="text-align:center;margin-bottom:48px;">
+      <span class="section-eyebrow">Recensioner</span>
       <h2>Vad restaurangerna säger</h2>
     </div>
-    <div class="reviews-grid">
-      <div class="review-card reveal reveal-delay-1">
-        <div class="review-card__stars">★★★★★</div>
-        <p class="review-card__text">"Syns Nu Media har gjort ett fantastiskt jobb med våra videos och bilder. De är professionella, kreativa och levererar alltid hög kvalitet på sociala medier."</p>
-        <div class="review-card__author">
-          <div class="review-card__avatar">G</div>
+    <div class="review-grid reveal-stagger">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Vår TikTok gick från noll till 15 000 visningar första månaden. Teamet förstår verkligen restaurangbranschen."</p>
+        <hr>
+        <div class="review-author">
+          <div class="review-avatar" style="background:linear-gradient(135deg,#667eea,#764ba2);">HM</div>
           <div>
-            <p class="review-card__name">George</p>
-            <p class="review-card__role">Dripp'n Burgers, Södertälje</p>
+            <div class="review-name">Hassan Mahmoud</div>
+            <div class="review-role">Pizzeria Roma, Malmö</div>
           </div>
         </div>
       </div>
-      <div class="review-card reveal reveal-delay-2">
-        <div class="review-card__stars">★★★★★</div>
-        <p class="review-card__text">"Teamet är fantastiska! Kreativa, engagerade och alltid tillgängliga. De förstår vad restauranger behöver och levererar konsekvent resultat varje månad."</p>
-        <div class="review-card__author">
-          <div class="review-card__avatar">G</div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Proffsigt, snabbt och resultatorienterat. Vi har sett en tydlig ökning i walk-in kunder sedan vi startade."</p>
+        <hr>
+        <div class="review-author">
+          <div class="review-avatar" style="background:linear-gradient(135deg,#f093fb,#f5576c);">ML</div>
           <div>
-            <p class="review-card__name">Garo</p>
-            <p class="review-card__role">Stuvsta Grillen, Stuvsta</p>
+            <div class="review-name">Maria Lindqvist</div>
+            <div class="review-role">Sushi Palace, Stockholm</div>
           </div>
         </div>
       </div>
-      <div class="review-card reveal reveal-delay-3">
-        <div class="review-card__stars">★★★★★</div>
-        <p class="review-card__text">"Professionellt team som verkligen förstår restaurangbranschen. De ökade vår synlighet och engagemang markant med sin kreativa och strategiska approach."</p>
-        <div class="review-card__author">
-          <div class="review-card__avatar">M</div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Det bästa vi gjort för vår restaurang. Fotona är professionella, innehållet engagerande och resultaten talar för sig."</p>
+        <hr>
+        <div class="review-author">
+          <div class="review-avatar" style="background:linear-gradient(135deg,#4facfe,#00f2fe);">AK</div>
           <div>
-            <p class="review-card__name">Mansour</p>
-            <p class="review-card__role">Berra Burras Kebab, Örebro</p>
+            <div class="review-name">Ahmed Khalil</div>
+            <div class="review-role">Restaurang Mezze, Göteborg</div>
           </div>
         </div>
       </div>
@@ -441,109 +288,101 @@
   </div>
 </section>
 
-<!-- ============================================================
-     8. CONTACT FORM — section--white
-     ============================================================ -->
-<section class="section section--white">
+<!-- CTA FORM -->
+<section class="section section--soft">
   <div class="container">
-    <div class="contact-layout">
-      <div class="contact-info reveal">
-        <span class="section-label">Kom igång</span>
+    <div class="split-grid reveal">
+      <div>
+        <span class="section-eyebrow">Kom igång</span>
         <h2>Redo att växa på sociala medier?</h2>
-        <p>Fyll i formuläret så återkommer vi inom 24 timmar med ett skräddarsytt förslag för din restaurang.</p>
-        <div class="contact-info__detail">
-          <span class="icon">✉️</span>
-          <a href="mailto:hej@synsnumedia.se">hej@synsnumedia.se</a>
-        </div>
-        <div class="contact-info__detail">
-          <span class="icon">📍</span>
-          <span>Stockholm, Sverige</span>
-        </div>
-        <div style="margin-top:32px;">
-          <div class="stats-grid" style="grid-template-columns: repeat(2, 1fr);">
-            <div class="stat-item">
-              <span class="stat-item__value">90+</span>
-              <span class="stat-item__label">Restaurangpartners</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-item__value">50%</span>
-              <span class="stat-item__label">Snitt omsättningsökning</span>
-            </div>
-          </div>
-        </div>
+        <p>Boka ett gratis 30-minutersmöte. Vi tittar på din nuvarande närvaro och berättar konkret vad vi kan uppnå.</p>
+        <ul class="checklist">
+          <li>Gratis genomgång av dina kanaler</li>
+          <li>Skräddarsydd strategi för din restaurang</li>
+          <li>Inga bindningstider — avsluta när du vill</li>
+          <li>Svar inom 24 timmar</li>
+        </ul>
       </div>
-
-      <div class="form-card reveal reveal-delay-2">
-        <form>
-          <div class="form-grid" style="margin-bottom:16px;">
+      <div class="contact-form-box">
+        <h2 style="font-size:22px;margin-bottom:24px;">Skicka ett meddelande</h2>
+        <form class="lead-form">
+          <div class="form-row">
             <div class="form-group">
-              <label class="form-label" for="sm-name">Namn <span style="color:var(--yellow);">*</span></label>
-              <input class="form-control" type="text" id="sm-name" name="name" placeholder="Ditt namn" required>
+              <label class="form-label">Namn</label>
+              <input type="text" class="form-input" placeholder="Ditt namn" required>
             </div>
             <div class="form-group">
-              <label class="form-label" for="sm-email">E-post <span style="color:var(--yellow);">*</span></label>
-              <input class="form-control" type="email" id="sm-email" name="email" placeholder="din@email.se" required>
-            </div>
-          </div>
-          <div class="form-grid" style="margin-bottom:16px;">
-            <div class="form-group">
-              <label class="form-label" for="sm-phone">Telefon</label>
-              <input class="form-control" type="tel" id="sm-phone" name="phone" placeholder="07X-XXX XX XX">
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="sm-restaurant">Restaurangnamn <span style="color:var(--yellow);">*</span></label>
-              <input class="form-control" type="text" id="sm-restaurant" name="restaurant" placeholder="Din restaurangs namn" required>
+              <label class="form-label">Restaurangnamn</label>
+              <input type="text" class="form-input" placeholder="Din restaurang" required>
             </div>
           </div>
-          <div class="form-group" style="margin-bottom:16px;">
-            <label class="form-label" for="sm-message">Meddelande</label>
-            <textarea class="form-control" id="sm-message" name="message" placeholder="Berätta om din restaurang och dina mål på sociala medier..."></textarea>
+          <div class="form-group" style="margin-top:16px;">
+            <label class="form-label">E-post</label>
+            <input type="email" class="form-input" placeholder="din@email.se" required>
           </div>
-          <button class="btn btn--black btn--lg" type="submit" style="width:100%; justify-content:center;">Skicka förfrågan</button>
+          <div class="form-group" style="margin-top:16px;">
+            <label class="form-label">Telefon</label>
+            <input type="tel" class="form-input" placeholder="070 000 00 00">
+          </div>
+          <div class="form-group" style="margin-top:16px;">
+            <label class="form-label">Meddelande</label>
+            <textarea class="form-input" rows="4" placeholder="Berätta kort om din restaurang och dina mål..."></textarea>
+          </div>
+          <button type="submit" class="btn btn--blue" style="width:100%;margin-top:20px;">Skicka →</button>
         </form>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     9. CTA BANNER
-     ============================================================ -->
-<div class="cta-banner">
-  <div class="container reveal">
-    <h2>Boka ett gratis strategimöte idag</h2>
-    <p>Låt oss visa hur din restaurang kan växa på sociala medier — utan bindningstid och utan risk.</p>
-    <a href="kontakt.html" class="btn btn--black btn--lg">Kontakta oss nu</a>
-  </div>
-</div>
-
 <!-- FOOTER -->
-<footer class="site-footer">
+<footer class="footer">
   <div class="container">
-    <div class="footer__top">
-      <div class="footer__left">
-        <img src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/68ebad7a0d699e0abc5558c1.png" alt="Syns Nu Media" width="140" height="34" style="filter:brightness(0) invert(1); margin-bottom:16px;">
-        <h2 style="font-size:28px;">Syns Nu Media</h2>
-        <p style="margin-top:8px; color:rgba(255,255,255,0.45); font-size:14px; max-width:260px; line-height:1.6;">Sveriges ledande marknadsföringsbyrå för restauranger.</p>
+    <div class="footer__grid">
+      <div class="footer__col footer__col--brand">
+        <a href="index.html"><img src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/68ebad7a0d699e0abc5558c1.png" alt="Syns Nu Media" width="160" height="40" style="filter:brightness(0) invert(1);"></a>
+        <p class="footer__tagline">Sveriges specialistbyrå för restaurangmarknadsföring.</p>
+        <div class="footer__social">
+          <a href="#" class="footer__social-icon" aria-label="Instagram">IG</a>
+          <a href="#" class="footer__social-icon" aria-label="TikTok">TT</a>
+          <a href="#" class="footer__social-icon" aria-label="Facebook">FB</a>
+        </div>
       </div>
-      <div class="footer__right">
-        <div class="footer__col"><h5>Tjänster</h5><a href="sociala-medier.html">Sociala Medier</a><a href="hemsida.html">Webbdesign</a><a href="sociala-medier.html">Menyfoto</a><a href="qopla-erbjudande.html">Qopla-erbjudande</a></div>
-        <div class="footer__col"><h5>Företaget</h5><a href="om-oss.html">Om oss</a><a href="kundcase.html">Kundcase</a><a href="blogg.html">Blogg</a><a href="jobb.html">Jobba hos oss</a></div>
-        <div class="footer__col"><h5>Kontakt</h5><address><a href="mailto:hej@synsnumedia.se">hej@synsnumedia.se</a><a href="kontakt.html">Boka möte</a><span style="display:block;margin-top:4px;color:rgba(255,255,255,0.45);font-size:13px;">Stockholm, Sverige</span></address></div>
+      <div class="footer__col">
+        <h4>Tjänster</h4>
+        <ul>
+          <li><a href="sociala-medier.html">Sociala Medier</a></li>
+          <li><a href="hemsida.html">Webbdesign & SEO</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Företaget</h4>
+        <ul>
+          <li><a href="om-oss.html">Om oss</a></li>
+          <li><a href="kundcase.html">Kundcase</a></li>
+          <li><a href="blogg.html">Blogg</a></li>
+          <li><a href="jobb.html">Jobb</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="mailto:hej@syns-nu.se">hej@syns-nu.se</a></li>
+          <li><a href="tel:0700000000">070 000 00 00</a></li>
+          <li><a href="kontakt.html" class="btn btn--blue btn--sm" style="margin-top:12px;display:inline-block;">Boka möte</a></li>
+        </ul>
       </div>
     </div>
     <div class="footer__bottom">
-      <span class="footer__copy">© 2025 Syns Nu Media. Alla rättigheter förbehållna.</span>
-      <div class="footer__social">
-        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-        <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
-      </div>
+      <p>© 2025 Syns Nu Media. Alla rättigheter förbehållna.</p>
     </div>
   </div>
 </footer>
-<a class="whatsapp-fab" href="https://wa.me/46XXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp">
-  <svg viewBox="0 0 24 24" fill="white" width="26" height="26"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+
+<a href="https://wa.me/46700000000" class="whatsapp-fab" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
+
 <script src="js/main.js"></script>
 </body>
 </html>

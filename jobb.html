@@ -3,371 +3,230 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jobba hos oss — Syns Nu Media</title>
-  <meta name="description" content="Vi söker passionerade människor som brinner för marknadsföring och restaurangbranschen. Se lediga tjänster och ansök idag.">
+  <title>Jobb | Syns Nu Media</title>
+  <meta name="description" content="Jobba med oss på Syns Nu Media. Vi söker passionerade marknadsförare, fotografer och webbutvecklare som vill hjälpa restauranger att växa.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/pages.css">
-  <style>
-    /* ── Job cards ── */
-    .job-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      transition: box-shadow 0.2s var(--ease), transform 0.2s var(--ease);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .job-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
-
-    .job-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 4px; height: 100%;
-      background: var(--yellow);
-      border-radius: 0;
-    }
-
-    .job-card__header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .job-card__meta {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .job-card__tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding: 5px 12px;
-      background: var(--cream);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      font: 600 11px/1 var(--body);
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--mid);
-    }
-
-    .job-card__tag--accent {
-      background: rgba(245,197,24,0.15);
-      border-color: rgba(245,197,24,0.4);
-      color: #8a6e00;
-    }
-
-    .job-card__desc {
-      font-size: 15px;
-      line-height: 1.75;
-      color: var(--mid);
-    }
-
-    .job-card__req-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .job-card__req-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font: 400 14px/1.5 var(--body);
-      color: var(--black);
-    }
-
-    .job-card__req-item::before {
-      content: '✓';
-      font-weight: 700;
-      color: var(--yellow);
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    /* ── Team placeholder ── */
-    .team-placeholder {
-      border-radius: var(--radius-lg);
-      background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 50%, #1a1a1a 100%);
-      min-height: 380px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 60px 40px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .team-placeholder::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 50% 40%, rgba(245,197,24,0.06) 0%, transparent 70%);
-    }
-
-    .team-placeholder__label {
-      font: 600 11px/1 var(--body);
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
-      margin-bottom: 20px;
-      position: relative;
-    }
-
-    .team-placeholder h3 {
-      color: var(--white);
-      font-size: clamp(28px, 4vw, 48px);
-      max-width: 480px;
-      position: relative;
-      margin-bottom: 28px;
-    }
-
-    .team-placeholder p {
-      color: rgba(255,255,255,0.5);
-      font-size: 15px;
-      max-width: 360px;
-      position: relative;
-      margin-bottom: 36px;
-    }
-
-    /* ── Culture card emoji override ── */
-    .feature-card__emoji {
-      font-size: 28px;
-      margin-bottom: 4px;
-    }
-
-    @media (max-width: 768px) {
-      .job-card { padding: 28px 24px; }
-      .job-card__header { flex-direction: column; }
-    }
-  </style>
 </head>
 <body>
 
-<div class="cursor-dot"></div>
-<div class="cursor-ring"></div>
 <nav id="nav">
   <div class="nav__inner">
-    <a class="nav__logo" href="index.html"><img src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/68ebad7a0d699e0abc5558c1.png" alt="Syns Nu Media" width="160" height="38"></a>
+    <a class="nav__logo" href="index.html">
+      <img src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/68ebad7a0d699e0abc5558c1.png" alt="Syns Nu Media" width="160" height="40">
+    </a>
     <div class="nav__links">
       <a href="index.html">Hem</a>
-      <div class="nav__dropdown"><span class="nav__dropdown-toggle" tabindex="0">Tjänster <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><polyline points="6 9 12 15 18 9"/></svg></span><div class="nav__dropdown-menu"><a href="sociala-medier.html">Sociala Medier</a><a href="hemsida.html">Webbdesign</a></div></div>
-      <a href="om-oss.html">Om oss</a><a href="kundcase.html">Kundcase</a><a href="blogg.html">Blogg</a><a href="jobb.html" class="active">Jobb</a>
+      <div class="nav__dropdown">
+        <a href="#">Tjänster ▾</a>
+        <div class="nav__dropdown-menu">
+          <a href="sociala-medier.html">📱 Sociala Medier</a>
+          <a href="hemsida.html">🌐 Webbdesign & SEO</a>
+        </div>
+      </div>
+      <a href="om-oss.html">Om oss</a>
+      <a href="kundcase.html">Kundcase</a>
+      <a href="blogg.html">Blogg</a>
+      <a href="jobb.html" class="active">Jobb</a>
     </div>
-    <div class="nav__cta"><a href="kontakt.html" class="btn btn--black btn--sm">Kontakta oss</a></div>
-    <button id="hamburger" aria-label="Öppna meny" aria-expanded="false"><span></span><span></span><span></span></button>
+    <div class="nav__cta">
+      <a href="kontakt.html" class="btn btn--blue btn--sm">Boka gratis möte</a>
+    </div>
+    <button id="hamburger" aria-label="Meny" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
 <div id="mobile-menu">
-  <nav class="mobile-menu__links"><a href="index.html">Hem</a><a href="sociala-medier.html">Sociala Medier</a><a href="hemsida.html">Webbdesign</a><a href="om-oss.html">Om oss</a><a href="kundcase.html">Kundcase</a><a href="blogg.html">Blogg</a><a href="jobb.html">Jobb</a><a href="kontakt.html">Kontakt</a></nav>
-  <a href="kontakt.html" class="btn btn--yellow">Boka gratis möte</a>
+  <nav>
+    <a href="index.html">Hem</a>
+    <a href="sociala-medier.html">Sociala Medier</a>
+    <a href="hemsida.html">Webbdesign & SEO</a>
+    <a href="om-oss.html">Om oss</a>
+    <a href="kundcase.html">Kundcase</a>
+    <a href="blogg.html">Blogg</a>
+    <a href="jobb.html">Jobb</a>
+    <a href="kontakt.html" class="btn btn--blue" style="margin-top:16px;display:inline-block;">Boka gratis möte</a>
+  </nav>
 </div>
 
-<!-- ═══════════════════════════════════════════════
-     1. PAGE HERO
-════════════════════════════════════════════════ -->
+<!-- PAGE HERO -->
 <section class="page-hero">
-  <div class="page-hero__inner">
-    <div>
-      <span class="section-label section-label--light page-hero__label">— Karriär —</span>
-      <h1>Jobba med oss och<br>gör skillnad för <em>restauranger</em></h1>
-      <p class="page-hero__sub">Vi söker passionerade människor som brinner för marknadsföring och restaurangbranschen.</p>
-    </div>
-    <div class="pixel-deco pixel-deco--light page-hero__pixel" aria-hidden="true">
-      <span></span><span></span><span></span>
-      <span></span><span></span><span></span>
-      <span></span><span></span><span></span>
-    </div>
-  </div>
-  <div class="page-hero__yellow-strip"></div>
-</section>
-
-<!-- ═══════════════════════════════════════════════
-     2. CULTURE — Vår kultur
-════════════════════════════════════════════════ -->
-<section class="section section--white">
+  <div class="page-hero__blob"></div>
   <div class="container">
-    <div class="reveal" style="margin-bottom:48px;">
-      <span class="section-label">— Vår kultur —</span>
-      <h2>Mer än ett jobb</h2>
-    </div>
-
-    <div class="feature-grid-4 reveal-stagger">
-
-      <div class="feature-card">
-        <div class="feature-card__emoji">🚀</div>
-        <h4>Snabbt växande bolag</h4>
-        <p>Vi växer snabbt och söker ambitiösa människor som vill växa med oss. Stora karriärmöjligheter väntar.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-card__emoji">🎯</div>
-        <h4>Meningsfullt arbete</h4>
-        <p>Vi hjälper restaurangägare att nå sina drömmar. Varje kampanj vi skapar gör verklig skillnad för riktiga människor.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-card__emoji">🏡</div>
-        <h4>Flexibelt arbete</h4>
-        <p>Jobba där du jobbar bäst. Vi erbjuder flexibla arbetstider och möjlighet till distansarbete för rätt kandidater.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-card__emoji">🌟</div>
-        <h4>Kompetensutveckling</h4>
-        <p>Vi investerar i ditt lärande. Tillgång till kurser, konferenser och ett nätverk av experter inom branschen.</p>
-      </div>
-
+    <div class="page-hero__inner reveal">
+      <span class="section-eyebrow">Jobb & Karriär</span>
+      <h1>Bygg framtidens restaurangmarknadsföring med oss</h1>
+      <p class="page-hero__subtitle">Vi är ett passionerat team som hjälper restauranger att växa. Jobba med kreativitet, strategi och riktiga resultat — varje dag.</p>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     3. OPEN POSITIONS
-════════════════════════════════════════════════ -->
-<section class="section section--cream">
+<!-- CULTURE CARDS -->
+<section class="section">
   <div class="container">
-    <div class="reveal" style="margin-bottom:48px;">
-      <span class="section-label">— Öppna tjänster —</span>
-      <h2>Vi söker just nu</h2>
+    <div class="section-header reveal" style="text-align:center;margin-bottom:48px;">
+      <span class="section-eyebrow">Vår kultur</span>
+      <h2>Varför jobba med oss?</h2>
     </div>
+    <div class="culture-grid reveal-stagger">
+      <div class="culture-card">
+        <span class="culture-card__icon">🎯</span>
+        <h3>Meningsfullt arbete</h3>
+        <p>Du ser direkta resultat av ditt jobb. Vi hjälper restaurangägare att lyckas — det syns varje dag.</p>
+      </div>
+      <div class="culture-card">
+        <span class="culture-card__icon">🌱</span>
+        <h3>Snabb tillväxt</h3>
+        <p>Vi växer snabbt och du växer med oss. Massor av möjligheter att ta ansvar och klättra.</p>
+      </div>
+      <div class="culture-card">
+        <span class="culture-card__icon">🎨</span>
+        <h3>Kreativ frihet</h3>
+        <p>Vi värdesätter goda idéer oavsett vem de kommer från. Testa, lär och förbättra tillsammans.</p>
+      </div>
+      <div class="culture-card">
+        <span class="culture-card__icon">🏠</span>
+        <h3>Flexibilitet</h3>
+        <p>Hybrid-arbete, flexibla tider och fokus på resultat — inte närvaro. Livet är mer än jobbet.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <div style="display:flex;flex-direction:column;gap:24px;max-width:880px;">
-
-      <!-- Job 1: Social Media Manager -->
-      <div class="job-card reveal">
-        <div class="job-card__header">
-          <div>
-            <h3 style="margin-bottom:12px;">Social Media Manager</h3>
-            <div class="job-card__meta">
-              <span class="job-card__tag job-card__tag--accent">Heltid</span>
-              <span class="job-card__tag">📍 Stockholm</span>
-              <span class="job-card__tag">Hybridarbete</span>
-            </div>
-          </div>
-          <a href="mailto:jobb@synsnumedia.se" class="btn btn--yellow btn--sm">Ansök nu</a>
-        </div>
-
-        <p class="job-card__desc">
-          Vi söker en strategisk och operativ Social Media Manager som kan ta ansvar för flera restaurangers sociala kanaler. Du planerar innehåll, skapar engagerande copy, hanterar community management och rapporterar resultat. Du är den person som gör att våra kunders sociala medier verkligen levererar.
-        </p>
-
+<!-- JOB LISTINGS -->
+<section class="section section--soft">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center;margin-bottom:48px;">
+      <span class="section-eyebrow">Öppna tjänster</span>
+      <h2>Lediga positioner</h2>
+    </div>
+    <div class="job-list reveal">
+      <div class="job-card">
         <div>
-          <p style="font:600 13px/1 var(--body);letter-spacing:0.04em;text-transform:uppercase;color:var(--mid);margin-bottom:14px;">Vi söker dig som</p>
-          <div class="job-card__req-list">
-            <div class="job-card__req-item">Har minst 1 års erfarenhet av social media management eller liknande roll</div>
-            <div class="job-card__req-item">Kan skapa engagerande copy på svenska och förstår restaurangbranschen</div>
-            <div class="job-card__req-item">Är van vid Meta Ads Manager och vet hur betald annonsering fungerar</div>
-            <div class="job-card__req-item">Är analytisk, datadrivet orienterad och trivs med att rapportera resultat</div>
-            <div class="job-card__req-item">Brinner för mat, restauranger och kreativ kommunikation</div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+            <div class="icon-chip icon-chip--blue" style="width:44px;height:44px;font-size:18px;">📱</div>
+            <h3>Social Media Manager</h3>
           </div>
+          <div class="job-card__meta">
+            <span class="badge badge--blue">Heltid</span>
+            <span class="badge badge--green">Göteborg / Distans</span>
+            <span class="badge badge--orange">Sociala Medier</span>
+          </div>
+          <p style="margin-top:12px;color:var(--muted);font-size:14px;line-height:1.6;">Du ansvarar för 15–20 restaurangkunders närvaro på Instagram, TikTok och Facebook. Strategi, innehållsplanering och community management.</p>
         </div>
-
-        <div>
-          <a href="mailto:jobb@synsnumedia.se" class="btn btn--black">Skicka ansökan till jobb@synsnumedia.se</a>
-        </div>
+        <a href="kontakt.html" class="btn btn--blue btn--sm" style="white-space:nowrap;flex-shrink:0;">Ansök nu →</a>
       </div>
 
-      <!-- Job 2: Webbdesigner -->
-      <div class="job-card reveal reveal-delay-2">
-        <div class="job-card__header">
-          <div>
-            <h3 style="margin-bottom:12px;">Webbdesigner</h3>
-            <div class="job-card__meta">
-              <span class="job-card__tag job-card__tag--accent">Heltid / Deltid</span>
-              <span class="job-card__tag">🌐 Remote</span>
-              <span class="job-card__tag">Flexibelt</span>
-            </div>
-          </div>
-          <a href="mailto:jobb@synsnumedia.se" class="btn btn--yellow btn--sm">Ansök nu</a>
-        </div>
-
-        <p class="job-card__desc">
-          Vi söker en talangfull webbdesigner som skapar vackra, snabba och konverteringsoptimerade hemsidor för restauranger. Du har ett öga för detaljer, förstår UX och kan leverera projekt från skiss till färdig produkt. Erfarenhet av HTML/CSS är ett stort plus — vi bygger i kod, inte i sidbyggare.
-        </p>
-
+      <div class="job-card">
         <div>
-          <p style="font:600 13px/1 var(--body);letter-spacing:0.04em;text-transform:uppercase;color:var(--mid);margin-bottom:14px;">Vi söker dig som</p>
-          <div class="job-card__req-list">
-            <div class="job-card__req-item">Har en stark portfölj med webbdesignprojekt — gärna inom mat eller livsstil</div>
-            <div class="job-card__req-item">Behärskar Figma och kan leverera designsystem och komponenter</div>
-            <div class="job-card__req-item">Har grundläggande kunskaper i HTML och CSS (avancerade kunskaper är ett plus)</div>
-            <div class="job-card__req-item">Förstår SEO-grunderna och hur design påverkar sökmotorrankning</div>
-            <div class="job-card__req-item">Är självgående, strukturerad och kommunicerar tydligt med kunder och kollegor</div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+            <div class="icon-chip icon-chip--orange" style="width:44px;height:44px;font-size:18px;">📸</div>
+            <h3>Fotograf & Videograf</h3>
           </div>
+          <div class="job-card__meta">
+            <span class="badge badge--blue">Heltid / Deltid</span>
+            <span class="badge badge--green">Stockholm</span>
+            <span class="badge badge--orange">Foto & Video</span>
+          </div>
+          <p style="margin-top:12px;color:var(--muted);font-size:14px;line-height:1.6;">Du fotograferar och filmar mat, restaurangmiljöer och team. Redigering, styling och en stark känsla för vad som funkar på sociala medier är ett måste.</p>
         </div>
-
-        <div>
-          <a href="mailto:jobb@synsnumedia.se" class="btn btn--black">Skicka ansökan till jobb@synsnumedia.se</a>
-        </div>
+        <a href="kontakt.html" class="btn btn--blue btn--sm" style="white-space:nowrap;flex-shrink:0;">Ansök nu →</a>
       </div>
 
+      <div class="job-card">
+        <div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+            <div class="icon-chip icon-chip--green" style="width:44px;height:44px;font-size:18px;">🌐</div>
+            <h3>Webbutvecklare (Frontend)</h3>
+          </div>
+          <div class="job-card__meta">
+            <span class="badge badge--blue">Heltid</span>
+            <span class="badge badge--green">Remote</span>
+            <span class="badge badge--pink">Webbutveckling</span>
+          </div>
+          <p style="margin-top:12px;color:var(--muted);font-size:14px;line-height:1.6;">Du bygger snygga, snabba restauranghemsidor. HTML, CSS, JavaScript och ett öga för design. Erfarenhet av WordPress eller liknande CMS är ett plus.</p>
+        </div>
+        <a href="kontakt.html" class="btn btn--blue btn--sm" style="white-space:nowrap;flex-shrink:0;">Ansök nu →</a>
+      </div>
+    </div>
+
+    <!-- Open application -->
+    <div class="card reveal" style="margin-top:32px;text-align:center;background:var(--blue-light);">
+      <h3 style="color:var(--blue);">Ser du inte din roll här?</h3>
+      <p style="color:var(--muted);margin:8px 0 20px;">Vi är alltid öppna för passionerade personer. Skicka ett spontanansökan!</p>
+      <a href="kontakt.html" class="btn btn--blue">Skicka spontanansökan</a>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     4. TEAM PHOTO SECTION
-════════════════════════════════════════════════ -->
-<section class="section section--dark">
+<!-- CTA -->
+<section class="cta-section">
   <div class="container">
-    <div class="team-placeholder reveal" style="position:relative;">
-      <div class="pixel-deco pixel-deco--light" style="position:absolute;top:32px;right:40px;transform:scale(2);opacity:0.35;" aria-hidden="true">
-        <span></span><span></span><span></span>
-        <span></span><span></span><span></span>
-        <span></span><span></span><span></span>
+    <div class="cta-section__inner reveal">
+      <h2>Redo att göra skillnad för restaurangbranschen?</h2>
+      <p>Skicka en ansökan eller kontakta oss direkt. Vi svarar alltid.</p>
+      <a href="kontakt.html" class="btn btn--blue btn--lg">Kontakta oss</a>
+      <div class="cta-section__trust">
+        <span>✓ Flexibelt arbete</span>
+        <span>✓ Snabb tillväxt</span>
+        <span>✓ Kreativ miljö</span>
       </div>
-      <p class="team-placeholder__label">Teamet på Syns Nu Media</p>
-      <h3>Är du vår nästa kollega?</h3>
-      <p>Vi är ett litet men snabbväxande team med en gemensam passion: att hjälpa restauranger att synas och växa online.</p>
-      <a href="mailto:jobb@synsnumedia.se" class="btn btn--yellow btn--lg">Hör av dig idag</a>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     5. CTA BANNER
-════════════════════════════════════════════════ -->
-<section class="cta-banner">
+<footer class="footer">
   <div class="container">
-    <div class="reveal">
-      <h2>Saknar du din roll? Hör av dig!</h2>
-      <p>Vi tar alltid emot spontanansökningar från rätt talanger. Berätta om dig själv och vad du kan bidra med.</p>
-      <a href="mailto:jobb@synsnumedia.se" class="btn btn--black btn--lg">jobb@synsnumedia.se</a>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer__top">
-      <div class="footer__left"><img src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/68ebad7a0d699e0abc5558c1.png" alt="Syns Nu Media" width="140" height="34" style="filter:brightness(0) invert(1);margin-bottom:16px;"><h2 style="font-size:28px;">Syns Nu Media</h2><p style="margin-top:8px;color:rgba(255,255,255,0.45);font-size:14px;max-width:260px;line-height:1.6;">Sveriges ledande marknadsföringsbyrå för restauranger.</p></div>
-      <div class="footer__right">
-        <div class="footer__col"><h5>Tjänster</h5><a href="sociala-medier.html">Sociala Medier</a><a href="hemsida.html">Webbdesign</a><a href="sociala-medier.html">Menyfoto</a><a href="qopla-erbjudande.html">Qopla-erbjudande</a></div>
-        <div class="footer__col"><h5>Företaget</h5><a href="om-oss.html">Om oss</a><a href="kundcase.html">Kundcase</a><a href="blogg.html">Blogg</a><a href="jobb.html">Jobba hos oss</a></div>
-        <div class="footer__col"><h5>Kontakt</h5><address><a href="mailto:hej@synsnumedia.se">hej@synsnumedia.se</a><a href="kontakt.html">Boka möte</a></address></div>
+    <div class="footer__grid">
+      <div class="footer__col footer__col--brand">
+        <a href="index.html"><img src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/68ebad7a0d699e0abc5558c1.png" alt="Syns Nu Media" width="160" height="40" style="filter:brightness(0) invert(1);"></a>
+        <p class="footer__tagline">Sveriges specialistbyrå för restaurangmarknadsföring.</p>
+        <div class="footer__social">
+          <a href="#" class="footer__social-icon" aria-label="Instagram">IG</a>
+          <a href="#" class="footer__social-icon" aria-label="TikTok">TT</a>
+          <a href="#" class="footer__social-icon" aria-label="Facebook">FB</a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h4>Tjänster</h4>
+        <ul>
+          <li><a href="sociala-medier.html">Sociala Medier</a></li>
+          <li><a href="hemsida.html">Webbdesign & SEO</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Företaget</h4>
+        <ul>
+          <li><a href="om-oss.html">Om oss</a></li>
+          <li><a href="kundcase.html">Kundcase</a></li>
+          <li><a href="blogg.html">Blogg</a></li>
+          <li><a href="jobb.html">Jobb</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="mailto:hej@syns-nu.se">hej@syns-nu.se</a></li>
+          <li><a href="tel:0700000000">070 000 00 00</a></li>
+          <li><a href="kontakt.html" class="btn btn--blue btn--sm" style="margin-top:12px;display:inline-block;">Boka möte</a></li>
+        </ul>
       </div>
     </div>
-    <div class="footer__bottom"><span class="footer__copy">© 2025 Syns Nu Media.</span></div>
+    <div class="footer__bottom">
+      <p>© 2025 Syns Nu Media. Alla rättigheter förbehållna.</p>
+    </div>
   </div>
 </footer>
-<a class="whatsapp-fab" href="https://wa.me/46XXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="white" width="26" height="26"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+<a href="https://wa.me/46700000000" class="whatsapp-fab" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
 <script src="js/main.js"></script>
 </body>
 </html>

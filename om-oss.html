@@ -3,347 +3,238 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Om oss — Syns Nu Media</title>
-  <meta name="description" content="Lär känna teamet bakom Syns Nu Media — Sveriges ledande marknadsföringsbyrå för restauranger. Grundade 2021 med ett uppdrag: att hjälpa restauranger att synas online.">
-  <link rel="canonical" href="https://synsnumedia.se/om-oss">
-
+  <title>Om Oss | Syns Nu Media</title>
+  <meta name="description" content="Vi är en specialistbyrå för restaurangmarknadsföring. Lär känna teamet bakom Syns Nu Media.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/pages.css">
-
-  <style>
-    /* ---- Om oss — page-specific ---- */
-
-    .story-text {
-      font-family: var(--heading);
-      font-size: clamp(22px, 3vw, 34px);
-      line-height: 1.35;
-      color: var(--black);
-      letter-spacing: -0.01em;
-    }
-
-    .story-text em {
-      font-style: italic;
-      color: var(--mid);
-    }
-
-    .story-sub {
-      margin-top: 24px;
-      font-size: 16px;
-      color: var(--mid);
-      line-height: 1.75;
-      max-width: 440px;
-    }
-
-    .story-photo {
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      aspect-ratio: 4/3;
-      position: relative;
-    }
-
-    .story-photo__bg {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(160deg, #c8b99a 0%, #a08060 50%, #6e5040 100%);
-      display: flex;
-      align-items: flex-end;
-      padding: 28px;
-    }
-
-    .story-photo__label {
-      background: rgba(0,0,0,0.35);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      color: rgba(255,255,255,0.8);
-      font: 500 12px/1.4 var(--body);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 8px 14px;
-      border-radius: var(--radius);
-    }
-
-    .year-badge {
-      display: inline-block;
-      background: var(--black);
-      color: var(--yellow);
-      font-family: var(--heading);
-      font-size: 13px;
-      letter-spacing: 0.06em;
-      padding: 6px 14px;
-      border-radius: 2px;
-      margin-bottom: 20px;
-    }
-
-    .cta-banner__btns {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-  </style>
 </head>
 <body>
 
-<div class="cursor-dot"></div>
-<div class="cursor-ring"></div>
-
-<!-- NAV -->
-<nav id="nav" role="navigation" aria-label="Huvudnavigering">
+<nav id="nav">
   <div class="nav__inner">
-    <a class="nav__logo" href="index.html" aria-label="Syns Nu Media — Hem">
-      <img src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/68ebad7a0d699e0abc5558c1.png" alt="Syns Nu Media logotyp" width="160" height="38">
+    <a class="nav__logo" href="index.html">
+      <img src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/68ebad7a0d699e0abc5558c1.png" alt="Syns Nu Media" width="160" height="40">
     </a>
-    <div class="nav__links" role="menubar">
-      <a href="index.html" role="menuitem">Hem</a>
-      <div class="nav__dropdown" role="menuitem">
-        <span class="nav__dropdown-toggle" tabindex="0" aria-haspopup="true">
-          Tjänster
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><polyline points="6 9 12 15 18 9"/></svg>
-        </span>
-        <div class="nav__dropdown-menu" role="menu">
-          <a href="sociala-medier.html" role="menuitem">Sociala Medier</a>
-          <a href="hemsida.html" role="menuitem">Webbdesign</a>
+    <div class="nav__links">
+      <a href="index.html">Hem</a>
+      <div class="nav__dropdown">
+        <a href="#">Tjänster ▾</a>
+        <div class="nav__dropdown-menu">
+          <a href="sociala-medier.html">📱 Sociala Medier</a>
+          <a href="hemsida.html">🌐 Webbdesign & SEO</a>
         </div>
       </div>
-      <a href="om-oss.html" role="menuitem" class="active">Om oss</a>
-      <a href="kundcase.html" role="menuitem">Kundcase</a>
-      <a href="blogg.html" role="menuitem">Blogg</a>
-      <a href="jobb.html" role="menuitem">Jobb</a>
+      <a href="om-oss.html" class="active">Om oss</a>
+      <a href="kundcase.html">Kundcase</a>
+      <a href="blogg.html">Blogg</a>
+      <a href="jobb.html">Jobb</a>
     </div>
     <div class="nav__cta">
-      <a href="kontakt.html" class="btn btn--black btn--sm">Kontakta oss</a>
+      <a href="kontakt.html" class="btn btn--blue btn--sm">Boka gratis möte</a>
     </div>
-    <button id="hamburger" aria-label="Öppna meny" aria-expanded="false" aria-controls="mobile-menu">
+    <button id="hamburger" aria-label="Meny" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
-<!-- Mobile menu -->
-<div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobilmeny">
-  <nav class="mobile-menu__links">
+<div id="mobile-menu">
+  <nav>
     <a href="index.html">Hem</a>
     <a href="sociala-medier.html">Sociala Medier</a>
-    <a href="hemsida.html">Webbdesign</a>
+    <a href="hemsida.html">Webbdesign & SEO</a>
     <a href="om-oss.html">Om oss</a>
     <a href="kundcase.html">Kundcase</a>
     <a href="blogg.html">Blogg</a>
     <a href="jobb.html">Jobb</a>
-    <a href="kontakt.html">Kontakt</a>
+    <a href="kontakt.html" class="btn btn--blue" style="margin-top:16px;display:inline-block;">Boka gratis möte</a>
   </nav>
-  <a href="kontakt.html" class="btn btn--yellow">Boka gratis möte</a>
 </div>
 
-<!-- ============================================================
-     1. PAGE HERO
-     ============================================================ -->
-<header class="page-hero">
-  <div class="page-hero__inner">
-    <div>
-      <div class="section-label page-hero__label">— Om oss —</div>
-      <h1>Vi brinner för restaurangers <em>framgång</em></h1>
-      <p class="page-hero__sub">Grundade 2021 med ett uppdrag: att hjälpa Sveriges restauranger att synas online.</p>
-    </div>
-    <div class="page-hero__pixel" aria-hidden="true">
-      <div class="pixel-deco pixel-deco--light">
-        <span></span><span></span><span></span>
-        <span></span><span></span><span></span>
-        <span></span><span></span><span></span>
-      </div>
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero__blob"></div>
+  <div class="container">
+    <div class="page-hero__inner reveal">
+      <span class="section-eyebrow">Om oss</span>
+      <h1>Vi brinner för restaurangbranschen</h1>
+      <p class="page-hero__subtitle">Syns Nu Media grundades av matälskare som tröttnat på att se fantastiska restauranger kämpa med synligheten. Vi fixar det.</p>
     </div>
   </div>
-  <div class="page-hero__yellow-strip"></div>
-</header>
+</section>
 
-<!-- ============================================================
-     2. STORY — SPLIT SECTION
-     ============================================================ -->
-<section class="section section--white">
+<!-- STORY -->
+<section class="section">
   <div class="container">
-    <div class="split-section reveal">
+    <div class="story-grid reveal">
+      <div class="story-photo"></div>
       <div>
-        <div class="year-badge">Grundat 2021</div>
-        <p class="story-text">
-          Vi startade Syns Nu Media efter att ha sett hur <em>bra restauranger kämpade</em> med sin digitala närvaro. Idag hjälper vi 90+ restauranger att växa.
-        </p>
-        <p class="story-sub">
-          Vi tror på äkta partnerskap. Inga långa avtal, inga tomma löften — bara resultat som syns i bokningskalendrar och på sista raden. Varje restaurang vi jobbar med behandlar vi som om det vore vår egen verksamhet.
-        </p>
-        <div style="margin-top:32px;">
-          <a href="kontakt.html" class="btn btn--black">Prata med oss</a>
-        </div>
-      </div>
-
-      <div class="story-photo reveal reveal-delay-2">
-        <div class="story-photo__bg">
-          <span class="story-photo__label">Teamet på kontoret</span>
-        </div>
+        <div class="story-year">2021</div>
+        <span class="section-eyebrow">Vår historia</span>
+        <h2>Grundat av passion för mat och marknadsföring</h2>
+        <p>Syns Nu Media grundades 2021 av ett team med djup förankring i både restaurangbranschen och digital marknadsföring. Vi hade sett hur fantastiska restauranger kämpade för att synas online — inte för att maten var dålig, utan för att de saknade rätt verktyg och kunskap.</p>
+        <p style="margin-top:16px;">Idag hjälper vi 90+ restauranger runt om i Sverige att bygga en stark digital närvaro, attrahera nya gäster och växa på ett hållbart sätt.</p>
+        <p style="margin-top:16px;">Vi är specialiserade — vi jobbar <em>bara</em> med restauranger. Det betyder att vi förstår dina utmaningar, din säsongsvariationer och dina möjligheter på ett sätt som en generell byrå aldrig kan.</p>
+        <a href="kontakt.html" class="btn btn--blue" style="margin-top:28px;">Prata med oss</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     3. VALUES
-     ============================================================ -->
-<section class="section section--cream">
+<!-- VALUES -->
+<section class="section section--soft">
   <div class="container">
-    <div class="reveal" style="max-width:540px;">
-      <div class="section-label">— Våra värderingar —</div>
-      <h2>Det vi tror på</h2>
-      <p style="margin-top:16px;font-size:16px;line-height:1.7;">
-        Fyra principer guidar allt vi gör — från det första mötet till den sista rapporten.
-      </p>
+    <div class="section-header reveal" style="text-align:center;margin-bottom:48px;">
+      <span class="section-eyebrow">Våra värderingar</span>
+      <h2>Principerna som driver allt vi gör</h2>
     </div>
-
-    <div class="feature-grid-4 reveal-stagger" style="margin-top:48px;">
-      <div class="feature-card">
-        <div class="feature-card__icon" aria-hidden="true">🎯</div>
-        <h4>Resultatfokus</h4>
-        <p>Vi mäter alltid framgång i faktiska affärsresultat — fler bokningar, fler följare, mer omsättning.</p>
+    <div class="values-grid reveal-stagger">
+      <div class="value-card">
+        <div class="icon-chip icon-chip--blue" style="margin:0 auto;">🎯</div>
+        <h3>Resultatfokus</h3>
+        <p>Vi mäter framgång i bokningar och omsättning — inte likes och följare. Varje aktivitet ska ge mätbar effekt.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-card__icon" aria-hidden="true">🤝</div>
-        <h4>Äkta partnerskap</h4>
+      <div class="value-card">
+        <div class="icon-chip icon-chip--orange" style="margin:0 auto;">🤝</div>
+        <h3>Partnerskap</h3>
         <p>Vi ser oss som en del av ditt team — inte en extern leverantör. Din framgång är vår framgång.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-card__icon" aria-hidden="true">💡</div>
-        <h4>Kreativitet</h4>
-        <p>Varje restaurang har en unik historia att berätta. Vi hittar den och berättar den på bästa möjliga sätt.</p>
+      <div class="value-card">
+        <div class="icon-chip icon-chip--green" style="margin:0 auto;">🔍</div>
+        <h3>Transparens</h3>
+        <p>Tydliga priser, ärlig kommunikation och detaljerade rapporter. Inga dolda kostnader eller vaga löften.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-card__icon" aria-hidden="true">📊</div>
-        <h4>Transparens</h4>
-        <p>Du ser alltid exakt vad vi gör och vad det ger. Tydliga rapporter varje månad, inga överraskningar.</p>
+      <div class="value-card">
+        <div class="icon-chip icon-chip--pink" style="margin:0 auto;">⚡</div>
+        <h3>Specialisering</h3>
+        <p>Vi jobbar bara med restauranger. Det ger oss unik branschkunskap som en generell byrå inte kan matcha.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     4. TEAM GRID
-     ============================================================ -->
-<section class="section section--white">
+<!-- TEAM -->
+<section class="section">
   <div class="container">
-    <div class="team-header reveal">
-      <div class="section-label">— Teamet —</div>
+    <div class="section-header reveal" style="text-align:center;margin-bottom:48px;">
+      <span class="section-eyebrow">Teamet</span>
       <h2>Möt personerna bakom Syns Nu Media</h2>
-      <p style="margin-top:12px;max-width:480px;font-size:16px;line-height:1.7;">
-        Passionerade experter med ett gemensamt mål: att se restauranger blomstra.
-      </p>
     </div>
-
     <div class="team-grid reveal-stagger">
       <div class="team-card">
-        <div class="team-card__photo team-card__photo--1" aria-label="Sara Nyman">SN</div>
-        <div class="team-card__info">
-          <strong>Sara Nyman</strong>
-          <span>Grundare &amp; VD</span>
-        </div>
+        <div class="team-card__photo" style="background:linear-gradient(135deg,#667eea,#764ba2);">👨‍💼</div>
+        <div class="team-card__name">Marcus Eriksson</div>
+        <div class="team-card__role">Grundare & VD</div>
       </div>
-
       <div class="team-card">
-        <div class="team-card__photo team-card__photo--2" aria-label="Marcus Holm">MH</div>
-        <div class="team-card__info">
-          <strong>Marcus Holm</strong>
-          <span>Kreativ Direktör</span>
-        </div>
+        <div class="team-card__photo" style="background:linear-gradient(135deg,#f093fb,#f5576c);">👩‍🎨</div>
+        <div class="team-card__name">Sara Johansson</div>
+        <div class="team-card__role">Creative Director</div>
       </div>
-
       <div class="team-card">
-        <div class="team-card__photo team-card__photo--3" aria-label="Lena Andersson">LA</div>
-        <div class="team-card__info">
-          <strong>Lena Andersson</strong>
-          <span>Social Media Manager</span>
+        <div class="team-card__photo" style="background:linear-gradient(135deg,#4facfe,#00f2fe);">📸</div>
+        <div class="team-card__name">Ali Hassan</div>
+        <div class="team-card__role">Foto & Video</div>
+      </div>
+      <div class="team-card">
+        <div class="team-card__photo" style="background:linear-gradient(135deg,#43e97b,#38f9d7);">📊</div>
+        <div class="team-card__name">Emma Lindberg</div>
+        <div class="team-card__role">Digital Strateg</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="section section--blue">
+  <div class="container">
+    <div class="stats-strip reveal-stagger">
+      <div class="stats-strip__item">
+        <span class="stats-strip__value" data-count="90" data-suffix="+">0+</span>
+        <span class="stats-strip__label" style="color:rgba(255,255,255,0.75);">Restauranger hjälpta</span>
+      </div>
+      <div class="stats-strip__item">
+        <span class="stats-strip__value" data-count="4.9" data-suffix="/5">0</span>
+        <span class="stats-strip__label" style="color:rgba(255,255,255,0.75);">Genomsnittligt betyg</span>
+      </div>
+      <div class="stats-strip__item">
+        <span class="stats-strip__value" data-count="3" data-suffix="år">0</span>
+        <span class="stats-strip__label" style="color:rgba(255,255,255,0.75);">I branschen</span>
+      </div>
+      <div class="stats-strip__item">
+        <span class="stats-strip__value" data-count="100" data-suffix="%">0%</span>
+        <span class="stats-strip__label" style="color:rgba(255,255,255,0.75);">Restaurangfokus</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-section__inner reveal">
+      <h2>Redo att jobba med oss?</h2>
+      <p>Boka ett gratis 30-minutersmöte och se om vi är rätt match för din restaurang.</p>
+      <a href="kontakt.html" class="btn btn--blue btn--lg">Boka gratis möte</a>
+      <div class="cta-section__trust">
+        <span>✓ Inga bindningstider</span>
+        <span>✓ Svar inom 24 timmar</span>
+        <span>✓ 90+ nöjda restauranger</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__col footer__col--brand">
+        <a href="index.html"><img src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/68ebad7a0d699e0abc5558c1.png" alt="Syns Nu Media" width="160" height="40" style="filter:brightness(0) invert(1);"></a>
+        <p class="footer__tagline">Sveriges specialistbyrå för restaurangmarknadsföring.</p>
+        <div class="footer__social">
+          <a href="#" class="footer__social-icon" aria-label="Instagram">IG</a>
+          <a href="#" class="footer__social-icon" aria-label="TikTok">TT</a>
+          <a href="#" class="footer__social-icon" aria-label="Facebook">FB</a>
         </div>
       </div>
-
-      <div class="team-cta-card">
-        <p>Vill du bli en del av teamet?</p>
-        <a href="jobb.html" class="team-cta-link">Se lediga tjänster →</a>
+      <div class="footer__col">
+        <h4>Tjänster</h4>
+        <ul>
+          <li><a href="sociala-medier.html">Sociala Medier</a></li>
+          <li><a href="hemsida.html">Webbdesign & SEO</a></li>
+        </ul>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     5. STATS
-     ============================================================ -->
-<section class="section section--dark">
-  <div class="container">
-    <div class="reveal" style="text-align:center;margin-bottom:60px;">
-      <div class="section-label section-label--light">— Siffror —</div>
-      <h2>Våra resultat i siffror</h2>
-      <p style="margin-top:12px;font-size:16px;max-width:480px;margin-left:auto;margin-right:auto;">
-        Siffror som speglar riktiga resultat för riktiga restauranger.
-      </p>
-    </div>
-
-    <div class="stats-grid reveal">
-      <div class="stat-item">
-        <div class="stat-item__value"><span data-count="90" data-suffix="+">90+</span></div>
-        <div class="stat-item__label">Restauranger</div>
+      <div class="footer__col">
+        <h4>Företaget</h4>
+        <ul>
+          <li><a href="om-oss.html">Om oss</a></li>
+          <li><a href="kundcase.html">Kundcase</a></li>
+          <li><a href="blogg.html">Blogg</a></li>
+          <li><a href="jobb.html">Jobb</a></li>
+        </ul>
       </div>
-      <div class="stat-item">
-        <div class="stat-item__value"><span data-count="4.9">4.9</span></div>
-        <div class="stat-item__label">Genomsnittligt betyg</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-item__value"><span data-count="95" data-suffix="%">95%</span></div>
-        <div class="stat-item__label">Förnyar samarbetet</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-item__value"><span data-count="3" data-suffix="+">3+</span></div>
-        <div class="stat-item__label">Års erfarenhet</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     6. CTA BANNER
-     ============================================================ -->
-<section class="cta-banner">
-  <div class="container">
-    <div class="reveal">
-      <h2>Vill du samarbeta med oss?</h2>
-      <p>Boka ett gratis 30-minuters strategimöte. Vi berättar hur vi kan hjälpa just din restaurang att växa.</p>
-      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-        <a href="kontakt.html" class="btn btn--black btn--lg">Boka gratis möte</a>
-        <a href="kundcase.html" class="btn btn--outline btn--lg">Se våra resultat</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer__top">
-      <div class="footer__left">
-        <img src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/68ebad7a0d699e0abc5558c1.png" alt="Syns Nu Media" width="140" height="34" style="filter:brightness(0) invert(1);margin-bottom:16px;">
-        <h2 style="font-size:28px;">Syns Nu Media</h2>
-        <p style="margin-top:8px;color:rgba(255,255,255,0.45);font-size:14px;max-width:260px;line-height:1.6;">Sveriges ledande marknadsföringsbyrå för restauranger.</p>
-      </div>
-      <div class="footer__right">
-        <div class="footer__col"><h5>Tjänster</h5><a href="sociala-medier.html">Sociala Medier</a><a href="hemsida.html">Webbdesign</a><a href="sociala-medier.html">Menyfoto</a><a href="qopla-erbjudande.html">Qopla-erbjudande</a></div>
-        <div class="footer__col"><h5>Företaget</h5><a href="om-oss.html">Om oss</a><a href="kundcase.html">Kundcase</a><a href="blogg.html">Blogg</a><a href="jobb.html">Jobba hos oss</a></div>
-        <div class="footer__col"><h5>Kontakt</h5><address><a href="mailto:hej@synsnumedia.se">hej@synsnumedia.se</a><a href="kontakt.html">Boka möte</a><span style="display:block;margin-top:4px;color:rgba(255,255,255,0.45);font-size:13px;">Stockholm, Sverige</span></address></div>
+      <div class="footer__col">
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="mailto:hej@syns-nu.se">hej@syns-nu.se</a></li>
+          <li><a href="tel:0700000000">070 000 00 00</a></li>
+          <li><a href="kontakt.html" class="btn btn--blue btn--sm" style="margin-top:12px;display:inline-block;">Boka möte</a></li>
+        </ul>
       </div>
     </div>
     <div class="footer__bottom">
-      <span class="footer__copy">© 2025 Syns Nu Media.</span>
-      <div class="footer__social">
-        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-      </div>
+      <p>© 2025 Syns Nu Media. Alla rättigheter förbehållna.</p>
     </div>
   </div>
 </footer>
-<a class="whatsapp-fab" href="https://wa.me/46XXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="white" width="26" height="26"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+<a href="https://wa.me/46700000000" class="whatsapp-fab" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
 <script src="js/main.js"></script>
 </body>
 </html>
