@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blogg — Tips för Restauranger | Syns Nu Media</title>
+  <meta name="description" content="Tips, guider och branschinsikter för restaurangägare. Lär dig om Instagram, TikTok, Google Maps och marknadsföring för restauranger.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <style>
+    .blog-featured-card { display:grid; grid-template-columns:1fr 1fr; border-radius:var(--radius-xl); overflow:hidden; border:1px solid var(--border); margin-bottom:48px; }
+    .blog-featured-card__img { min-height:320px; background:linear-gradient(135deg,#111,#2a2a2a); display:flex; align-items:center; justify-content:center; font-size:72px; }
+    .blog-featured-card__body { padding:48px; display:flex; flex-direction:column; justify-content:center; }
+    .blog-featured-card__body h2 { font-size:clamp(22px,2.5vw,32px); margin-bottom:16px; }
+    .blog-featured-card__body p { font-size:15px; color:var(--muted); line-height:1.7; margin-bottom:24px; }
+    .blog-grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+    .newsletter-form { display:flex; gap:12px; max-width:480px; margin:24px auto 0; }
+    .newsletter-form input { flex:1; padding:13px 16px; border:1.5px solid var(--border); border-radius:var(--radius); font-size:14px; }
+    @media(max-width:1024px){
+      .blog-featured-card { grid-template-columns:1fr; }
+      .blog-featured-card__img { min-height:200px; }
+      .blog-grid-3 { grid-template-columns:repeat(2,1fr); }
+    }
+    @media(max-width:600px){
+      .blog-grid-3 { grid-template-columns:1fr; }
+      .newsletter-form { flex-direction:column; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="nav" role="navigation" aria-label="Huvudnavigation">
+  <div class="nav__inner">
+    <a class="nav__logo" href="index.html"><img src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/68ebad7a0d699e0abc5558c1.png" alt="Syns Nu Media" height="38"></a>
+    <ul class="nav__links" role="list">
+      <li><a class="nav__link" href="index.html">Hem</a></li>
+      <li class="nav__dropdown">
+        <button class="nav__link" aria-haspopup="true" aria-expanded="false">Tjänster <svg class="nav__chevron" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <ul class="nav__dropdown-menu" role="menu">
+          <li><a class="nav__dropdown-item" href="sociala-medier.html">📱 Sociala Medier</a></li>
+          <li><a class="nav__dropdown-item" href="hemsida.html">💻 Webbdesign</a></li>
+        </ul>
+      </li>
+      <li><a class="nav__link" href="om-oss.html">Om oss</a></li>
+      <li><a class="nav__link" href="kundcase.html">Kundcase</a></li>
+      <li><a class="nav__link nav__link--active" href="blogg.html">Blogg</a></li>
+      <li><a class="nav__link" href="jobb.html">Jobb</a></li>
+    </ul>
+    <div class="nav__right"><a class="btn btn--primary btn--sm" href="kontakt.html">Kontakta oss</a></div>
+    <button class="nav__hamburger" id="hamburger" aria-label="Öppna meny" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div id="mobile-overlay" class="mobile-overlay" aria-hidden="true"></div>
+<div id="mobile-menu" role="dialog" aria-label="Mobilmeny" aria-modal="true">
+  <ul class="mobile-menu__list">
+    <li class="mobile-menu__item"><a class="mobile-menu__link" href="index.html">Hem</a></li>
+    <li class="mobile-menu__item">
+      <button class="mobile-menu__link mobile-menu__toggle">Tjänster <svg width="16" height="16" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <ul class="mobile-menu__sub"><li><a class="mobile-menu__sub-link" href="sociala-medier.html">Sociala Medier</a></li><li><a class="mobile-menu__sub-link" href="hemsida.html">Webbdesign</a></li></ul>
+    </li>
+    <li class="mobile-menu__item"><a class="mobile-menu__link" href="om-oss.html">Om oss</a></li>
+    <li class="mobile-menu__item"><a class="mobile-menu__link" href="kundcase.html">Kundcase</a></li>
+    <li class="mobile-menu__item"><a class="mobile-menu__link" href="blogg.html">Blogg</a></li>
+    <li class="mobile-menu__item"><a class="mobile-menu__link" href="jobb.html">Jobb</a></li>
+  </ul>
+  <div class="mobile-menu__cta">
+    <a class="btn btn--primary btn--full" href="kontakt.html">Kontakta oss</a>
+    <a class="btn btn--outline btn--full" href="tel:+46708880198">070-888 01 98</a>
+  </div>
+</div>
+
+<section class="page-hero">
+  <div class="container">
+    <p class="label">BLOGG &amp; INSIKTER</p>
+    <h1>Tips, guider och insikter för <em>restaurangägare</em></h1>
+    <p>Praktiska råd som hjälper din restaurang växa online — gratis, varje vecka.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <!-- Featured Article -->
+    <a class="blog-featured-card reveal" href="#">
+      <div class="blog-featured-card__img">📸</div>
+      <div class="blog-featured-card__body">
+        <p class="label label--orange mb-16">SOCIALA MEDIER</p>
+        <h2>5 Instagram-misstag restauranger gör — och hur du undviker dem</h2>
+        <p>De flesta restauranger gör dessa misstag på Instagram utan att veta om det. Lär dig hur du undviker dem och ökar ditt engagemang och besökare.</p>
+        <span class="btn btn--dark btn--sm" style="align-self:flex-start;">Läs artikel <span class="arrow">→</span></span>
+      </div>
+    </a>
+
+    <!-- Blog grid -->
+    <div class="blog-grid-3">
+      <a class="blog-card reveal reveal-delay-1" href="#">
+        <div class="blog-card__img"><div class="blog-card__img-bg" style="background:linear-gradient(135deg,#0d1b2a,#1b2d42);">🎵</div></div>
+        <div class="blog-card__body">
+          <p class="label label--orange blog-card__tag">Sociala Medier</p>
+          <h3 class="blog-card__title">TikTok för restauranger: komplett guide 2025</h3>
+          <p class="blog-card__excerpt">Lär dig exakt hur du skapar viralt TikTok-innehåll för din restaurang och omvandlar visningar till fysiska gäster.</p>
+          <span class="blog-card__link">Läs mer <span class="arrow">→</span></span>
+        </div>
+      </a>
+      <a class="blog-card reveal reveal-delay-2" href="#">
+        <div class="blog-card__img"><div class="blog-card__img-bg" style="background:linear-gradient(135deg,#1a0a2e,#2d1b4e);">🎬</div></div>
+        <div class="blog-card__body">
+          <p class="label label--orange blog-card__tag">Sociala Medier</p>
+          <h3 class="blog-card__title">Hur du skapar Instagram Reels som driver reservationer</h3>
+          <p class="blog-card__excerpt">Steg-för-steg guide till att skapa Reels som inte bara får likes — utan faktiska bordbokningar.</p>
+          <span class="blog-card__link">Läs mer <span class="arrow">→</span></span>
+        </div>
+      </a>
+      <a class="blog-card reveal reveal-delay-3" href="#">
+        <div class="blog-card__img"><div class="blog-card__img-bg" style="background:linear-gradient(135deg,#0d2137,#1b4f72);">📍</div></div>
+        <div class="blog-card__body">
+          <p class="label label--orange blog-card__tag">Google &amp; SEO</p>
+          <h3 class="blog-card__title">Rankar #1 på Google Maps — guide för restauranger 2025</h3>
+          <p class="blog-card__excerpt">Exakt hur du optimerar din Google-profil och rankar högst när folk söker mat i din stad.</p>
+          <span class="blog-card__link">Läs mer <span class="arrow">→</span></span>
+        </div>
+      </a>
+      <a class="blog-card reveal reveal-delay-1" href="#">
+        <div class="blog-card__img"><div class="blog-card__img-bg" style="background:linear-gradient(135deg,#1a2214,#2d3a20);">⭐</div></div>
+        <div class="blog-card__body">
+          <p class="label label--orange blog-card__tag">Google &amp; SEO</p>
+          <h3 class="blog-card__title">Varför dina Google-recensioner avgör om gäster kommer</h3>
+          <p class="blog-card__excerpt">73% av gästerna läser recensioner innan de besöker en restaurang. Här är hur du bygger ett starkt betyg.</p>
+          <span class="blog-card__link">Läs mer <span class="arrow">→</span></span>
+        </div>
+      </a>
+      <a class="blog-card reveal reveal-delay-2" href="#">
+        <div class="blog-card__img"><div class="blog-card__img-bg" style="background:linear-gradient(135deg,#1f1c18,#3d2b1f);">💰</div></div>
+        <div class="blog-card__body">
+          <p class="label label--orange blog-card__tag">Strategi &amp; Omsättning</p>
+          <h3 class="blog-card__title">Öka genomsnittsnotan med 30% utan att höja priserna</h3>
+          <p class="blog-card__excerpt">Psykologiska tekniker och menystrategi som gör att dina gäster spenderar mer — utan att de märker det.</p>
+          <span class="blog-card__link">Läs mer <span class="arrow">→</span></span>
+        </div>
+      </a>
+      <a class="blog-card reveal reveal-delay-3" href="#">
+        <div class="blog-card__img"><div class="blog-card__img-bg" style="background:linear-gradient(135deg,#1a1a2e,#2d2d4e);">📈</div></div>
+        <div class="blog-card__body">
+          <p class="label label--orange blog-card__tag">Strategi &amp; Omsättning</p>
+          <h3 class="blog-card__title">7 marknadsföringsstrategier som ökar restaurangomsättningen</h3>
+          <p class="blog-card__excerpt">Beprövade strategier från våra 90+ restaurangpartners. Implementera en i veckan och se skillnaden.</p>
+          <span class="blog-card__link">Läs mer <span class="arrow">→</span></span>
+        </div>
+      </a>
+      <a class="blog-card reveal reveal-delay-1" href="#">
+        <div class="blog-card__img"><div class="blog-card__img-bg" style="background:linear-gradient(135deg,#0a1a0a,#1a3d1a);">✉️</div></div>
+        <div class="blog-card__body">
+          <p class="label label--orange blog-card__tag">Strategi &amp; Omsättning</p>
+          <h3 class="blog-card__title">Bygg lojal kundbas med e-post &amp; SMS-marknadsföring</h3>
+          <p class="blog-card__excerpt">Din gästlista är din mest värdefulla tillgång. Lär dig hur du omvandlar engångsbesökare till stamgäster.</p>
+          <span class="blog-card__link">Läs mer <span class="arrow">→</span></span>
+        </div>
+      </a>
+      <a class="blog-card reveal reveal-delay-2" href="#">
+        <div class="blog-card__img"><div class="blog-card__img-bg" style="background:linear-gradient(135deg,#2a1a0a,#4d3010);">🔮</div></div>
+        <div class="blog-card__body">
+          <p class="label label--orange blog-card__tag">Trender</p>
+          <h3 class="blog-card__title">Restaurangtrender 2025: vad gästerna förväntar sig</h3>
+          <p class="blog-card__excerpt">Hållbarhet, digitala menyskärmar, personalisering — så möter du morgondagens restauranggäst.</p>
+          <span class="blog-card__link">Läs mer <span class="arrow">→</span></span>
+        </div>
+      </a>
+      <a class="blog-card reveal reveal-delay-3" href="#">
+        <div class="blog-card__img"><div class="blog-card__img-bg" style="background:linear-gradient(135deg,#1f0a0a,#4d1515);">🚀</div></div>
+        <div class="blog-card__body">
+          <p class="label label--orange blog-card__tag">Inspiration</p>
+          <h3 class="blog-card__title">Från 0 till fullbokat: hur vi ökade omsättningen med 50%</h3>
+          <p class="blog-card__excerpt">Hela berättelsen bakom Östermalmsgrillen by Garos transformation — strategi, utmaningar och resultat.</p>
+          <span class="blog-card__link">Läs mer <span class="arrow">→</span></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="section section--dark">
+  <div class="container text-center">
+    <div class="reveal">
+      <p class="label label--orange mb-16">NYHETSBREV</p>
+      <h2 style="color:var(--white); font-size:clamp(24px,3vw,40px); margin-bottom:16px;">Få restaurangtips direkt i inkorgen</h2>
+      <p style="color:rgba(255,255,255,0.6); font-size:16px; margin-bottom:24px;">Praktiska tips och insikter varje vecka — helt gratis. Prenumerera nedan.</p>
+      <form data-form="newsletter" style="display:flex; gap:12px; max-width:480px; margin:0 auto;">
+        <input type="email" class="form-control" placeholder="din@email.se" required style="flex:1;">
+        <button class="btn btn--primary" type="submit">Prenumerera</button>
+      </form>
+      <p style="font-size:12px; color:rgba(255,255,255,0.3); margin-top:12px;">Ingen spam. Avregistrera dig när som helst.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="container"><div class="reveal">
+    <h2>Vill du ha hjälp med marknadsföringen?</h2>
+    <p>Vi sköter hela marknadsföringen åt dig — sociala medier, hemsida, annonsering och mer.</p>
+    <a class="btn btn--dark btn--lg" href="kontakt.html">Kontakta oss <span class="arrow">→</span></a>
+  </div></div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div><a href="index.html"><img class="footer__logo" src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/68ebad7a0d699e0abc5558c1.png" alt="Syns Nu Media"></a><p class="footer__tagline">Sveriges största marknadsföringsbyrå för restauranger.</p><div class="footer__social"><a class="footer__social-link" href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a><a class="footer__social-link" href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.53V6.77a4.85 4.85 0 01-1.02-.08z"/></svg></a><a class="footer__social-link" href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a></div></div>
+      <div><p class="footer__col-title">Tjänster</p><div class="footer__col-links"><a class="footer__col-link" href="sociala-medier.html">Sociala Medier</a><a class="footer__col-link" href="hemsida.html">Webbdesign</a></div></div>
+      <div><p class="footer__col-title">Företaget</p><div class="footer__col-links"><a class="footer__col-link" href="om-oss.html">Om oss</a><a class="footer__col-link" href="kundcase.html">Kundcase</a><a class="footer__col-link" href="blogg.html">Blogg</a><a class="footer__col-link" href="jobb.html">Jobb</a></div></div>
+      <div><p class="footer__col-title">Kontakt</p><div class="footer__col-links"><a class="footer__col-link" href="tel:+46708880198">070-888 01 98</a><a class="footer__col-link" href="mailto:info@synsnumedia.se">info@synsnumedia.se</a><span class="footer__col-link">Stockholm, Sverige</span></div></div>
+    </div>
+    <div class="footer__bottom"><span>© Syns Nu AB 2025. Alla rättigheter förbehållna.</span><a href="#">Integritetspolicy</a></div>
+  </div>
+</footer>
+<div class="whatsapp-fab"><a href="https://wa.me/46708880198" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a></div>
+<script src="js/main.js"></script>
+</body>
+</html>

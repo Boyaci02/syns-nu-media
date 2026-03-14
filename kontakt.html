@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakta Oss | Syns Nu Media</title>
+  <meta name="description" content="Kontakta Syns Nu Media för en gratis konsultation. Vi svarar inom 24 timmar. Ring oss på 070-888 01 98 eller maila info@synsnumedia.se.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <style>
+    .contact-hero {
+      background: var(--bg-dark);
+      padding: calc(var(--nav-h) + 60px) 0 60px;
+      color: var(--white);
+    }
+    .contact-hero__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .contact-info h1 { color: var(--white); font-size: clamp(32px,4vw,52px); margin-bottom:16px; line-height:1.15; }
+    .contact-info p { color:rgba(255,255,255,0.65); font-size:17px; margin-bottom:28px; line-height:1.7; }
+    .contact-detail { display:flex; align-items:center; gap:14px; margin-bottom:16px; font-size:16px; color:rgba(255,255,255,0.8); }
+    .contact-detail__icon { font-size:20px; flex-shrink:0; }
+    .contact-detail a { color:rgba(255,255,255,0.8); transition:color 0.15s; }
+    .contact-detail a:hover { color:var(--orange); }
+    .contact-social { display:flex; gap:10px; margin-top:28px; }
+    .contact-social-link { display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; border:1px solid rgba(255,255,255,0.2); color:rgba(255,255,255,0.6); transition:all 0.2s; }
+    .contact-social-link:hover { border-color:var(--orange); color:var(--orange); }
+    .contact-social-link svg { width:18px; height:18px; fill:currentColor; }
+
+    .faq-grid { display:grid; grid-template-columns:1fr 1fr; gap:0 40px; }
+
+    @media(max-width:1024px){
+      .contact-hero__inner { grid-template-columns:1fr; }
+      .faq-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="nav" role="navigation" aria-label="Huvudnavigation">
+  <div class="nav__inner">
+    <a class="nav__logo" href="index.html"><img src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/68ebad7a0d699e0abc5558c1.png" alt="Syns Nu Media" height="38"></a>
+    <ul class="nav__links" role="list">
+      <li><a class="nav__link" href="index.html">Hem</a></li>
+      <li class="nav__dropdown">
+        <button class="nav__link" aria-haspopup="true" aria-expanded="false">Tjänster <svg class="nav__chevron" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <ul class="nav__dropdown-menu" role="menu">
+          <li><a class="nav__dropdown-item" href="sociala-medier.html" role="menuitem">📱 Sociala Medier</a></li>
+          <li><a class="nav__dropdown-item" href="hemsida.html" role="menuitem">💻 Webbdesign</a></li>
+        </ul>
+      </li>
+      <li><a class="nav__link" href="om-oss.html">Om oss</a></li>
+      <li><a class="nav__link" href="kundcase.html">Kundcase</a></li>
+      <li><a class="nav__link" href="blogg.html">Blogg</a></li>
+      <li><a class="nav__link" href="jobb.html">Jobb</a></li>
+    </ul>
+    <div class="nav__right"><a class="btn btn--primary btn--sm" href="kontakt.html">Kontakta oss</a></div>
+    <button class="nav__hamburger" id="hamburger" aria-label="Öppna meny" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div id="mobile-overlay" class="mobile-overlay" aria-hidden="true"></div>
+<div id="mobile-menu" role="dialog" aria-label="Mobilmeny" aria-modal="true">
+  <ul class="mobile-menu__list">
+    <li class="mobile-menu__item"><a class="mobile-menu__link" href="index.html">Hem</a></li>
+    <li class="mobile-menu__item">
+      <button class="mobile-menu__link mobile-menu__toggle">Tjänster <svg width="16" height="16" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <ul class="mobile-menu__sub"><li><a class="mobile-menu__sub-link" href="sociala-medier.html">Sociala Medier</a></li><li><a class="mobile-menu__sub-link" href="hemsida.html">Webbdesign</a></li></ul>
+    </li>
+    <li class="mobile-menu__item"><a class="mobile-menu__link" href="om-oss.html">Om oss</a></li>
+    <li class="mobile-menu__item"><a class="mobile-menu__link" href="kundcase.html">Kundcase</a></li>
+    <li class="mobile-menu__item"><a class="mobile-menu__link" href="blogg.html">Blogg</a></li>
+    <li class="mobile-menu__item"><a class="mobile-menu__link" href="jobb.html">Jobb</a></li>
+  </ul>
+  <div class="mobile-menu__cta">
+    <a class="btn btn--primary btn--full" href="kontakt.html">Kontakta oss</a>
+    <a class="btn btn--outline btn--full" href="tel:+46708880198">070-888 01 98</a>
+  </div>
+</div>
+
+<!-- HERO + FORM -->
+<section class="contact-hero">
+  <div class="container">
+    <div class="contact-hero__inner">
+      <div class="contact-info reveal">
+        <p class="label label--orange mb-16">KONTAKTA OSS</p>
+        <h1>Vi är alltid hungriga att höra ifrån dig!</h1>
+        <p>Boka en gratis konsultation och se hur vi kan hjälpa din restaurang att växa online. Vi svarar inom 24 timmar.</p>
+
+        <div class="contact-detail">
+          <span class="contact-detail__icon">📞</span>
+          <a href="tel:+46708880198">070-888 01 98</a>
+        </div>
+        <div class="contact-detail">
+          <span class="contact-detail__icon">✉️</span>
+          <a href="mailto:info@synsnumedia.se">info@synsnumedia.se</a>
+        </div>
+        <div class="contact-detail">
+          <span class="contact-detail__icon">📍</span>
+          <span>Stockholm, Sverige</span>
+        </div>
+
+        <div class="contact-social">
+          <a class="contact-social-link" href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          <a class="contact-social-link" href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.53V6.77a4.85 4.85 0 01-1.02-.08z"/></svg></a>
+          <a class="contact-social-link" href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-2">
+        <div class="form-card">
+          <h3 style="font-family:var(--heading); font-size:22px; margin-bottom:24px;">Skicka ett meddelande</h3>
+          <form data-form="contact">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Namn <span class="req">*</span></label>
+                <input class="form-control" type="text" placeholder="Ditt namn" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Restaurangnamn <span class="req">*</span></label>
+                <input class="form-control" type="text" placeholder="Restaurangens namn" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">E-post <span class="req">*</span></label>
+                <input class="form-control" type="email" placeholder="din@email.se" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Telefon <span class="req">*</span></label>
+                <input class="form-control" type="tel" placeholder="07X-XXX XX XX" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Vad är du intresserad av?</label>
+              <select class="form-control">
+                <option value="">Välj tjänst...</option>
+                <option>Hemsida</option>
+                <option>Sociala Medier</option>
+                <option>Menyfotografering</option>
+                <option>Digitala menyskärmar</option>
+                <option>Allt ovan</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Meddelande</label>
+              <textarea class="form-control" placeholder="Berätta om din restaurang och dina mål..."></textarea>
+            </div>
+            <button class="btn btn--primary btn--full btn--lg" type="submit">Skicka meddelande <span class="arrow">→</span></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QOPLA STRIP -->
+<section class="section--sm">
+  <div class="container">
+    <div class="qopla-strip reveal">
+      <div class="qopla-strip__text">
+        <h3>Är du Qopla-kund?</h3>
+        <p>Som Qopla-kund får du specialpriser på utvalda tjänster — spara upp till 20%.</p>
+      </div>
+      <a class="btn btn--primary" href="qopla-erbjudande.html" style="flex-shrink:0;">Se Qopla-erbjudandet <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="section--sm section--alt">
+  <div class="container">
+    <div class="reveal">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d130435.57982849778!2d18.003788!3d59.329324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f763119640bcb%3A0xa80d27d3679d7766!2sStockholm!5e0!3m2!1ssv!2sse!4v1700000000000"
+        width="100%"
+        height="400"
+        style="border:0; border-radius:var(--radius-lg); display:block;"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Syns Nu Media — Stockholm"
+      ></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header section-header--center reveal">
+      <p class="label label--orange section-header__label">VANLIGA FRÅGOR</p>
+      <h2 class="section-header__title">Har du frågor?</h2>
+    </div>
+    <div style="max-width:720px; margin:0 auto;">
+      <div class="accordion reveal">
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false">
+            <span class="accordion__title">Hur snabbt svarar ni?</span>
+            <svg class="accordion__icon" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="accordion__body">
+            <div class="accordion__content">Vi svarar alltid inom 24 timmar på vardagar. Ofta svarar vi samma dag. För brådskande ärenden kan du alltid ringa oss direkt på 070-888 01 98.</div>
+          </div>
+        </div>
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false">
+            <span class="accordion__title">Kostar konsultationen något?</span>
+            <svg class="accordion__icon" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="accordion__body">
+            <div class="accordion__content">Nej, den första konsultationen är alltid helt gratis. Vi vill lära känna din restaurang och dina mål innan vi presenterar ett förslag — utan förpliktelser.</div>
+          </div>
+        </div>
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false">
+            <span class="accordion__title">Jobbar ni utanför Stockholm?</span>
+            <svg class="accordion__icon" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="accordion__body">
+            <div class="accordion__content">Absolut! Vi jobbar med restauranger i hela Sverige. De flesta av våra tjänster kan hanteras helt digitalt, och vi reser gärna för fotograferingar och inspelningar. Vi har kunder från Malmö till Umeå.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="container">
+    <div class="reveal">
+      <h2>Redo att ta rampljuset?</h2>
+      <p>Boka en gratis konsultation — utan bindningstid eller förpliktelser.</p>
+      <a class="btn btn--dark btn--lg" href="tel:+46708880198">Ring oss nu: 070-888 01 98</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a href="index.html"><img class="footer__logo" src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/68ebad7a0d699e0abc5558c1.png" alt="Syns Nu Media"></a>
+        <p class="footer__tagline">Sveriges största marknadsföringsbyrå för restauranger.</p>
+        <div class="footer__social">
+          <a class="footer__social-link" href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          <a class="footer__social-link" href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.53V6.77a4.85 4.85 0 01-1.02-.08z"/></svg></a>
+          <a class="footer__social-link" href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a class="footer__social-link" href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <p class="footer__col-title">Tjänster</p>
+        <div class="footer__col-links">
+          <a class="footer__col-link" href="sociala-medier.html">Sociala Medier</a>
+          <a class="footer__col-link" href="hemsida.html">Webbdesign</a>
+          <a class="footer__col-link" href="qopla-erbjudande.html">Qopla-erbjudande</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer__col-title">Företaget</p>
+        <div class="footer__col-links">
+          <a class="footer__col-link" href="om-oss.html">Om oss</a>
+          <a class="footer__col-link" href="kundcase.html">Kundcase</a>
+          <a class="footer__col-link" href="blogg.html">Blogg</a>
+          <a class="footer__col-link" href="jobb.html">Jobb</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer__col-title">Kontakt</p>
+        <div class="footer__col-links">
+          <a class="footer__col-link" href="tel:+46708880198">070-888 01 98</a>
+          <a class="footer__col-link" href="mailto:info@synsnumedia.se">info@synsnumedia.se</a>
+          <span class="footer__col-link">Stockholm, Sverige</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© Syns Nu AB 2025. Alla rättigheter förbehållna.</span>
+      <a href="#">Integritetspolicy</a>
+    </div>
+  </div>
+</footer>
+<div class="whatsapp-fab"><a href="https://wa.me/46708880198" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a></div>
+<script src="js/main.js"></script>
+</body>
+</html>

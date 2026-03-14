@@ -1,0 +1,265 @@
+/* ============================================================
+   SYNS NU MEDIA — pages.css
+   Reused page-level patterns (2+ pages share these)
+   ============================================================ */
+
+/* ── PAGE HERO (centered, dark bg) ──
+   Used on: sociala-medier, om-oss, blogg, jobb, kundcase, qopla
+   ──────────────────────────────────────── */
+.page-hero {
+  background: var(--bg-dark);
+  color: var(--white);
+  padding: calc(var(--nav-h) + 80px) 0 80px;
+  text-align: center;
+}
+
+.page-hero .label {
+  color: var(--orange);
+  margin-bottom: 16px;
+}
+
+.page-hero h1 {
+  color: var(--white);
+  font-size: clamp(36px, 5vw, 64px);
+  max-width: 760px;
+  margin: 0 auto 24px;
+  line-height: 1.1;
+}
+
+.page-hero p {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 18px;
+  max-width: 580px;
+  margin: 0 auto 36px;
+  line-height: 1.7;
+}
+
+.page-hero__ctas {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.page-hero__trust {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.page-hero__trust-item {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.page-hero__trust-item::before {
+  content: '✓';
+  color: var(--orange);
+  font-weight: 700;
+}
+
+/* ── PRICING TABLE LAYOUT ──
+   Used on: sociala-medier, qopla-erbjudande
+   ──────────────────────────────────────── */
+.pricing-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .pricing-cards {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}
+
+/* ── QOPLA STRIP ──
+   Used on: index, kontakt, sociala-medier
+   ──────────────────────────────────────── */
+.qopla-strip {
+  background: var(--bg-alt);
+  border-left: 4px solid var(--orange);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.qopla-strip__text h3 {
+  font-family: var(--heading);
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+.qopla-strip__text p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .qopla-strip {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
+
+/* ── CHANNEL CARDS ──
+   Used on: sociala-medier, qopla-erbjudande
+   ──────────────────────────────────────── */
+.channel-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.channel-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 36px 28px;
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.channel-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.channel-card__icon {
+  font-size: 44px;
+  margin-bottom: 16px;
+}
+
+.channel-card__name {
+  font-family: var(--heading);
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.channel-card__text {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+@media (max-width: 768px) {
+  .channel-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── BENEFIT CARDS (icon focused) ──
+   Used on: sociala-medier, om-oss
+   ──────────────────────────────────────── */
+.benefit-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.benefit-card {
+  text-align: center;
+  padding: 32px 20px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--white);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.benefit-card__icon {
+  font-size: 40px;
+  margin-bottom: 16px;
+}
+
+.benefit-card__title {
+  font-family: var(--heading);
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.benefit-card__text {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+@media (max-width: 1024px) {
+  .benefit-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .benefit-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── CONTACT FORM SECTION ──
+   Used on: sociala-medier, hemsida, qopla, kontakt
+   ──────────────────────────────────────── */
+.contact-section {
+  background: var(--bg-dark);
+  color: var(--white);
+}
+
+.contact-section-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.contact-section-info h2 {
+  color: var(--white);
+  font-size: clamp(28px, 3.5vw, 44px);
+  margin-bottom: 16px;
+}
+
+.contact-section-info p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+@media (max-width: 768px) {
+  .contact-section-inner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+
+/* ── PAGE RESPONSIVE ──
+   ──────────────────────────────────────── */
+@media (max-width: 768px) {
+  .page-hero {
+    padding: calc(var(--nav-h) + 48px) 0 56px;
+  }
+
+  .page-hero h1 {
+    font-size: 32px;
+  }
+
+  .page-hero p {
+    font-size: 16px;
+  }
+}
