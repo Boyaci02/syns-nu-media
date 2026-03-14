@@ -1978,7 +1978,7 @@ body:has(.fshero) #nav:not(.scrolled) .nav__links a {
 /* ── Section wrapper ── */
 .sc-section {
   background: var(--bg);
-  padding: 80px 0 80px;
+  padding: 140px 0 140px;
 }
 
 /* ── Grid layout: heading top-left, arrows top-right, track below both ── */
@@ -2093,8 +2093,8 @@ body:has(.fshero) #nav:not(.scrolled) .nav__links a {
 .sc-card {
   flex-shrink: 0;
   /* Square cards — ~2.4 visible at once so 3rd is partially clipped */
-  width: clamp(280px, 36vw, 460px);
-  height: clamp(280px, 36vw, 460px);
+  width: clamp(320px, 42vw, 560px);
+  height: clamp(320px, 42vw, 560px);
   border-radius: 16px;
   overflow: hidden;
   position: relative;
@@ -2203,8 +2203,8 @@ body:has(.fshero) #nav:not(.scrolled) .nav__links a {
   }
 
   .sc-card {
-    width: clamp(240px, 64vw, 320px);
-    height: clamp(240px, 64vw, 320px);
+    width: clamp(280px, 72vw, 400px);
+    height: clamp(280px, 72vw, 400px);
   }
 }
 
