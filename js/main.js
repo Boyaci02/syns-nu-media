@@ -211,11 +211,9 @@
     var track    = document.getElementById('sc-track');
     var btnPrev  = document.getElementById('sc-prev');
     var btnNext  = document.getElementById('sc-next');
-    var dotsEl   = document.getElementById('sc-dots');
     if (!viewport || !track) return;
 
     var cards     = Array.from(track.querySelectorAll('.sc-card'));
-    var dots      = dotsEl ? Array.from(dotsEl.querySelectorAll('.sc-dot')) : [];
     var cardCount = cards.length;
 
     /* 10a. Scroll-reveal: cards animate in when entering viewport */
@@ -256,19 +254,11 @@
         btnNext.disabled = (idx >= cardCount - 1);
         btnNext.classList.toggle('sc-arrow--active', idx < cardCount - 1);
       }
-      dots.forEach(function (d, i) {
-        d.classList.toggle('sc-dot--active', i === idx);
-      });
     }
 
     /* 10c. Arrow buttons */
     if (btnPrev) btnPrev.addEventListener('click', function () { scrollToIdx(currentIndex() - 1); });
     if (btnNext) btnNext.addEventListener('click', function () { scrollToIdx(currentIndex() + 1); });
-
-    /* 10d. Dot clicks */
-    dots.forEach(function (dot) {
-      dot.addEventListener('click', function () { scrollToIdx(parseInt(dot.dataset.index, 10)); });
-    });
 
     /* 10e. Sync on scroll (debounced) */
     var scrollTimer;

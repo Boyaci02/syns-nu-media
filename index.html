@@ -179,102 +179,87 @@
      SERVICES CAROUSEL
      ============================================================ -->
 <section class="sc-section" id="tjanster">
-  <div class="container">
+  <div class="sc-layout">
 
-    <!-- Header row: title left, arrows right -->
-    <div class="sc-header reveal">
-      <div class="sc-header__text">
-        <span class="section-eyebrow">Våra Tjänster</span>
-        <h2 class="sc-header__title">Kompletta marknadsföringslösningar<br>för varje restaurang</h2>
-      </div>
-      <div class="sc-header__arrows" role="group" aria-label="Bläddra tjänster">
-        <button class="sc-arrow sc-arrow--prev" id="sc-prev" aria-label="Föregående">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-        <button class="sc-arrow sc-arrow--next sc-arrow--active" id="sc-next" aria-label="Nästa">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
+    <!-- Left col: title + eyebrow -->
+    <div class="sc-header__text reveal">
+      <span class="section-eyebrow">Våra Tjänster</span>
+      <h2 class="sc-header__title">Kompletta lösningar<br>för varje restaurang</h2>
+    </div>
+
+    <!-- Right col: arrows aligned with card top -->
+    <div class="sc-header__arrows reveal" style="transition-delay:0.1s;" role="group" aria-label="Bläddra tjänster">
+      <button class="sc-arrow sc-arrow--prev" id="sc-prev" aria-label="Föregående">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="sc-arrow sc-arrow--next sc-arrow--active" id="sc-next" aria-label="Nästa">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+
+    <!-- Card track — starts at container indent, bleeds right only -->
+    <div class="sc-viewport" id="sc-viewport">
+      <div class="sc-track" id="sc-track">
+
+        <!-- Card 1 -->
+        <a href="sociala-medier.html" class="sc-card" style="--grad:linear-gradient(160deg,#4f46e5 0%,#7c3aed 100%);">
+          <div class="sc-card__bg" style="background:var(--grad);"></div>
+          <div class="sc-card__overlay"></div>
+          <div class="sc-card__body">
+            <span class="sc-card__tag">📱 Populärast</span>
+            <h3 class="sc-card__title">Sociala Medier</h3>
+            <p class="sc-card__desc">Instagram, TikTok och Facebook — professionellt innehåll som engagerar och lockar nya gäster.</p>
+          </div>
+        </a>
+
+        <!-- Card 2 -->
+        <a href="hemsida.html" class="sc-card" style="--grad:linear-gradient(160deg,#0d9488 0%,#0891b2 100%);">
+          <div class="sc-card__bg" style="background:var(--grad);"></div>
+          <div class="sc-card__overlay"></div>
+          <div class="sc-card__body">
+            <span class="sc-card__tag">🌐 Snabb leverans</span>
+            <h3 class="sc-card__title">Webbdesign & SEO</h3>
+            <p class="sc-card__desc">Moderna hemsidor med digital meny, online-bokning och Google-optimering.</p>
+          </div>
+        </a>
+
+        <!-- Card 3 -->
+        <a href="sociala-medier.html" class="sc-card" style="--grad:linear-gradient(160deg,#d97706 0%,#ea580c 100%);">
+          <div class="sc-card__bg" style="background:var(--grad);"></div>
+          <div class="sc-card__overlay"></div>
+          <div class="sc-card__body">
+            <span class="sc-card__tag">📸 Ny tjänst</span>
+            <h3 class="sc-card__title">Menyfotografering</h3>
+            <p class="sc-card__desc">Professionella matfoton som gör din meny oemotståndlig — online och i print.</p>
+          </div>
+        </a>
+
+        <!-- Card 4 -->
+        <a href="kontakt.html" class="sc-card" style="--grad:linear-gradient(160deg,#0ea5e9 0%,#6366f1 100%);">
+          <div class="sc-card__bg" style="background:var(--grad);"></div>
+          <div class="sc-card__overlay"></div>
+          <div class="sc-card__body">
+            <span class="sc-card__tag">🎯 Betald räckvidd</span>
+            <h3 class="sc-card__title">Betald Annonsering</h3>
+            <p class="sc-card__desc">Meta Ads och Google Ads riktade mot matälskare i ditt område, vid rätt tidpunkt.</p>
+          </div>
+        </a>
+
+        <!-- Card 5 -->
+        <a href="kontakt.html" class="sc-card" style="--grad:linear-gradient(160deg,#be185d 0%,#9333ea 100%);">
+          <div class="sc-card__bg" style="background:var(--grad);"></div>
+          <div class="sc-card__overlay"></div>
+          <div class="sc-card__body">
+            <span class="sc-card__tag">🎨 Komplett paket</span>
+            <h3 class="sc-card__title">Varumärke & Print</h3>
+            <p class="sc-card__desc">Logotyp, menykort och förpackningsdesign — sammanhållet varumärke från skärm till bord.</p>
+          </div>
+        </a>
+
       </div>
     </div>
 
   </div>
-
-  <!-- Full-bleed track (no container — bleeds to right) -->
-  <div class="sc-viewport" id="sc-viewport">
-    <div class="sc-track" id="sc-track">
-
-      <!-- Card 1: Sociala Medier -->
-      <a href="sociala-medier.html" class="sc-card" style="--grad:linear-gradient(160deg,#4f46e5 0%,#7c3aed 100%);">
-        <div class="sc-card__bg" style="background:var(--grad);"></div>
-        <div class="sc-card__overlay"></div>
-        <div class="sc-card__body">
-          <span class="sc-card__tag">📱 Populärast</span>
-          <h3 class="sc-card__title">Sociala Medier</h3>
-          <p class="sc-card__desc">Instagram, TikTok och Facebook — professionellt innehåll som engagerar och lockar nya gäster varje vecka.</p>
-          <span class="sc-card__link">Läs mer <span aria-hidden="true">→</span></span>
-        </div>
-      </a>
-
-      <!-- Card 2: Webbdesign -->
-      <a href="hemsida.html" class="sc-card" style="--grad:linear-gradient(160deg,#0d9488 0%,#0891b2 100%);">
-        <div class="sc-card__bg" style="background:var(--grad);"></div>
-        <div class="sc-card__overlay"></div>
-        <div class="sc-card__body">
-          <span class="sc-card__tag">🌐 Snabb leverans</span>
-          <h3 class="sc-card__title">Webbdesign & SEO</h3>
-          <p class="sc-card__desc">Moderna hemsidor med digital meny, online-bokning och lokal Google-optimering — byggda för restauranger.</p>
-          <span class="sc-card__link">Läs mer <span aria-hidden="true">→</span></span>
-        </div>
-      </a>
-
-      <!-- Card 3: Menyfotografi -->
-      <a href="sociala-medier.html" class="sc-card" style="--grad:linear-gradient(160deg,#d97706 0%,#ea580c 100%);">
-        <div class="sc-card__bg" style="background:var(--grad);"></div>
-        <div class="sc-card__overlay"></div>
-        <div class="sc-card__body">
-          <span class="sc-card__tag">📸 Ny tjänst</span>
-          <h3 class="sc-card__title">Menyfotografering</h3>
-          <p class="sc-card__desc">Professionella matfoton och rörliga bilder som gör din meny oemotståndlig — online och i print.</p>
-          <span class="sc-card__link">Läs mer <span aria-hidden="true">→</span></span>
-        </div>
-      </a>
-
-      <!-- Card 4: Annonsering -->
-      <a href="kontakt.html" class="sc-card" style="--grad:linear-gradient(160deg,#0ea5e9 0%,#6366f1 100%);">
-        <div class="sc-card__bg" style="background:var(--grad);"></div>
-        <div class="sc-card__overlay"></div>
-        <div class="sc-card__body">
-          <span class="sc-card__tag">🎯 Betald räckvidd</span>
-          <h3 class="sc-card__title">Betald Annonsering</h3>
-          <p class="sc-card__desc">Meta Ads och Google Ads riktade mot matälskare i ditt område — vid rätt tidpunkt, med rätt budskap.</p>
-          <span class="sc-card__link">Läs mer <span aria-hidden="true">→</span></span>
-        </div>
-      </a>
-
-      <!-- Card 5: Varumärke & Print -->
-      <a href="kontakt.html" class="sc-card" style="--grad:linear-gradient(160deg,#be185d 0%,#9333ea 100%);">
-        <div class="sc-card__bg" style="background:var(--grad);"></div>
-        <div class="sc-card__overlay"></div>
-        <div class="sc-card__body">
-          <span class="sc-card__tag">🎨 Komplett paket</span>
-          <h3 class="sc-card__title">Varumärke & Print</h3>
-          <p class="sc-card__desc">Logotyp, menykort, flyers och förpackningsdesign — ett sammanhållet varumärke från skärm till bord.</p>
-          <span class="sc-card__link">Läs mer <span aria-hidden="true">→</span></span>
-        </div>
-      </a>
-
-    </div>
-  </div>
-
-  <!-- Dot indicators -->
-  <div class="sc-dots" id="sc-dots" role="tablist" aria-label="Karusell position">
-    <button class="sc-dot sc-dot--active" data-index="0" role="tab" aria-label="Kort 1"></button>
-    <button class="sc-dot" data-index="1" role="tab" aria-label="Kort 2"></button>
-    <button class="sc-dot" data-index="2" role="tab" aria-label="Kort 3"></button>
-    <button class="sc-dot" data-index="3" role="tab" aria-label="Kort 4"></button>
-    <button class="sc-dot" data-index="4" role="tab" aria-label="Kort 5"></button>
-  </div>
-
 </section>
 
 <!-- ============================================================

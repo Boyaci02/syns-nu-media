@@ -1972,45 +1972,55 @@ body:has(.fshero) #nav:not(.scrolled) .nav__links a {
 }
 
 /* ============================================================
-   SERVICES CAROUSEL  (.sc-section)
-   CargoWave horizontal card carousel
+   SERVICES CAROUSEL  (.sc-section)  — v2: exact CargoWave match
    ============================================================ */
 
+/* ── Section wrapper ── */
 .sc-section {
   background: var(--bg);
-  padding: 96px 0 64px;
-  overflow: hidden;   /* clip the bleeding track */
+  padding: 80px 0 80px;
 }
 
-/* ── Header row ── */
-.sc-header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 24px;
-  margin-bottom: 40px;
+/* ── Grid layout: heading top-left, arrows top-right, track below both ── */
+.sc-layout {
+  /* Use container margins for left indent */
+  max-width: var(--container, 1280px);
+  margin: 0 auto;
+  padding: 0 48px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "title  arrows"
+    "track  track";
+  row-gap: 32px;
+  column-gap: 24px;
 }
 
-.sc-header__text .section-eyebrow {
-  margin-bottom: 10px;
+/* ── Heading (top-left) ── */
+.sc-header__text {
+  grid-area: title;
+  align-self: end;
 }
 
 .sc-header__title {
   font-family: var(--heading);
-  font-size: clamp(24px, 3.2vw, 42px);
+  font-size: clamp(28px, 3.2vw, 42px);
   font-weight: 700;
   color: var(--navy);
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  max-width: 520px;
+  line-height: 1.18;
+  letter-spacing: -0.022em;
+  margin-top: 10px;
+  max-width: 460px;
 }
 
-/* Arrow buttons */
+/* ── Arrow buttons (top-right, aligned with card tops) ── */
 .sc-header__arrows {
+  grid-area: arrows;
   display: flex;
   gap: 10px;
-  flex-shrink: 0;
-  padding-bottom: 4px;
+  align-self: end;          /* flush with bottom of heading = top of cards */
+  padding-bottom: 2px;
 }
 
 .sc-arrow {
@@ -2034,34 +2044,39 @@ body:has(.fshero) #nav:not(.scrolled) .nav__links a {
   display: block;
 }
 
-.sc-arrow--active,
+.sc-arrow--active {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: white;
+}
+
 .sc-arrow:hover:not(:disabled) {
   background: var(--blue);
   border-color: var(--blue);
   color: white;
-  transform: scale(1.05);
+  transform: scale(1.06);
 }
 
 .sc-arrow:disabled {
-  opacity: 0.35;
+  opacity: 0.32;
   cursor: not-allowed;
   transform: none;
 }
 
-/* ── Viewport: clips cards + enables touch scroll ── */
+/* ── Viewport: grid-area track, overflow right only ── */
 .sc-viewport {
-  /* start at container left edge */
-  padding-left: max(24px, calc((100vw - 1280px) / 2 + 48px));
-  padding-right: 0;
+  grid-area: track;
   overflow-x: auto;
   overflow-y: visible;
-  /* hide scrollbar */
   scrollbar-width: none;
   -ms-overflow-style: none;
   cursor: grab;
-  /* smooth momentum on iOS */
   -webkit-overflow-scrolling: touch;
-  scroll-snap-type: x mandatory;
+  /* No extra padding-left — already indented by .sc-layout padding */
+  /* Negative right margin so cards bleed past the container */
+  margin-right: -48px;
+  /* Ensure right bleed doesn't add scrollbar to page */
+  padding-bottom: 12px;  /* space for hover shadow */
 }
 
 .sc-viewport::-webkit-scrollbar { display: none; }
@@ -2071,59 +2086,51 @@ body:has(.fshero) #nav:not(.scrolled) .nav__links a {
 /* ── Track ── */
 .sc-track {
   display: flex;
-  gap: 20px;
-  /* right padding so last card doesn't flush to edge */
-  padding-right: max(24px, calc((100vw - 1280px) / 2 + 48px));
-  /* don't shrink */
+  gap: 16px;
   width: max-content;
-  /* scroll snap */
-  scroll-snap-type: x mandatory;
+  /* right padding so last card has breathing room */
+  padding-right: 48px;
 }
 
-/* ── Individual card ── */
+/* ── Cards: wide landscape format ── */
 .sc-card {
   flex-shrink: 0;
-  width: clamp(280px, 32vw, 420px);
-  height: clamp(340px, 42vw, 520px);
-  border-radius: 20px;
+  /* Width: ~2.4 cards visible at once so 3rd is ~70% clipped */
+  width: clamp(280px, 36vw, 460px);
+  height: clamp(260px, 30vw, 340px);
+  border-radius: 16px;
   overflow: hidden;
   position: relative;
   text-decoration: none;
   display: block;
   scroll-snap-align: start;
-  /* entrance: cards slide up when section scrolls into view */
+  /* entrance animation */
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(32px);
   transition:
     opacity 0.55s cubic-bezier(0.22,1,0.36,1),
     transform 0.55s cubic-bezier(0.22,1,0.36,1),
     box-shadow 0.25s ease;
 }
 
-/* Stagger via nth-child */
-.sc-card:nth-child(1) { transition-delay: 0.05s; }
-.sc-card:nth-child(2) { transition-delay: 0.12s; }
-.sc-card:nth-child(3) { transition-delay: 0.19s; }
-.sc-card:nth-child(4) { transition-delay: 0.26s; }
-.sc-card:nth-child(5) { transition-delay: 0.33s; }
+/* Stagger */
+.sc-card:nth-child(1) { transition-delay: 0.04s; }
+.sc-card:nth-child(2) { transition-delay: 0.10s; }
+.sc-card:nth-child(3) { transition-delay: 0.16s; }
+.sc-card:nth-child(4) { transition-delay: 0.22s; }
+.sc-card:nth-child(5) { transition-delay: 0.28s; }
 
-/* Visible state (added by IntersectionObserver) */
 .sc-card.sc-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Hover lift */
 .sc-card:hover {
-  box-shadow: 0 20px 60px rgba(0,0,0,0.22);
-  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.20);
+  transform: translateY(-4px) !important;  /* override entrance */
 }
 
-.sc-card:not(.sc-visible):hover {
-  transform: translateY(-4px); /* override entrance transform when already visible */
-}
-
-/* Background gradient fill */
+/* Bg fill */
 .sc-card__bg {
   position: absolute;
   inset: 0;
@@ -2134,156 +2141,109 @@ body:has(.fshero) #nav:not(.scrolled) .nav__links a {
   transform: scale(1.04);
 }
 
-/* Dark gradient overlay — stronger at bottom */
+/* Dark overlay — heavier at bottom where text lives */
 .sc-card__overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(0,0,0,0.80) 0%,
-    rgba(0,0,0,0.30) 45%,
-    rgba(0,0,0,0.05) 100%
+    rgba(0,0,0,0.72) 0%,
+    rgba(0,0,0,0.20) 50%,
+    rgba(0,0,0,0.02) 100%
   );
 }
 
-/* Text body at bottom of card */
+/* Text block — always at bottom, always visible */
 .sc-card__body {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 28px 28px 32px;
+  padding: 24px 24px 26px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .sc-card__tag {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.06em;
-  color: rgba(255,255,255,0.65);
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.60);
   text-transform: uppercase;
 }
 
 .sc-card__title {
   font-family: var(--heading);
-  font-size: clamp(20px, 2.2vw, 26px);
+  font-size: clamp(18px, 1.8vw, 22px);
   font-weight: 700;
   color: white;
   line-height: 1.2;
   margin: 0;
 }
 
+/* Desc: always visible (not hidden on hover) */
 .sc-card__desc {
-  font-size: 14px;
-  line-height: 1.6;
-  color: rgba(255,255,255,0.75);
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.72);
   margin: 0;
-  /* clamp to 2 lines; reveal on hover */
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  max-height: 0;
-  opacity: 0;
-  transition: max-height 0.4s ease, opacity 0.35s ease;
-}
-
-.sc-card:hover .sc-card__desc {
-  max-height: 80px;
-  opacity: 1;
-}
-
-.sc-card__link {
-  font-size: 14px;
-  font-weight: 600;
-  color: white;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  opacity: 0;
-  transform: translateY(6px);
-  transition: opacity 0.3s ease 0.05s, transform 0.3s ease 0.05s;
-}
-
-.sc-card:hover .sc-card__link {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ── Dot indicators ── */
-.sc-dots {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  margin-top: 32px;
-  padding: 0 48px;
-}
-
-.sc-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 100px;
-  background: var(--border);
-  border: none;
-  cursor: pointer;
-  transition: width 0.3s ease, background 0.3s ease;
-  padding: 0;
-}
-
-.sc-dot--active {
-  width: 28px;
-  background: var(--blue);
 }
 
 /* ── Responsive ── */
 @media (max-width: 900px) {
-  .sc-section {
-    padding: 72px 0 48px;
-  }
-
-  .sc-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-    margin-bottom: 28px;
-  }
-
-  .sc-header__title {
-    font-size: clamp(22px, 5.5vw, 30px);
+  .sc-layout {
+    padding: 0 24px;
+    row-gap: 24px;
   }
 
   .sc-viewport {
-    padding-left: 20px;
+    margin-right: -24px;
+  }
+
+  .sc-track {
+    padding-right: 24px;
+  }
+
+  .sc-header__title {
+    font-size: clamp(22px, 5vw, 30px);
   }
 
   .sc-card {
-    width: clamp(260px, 72vw, 340px);
-    height: clamp(300px, 56vw, 420px);
-  }
-
-  /* Always show desc on mobile (no hover) */
-  .sc-card__desc {
-    max-height: 80px;
-    opacity: 1;
-    -webkit-line-clamp: 3;
-  }
-
-  .sc-card__link {
-    opacity: 1;
-    transform: none;
+    width: clamp(240px, 64vw, 320px);
+    height: clamp(220px, 44vw, 280px);
   }
 }
 
 @media (max-width: 480px) {
+  .sc-layout {
+    padding: 0 20px;
+    grid-template-areas:
+      "title title"
+      "arrows arrows"
+      "track  track";
+  }
+
+  .sc-header__arrows {
+    justify-content: flex-start;
+  }
+
+  .sc-viewport {
+    margin-right: -20px;
+  }
+
+  .sc-track {
+    padding-right: 20px;
+    gap: 12px;
+  }
+
   .sc-card {
-    width: 82vw;
-    height: 300px;
-    border-radius: 16px;
+    width: 78vw;
+    height: 240px;
+    border-radius: 14px;
   }
 
   .sc-card__body {
-    padding: 20px 20px 24px;
+    padding: 18px 18px 20px;
   }
 }
