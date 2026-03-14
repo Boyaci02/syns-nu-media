@@ -3,432 +3,538 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hemsida för Restauranger — 500 kr/mån | Syns Nu Media</title>
-  <meta name="description" content="Professionell, mobilanpassad hemsida för din restaurang för bara 500 kr/månaden. SEO-optimerad, obegränsade uppdateringar och gratis support.">
+  <title>Webbdesign för Restauranger — Syns Nu Media</title>
+  <meta name="description" content="Snabba, moderna hemsidor med online-bokning och Google-optimering för restauranger. Från 500 kr/mån — ingen bindningstid.">
+  <link rel="canonical" href="https://synsnumedia.se/hemsida">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/pages.css">
+
   <style>
-    .web-hero {
-      background: var(--bg-dark);
-      padding: calc(var(--nav-h) + 80px) 0 80px;
+    /* ---- Page-specific styles ---- */
+
+    /* Portfolio grid */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .project-entry__placeholder {
+      background: linear-gradient(135deg, #1c1c1c 0%, #2d2d2d 100%);
+    }
+
+    /* Process steps inside split section */
+    .process-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 32px;
+    }
+
+    .process-step {
+      display: flex;
+      gap: 24px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+    }
+
+    .process-step:last-child { border-bottom: none; }
+
+    .process-step__num {
+      font-family: var(--heading);
+      font-size: 40px;
+      color: var(--cream-dark);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 48px;
+    }
+
+    .process-step__body h4 { margin-bottom: 6px; }
+    .process-step__body p  { font-size: 14px; }
+
+    /* Pricing card accent (right col in split) */
+    .price-card-big {
+      background: var(--black);
+      border-radius: var(--radius-lg);
+      padding: 48px 40px;
       color: var(--white);
     }
-    .web-hero__inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
+
+    .price-card-big__amount {
+      font-family: var(--heading);
+      font-size: clamp(56px, 7vw, 88px);
+      color: var(--yellow);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .price-card-big__period {
+      font: 400 16px/1 var(--body);
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 32px;
+    }
+
+    .price-card-big__title {
+      font-family: var(--heading);
+      font-size: 26px;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+
+    .price-card-big__features {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 36px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .price-card-big__feature {
+      display: flex;
       align-items: center;
+      gap: 10px;
+      font: 400 15px/1.4 var(--body);
+      color: rgba(255,255,255,0.75);
     }
-    .web-hero h1 { color: var(--white); font-size: clamp(36px,5vw,60px); margin-bottom:24px; }
-    .web-hero h1 em { color: var(--orange); }
-    .web-hero p { color: rgba(255,255,255,0.65); font-size: 18px; line-height:1.7; margin-bottom:32px; }
-    .trust-badges { display:flex; flex-wrap:wrap; gap:12px; margin-bottom:32px; }
-    .trust-badge { display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:20px; padding:6px 14px; font-size:13px; font-weight:600; color:var(--white); }
-    .trust-badge::before { content:'✓'; color:var(--orange); }
-    .mockup-card { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:var(--radius-xl); padding:32px; text-align:center; }
-    .mockup-price { font-family:var(--heading); font-size:72px; color:var(--orange); line-height:1; margin-bottom:8px; }
-    .mockup-period { font-size:18px; color:rgba(255,255,255,0.5); margin-bottom:24px; }
-    .mockup-features { display:flex; flex-direction:column; gap:10px; text-align:left; }
-    .mockup-feature { display:flex; align-items:center; gap:10px; font-size:14px; color:rgba(255,255,255,0.75); }
-    .mockup-feature::before { content:'✓'; color:var(--orange); font-weight:700; flex-shrink:0; }
 
-    .portfolio-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-    .portfolio-item { border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; background:var(--bg-alt); transition:transform 0.25s ease, box-shadow 0.25s ease; }
-    .portfolio-item:hover { transform:translateY(-4px); box-shadow:var(--shadow-lg); }
-    .portfolio-item__preview { aspect-ratio:16/10; background:linear-gradient(135deg, var(--dark) 0%, #2a2a2a 100%); display:flex; align-items:center; justify-content:center; font-size:32px; position:relative; overflow:hidden; }
-    .portfolio-item__body { padding:20px; }
-    .portfolio-item__name { font-family:var(--heading); font-size:17px; margin-bottom:4px; }
-    .portfolio-item__url { font-size:12px; color:var(--orange); }
-
-    .features-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-    .feature-card { background:var(--white); border:1px solid var(--border); border-radius:var(--radius-lg); padding:28px; }
-    .feature-card__icon { font-size:32px; margin-bottom:14px; }
-    .feature-card__title { font-family:var(--heading); font-size:18px; margin-bottom:8px; }
-    .feature-card__text { font-size:14px; color:var(--muted); line-height:1.6; }
-
-    .reviews-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
-
-    @media(max-width:1024px) {
-      .web-hero__inner { grid-template-columns:1fr; }
-      .portfolio-grid { grid-template-columns:repeat(2,1fr); }
-      .features-grid { grid-template-columns:repeat(2,1fr); }
-      .reviews-grid { grid-template-columns:1fr; }
+    .price-card-big__feature::before {
+      content: '✓';
+      color: var(--yellow);
+      font-weight: 700;
+      flex-shrink: 0;
     }
-    @media(max-width:600px) {
-      .portfolio-grid { grid-template-columns:1fr; }
-      .features-grid { grid-template-columns:1fr; }
+
+    /* Reviews grid */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    /* Contact layout */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-info h2 { margin-bottom: 16px; }
+    .contact-info p  { font-size: 16px; line-height: 1.7; }
+
+    .contact-info__detail {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--mid);
+      font-size: 15px;
+      margin-top: 12px;
+    }
+
+    .form-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+    }
+
+    @media (max-width: 900px) {
+      .portfolio-grid  { grid-template-columns: repeat(2, 1fr); }
+      .reviews-grid    { grid-template-columns: 1fr; }
+      .contact-layout  { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    @media (max-width: 560px) {
+      .portfolio-grid  { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-<nav id="nav" role="navigation" aria-label="Huvudnavigation">
+<!-- Custom cursor -->
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+<nav id="nav">
   <div class="nav__inner">
-    <a class="nav__logo" href="index.html"><img src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/68ebad7a0d699e0abc5558c1.png" alt="Syns Nu Media" height="38"></a>
-    <ul class="nav__links" role="list">
-      <li><a class="nav__link" href="index.html">Hem</a></li>
-      <li class="nav__dropdown">
-        <button class="nav__link nav__link--active" aria-haspopup="true" aria-expanded="false">Tjänster <svg class="nav__chevron" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <ul class="nav__dropdown-menu" role="menu">
-          <li><a class="nav__dropdown-item" href="sociala-medier.html" role="menuitem">📱 Sociala Medier</a></li>
-          <li><a class="nav__dropdown-item" href="hemsida.html" role="menuitem">💻 Webbdesign</a></li>
-        </ul>
-      </li>
-      <li><a class="nav__link" href="om-oss.html">Om oss</a></li>
-      <li><a class="nav__link" href="kundcase.html">Kundcase</a></li>
-      <li><a class="nav__link" href="blogg.html">Blogg</a></li>
-      <li><a class="nav__link" href="jobb.html">Jobb</a></li>
-    </ul>
-    <div class="nav__right"><a class="btn btn--primary btn--sm" href="kontakt.html">Kontakta oss</a></div>
-    <button class="nav__hamburger" id="hamburger" aria-label="Öppna meny" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
+    <a class="nav__logo" href="index.html"><img src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/68ebad7a0d699e0abc5558c1.png" alt="Syns Nu Media" width="160" height="38"></a>
+    <div class="nav__links">
+      <a href="index.html">Hem</a>
+      <div class="nav__dropdown">
+        <span class="nav__dropdown-toggle" tabindex="0">Tjänster <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><polyline points="6 9 12 15 18 9"/></svg></span>
+        <div class="nav__dropdown-menu">
+          <a href="sociala-medier.html">Sociala Medier</a>
+          <a href="hemsida.html">Webbdesign</a>
+        </div>
+      </div>
+      <a href="om-oss.html">Om oss</a>
+      <a href="kundcase.html">Kundcase</a>
+      <a href="blogg.html">Blogg</a>
+      <a href="jobb.html">Jobb</a>
+    </div>
+    <div class="nav__cta"><a href="kontakt.html" class="btn btn--black btn--sm">Kontakta oss</a></div>
+    <button id="hamburger" aria-label="Öppna meny" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </nav>
-<div id="mobile-overlay" class="mobile-overlay" aria-hidden="true"></div>
-<div id="mobile-menu" role="dialog" aria-label="Mobilmeny" aria-modal="true">
-  <ul class="mobile-menu__list">
-    <li class="mobile-menu__item"><a class="mobile-menu__link" href="index.html">Hem</a></li>
-    <li class="mobile-menu__item">
-      <button class="mobile-menu__link mobile-menu__toggle">Tjänster <svg width="16" height="16" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      <ul class="mobile-menu__sub"><li><a class="mobile-menu__sub-link" href="sociala-medier.html">Sociala Medier</a></li><li><a class="mobile-menu__sub-link" href="hemsida.html">Webbdesign</a></li></ul>
-    </li>
-    <li class="mobile-menu__item"><a class="mobile-menu__link" href="om-oss.html">Om oss</a></li>
-    <li class="mobile-menu__item"><a class="mobile-menu__link" href="kundcase.html">Kundcase</a></li>
-    <li class="mobile-menu__item"><a class="mobile-menu__link" href="blogg.html">Blogg</a></li>
-    <li class="mobile-menu__item"><a class="mobile-menu__link" href="jobb.html">Jobb</a></li>
-  </ul>
-  <div class="mobile-menu__cta">
-    <a class="btn btn--primary btn--full" href="kontakt.html">Kontakta oss</a>
-    <a class="btn btn--outline btn--full" href="tel:+46708880198">070-888 01 98</a>
-  </div>
+<div id="mobile-menu">
+  <nav class="mobile-menu__links">
+    <a href="index.html">Hem</a><a href="sociala-medier.html">Sociala Medier</a><a href="hemsida.html">Webbdesign</a><a href="om-oss.html">Om oss</a><a href="kundcase.html">Kundcase</a><a href="blogg.html">Blogg</a><a href="jobb.html">Jobb</a><a href="kontakt.html">Kontakt</a>
+  </nav>
+  <a href="kontakt.html" class="btn btn--yellow">Boka gratis möte</a>
 </div>
 
-<!-- HERO -->
-<section class="web-hero">
-  <div class="container">
-    <div class="web-hero__inner">
-      <div class="reveal">
-        <p class="label label--orange mb-16">HEMSIDA FÖR 500 KR/MÅNADEN</p>
-        <h1>Hemsidor till <em>Restauranger</em></h1>
-        <p>En professionell, snabb och mobilanpassad hemsida som hjälper gäster hitta dig online. SEO-optimerad från dag ett.</p>
-        <div class="trust-badges">
-          <span class="trust-badge">SEO-optimerad</span>
-          <span class="trust-badge">Mobilanpassad</span>
-          <span class="trust-badge">Obegränsade uppdateringar</span>
-          <span class="trust-badge">Gratis support</span>
-        </div>
-        <div style="display:flex; gap:14px; flex-wrap:wrap;">
-          <a class="btn btn--primary btn--lg" href="kontakt.html">Få din hemsida <span class="arrow">→</span></a>
-          <a class="btn btn--outline-white" href="#portfolio">Se våra hemsidor</a>
-        </div>
+<!-- ============================================================
+     1. PAGE HERO — dark
+     ============================================================ -->
+<section class="page-hero">
+  <div class="page-hero__inner">
+    <div class="reveal">
+      <span class="section-label section-label--light">Webbdesign</span>
+      <h1>Hemsidor som <em>konverterar</em> besökare till gäster</h1>
+      <p class="page-hero__sub">Snabba, moderna hemsidor med online-bokning och Google-optimering för restauranger.</p>
+      <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:32px;">
+        <a href="kontakt.html" class="btn btn--yellow btn--lg">Få din hemsida</a>
+        <a href="#portfolio" class="btn btn--outline-light">Se våra hemsidor</a>
       </div>
-      <div class="mockup-card reveal reveal-delay-2">
-        <p class="mockup-price">500</p>
-        <p class="mockup-period">kr / månaden</p>
-        <div class="mockup-features">
-          <span class="mockup-feature">Professionell design</span>
-          <span class="mockup-feature">Mobilanpassad</span>
-          <span class="mockup-feature">SEO-optimerad</span>
-          <span class="mockup-feature">Obegränsade uppdateringar</span>
-          <span class="mockup-feature">Gratis support</span>
-          <span class="mockup-feature">Inga dolda kostnader</span>
-          <span class="mockup-feature">Online bokningssystem</span>
-          <span class="mockup-feature">Kontaktformulär</span>
-        </div>
-        <a class="btn btn--primary btn--full mt-32" href="kontakt.html">Kom igång idag <span class="arrow">→</span></a>
+    </div>
+    <div class="page-hero__pixel pixel-deco pixel-deco--light" aria-hidden="true">
+      <span></span><span></span><span></span>
+      <span></span><span></span><span></span>
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+  <div class="page-hero__yellow-strip"></div>
+</section>
+
+<!-- ============================================================
+     2. FEATURES — section--white
+     ============================================================ -->
+<section class="section section--white">
+  <div class="container">
+    <div class="reveal" style="margin-bottom:48px;">
+      <h2>Vad ingår i din hemsida</h2>
+    </div>
+    <div class="feature-grid-3 reveal-stagger">
+      <div class="feature-card">
+        <div class="feature-card__icon" aria-hidden="true">🚀</div>
+        <h4>Snabb laddning</h4>
+        <p>Optimerad för hastighet — din hemsida laddar på under 2 sekunder. Snabbare sida ger bättre Google-ranking och nöjdare besökare.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon" aria-hidden="true">📱</div>
+        <h4>Mobiloptimerad</h4>
+        <p>Över 70% av dina gäster söker mat på mobilen. Hemsidan ser perfekt ut och fungerar smidigt på alla skärmstorlekar.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon" aria-hidden="true">🔍</div>
+        <h4>SEO-optimerad</h4>
+        <p>Byggd för att ranka högt på Google så dina potentiella gäster hittar dig när de söker "restaurang i [din stad]".</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon" aria-hidden="true">📅</div>
+        <h4>Online-bokning</h4>
+        <p>Integrerat bokningssystem så att gäster kan boka bord dygnet runt — utan att du behöver svara i telefon.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon" aria-hidden="true">🎨</div>
+        <h4>Unik design</h4>
+        <p>Skräddarsydd design som speglar din restaurangs personlighet och sticker ut från generiska tempelhemsidor.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon" aria-hidden="true">🔧</div>
+        <h4>Löpande support</h4>
+        <p>Vi sköter alla uppdateringar — ny meny, ändrade öppettider, nya bilder. Kontakta oss och vi fixar det direkt.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PORTFOLIO -->
-<section id="portfolio" class="section">
+<!-- ============================================================
+     3. PORTFOLIO — section--cream
+     ============================================================ -->
+<section id="portfolio" class="section section--cream">
   <div class="container">
-    <div class="section-header section-header--center reveal">
-      <p class="label label--orange section-header__label">PORTFOLIO</p>
-      <h2 class="section-header__title">Några hemsidor vi har byggt</h2>
-      <p class="section-header__subtitle">Varje hemsida är skräddarsydd efter restaurangens unika profil och målgrupp.</p>
+    <div class="reveal" style="margin-bottom:48px;">
+      <span class="section-label">Portfolio</span>
+      <h2>Hemsidor vi byggt</h2>
     </div>
     <div class="portfolio-grid">
-      <div class="portfolio-item reveal reveal-delay-1">
-        <div class="portfolio-item__preview" style="background:linear-gradient(135deg,#1a1a2e,#16213e);">🍔</div>
-        <div class="portfolio-item__body">
-          <p class="portfolio-item__name">Flipp Burgers</p>
-          <p class="portfolio-item__url">flippburgers.se</p>
+
+      <div class="project-entry reveal reveal-delay-1">
+        <div class="project-entry__img">
+          <div class="project-entry__placeholder" style="background:linear-gradient(135deg,#1a2d2a 0%,#2e5048 100%); position:absolute; inset:0; display:flex; align-items:center; justify-content:center;">
+            <span style="font-size:48px;" aria-hidden="true">🥗</span>
+          </div>
+          <div class="project-entry__placeholder" style="position:absolute; bottom:0; left:0; right:0; padding:16px; background:linear-gradient(to top, rgba(0,0,0,0.6), transparent);">
+            <span style="color:rgba(255,255,255,0.75); font:600 11px/1 var(--body); text-transform:uppercase; letter-spacing:0.08em;">Färdig 2025</span>
+          </div>
+        </div>
+        <div class="project-entry__meta">
+          <div class="project-entry__tags">
+            <span class="tag">Webbdesign</span>
+            <span class="tag">SEO</span>
+          </div>
+          <p class="project-entry__title">Mezze</p>
+          <a href="#" class="project-entry__link">mezzerestaurant.se</a>
         </div>
       </div>
-      <div class="portfolio-item reveal reveal-delay-2">
-        <div class="portfolio-item__preview" style="background:linear-gradient(135deg,#2d1b1b,#5c1010);">🌶️</div>
-        <div class="portfolio-item__body">
-          <p class="portfolio-item__name">Caliente Tapas</p>
-          <p class="portfolio-item__url">caliente.se</p>
+
+      <div class="project-entry reveal reveal-delay-2">
+        <div class="project-entry__img">
+          <div class="project-entry__placeholder" style="background:linear-gradient(135deg,#1c1030 0%,#3d1f5c 100%); position:absolute; inset:0; display:flex; align-items:center; justify-content:center;">
+            <span style="font-size:48px;" aria-hidden="true">🍣</span>
+          </div>
+          <div class="project-entry__placeholder" style="position:absolute; bottom:0; left:0; right:0; padding:16px; background:linear-gradient(to top, rgba(0,0,0,0.6), transparent);">
+            <span style="color:rgba(255,255,255,0.75); font:600 11px/1 var(--body); text-transform:uppercase; letter-spacing:0.08em;">Färdig 2025</span>
+          </div>
+        </div>
+        <div class="project-entry__meta">
+          <div class="project-entry__tags">
+            <span class="tag">Webbdesign</span>
+            <span class="tag">Bokning</span>
+          </div>
+          <p class="project-entry__title">Sushi Palace</p>
+          <a href="#" class="project-entry__link">sushipalace.se</a>
         </div>
       </div>
-      <div class="portfolio-item reveal reveal-delay-3">
-        <div class="portfolio-item__preview" style="background:linear-gradient(135deg,#1a2d1f,#0d3321);">🍣</div>
-        <div class="portfolio-item__body">
-          <p class="portfolio-item__name">Saya Sushi</p>
-          <p class="portfolio-item__url">sayasushi.se</p>
+
+      <div class="project-entry reveal reveal-delay-3">
+        <div class="project-entry__img">
+          <div class="project-entry__placeholder" style="background:linear-gradient(135deg,#2d1006 0%,#5c2210 100%); position:absolute; inset:0; display:flex; align-items:center; justify-content:center;">
+            <span style="font-size:48px;" aria-hidden="true">🌶️</span>
+          </div>
+          <div class="project-entry__placeholder" style="position:absolute; bottom:0; left:0; right:0; padding:16px; background:linear-gradient(to top, rgba(0,0,0,0.6), transparent);">
+            <span style="color:rgba(255,255,255,0.75); font:600 11px/1 var(--body); text-transform:uppercase; letter-spacing:0.08em;">Färdig 2024</span>
+          </div>
+        </div>
+        <div class="project-entry__meta">
+          <div class="project-entry__tags">
+            <span class="tag">Webbdesign</span>
+            <span class="tag">SEO</span>
+          </div>
+          <p class="project-entry__title">Tapas Madrid</p>
+          <a href="#" class="project-entry__link">tapasmadrid.se</a>
         </div>
       </div>
-      <div class="portfolio-item reveal reveal-delay-1">
-        <div class="portfolio-item__preview" style="background:linear-gradient(135deg,#2d2219,#4a3520);">🥙</div>
-        <div class="portfolio-item__body">
-          <p class="portfolio-item__name">Kebab Dudes</p>
-          <p class="portfolio-item__url">kebabdudes.com</p>
-        </div>
-      </div>
-      <div class="portfolio-item reveal reveal-delay-2">
-        <div class="portfolio-item__preview" style="background:linear-gradient(135deg,#1d2535,#2a3750);">🍜</div>
-        <div class="portfolio-item__body">
-          <p class="portfolio-item__name">ALOY</p>
-          <p class="portfolio-item__url">aloy.se</p>
-        </div>
-      </div>
-      <div class="portfolio-item reveal reveal-delay-3">
-        <div class="portfolio-item__preview" style="background:linear-gradient(135deg,#1a1207,#332200);">💧</div>
-        <div class="portfolio-item__body">
-          <p class="portfolio-item__name">Dripp'n Burgers</p>
-          <p class="portfolio-item__url">drippnburgers.nu</p>
-        </div>
-      </div>
+
     </div>
   </div>
 </section>
 
-<!-- REVIEWS -->
-<section class="section section--alt">
+<!-- ============================================================
+     4. SPLIT SECTION — section--white
+        Left: process steps / Right: big pricing card
+     ============================================================ -->
+<section class="section section--white">
   <div class="container">
-    <div class="section-header section-header--center reveal">
-      <p class="label label--orange section-header__label">KUNDRECENSIONER</p>
-      <h2 class="section-header__title">Vad restaurangerna säger</h2>
+    <div class="split-section">
+
+      <!-- Left: process -->
+      <div class="reveal">
+        <span class="section-label">Hur det funkar</span>
+        <h2>Enkel process — snabb leverans</h2>
+        <p style="margin-top:12px;">Vi levererar din färdiga hemsida inom 2–3 veckor, utan krångel.</p>
+        <div class="process-steps">
+          <div class="process-step">
+            <div class="process-step__num">1</div>
+            <div class="process-step__body">
+              <h4>Möte &amp; brief</h4>
+              <p>Vi lär känna din restaurang, dina mål och önskemål. Du berättar — vi lyssnar och planerar.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-step__num">2</div>
+            <div class="process-step__body">
+              <h4>Design &amp; bygg</h4>
+              <p>Vi designar och bygger din skräddarsydda hemsida. Du godkänner designen innan vi driftsätter.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-step__num">3</div>
+            <div class="process-step__body">
+              <h4>Driftsättning</h4>
+              <p>Din hemsida är live. Vi sköter allt underhåll och du kan begära uppdateringar utan extra kostnad.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: pricing card -->
+      <div class="price-card-big reveal reveal-delay-2">
+        <div class="price-card-big__amount">500</div>
+        <p class="price-card-big__period">kr / månad — Allt ingår</p>
+        <h3 class="price-card-big__title">Din kompletta restauranghemsida</h3>
+        <div class="price-card-big__features">
+          <span class="price-card-big__feature">Professionell skräddarsydd design</span>
+          <span class="price-card-big__feature">Mobiloptimerad &amp; SEO-klar</span>
+          <span class="price-card-big__feature">Online-bokning integrerat</span>
+          <span class="price-card-big__feature">SSL-certifikat &amp; hosting</span>
+          <span class="price-card-big__feature">Obegränsade innehållsuppdateringar</span>
+          <span class="price-card-big__feature">Gratis support via WhatsApp</span>
+          <span class="price-card-big__feature">Inga dolda kostnader</span>
+          <span class="price-card-big__feature">Ingen bindningstid</span>
+        </div>
+        <a href="kontakt.html" class="btn btn--yellow btn--lg" style="width:100%; justify-content:center;">Kom igång idag</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     5. REVIEWS — section--cream
+     ============================================================ -->
+<section class="section section--cream">
+  <div class="container">
+    <div class="reveal" style="margin-bottom:48px; text-align:center;">
+      <h2>Vad restaurangerna säger</h2>
     </div>
     <div class="reviews-grid">
       <div class="review-card reveal reveal-delay-1">
         <div class="review-card__stars">★★★★★</div>
-        <p class="review-card__text">"Bra hemsida och snabb service! Syns Nu Media levererade en fantastisk hemsida för vår restaurang som ser professionell ut och är lätt att uppdatera."</p>
-        <p class="review-card__author">George</p>
-        <p class="review-card__company">Dripp'n Burgers, Södertälje</p>
+        <p class="review-card__text">"Bra hemsida och snabb service! Syns Nu Media levererade en fantastisk hemsida för vår restaurang som ser professionell ut och är superlätt att uppdatera."</p>
+        <div class="review-card__author">
+          <div class="review-card__avatar">G</div>
+          <div>
+            <p class="review-card__name">George</p>
+            <p class="review-card__role">Dripp'n Burgers, Södertälje</p>
+          </div>
+        </div>
       </div>
       <div class="review-card reveal reveal-delay-2">
         <div class="review-card__stars">★★★★★</div>
-        <p class="review-card__text">"Väldigt nöjd, framförallt det låga priset. Fick en professionell hemsida som är SEO-optimerad och mobilanpassad till ett pris som passar vår restaurang."</p>
-        <p class="review-card__author">Simon</p>
-        <p class="review-card__company">Caliente Tapas, Stockholm</p>
+        <p class="review-card__text">"Väldigt nöjd med priset och kvaliteten. Fick en professionell, SEO-optimerad och mobilanpassad hemsida till ett pris som passar oss restaurangägare perfekt."</p>
+        <div class="review-card__author">
+          <div class="review-card__avatar">S</div>
+          <div>
+            <p class="review-card__name">Simon</p>
+            <p class="review-card__role">Caliente Tapas, Stockholm</p>
+          </div>
+        </div>
       </div>
       <div class="review-card reveal reveal-delay-3">
         <div class="review-card__stars">★★★★★</div>
-        <p class="review-card__text">"Bra service, lätt att uppdatera. Hemsidan såg fantastisk ut från dag ett och teamet finns alltid tillgängliga när vi behöver hjälp med ändringar."</p>
-        <p class="review-card__author">Mansour</p>
-        <p class="review-card__company">Berra Burras Kebab, Örebro</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FEATURES -->
-<section class="section">
-  <div class="container">
-    <div class="section-header section-header--center reveal">
-      <p class="label label--orange section-header__label">FÖRDELAR</p>
-      <h2 class="section-header__title">Gör det lättare för dig själv!</h2>
-      <p class="section-header__subtitle">Din hemsida ska jobba för dig dygnet runt — inte kräva att du jobbar med den.</p>
-    </div>
-    <div class="features-grid">
-      <div class="feature-card reveal reveal-delay-1">
-        <div class="feature-card__icon">🎨</div>
-        <h3 class="feature-card__title">Användarvänlig design</h3>
-        <p class="feature-card__text">Snygg, modern design som speglar din restaurangs personlighet och gör det enkelt för gäster att navigera och hitta det de söker.</p>
-      </div>
-      <div class="feature-card reveal reveal-delay-2">
-        <div class="feature-card__icon">📱</div>
-        <h3 class="feature-card__title">Mobiloptimerad</h3>
-        <p class="feature-card__text">Över 70% av dina kunder söker mat på mobilen. Din hemsida ser perfekt ut på alla enheter — mobil, surfplatta och dator.</p>
-      </div>
-      <div class="feature-card reveal reveal-delay-3">
-        <div class="feature-card__icon">✏️</div>
-        <h3 class="feature-card__title">Enkel att uppdatera</h3>
-        <p class="feature-card__text">Vi sköter alla uppdateringar åt dig. Ny meny? Ändrade öppettider? Kontakta oss och vi fixar det direkt — utan extra kostnad.</p>
-      </div>
-      <div class="feature-card reveal reveal-delay-1">
-        <div class="feature-card__icon">🔍</div>
-        <h3 class="feature-card__title">SEO-optimerad</h3>
-        <p class="feature-card__text">Byggd för att ranka högt på Google. Dina potentiella gäster hittar dig när de söker "restaurang i [din stad]".</p>
-      </div>
-      <div class="feature-card reveal reveal-delay-2">
-        <div class="feature-card__icon">💬</div>
-        <h3 class="feature-card__title">Kundstöd</h3>
-        <p class="feature-card__text">Vi finns tillgängliga när du behöver oss. Snabb support via telefon, e-post och WhatsApp — alltid på din sida.</p>
-      </div>
-      <div class="feature-card reveal reveal-delay-3">
-        <div class="feature-card__icon">♾️</div>
-        <h3 class="feature-card__title">Obegränsade uppdateringar</h3>
-        <p class="feature-card__text">Uppdatera meny, priser, bilder och text hur ofta du vill — alltid ingår i månadsavgiften. Inga extranotor.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section class="section section--dark">
-  <div class="container">
-    <div class="section-header section-header--center reveal">
-      <p class="label label--orange section-header__label">PRIS</p>
-      <h2 class="section-header__title">Enkelt och transparent</h2>
-    </div>
-    <div style="max-width:400px; margin:0 auto;">
-      <div class="pricing-card reveal">
-        <p class="pricing-card__name">Hemsida för Restauranger</p>
-        <p class="pricing-card__price">500 kr</p>
-        <p class="pricing-card__period">/månad</p>
-        <p class="pricing-card__desc">Allt du behöver för en professionell online-närvaro.</p>
-        <ul class="pricing-card__list">
-          <li>Professionell, skräddarsydd design</li>
-          <li>Mobilanpassad &amp; SEO-optimerad</li>
-          <li>Obegränsade uppdateringar</li>
-          <li>Gratis support</li>
-          <li>Online bokningssystem</li>
-          <li>Kontaktformulär</li>
-          <li>SSL-certifikat</li>
-          <li>Inga dolda kostnader</li>
-        </ul>
-        <div class="pricing-card__cta">
-          <a class="btn btn--primary btn--full" href="kontakt.html">Beställ hemsida <span class="arrow">→</span></a>
+        <p class="review-card__text">"Bra service och lätt att uppdatera. Hemsidan såg fantastisk ut direkt från dag ett och teamet finns alltid tillgängliga när vi behöver hjälp med ändringar."</p>
+        <div class="review-card__author">
+          <div class="review-card__avatar">M</div>
+          <div>
+            <p class="review-card__name">Mansour</p>
+            <p class="review-card__role">Berra Burras Kebab, Örebro</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section class="section">
+<!-- ============================================================
+     6. CONTACT FORM — section--white
+     ============================================================ -->
+<section class="section section--white">
   <div class="container">
-    <div class="section-header section-header--center reveal">
-      <p class="label label--orange section-header__label">SÅ HÄR FUNKAR DET</p>
-      <h2 class="section-header__title">Din hemsida på 3 enkla steg</h2>
-    </div>
-    <div class="steps">
-      <div class="step reveal reveal-delay-1">
-        <div class="step__num">1</div>
-        <h3 class="step__title">Beställ</h3>
-        <p class="step__text">Fyll i formuläret nedan med dina uppgifter och vad du vill ha på hemsidan. Vi kontaktar dig inom 24 timmar.</p>
-      </div>
-      <div class="step reveal reveal-delay-2">
-        <div class="step__num">2</div>
-        <h3 class="step__title">Design &amp; Utveckling</h3>
-        <p class="step__text">Vi designar och bygger din hemsida baserat på ditt varumärke och dina önskemål. Du godkänner designen innan lansering.</p>
-      </div>
-      <div class="step reveal reveal-delay-3">
-        <div class="step__num">3</div>
-        <h3 class="step__title">Lansering</h3>
-        <p class="step__text">Din hemsida är live! Vi sköter all underhåll och du kan begära uppdateringar när som helst utan extra kostnad.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT FORM -->
-<section class="section contact-section">
-  <div class="container">
-    <div class="contact-section-inner">
-      <div class="contact-section-info reveal">
-        <p class="label label--orange mb-16">BESTÄLL DIN HEMSIDA</p>
-        <h2>Få din hemsida</h2>
-        <p>Fyll i formuläret så kontaktar vi dig inom 24 timmar för att komma igång med din nya hemsida.</p>
-      </div>
-      <div class="reveal reveal-delay-2">
-        <div class="form-card">
-          <form data-form="website">
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label">Namn <span class="req">*</span></label>
-                <input class="form-control" type="text" placeholder="Ditt namn" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Restaurangnamn <span class="req">*</span></label>
-                <input class="form-control" type="text" placeholder="Restaurangens namn" required>
-              </div>
+    <div class="contact-layout">
+      <div class="contact-info reveal">
+        <span class="section-label">Kom igång</span>
+        <h2>Redo för din nya hemsida?</h2>
+        <p>Fyll i formuläret så kontaktar vi dig inom 24 timmar för att komma igång med din restauranghemsida.</p>
+        <div class="contact-info__detail">
+          <span>✉️</span>
+          <a href="mailto:hej@synsnumedia.se">hej@synsnumedia.se</a>
+        </div>
+        <div class="contact-info__detail">
+          <span>📍</span>
+          <span>Stockholm, Sverige</span>
+        </div>
+        <div style="margin-top:32px;">
+          <div class="stats-grid" style="grid-template-columns: repeat(2, 1fr);">
+            <div class="stat-item">
+              <span class="stat-item__value">2–3</span>
+              <span class="stat-item__label">Veckors leveranstid</span>
             </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label">E-post <span class="req">*</span></label>
-                <input class="form-control" type="email" placeholder="din@email.se" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Telefon <span class="req">*</span></label>
-                <input class="form-control" type="tel" placeholder="07X-XXX XX XX" required>
-              </div>
+            <div class="stat-item">
+              <span class="stat-item__value">500</span>
+              <span class="stat-item__label">kr/mån allt ingår</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-card reveal reveal-delay-2">
+        <form>
+          <div class="form-grid" style="margin-bottom:16px;">
+            <div class="form-group">
+              <label class="form-label" for="web-name">Namn <span style="color:var(--yellow);">*</span></label>
+              <input class="form-control" type="text" id="web-name" name="name" placeholder="Ditt namn" required>
             </div>
             <div class="form-group">
-              <label class="form-label">Meddelande (valfritt)</label>
-              <textarea class="form-control" placeholder="Berätta om din restaurang och vad du vill ha på hemsidan..."></textarea>
+              <label class="form-label" for="web-email">E-post <span style="color:var(--yellow);">*</span></label>
+              <input class="form-control" type="email" id="web-email" name="email" placeholder="din@email.se" required>
             </div>
-            <button class="btn btn--primary btn--full btn--lg" type="submit">Beställ hemsida <span class="arrow">→</span></button>
-          </form>
-        </div>
+          </div>
+          <div class="form-grid" style="margin-bottom:16px;">
+            <div class="form-group">
+              <label class="form-label" for="web-phone">Telefon</label>
+              <input class="form-control" type="tel" id="web-phone" name="phone" placeholder="07X-XXX XX XX">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="web-restaurant">Restaurangnamn <span style="color:var(--yellow);">*</span></label>
+              <input class="form-control" type="text" id="web-restaurant" name="restaurant" placeholder="Din restaurangs namn" required>
+            </div>
+          </div>
+          <div class="form-group" style="margin-bottom:16px;">
+            <label class="form-label" for="web-message">Meddelande</label>
+            <textarea class="form-control" id="web-message" name="message" placeholder="Berätta om din restaurang och vad du vill ha på hemsidan..."></textarea>
+          </div>
+          <button class="btn btn--black btn--lg" type="submit" style="width:100%; justify-content:center;">Skicka förfrågan</button>
+        </form>
       </div>
     </div>
   </div>
 </section>
 
-<section class="cta-banner">
-  <div class="container">
-    <div class="reveal">
-      <h2>Redo att ta rampljuset?</h2>
-      <p>Boka en gratis konsultation och se hur vi kan hjälpa din restaurang växa online.</p>
-      <a class="btn btn--dark btn--lg" href="kontakt.html">Kontakta oss nu <span class="arrow">→</span></a>
-    </div>
+<!-- ============================================================
+     7. CTA BANNER
+     ============================================================ -->
+<div class="cta-banner">
+  <div class="container reveal">
+    <h2>Låt oss bygga din drömhemsida</h2>
+    <p>En professionell restauranghemsida för bara 500 kr/mån. Ingen bindningstid — vi levererar inom 2–3 veckor.</p>
+    <a href="kontakt.html" class="btn btn--black btn--lg">Boka gratis möte</a>
   </div>
-</section>
+</div>
 
-<footer class="footer">
+<!-- FOOTER -->
+<footer class="site-footer">
   <div class="container">
-    <div class="footer__grid">
-      <div>
-        <a href="index.html"><img class="footer__logo" src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/68ebad7a0d699e0abc5558c1.png" alt="Syns Nu Media"></a>
-        <p class="footer__tagline">Sveriges största marknadsföringsbyrå för restauranger.</p>
-        <div class="footer__social">
-          <a class="footer__social-link" href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-          <a class="footer__social-link" href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.53V6.77a4.85 4.85 0 01-1.02-.08z"/></svg></a>
-          <a class="footer__social-link" href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-          <a class="footer__social-link" href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-        </div>
+    <div class="footer__top">
+      <div class="footer__left">
+        <img src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/68ebad7a0d699e0abc5558c1.png" alt="Syns Nu Media" width="140" height="34" style="filter:brightness(0) invert(1); margin-bottom:16px;">
+        <h2 style="font-size:28px;">Syns Nu Media</h2>
+        <p style="margin-top:8px; color:rgba(255,255,255,0.45); font-size:14px; max-width:260px; line-height:1.6;">Sveriges ledande marknadsföringsbyrå för restauranger.</p>
       </div>
-      <div>
-        <p class="footer__col-title">Tjänster</p>
-        <div class="footer__col-links">
-          <a class="footer__col-link" href="sociala-medier.html">Sociala Medier</a>
-          <a class="footer__col-link" href="hemsida.html">Webbdesign</a>
-          <a class="footer__col-link" href="qopla-erbjudande.html">Qopla-erbjudande</a>
-        </div>
-      </div>
-      <div>
-        <p class="footer__col-title">Företaget</p>
-        <div class="footer__col-links">
-          <a class="footer__col-link" href="om-oss.html">Om oss</a>
-          <a class="footer__col-link" href="kundcase.html">Kundcase</a>
-          <a class="footer__col-link" href="blogg.html">Blogg</a>
-          <a class="footer__col-link" href="jobb.html">Jobb</a>
-        </div>
-      </div>
-      <div>
-        <p class="footer__col-title">Kontakt</p>
-        <div class="footer__col-links">
-          <a class="footer__col-link" href="tel:+46708880198">070-888 01 98</a>
-          <a class="footer__col-link" href="mailto:info@synsnumedia.se">info@synsnumedia.se</a>
-          <span class="footer__col-link">Stockholm, Sverige</span>
-        </div>
+      <div class="footer__right">
+        <div class="footer__col"><h5>Tjänster</h5><a href="sociala-medier.html">Sociala Medier</a><a href="hemsida.html">Webbdesign</a><a href="sociala-medier.html">Menyfoto</a><a href="qopla-erbjudande.html">Qopla-erbjudande</a></div>
+        <div class="footer__col"><h5>Företaget</h5><a href="om-oss.html">Om oss</a><a href="kundcase.html">Kundcase</a><a href="blogg.html">Blogg</a><a href="jobb.html">Jobba hos oss</a></div>
+        <div class="footer__col"><h5>Kontakt</h5><address><a href="mailto:hej@synsnumedia.se">hej@synsnumedia.se</a><a href="kontakt.html">Boka möte</a><span style="display:block;margin-top:4px;color:rgba(255,255,255,0.45);font-size:13px;">Stockholm, Sverige</span></address></div>
       </div>
     </div>
     <div class="footer__bottom">
-      <span>© Syns Nu AB 2025. Alla rättigheter förbehållna.</span>
-      <a href="#">Integritetspolicy</a>
+      <span class="footer__copy">© 2025 Syns Nu Media. Alla rättigheter förbehållna.</span>
+      <div class="footer__social">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
+      </div>
     </div>
   </div>
 </footer>
-<div class="whatsapp-fab"><a href="https://wa.me/46708880198" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a></div>
+<a class="whatsapp-fab" href="https://wa.me/46XXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="white" width="26" height="26"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
 <script src="js/main.js"></script>
 </body>
 </html>
