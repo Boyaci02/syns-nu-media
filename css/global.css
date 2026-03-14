@@ -2019,6 +2019,7 @@ body:has(.fshero) #nav:not(.scrolled) .nav__links a {
   gap: 10px;
   align-self: end;          /* flush with bottom of heading = top of cards */
   padding-bottom: 2px;
+  padding-right: clamp(20px, 5vw, 64px);
 }
 
 .sc-arrow {
