@@ -272,7 +272,7 @@ p { color: var(--text); }
   height: 100%;
   max-width: var(--container);
   margin: 0 auto;
-  padding: 0 48px;
+  padding: 0 56px;
 }
 
 .nav__logo img {
