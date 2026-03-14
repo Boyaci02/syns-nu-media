@@ -295,6 +295,67 @@
   })();
 
   /* ──────────────────────────────────────────────
+     13. NEWSLETTER POPUP
+  ────────────────────────────────────────────── */
+  (function () {
+    var popup    = document.getElementById('nl-popup');
+    var backdrop = document.getElementById('nl-popup-backdrop');
+    var closeBtn = document.getElementById('nl-popup-close');
+    var popupForm = document.getElementById('nl-popup-form');
+    var footerForm = document.getElementById('footer-nl-form');
+
+    if (!popup || !backdrop) return;
+
+    // Only show once per session
+    if (sessionStorage.getItem('nl-dismissed')) return;
+
+    function openPopup() {
+      popup.classList.add('is-open');
+      backdrop.classList.add('is-open');
+    }
+
+    function closePopup() {
+      popup.classList.remove('is-open');
+      backdrop.classList.remove('is-open');
+      sessionStorage.setItem('nl-dismissed', '1');
+    }
+
+    // Trigger after scrolling 60% of the page
+    function onScroll() {
+      var scrolled = window.scrollY + window.innerHeight;
+      var total = document.documentElement.scrollHeight;
+      if (scrolled / total >= 0.6) {
+        openPopup();
+        window.removeEventListener('scroll', onScroll);
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    closeBtn && closeBtn.addEventListener('click', closePopup);
+    backdrop.addEventListener('click', closePopup);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closePopup();
+    });
+
+    // Handle popup form submit
+    if (popupForm) {
+      popupForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        popupForm.innerHTML = '<p style="color:var(--blue);font:600 15px var(--body);text-align:center;padding:8px 0;">✓ Tack! Du är nu prenumerant.</p>';
+        setTimeout(closePopup, 2200);
+      });
+    }
+
+    // Handle footer form submit
+    if (footerForm) {
+      footerForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        footerForm.innerHTML = '<p style="color:var(--blue);font:600 14px var(--body);">✓ Tack! Välkommen som prenumerant.</p>';
+      });
+    }
+  })();
+
+  /* ──────────────────────────────────────────────
      12. VP SECTION — progress bar trigger on scroll
   ────────────────────────────────────────────── */
   var vpCard = document.querySelector('.vp-float-card');

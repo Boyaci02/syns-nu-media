@@ -436,6 +436,201 @@ p { color: var(--text); }
 /* ============================================================
    FOOTER
    ============================================================ */
+/* ── Footer newsletter bar ── */
+.footer__newsletter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+
+.footer__newsletter-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footer__newsletter-title {
+  font: 600 17px var(--heading);
+  color: var(--navy);
+}
+
+.footer__newsletter-sub {
+  font: 400 14px var(--body);
+  color: var(--muted);
+}
+
+.footer__newsletter-form {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.footer__newsletter-form input {
+  padding: 12px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 100px;
+  font: 400 14px var(--body);
+  outline: none;
+  width: 220px;
+  transition: border-color 0.2s;
+}
+
+.footer__newsletter-form input:focus {
+  border-color: var(--blue);
+}
+
+.footer__newsletter-form button {
+  padding: 12px 22px;
+  background: var(--navy);
+  color: white;
+  border: none;
+  border-radius: 100px;
+  font: 600 14px var(--body);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.footer__newsletter-form button:hover {
+  background: var(--blue);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+  .footer__newsletter { flex-direction: column; align-items: flex-start; }
+  .footer__newsletter-form { width: 100%; }
+  .footer__newsletter-form input { flex: 1; width: auto; }
+}
+
+/* ── Newsletter popup ── */
+.nl-popup__backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 1100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.nl-popup__backdrop.is-open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.nl-popup {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: min(420px, calc(100vw - 32px));
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.18);
+  padding: 36px 32px 28px;
+  z-index: 1101;
+  transform: translateY(24px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.4s cubic-bezier(.22,1,.36,1), opacity 0.35s ease;
+}
+
+.nl-popup.is-open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+.nl-popup__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--muted);
+  transition: background 0.2s, color 0.2s;
+}
+
+.nl-popup__close:hover {
+  background: var(--bg-soft);
+  color: var(--navy);
+}
+
+.nl-popup__icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+  line-height: 1;
+}
+
+.nl-popup__title {
+  font: 700 22px var(--heading);
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.nl-popup__sub {
+  font: 400 14px/1.6 var(--body);
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.nl-popup__form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nl-popup__form input {
+  padding: 13px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 100px;
+  font: 400 14px var(--body);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.nl-popup__form input:focus {
+  border-color: var(--blue);
+}
+
+.nl-popup__form button {
+  padding: 13px;
+  background: var(--navy);
+  color: white;
+  border: none;
+  border-radius: 100px;
+  font: 600 14px var(--body);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.nl-popup__form button:hover {
+  background: var(--blue);
+}
+
+.nl-popup__fine {
+  font: 400 12px var(--body);
+  color: var(--muted);
+  text-align: center;
+  margin-top: 12px;
+}
+
+@media (max-width: 480px) {
+  .nl-popup { bottom: 16px; right: 16px; padding: 28px 20px 22px; }
+}
+
+/* ── Site footer ── */
 .site-footer {
   background: #ffffff;
   color: var(--navy);
