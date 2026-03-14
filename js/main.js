@@ -204,7 +204,108 @@
   });
 
   /* ──────────────────────────────────────────────
-     10. VP SECTION — progress bar trigger on scroll
+     10. SERVICES CAROUSEL
+  ────────────────────────────────────────────── */
+  (function () {
+    var viewport = document.getElementById('sc-viewport');
+    var track    = document.getElementById('sc-track');
+    var btnPrev  = document.getElementById('sc-prev');
+    var btnNext  = document.getElementById('sc-next');
+    var dotsEl   = document.getElementById('sc-dots');
+    if (!viewport || !track) return;
+
+    var cards     = Array.from(track.querySelectorAll('.sc-card'));
+    var dots      = dotsEl ? Array.from(dotsEl.querySelectorAll('.sc-dot')) : [];
+    var cardCount = cards.length;
+
+    /* 10a. Scroll-reveal: cards animate in when entering viewport */
+    var scRevObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('sc-visible');
+          scRevObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    cards.forEach(function (card) { scRevObs.observe(card); });
+
+    /* 10b. Helpers */
+    function getCardWidth() {
+      return cards[0] ? cards[0].offsetWidth + 20 : 0;
+    }
+
+    function currentIndex() {
+      return Math.max(0, Math.min(
+        Math.round(viewport.scrollLeft / getCardWidth()),
+        cardCount - 1
+      ));
+    }
+
+    function scrollToIdx(idx) {
+      idx = Math.max(0, Math.min(idx, cardCount - 1));
+      viewport.scrollTo({ left: idx * getCardWidth(), behavior: 'smooth' });
+    }
+
+    function syncUI() {
+      var idx = currentIndex();
+      if (btnPrev) {
+        btnPrev.disabled = (idx === 0);
+        btnPrev.classList.toggle('sc-arrow--active', idx > 0);
+      }
+      if (btnNext) {
+        btnNext.disabled = (idx >= cardCount - 1);
+        btnNext.classList.toggle('sc-arrow--active', idx < cardCount - 1);
+      }
+      dots.forEach(function (d, i) {
+        d.classList.toggle('sc-dot--active', i === idx);
+      });
+    }
+
+    /* 10c. Arrow buttons */
+    if (btnPrev) btnPrev.addEventListener('click', function () { scrollToIdx(currentIndex() - 1); });
+    if (btnNext) btnNext.addEventListener('click', function () { scrollToIdx(currentIndex() + 1); });
+
+    /* 10d. Dot clicks */
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function () { scrollToIdx(parseInt(dot.dataset.index, 10)); });
+    });
+
+    /* 10e. Sync on scroll (debounced) */
+    var scrollTimer;
+    viewport.addEventListener('scroll', function () {
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(syncUI, 80);
+    }, { passive: true });
+
+    /* 10f. Mouse drag */
+    var dragging = false, dragX = 0, scrollX = 0;
+    viewport.addEventListener('mousedown', function (e) {
+      dragging = true; dragX = e.pageX; scrollX = viewport.scrollLeft;
+      viewport.classList.add('is-dragging');
+    });
+    document.addEventListener('mousemove', function (e) {
+      if (!dragging) return;
+      viewport.scrollLeft = scrollX - (e.pageX - dragX);
+    });
+    document.addEventListener('mouseup', function () {
+      if (!dragging) return;
+      dragging = false;
+      viewport.classList.remove('is-dragging');
+      scrollToIdx(currentIndex());
+    });
+
+    /* 10g. Keyboard */
+    viewport.setAttribute('tabindex', '0');
+    viewport.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); scrollToIdx(currentIndex() - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); scrollToIdx(currentIndex() + 1); }
+    });
+
+    syncUI();
+  })();
+
+  /* ──────────────────────────────────────────────
+     12. VP SECTION — progress bar trigger on scroll
   ────────────────────────────────────────────── */
   var vpCard = document.querySelector('.vp-float-card');
   if (vpCard) {
