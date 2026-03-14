@@ -6,13 +6,22 @@
   'use strict';
 
   /* ──────────────────────────────────────────────
-     1. STICKY NAV
+     1. STICKY NAV  (transparent over full-screen hero)
   ────────────────────────────────────────────── */
   const nav = document.getElementById('nav');
+  const isFsheroPage = document.body.classList.contains('fshero-page');
+
   if (nav) {
-    window.addEventListener('scroll', function () {
-      nav.classList.toggle('scrolled', window.scrollY > 20);
-    }, { passive: true });
+    function updateNav() {
+      var scrolled = window.scrollY > 20;
+      nav.classList.toggle('scrolled', scrolled);
+      // On fshero pages: invert logo/hamburger when over dark hero
+      if (isFsheroPage) {
+        nav.classList.toggle('nav--over-hero', !scrolled);
+      }
+    }
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav(); // run once on load
   }
 
   /* ──────────────────────────────────────────────

@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/pages.css">
 </head>
-<body>
+<body class="fshero-page">
 
 <!-- ============================================================
      NAV
@@ -67,68 +67,60 @@
 </div>
 
 <!-- ============================================================
-     HERO
+     HERO — Full-screen video background (CargoWave-stil)
      ============================================================ -->
-<section class="hero-section">
-  <div class="container">
-    <div class="hero-grid">
-      <!-- LEFT: Text -->
-      <div class="hero__content">
-        <span class="section-eyebrow">Sveriges #1 Byrå för Restauranger</span>
-        <h1 class="hero__title">
-          Snabb synlighet.<br>
-          Fler gäster.<br>
-          Smart prissättning.
-        </h1>
-        <p class="hero__subtitle">Vi hjälper svenska restauranger att synas online och omvandla klick till gäster. Sociala medier, hemsidor och menyfotografi under ett tak.</p>
-        <div class="hero__ctas">
-          <a href="kontakt.html" class="btn btn--blue btn--lg">Boka gratis möte</a>
-          <a href="#process" class="btn btn--outline btn--lg">Se hur det fungerar →</a>
-        </div>
-        <div class="hero__trust">
-          <span class="hero__trust-item">
-            <span class="hero__trust-star">★</span> 4.9/5 betyg
-          </span>
-          <span class="hero__trust-sep">·</span>
-          <span class="hero__trust-item">90+ restauranger</span>
-          <span class="hero__trust-sep">·</span>
-          <span class="hero__trust-item">Inga bindningar</span>
-        </div>
-      </div>
+<section class="fshero" aria-label="Hero">
 
-      <!-- RIGHT: Photo + floating pills -->
-      <div class="hero__photo-wrap">
-        <!-- Floating pills around the photo -->
-        <div class="hero-pill badge badge--orange" style="--r:-8deg; top:8%; left:-5%; animation-name:fly-in-left;">
-          📱 Sociala Medier
-        </div>
-        <div class="hero-pill badge badge--blue" style="--r:5deg; top:4%; right:-4%; animation-name:fly-in-right;">
-          🌐 Hemsida & SEO
-        </div>
-        <div class="hero-pill badge badge--green" style="--r:-3deg; bottom:28%; left:-8%; animation-name:fly-in-left;">
-          📸 Menyfotografi
-        </div>
-        <div class="hero-pill badge badge--pink" style="--r:6deg; bottom:12%; right:-5%; animation-name:fly-in-right;">
-          ✓ Utan bindningstid
-        </div>
+  <!-- Background video -->
+  <video class="fshero__video" autoplay muted loop playsinline preload="metadata"
+         aria-hidden="true">
+    <source src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/66fae28a5cef956031c6d083.mp4" type="video/mp4">
+  </video>
 
-        <!-- Main photo placeholder -->
-        <div class="hero__photo">
-          <div class="hero__photo-bg" aria-label="Professionell restaurangmarknadsföring"></div>
-          <div class="hero__photo-overlay-text">Professionell restaurangmarknadsföring</div>
-        </div>
+  <!-- Gradient overlay -->
+  <div class="fshero__overlay" aria-hidden="true"></div>
 
-        <!-- Floating testimonial card -->
-        <div class="hero__stat-card">
-          <div class="hero__stat-stars">★★★★★</div>
-          <p class="hero__stat-quote">"+40% fler bokningar på 2 månader"</p>
-          <div class="hero__stat-author">
-            <div class="hero__stat-avatar review-card__avatar review-card__avatar--1">AK</div>
-            <span>Ahmed K., Restaurang Mezze</span>
-          </div>
-        </div>
-      </div>
+  <!-- Content -->
+  <div class="fshero__inner">
+
+    <!-- Stars rating — top left -->
+    <div class="fshero__rating fshero--anim" style="--delay:0.1s;">
+      <span class="fshero__stars" aria-label="5 av 5 stjärnor">★★★★★</span>
+      <span class="fshero__rating-text">4.9 · baserat på 35+ recensioner</span>
     </div>
+
+    <!-- Big headline — bottom left -->
+    <h1 class="fshero__title fshero--anim" style="--delay:0.25s;">
+      Snabb synlighet.<br>
+      Fler gäster.<br>
+      Smart prissättning.
+    </h1>
+
+    <!-- Clients strip — bottom left below headline -->
+    <div class="fshero__clients fshero--anim" style="--delay:0.5s;">
+      <div class="fshero__avatars" aria-hidden="true">
+        <span style="background:linear-gradient(135deg,#667eea,#764ba2);">AK</span>
+        <span style="background:linear-gradient(135deg,#f093fb,#f5576c);">ML</span>
+        <span style="background:linear-gradient(135deg,#4facfe,#00f2fe);">HM</span>
+      </div>
+      <span class="fshero__clients-text">90+ nöjda restauranger</span>
+    </div>
+
+    <!-- Right column: subtitle + CTA -->
+    <div class="fshero__right fshero--anim" style="--delay:0.4s;">
+      <p class="fshero__subtitle">Vi hjälper svenska restauranger att synas online och omvandla klick till gäster — sociala medier, hemsidor och menyfotografi under ett tak.</p>
+      <a href="kontakt.html" class="fshero__cta">
+        Boka gratis möte
+        <span class="fshero__cta-icon" aria-hidden="true">↗</span>
+      </a>
+    </div>
+
+    <!-- Scroll indicator — bottom right -->
+    <div class="fshero__scroll fshero--anim" style="--delay:0.7s;">
+      <span class="fshero__scroll-text">Scrolla ner</span>
+      <span class="fshero__scroll-line" aria-hidden="true"></span>
+    </div>
+
   </div>
 </section>
 
