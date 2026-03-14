@@ -1689,3 +1689,284 @@ body:has(.fshero) #nav:not(.scrolled) .nav__links a {
     padding: 12px 20px;
   }
 }
+
+/* ============================================================
+   VALUE PROPOSITION SECTION  (.vp-section)
+   CargoWave pill/stadium layout
+   ============================================================ */
+
+.vp-section {
+  background: var(--bg-soft);
+  padding: 96px 0 0;
+  overflow: hidden;
+}
+
+/* ── Heading block ── */
+.vp-section__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 28px;
+  padding-bottom: 56px;
+}
+
+.vp-section__title {
+  font-family: var(--heading);
+  font-size: clamp(26px, 3.8vw, 48px);
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.22;
+  max-width: 780px;
+  letter-spacing: -0.02em;
+}
+
+.vp-br { display: block; }
+
+/* Pill CTA button */
+.vp-section__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--blue);
+  color: white;
+  font-family: var(--heading);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 12px 22px;
+  border-radius: 100px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(14,165,233,0.30);
+  /* hover transitions only — reveal handled by .reveal class */
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.vp-section__cta:hover {
+  background: var(--blue-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(14,165,233,0.40);
+}
+
+.vp-section__cta-icon {
+  font-size: 14px;
+  transition: transform 0.2s;
+}
+
+.vp-section__cta:hover .vp-section__cta-icon {
+  transform: translate(2px, -2px);
+}
+
+@keyframes reveal-up {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Stadium wrapper ── */
+.vp-stadium {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* full-bleed but contained in section */
+  width: 100%;
+  /* height drives the visible pill area */
+  height: 340px;
+}
+
+/* ── Decorative side blobs ── */
+.vp-blob {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  /* rendered as tall oval cut off by overflow:hidden on section */
+}
+
+.vp-blob--left {
+  left: 0;
+  transform: translate(-38%, -50%);
+  background: #c4b5fd; /* violet-300 */
+}
+
+.vp-blob--right {
+  right: 0;
+  transform: translate(38%, -50%);
+  background: #fdba74; /* orange-300 */
+}
+
+/* ── Center pill photo ── */
+.vp-stadium__photo {
+  position: relative;
+  /* pill shape */
+  width: min(760px, 84vw);
+  height: 320px;
+  border-radius: 9999px;
+  overflow: hidden;
+  /* lift above blobs */
+  z-index: 2;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+  background: var(--navy);
+}
+
+/* ── Floating stats card ── */
+.vp-float-card {
+  position: absolute;
+  bottom: 28px;
+  right: 36px;
+  background: white;
+  border-radius: 12px;
+  padding: 14px 18px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  min-width: 210px;
+  /* animate in */
+  animation: card-in 0.7s cubic-bezier(0.22,1,0.36,1) both;
+  animation-delay: 0.6s;
+}
+
+@keyframes card-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.vp-float-card__label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.vp-float-card__value {
+  font-family: var(--heading);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+.vp-float-card__bar-wrap {
+  height: 6px;
+  background: var(--bg-soft);
+  border-radius: 100px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.vp-float-card__bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--blue), #38bdf8);
+  border-radius: 100px;
+  transition: width 1.4s cubic-bezier(0.22,1,0.36,1);
+}
+
+/* Fill bar when card becomes visible (JS adds .vp-bar-active) */
+.vp-bar-active .vp-float-card__bar {
+  width: 72%;
+}
+
+.vp-float-card__sub {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ── Scroll-reveal for .vp-section elements ── */
+/* Title uses standard .reveal class; CTA uses its own animation above */
+.vp-stadium.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1),
+              transform 0.75s cubic-bezier(0.22,1,0.36,1);
+  transition-delay: var(--delay, 0.25s);
+}
+
+.vp-stadium.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Blob entrance animations ── */
+.vp-blob--left {
+  animation: blob-left 0.9s cubic-bezier(0.22,1,0.36,1) both;
+  animation-delay: 0.35s;
+}
+
+.vp-blob--right {
+  animation: blob-right 0.9s cubic-bezier(0.22,1,0.36,1) both;
+  animation-delay: 0.35s;
+}
+
+@keyframes blob-left {
+  from { opacity: 0; transform: translate(-60%, -50%); }
+  to   { opacity: 1; transform: translate(-38%, -50%); }
+}
+
+@keyframes blob-right {
+  from { opacity: 0; transform: translate(60%, -50%); }
+  to   { opacity: 1; transform: translate(38%, -50%); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .vp-section {
+    padding-top: 72px;
+  }
+
+  .vp-stadium {
+    height: 280px;
+  }
+
+  .vp-stadium__photo {
+    width: min(580px, 88vw);
+    height: 260px;
+  }
+
+  .vp-blob {
+    width: 150px;
+    height: 150px;
+  }
+
+  .vp-float-card {
+    right: 20px;
+    bottom: 20px;
+    min-width: 180px;
+    padding: 12px 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .vp-section__title {
+    font-size: clamp(22px, 6.5vw, 30px);
+  }
+
+  .vp-br { display: inline; } /* unwrap line-breaks on small screens */
+
+  .vp-stadium {
+    height: 220px;
+  }
+
+  .vp-stadium__photo {
+    width: 90vw;
+    height: 200px;
+    border-radius: 9999px;
+  }
+
+  .vp-blob {
+    width: 110px;
+    height: 110px;
+  }
+
+  .vp-float-card {
+    right: 12px;
+    bottom: 14px;
+    min-width: 0;
+    width: 160px;
+    padding: 10px 12px;
+  }
+
+  .vp-float-card__value {
+    font-size: 15px;
+  }
+}

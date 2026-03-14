@@ -203,4 +203,20 @@
     pill.style.animationDelay = (0.4 + i * 0.15) + 's';
   });
 
+  /* ──────────────────────────────────────────────
+     10. VP SECTION — progress bar trigger on scroll
+  ────────────────────────────────────────────── */
+  var vpCard = document.querySelector('.vp-float-card');
+  if (vpCard) {
+    var vpObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.closest('.vp-stadium__photo').classList.add('vp-bar-active');
+          vpObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    vpObs.observe(vpCard);
+  }
+
 })();

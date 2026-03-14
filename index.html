@@ -125,45 +125,53 @@
 </section>
 
 <!-- ============================================================
-     ABOUT STRIP
+     VALUE PROPOSITION — CargoWave pill-stadium layout
      ============================================================ -->
-<section class="section" style="padding-top:72px; padding-bottom:72px; background:var(--bg);">
+<section class="vp-section" id="om-oss-strip">
+
+  <!-- Top: centered heading + CTA -->
   <div class="container">
-    <div class="split-2 reveal">
-      <div>
-        <span class="section-eyebrow">Om oss</span>
-        <h2>Skapar synlighet. Förvandlar klick till restauranggäster.</h2>
-        <p style="margin-top:16px; max-width:480px;">Vi är en marknadsföringsbyrå grundad med ett enda uppdrag: att hjälpa svenska restauranger att växa online. Med specialiserad erfarenhet av restaurangbranschen vet vi exakt vad som fungerar.</p>
-        <a href="om-oss.html" class="btn btn--outline" style="margin-top:28px;">Läs mer om oss →</a>
-      </div>
-      <div class="about__chips">
-        <div class="about__chips-row">
-          <div class="about-chip">
-            <div class="icon-chip icon-chip--blue">📱</div>
-            <span>Sociala Medier</span>
-          </div>
-          <div class="about-chip">
-            <div class="icon-chip icon-chip--orange">🌐</div>
-            <span>Webbdesign</span>
-          </div>
-          <div class="about-chip">
-            <div class="icon-chip icon-chip--green">📸</div>
-            <span>Menyfoto</span>
-          </div>
+    <div class="vp-section__head">
+      <h2 class="vp-section__title reveal">
+        Vi skapar synlighet för restauranger som<br class="vp-br">
+        förtjänar att synas — med strategi,<br class="vp-br">
+        kreativitet och mätbara resultat.
+      </h2>
+      <a href="om-oss.html" class="vp-section__cta reveal" style="transition-delay:0.15s;">
+        Läs mer om oss
+        <span class="vp-section__cta-icon" aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Stadium / pill image container -->
+  <div class="vp-stadium reveal" style="--delay:0.25s;">
+
+    <!-- Left decorative blob -->
+    <div class="vp-blob vp-blob--left" aria-hidden="true"></div>
+
+    <!-- Right decorative blob -->
+    <div class="vp-blob vp-blob--right" aria-hidden="true"></div>
+
+    <!-- Center: pill-clipped photo -->
+    <div class="vp-stadium__photo">
+      <video autoplay muted loop playsinline preload="metadata"
+             aria-label="Syns Nu Media team i arbete"
+             style="width:100%;height:100%;object-fit:cover;">
+        <source src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/66fae28a5cef956031c6d083.mp4" type="video/mp4">
+      </video>
+
+      <!-- Floating stats card -->
+      <div class="vp-float-card">
+        <div class="vp-float-card__label">Instagram Tillväxt</div>
+        <div class="vp-float-card__value">+3 000 följare</div>
+        <div class="vp-float-card__bar-wrap">
+          <div class="vp-float-card__bar"></div>
         </div>
-        <div class="about__chips-row">
-          <div class="about-chip">
-            <div class="icon-chip icon-chip--pink">🖨️</div>
-            <span>Print & Meny</span>
-          </div>
-          <div class="about-chip">
-            <div class="icon-chip icon-chip--navy">📊</div>
-            <span>Annonsering</span>
-          </div>
-        </div>
-        <p style="font:600 13px/1 var(--body); color:var(--muted); margin-top:16px; text-align:center;">Allt din restaurang behöver</p>
+        <div class="vp-float-card__sub">Restaurang Mezze · 60 dagar</div>
       </div>
     </div>
+
   </div>
 </section>
 
