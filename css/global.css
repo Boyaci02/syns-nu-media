@@ -2066,7 +2066,7 @@ body:has(.fshero) #nav:not(.scrolled) .nav__links a {
 .sc-viewport {
   grid-area: track;
   overflow-x: auto;
-  overflow-y: visible;
+  overflow-y: hidden;
   scrollbar-width: none;
   -ms-overflow-style: none;
   cursor: grab;
