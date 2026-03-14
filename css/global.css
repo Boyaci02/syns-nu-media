@@ -1254,7 +1254,7 @@ textarea.form-input { resize: vertical; min-height: 120px; line-height: 1.6; }
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
-  min-height: 560px;
+  min-height: 75vh;
   padding: clamp(64px, 8vw, 120px) clamp(20px, 6vw, 96px);
   position: relative;
   z-index: 1;
