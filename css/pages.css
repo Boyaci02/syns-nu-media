@@ -1299,3 +1299,19 @@
   .sp-stat__num { font-size: 24px; }
   .sp-clients__num { font-size: 48px; }
 }
+
+/* ── Blog section header ── */
+.blog-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 600px) {
+  .blog-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+}
