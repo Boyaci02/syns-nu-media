@@ -2969,9 +2969,11 @@ body:has(.fshero) #nav:not(.scrolled) .nav__links a {
 .snm-footer-watermark {
   position: relative;
   z-index: 1;
-  margin-top: -12px;
+  box-sizing: border-box;
+  margin-top: -320px;   /* pull 320px up behind the card */
+  padding-top: 320px;   /* push span back down to card-bottom edge */
+  height: 500px;        /* content height = 500-320 = 180px visible below card */
   overflow: hidden;
-  height: 170px;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -2980,7 +2982,7 @@ body:has(.fshero) #nav:not(.scrolled) .nav__links a {
 
 .snm-footer-watermark span {
   font-family: var(--font);
-  font-size: 480px;
+  font-size: 750px;
   font-weight: 800;
   color: #e5e7eb;
   letter-spacing: -0.04em;
@@ -3010,10 +3012,13 @@ body:has(.fshero) #nav:not(.scrolled) .nav__links a {
   }
 
   .snm-footer-watermark {
-    height: 110px;
+    box-sizing: border-box;
+    margin-top: -200px;
+    padding-top: 200px;
+    height: 320px; /* 120px visible */
   }
 
-  .snm-footer-watermark span { font-size: 300px; }
+  .snm-footer-watermark span { font-size: 450px; }
 }
 
 @media (max-width: 500px) {
@@ -3027,6 +3032,11 @@ body:has(.fshero) #nav:not(.scrolled) .nav__links a {
     gap: 12px;
   }
 
-  .snm-footer-watermark { height: 80px; }
-  .snm-footer-watermark span { font-size: 200px; }
+  .snm-footer-watermark {
+    box-sizing: border-box;
+    margin-top: -130px;
+    padding-top: 130px;
+    height: 210px; /* 80px visible */
+  }
+  .snm-footer-watermark span { font-size: 280px; }
 }
