@@ -731,6 +731,198 @@ p { color: var(--text); }
 .whatsapp-fab svg { width: 26px; height: 26px; fill: white; }
 
 /* ============================================================
+   PROCESS STEPS  (.ps-section)
+   ============================================================ */
+.ps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  align-items: stretch;
+}
+
+.ps-card {
+  background: var(--ps-bg);
+  border-radius: 20px;
+  padding: 28px 24px 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 380px;
+}
+
+.ps-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.08);
+  font: 600 13px var(--body);
+  color: var(--navy);
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+
+.ps-title {
+  font: 700 clamp(18px, 1.8vw, 22px) var(--heading);
+  color: var(--navy);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.ps-desc {
+  font: 400 14px/1.6 var(--body);
+  color: var(--muted);
+  flex: 1;
+}
+
+/* ── Visual area at bottom of each card ── */
+.ps-visual {
+  margin-top: 24px;
+  flex-shrink: 0;
+}
+
+/* Form mock */
+.ps-form-mock {
+  background: white;
+  border-radius: 12px 12px 0 0;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ps-form-field {
+  background: #f1f5f9;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font: 400 12px var(--body);
+  color: var(--muted);
+}
+
+.ps-form-btn {
+  background: var(--navy);
+  color: white;
+  border-radius: 100px;
+  padding: 10px 14px;
+  font: 600 12px var(--body);
+  text-align: center;
+  margin-top: 4px;
+}
+
+/* Strategy mock */
+.ps-strategy-mock {
+  background: white;
+  border-radius: 12px 12px 0 0;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ps-strategy-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ps-strategy-icon { font-size: 16px; flex-shrink: 0; }
+
+.ps-strategy-bar {
+  height: 8px;
+  background: #bbf7d0;
+  border-radius: 100px;
+}
+
+/* Publish mock */
+.ps-publish-mock {
+  background: white;
+  border-radius: 12px 12px 0 0;
+  padding: 14px;
+}
+
+.ps-publish-post {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+.ps-publish-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: linear-gradient(135deg,#fed7aa,#fb923c);
+  flex-shrink: 0;
+}
+
+.ps-publish-meta {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ps-publish-line {
+  height: 8px;
+  background: #f1f5f9;
+  border-radius: 100px;
+}
+
+.ps-publish-badge {
+  position: absolute;
+  top: -8px;
+  right: -4px;
+  background: #dcfce7;
+  color: #16a34a;
+  font: 600 10px var(--body);
+  padding: 3px 8px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+/* Growth mock */
+.ps-growth-mock {
+  background: white;
+  border-radius: 12px 12px 0 0;
+  padding: 16px 16px 0;
+}
+
+.ps-growth-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 72px;
+  margin-bottom: 10px;
+}
+
+.ps-bar {
+  flex: 1;
+  background: #fef08a;
+  border-radius: 4px 4px 0 0;
+}
+
+.ps-bar--active {
+  background: var(--navy);
+}
+
+.ps-growth-label {
+  font: 600 12px var(--body);
+  color: var(--navy);
+  padding-bottom: 12px;
+}
+
+@media (max-width: 900px) {
+  .ps-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .ps-grid { grid-template-columns: 1fr; }
+  .ps-card { min-height: auto; }
+}
+
+/* ============================================================
    SCROLL ANIMATIONS
    ============================================================ */
 .reveal {
