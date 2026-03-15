@@ -923,6 +923,124 @@ p { color: var(--text); }
 }
 
 /* ============================================================
+   REVIEWS  (.rv-section)
+   ============================================================ */
+.rv-section {
+  background: var(--bg-soft);
+  padding: var(--section-v) 0;
+}
+
+.rv-inner {
+  padding: 0 clamp(20px, 5vw, 56px);
+}
+
+.rv-title {
+  font-size: clamp(36px, 4.5vw, 60px);
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.rv-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--blue);
+  color: white;
+  font: 600 15px var(--body);
+  padding: 13px 22px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.rv-cta:hover {
+  background: var(--blue-dark);
+  transform: translateY(-1px);
+}
+
+.rv-cta__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  font-size: 13px;
+}
+
+.rv-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.rv-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.rv-card__top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.rv-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 600 14px var(--body);
+  color: white;
+  flex-shrink: 0;
+}
+
+.rv-card__name {
+  font: 600 15px var(--heading);
+  color: var(--navy);
+  margin-bottom: 3px;
+}
+
+.rv-card__stars {
+  color: #F59E0B;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.rv-card__text {
+  font: 400 15px/1.65 var(--body);
+  color: var(--text);
+  flex: 1;
+}
+
+.rv-card__service {
+  font: 400 13px var(--body);
+  color: var(--blue);
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+  margin-top: auto;
+}
+
+@media (max-width: 900px) {
+  .rv-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .rv-grid { grid-template-columns: 1fr; gap: 12px; }
+  .rv-title { font-size: clamp(28px, 8vw, 40px); }
+}
+
+/* ============================================================
    SCROLL ANIMATIONS
    ============================================================ */
 .reveal {
