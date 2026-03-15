@@ -2971,8 +2971,8 @@ body:has(.fshero) #nav:not(.scrolled) .nav__links a {
   z-index: 1;
   box-sizing: border-box;
   margin-top: -320px;   /* pull 320px up behind the card */
-  padding-top: 320px;   /* push span back down to card-bottom edge */
-  height: 500px;        /* content height = 500-320 = 180px visible below card */
+  padding-top: 245px;   /* 320px minus ~75px font top-whitespace = ink starts at card edge */
+  height: 500px;        /* content height = 500-245 = 255px visible below card */
   overflow: hidden;
   display: flex;
   align-items: flex-start;
@@ -3014,8 +3014,8 @@ body:has(.fshero) #nav:not(.scrolled) .nav__links a {
   .snm-footer-watermark {
     box-sizing: border-box;
     margin-top: -200px;
-    padding-top: 200px;
-    height: 320px; /* 120px visible */
+    padding-top: 155px;
+    height: 320px; /* 165px visible */
   }
 
   .snm-footer-watermark span { font-size: 450px; }
@@ -3035,8 +3035,8 @@ body:has(.fshero) #nav:not(.scrolled) .nav__links a {
   .snm-footer-watermark {
     box-sizing: border-box;
     margin-top: -130px;
-    padding-top: 130px;
-    height: 210px; /* 80px visible */
+    padding-top: 100px;
+    height: 210px; /* 110px visible */
   }
   .snm-footer-watermark span { font-size: 280px; }
 }
