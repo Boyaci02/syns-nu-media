@@ -2829,9 +2829,9 @@ body:has(.fshero) #nav:not(.scrolled) .nav__links a {
    ============================================================ */
 
 .snm-footer-wrap {
-  max-width: 1280px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 40px 5% 0;
+  padding: 40px 24px 0;
   position: relative;
   font-family: var(--font);
 }
@@ -2969,22 +2969,22 @@ body:has(.fshero) #nav:not(.scrolled) .nav__links a {
 .snm-footer-watermark {
   position: relative;
   z-index: 1;
-  margin-top: -20px;
+  margin-top: -12px;
   overflow: hidden;
-  height: 140px;
+  height: 170px;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: center;
   pointer-events: none;
 }
 
 .snm-footer-watermark span {
   font-family: var(--font);
-  font-size: 180px;
+  font-size: 480px;
   font-weight: 800;
   color: #e5e7eb;
   letter-spacing: -0.04em;
-  line-height: 0.8;
+  line-height: 1;
   user-select: none;
   white-space: nowrap;
 }
@@ -3010,10 +3010,10 @@ body:has(.fshero) #nav:not(.scrolled) .nav__links a {
   }
 
   .snm-footer-watermark {
-    height: 90px;
+    height: 110px;
   }
 
-  .snm-footer-watermark span { font-size: 100px; }
+  .snm-footer-watermark span { font-size: 300px; }
 }
 
 @media (max-width: 500px) {
@@ -3027,6 +3027,6 @@ body:has(.fshero) #nav:not(.scrolled) .nav__links a {
     gap: 12px;
   }
 
-  .snm-footer-watermark { height: 60px; }
-  .snm-footer-watermark span { font-size: 64px; }
+  .snm-footer-watermark { height: 80px; }
+  .snm-footer-watermark span { font-size: 200px; }
 }
