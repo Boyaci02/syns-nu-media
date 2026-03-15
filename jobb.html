@@ -4,15 +4,528 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jobb | Syns Nu Media</title>
-  <meta name="description" content="Jobba med oss på Syns Nu Media. Vi söker passionerade marknadsförare, fotografer och webbutvecklare som vill hjälpa restauranger att växa.">
+  <meta name="description" content="Vi söker kreativa content writers, videografer och redigerare som vill bygga viral matcontent. Sök till vårt team idag.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/global.css">
-  <link rel="stylesheet" href="css/pages.css">
+  <style>
+    /* ─── RESET & BASE ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:       #3b82f6;
+      --blue-light: rgba(59,130,246,0.10);
+      --dark:       #111827;
+      --bg:         #ffffff;
+      --bg-soft:    #fafafa;
+      --border:     #e5e7eb;
+      --muted:      #71717a;
+      --muted-light:#a1a1aa;
+      --green:      #22c55e;
+      --font:       'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--dark);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── HERO ─── */
+    .jobb-hero {
+      padding: 120px 5% 80px;
+      text-align: center;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .jobb-hero__blur {
+      position: absolute;
+      width: 500px; height: 500px;
+      background: rgba(59,130,246,0.06);
+      border-radius: 50%;
+      filter: blur(120px);
+      top: -100px; left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .jobb-hero__inner {
+      position: relative;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .jobb-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--blue-light);
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 8px 18px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .jobb-badge svg { flex-shrink: 0; }
+
+    .jobb-hero__h1 {
+      font-size: clamp(36px, 6vw, 72px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--dark);
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.55s ease 0.1s, transform 0.55s ease 0.1s;
+    }
+
+    .jobb-hero__h1 .city-name {
+      color: var(--blue);
+    }
+
+    .jobb-hero__sub {
+      font-size: clamp(16px, 2vw, 19px);
+      font-weight: 400;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 520px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.55s ease 0.18s, transform 0.55s ease 0.18s;
+    }
+
+    .jobb-hero.visible .jobb-badge,
+    .jobb-hero.visible .jobb-hero__h1,
+    .jobb-hero.visible .jobb-hero__sub {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── CITY FILTER ─── */
+    .city-filter {
+      padding: 0 5% 64px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .city-filter__wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .city-filter__wrap.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .city-btn {
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 13px 26px;
+      min-height: 48px;
+      border-radius: 100px;
+      border: 1.5px solid var(--border);
+      background: var(--bg-soft);
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      outline: none;
+    }
+
+    .city-btn:hover {
+      border-color: #c4c4c4;
+      color: var(--dark);
+    }
+
+    .city-btn.active {
+      background: var(--dark);
+      color: #fff;
+      border-color: var(--dark);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+      transform: scale(1.05);
+    }
+
+    /* ─── JOB CARDS ─── */
+    .job-section {
+      padding: 0 5% 96px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .job-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .job-cards-grid { grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    }
+
+    .job-card {
+      background: var(--bg-soft);
+      border: 1.5px solid var(--border);
+      border-radius: 40px;
+      padding: 40px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      overflow: hidden;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    .job-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .job-card:hover {
+      border-color: var(--blue);
+      box-shadow: 0 12px 40px rgba(59,130,246,0.12);
+      transform: translateY(-4px);
+    }
+
+    .job-card__num {
+      position: absolute;
+      top: 20px;
+      right: 28px;
+      font-size: 72px;
+      font-weight: 800;
+      color: var(--dark);
+      opacity: 0.04;
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .job-card__icon-wrap {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: var(--blue-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .job-card__icon-wrap svg {
+      color: var(--blue);
+    }
+
+    .job-card__title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.3;
+    }
+
+    .job-card__desc {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .job-card__skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 5px 13px;
+      border-radius: 100px;
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      color: var(--muted);
+    }
+
+    .job-card__city {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--blue);
+    }
+
+    .job-card__city svg { flex-shrink: 0; }
+
+    .job-card__apply {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--dark);
+      color: #fff;
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      padding: 16px 24px;
+      min-height: 56px;
+      border: none;
+      border-radius: 18px;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+      text-decoration: none;
+      width: 100%;
+    }
+
+    .job-card__apply:hover {
+      background: #1f2937;
+      transform: scale(1.02);
+    }
+
+    /* ─── FORM SECTION ─── */
+    .form-section {
+      padding: 0 5% 96px;
+      position: relative;
+    }
+
+    .form-section__blur {
+      position: absolute;
+      width: 280px; height: 280px;
+      background: rgba(59,130,246,0.05);
+      border-radius: 50%;
+      filter: blur(100px);
+      bottom: 80px;
+      left: 5%;
+      pointer-events: none;
+    }
+
+    .form-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      background: var(--bg-soft);
+      border: 1.5px solid var(--border);
+      border-radius: 56px;
+      padding: clamp(36px, 5vw, 72px) clamp(28px, 6vw, 80px);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .form-wrap.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .form-header__eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .form-header__title {
+      font-size: clamp(26px, 4vw, 40px);
+      font-weight: 800;
+      color: var(--dark);
+      line-height: 1.15;
+    }
+
+    .form-header__sub {
+      font-size: 15px;
+      color: var(--muted);
+      margin-top: 12px;
+      line-height: 1.6;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 600px) {
+      .form-grid { grid-template-columns: 1fr 1fr; }
+      .form-grid .span-2 { grid-column: 1 / -1; }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--dark);
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      padding: 16px 22px;
+      min-height: 56px;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      width: 100%;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .form-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2371717a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 18px center;
+      padding-right: 46px;
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder { color: var(--muted-light); }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.12);
+    }
+
+    .form-textarea {
+      min-height: 140px;
+      resize: vertical;
+      line-height: 1.6;
+    }
+
+    .form-submit {
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--blue);
+      color: #fff;
+      font-family: var(--font);
+      font-size: 16px;
+      font-weight: 700;
+      padding: 20px 40px;
+      min-height: 60px;
+      border: none;
+      border-radius: 18px;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .form-submit:hover:not(:disabled) {
+      background: #2563eb;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(59,130,246,0.3);
+    }
+
+    .form-submit:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    .form-submit svg { flex-shrink: 0; }
+
+    /* ─── SUCCESS STATE ─── */
+    .form-success {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 48px 20px;
+      gap: 20px;
+      opacity: 0;
+      transform: scale(0.92);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .form-success.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .form-success__icon {
+      width: 72px;
+      height: 72px;
+      background: rgba(34,197,94,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .form-success__title {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    .form-success__sub {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 380px;
+    }
+
+    /* ─── LOADER ─── */
+    .loader-spin {
+      animation: spin 0.9s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* ─── NAV (from global.css, ensure no conflict) ─── */
+    .jobb-page-spacer { height: 0; }
+  </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav id="nav">
   <div class="nav__inner">
     <a class="nav__logo" href="index.html">
@@ -54,132 +567,210 @@
   </nav>
 </div>
 
-<!-- PAGE HERO -->
-<section class="page-hero">
-  <div class="page-hero__blob"></div>
-  <div class="container">
-    <div class="page-hero__inner reveal">
-      <span class="section-eyebrow">Jobb & Karriär</span>
-      <h1>Bygg framtidens restaurangmarknadsföring med oss</h1>
-      <p class="page-hero__subtitle">Vi är ett passionerat team som hjälper restauranger att växa. Jobba med kreativitet, strategi och riktiga resultat — varje dag.</p>
+<!-- ══════════════════════════════════════
+     1. HERO
+══════════════════════════════════════ -->
+<section class="jobb-hero" id="jobb-hero">
+  <div class="jobb-hero__blur"></div>
+  <div class="jobb-hero__inner">
+    <div class="jobb-badge">
+      <!-- Sparkles icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg>
+      Vi expanderar nationellt
     </div>
+    <h1 class="jobb-hero__h1">
+      Sök till vårt team i <span class="city-name">Stockholm</span>
+    </h1>
+    <p class="jobb-hero__sub">
+      Vi söker kreativa och drivna talanger som vill skapa viral matcontent som faktiskt ger resultat. Är det du?
+    </p>
   </div>
 </section>
 
-<!-- CULTURE CARDS -->
-<section class="section">
-  <div class="container">
-    <div class="section-header reveal" style="text-align:center;margin-bottom:48px;">
-      <span class="section-eyebrow">Vår kultur</span>
-      <h2>Varför jobba med oss?</h2>
-    </div>
-    <div class="culture-grid reveal-stagger">
-      <div class="culture-card">
-        <span class="culture-card__icon">🎯</span>
-        <h3>Meningsfullt arbete</h3>
-        <p>Du ser direkta resultat av ditt jobb. Vi hjälper restaurangägare att lyckas — det syns varje dag.</p>
-      </div>
-      <div class="culture-card">
-        <span class="culture-card__icon">🌱</span>
-        <h3>Snabb tillväxt</h3>
-        <p>Vi växer snabbt och du växer med oss. Massor av möjligheter att ta ansvar och klättra.</p>
-      </div>
-      <div class="culture-card">
-        <span class="culture-card__icon">🎨</span>
-        <h3>Kreativ frihet</h3>
-        <p>Vi värdesätter goda idéer oavsett vem de kommer från. Testa, lär och förbättra tillsammans.</p>
-      </div>
-      <div class="culture-card">
-        <span class="culture-card__icon">🏠</span>
-        <h3>Flexibilitet</h3>
-        <p>Hybrid-arbete, flexibla tider och fokus på resultat — inte närvaro. Livet är mer än jobbet.</p>
-      </div>
-    </div>
+<!-- ══════════════════════════════════════
+     2. CITY FILTER
+══════════════════════════════════════ -->
+<div class="city-filter">
+  <div class="city-filter__wrap" id="cityFilterWrap">
+    <button class="city-btn active" data-city="Stockholm">Stockholm</button>
+    <button class="city-btn" data-city="Göteborg">Göteborg</button>
+    <button class="city-btn" data-city="Malmö">Malmö</button>
+    <button class="city-btn" data-city="Örebro">Örebro</button>
+    <button class="city-btn" data-city="Linköping">Linköping</button>
   </div>
-</section>
+</div>
 
-<!-- JOB LISTINGS -->
-<section class="section section--soft">
-  <div class="container">
-    <div class="section-header reveal" style="text-align:center;margin-bottom:48px;">
-      <span class="section-eyebrow">Öppna tjänster</span>
-      <h2>Lediga positioner</h2>
+<!-- ══════════════════════════════════════
+     3. JOB CARDS
+══════════════════════════════════════ -->
+<div class="job-section">
+  <div class="job-cards-grid" id="jobCardsGrid">
+
+    <!-- Card 1: Content Writer -->
+    <article class="job-card" style="transition-delay: 0s;">
+      <span class="job-card__num">01</span>
+      <div class="job-card__icon-wrap">
+        <!-- PenTool icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.707 21.293a1 1 0 0 1-1.414 0l-1.586-1.586a1 1 0 0 1 0-1.414l5.586-5.586a1 1 0 0 1 1.414 0l1.586 1.586a1 1 0 0 1 0 1.414z"/><path d="m18 13-1.375-6.874a1 1 0 0 0-.746-.776L3.235 2.028a1 1 0 0 0-1.207 1.207L5.35 16.879a1 1 0 0 0 .776.746L13 19"/><path d="m2.3 2.3 7.286 7.286"/><circle cx="11" cy="11" r="2"/></svg>
+      </div>
+      <div>
+        <h2 class="job-card__title">Content Writer<br>/ Manusförfattare</h2>
+        <p class="job-card__desc" style="margin-top:10px;">Du skriver manus för virala klipp som fångar folk på första sekunden och håller dem kvar till slutet. Storytelling, hooks och trender – det är din vardag.</p>
+      </div>
+      <div class="job-card__skills">
+        <span class="skill-tag">Hooks & trender</span>
+        <span class="skill-tag">Målgruppsanalys</span>
+        <span class="skill-tag">9:16-format</span>
+      </div>
+      <div class="job-card__city" id="cardCity0">
+        <!-- MapPin icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Stockholm</span>
+      </div>
+      <button class="job-card__apply" onclick="scrollToForm('Content Writer / Manusförfattare')">
+        Ansök
+        <!-- ArrowRight icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </button>
+    </article>
+
+    <!-- Card 2: Videograf -->
+    <article class="job-card" style="transition-delay: 0.1s;">
+      <span class="job-card__num">02</span>
+      <div class="job-card__icon-wrap">
+        <!-- Video icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg>
+      </div>
+      <div>
+        <h2 class="job-card__title">Videograf</h2>
+        <p class="job-card__desc" style="margin-top:10px;">Du filmar matcontent direkt på restaurangen. Med ett tränat öga för ljus och komposition skapar du klipp som ser professionella ut – men känns äkta.</p>
+      </div>
+      <div class="job-card__skills">
+        <span class="skill-tag">Ljus & komposition</span>
+        <span class="skill-tag">Effektiv på plats</span>
+        <span class="skill-tag">Matfilmning</span>
+      </div>
+      <div class="job-card__city" id="cardCity1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Stockholm</span>
+      </div>
+      <button class="job-card__apply" onclick="scrollToForm('Videograf')">
+        Ansök
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </button>
+    </article>
+
+    <!-- Card 3: Redigerare -->
+    <article class="job-card" style="transition-delay: 0.2s;">
+      <span class="job-card__num">03</span>
+      <div class="job-card__icon-wrap">
+        <!-- Scissors icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/></svg>
+      </div>
+      <div>
+        <h2 class="job-card__title">Redigerare<br>/ Editor</h2>
+        <p class="job-card__desc" style="margin-top:10px;">Du tar råmaterial och förvandlar det till klipp som håller kvar tittaren sekund för sekund. Post-produktion, tempo och retention är ditt hantverk.</p>
+      </div>
+      <div class="job-card__skills">
+        <span class="skill-tag">Premiere / CapCut / AE</span>
+        <span class="skill-tag">Färgkorr. & sound design</span>
+        <span class="skill-tag">Tempo & retention</span>
+      </div>
+      <div class="job-card__city" id="cardCity2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Stockholm</span>
+      </div>
+      <button class="job-card__apply" onclick="scrollToForm('Redigerare / Editor')">
+        Ansök
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </button>
+    </article>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     4. APPLICATION FORM
+══════════════════════════════════════ -->
+<div class="form-section" id="application-form">
+  <div class="form-section__blur"></div>
+  <div class="form-wrap" id="formWrap">
+
+    <!-- Form header -->
+    <div class="form-header">
+      <p class="form-header__eyebrow">Ansökan</p>
+      <h2 class="form-header__title">Berätta om dig själv</h2>
+      <p class="form-header__sub">Fyll i formuläret nedan så hör vi av oss inom 48 timmar.</p>
     </div>
-    <div class="job-list reveal">
-      <div class="job-card">
-        <div>
-          <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
-            <div class="icon-chip icon-chip--blue" style="width:44px;height:44px;font-size:18px;">📱</div>
-            <h3>Social Media Manager</h3>
-          </div>
-          <div class="job-card__meta">
-            <span class="badge badge--blue">Heltid</span>
-            <span class="badge badge--green">Göteborg / Distans</span>
-            <span class="badge badge--orange">Sociala Medier</span>
-          </div>
-          <p style="margin-top:12px;color:var(--muted);font-size:14px;line-height:1.6;">Du ansvarar för 15–20 restaurangkunders närvaro på Instagram, TikTok och Facebook. Strategi, innehållsplanering och community management.</p>
+
+    <!-- The form -->
+    <form id="jobForm" novalidate>
+      <div class="form-grid">
+
+        <div class="form-group">
+          <label class="form-label" for="f-name">Namn</label>
+          <input class="form-input" type="text" id="f-name" name="name" placeholder="Ditt namn" required>
         </div>
-        <a href="kontakt.html" class="btn btn--blue btn--sm" style="white-space:nowrap;flex-shrink:0;">Ansök nu →</a>
-      </div>
 
-      <div class="job-card">
-        <div>
-          <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
-            <div class="icon-chip icon-chip--orange" style="width:44px;height:44px;font-size:18px;">📸</div>
-            <h3>Fotograf & Videograf</h3>
-          </div>
-          <div class="job-card__meta">
-            <span class="badge badge--blue">Heltid / Deltid</span>
-            <span class="badge badge--green">Stockholm</span>
-            <span class="badge badge--orange">Foto & Video</span>
-          </div>
-          <p style="margin-top:12px;color:var(--muted);font-size:14px;line-height:1.6;">Du fotograferar och filmar mat, restaurangmiljöer och team. Redigering, styling och en stark känsla för vad som funkar på sociala medier är ett måste.</p>
+        <div class="form-group">
+          <label class="form-label" for="f-email">E-post</label>
+          <input class="form-input" type="email" id="f-email" name="email" placeholder="din@email.se" required>
         </div>
-        <a href="kontakt.html" class="btn btn--blue btn--sm" style="white-space:nowrap;flex-shrink:0;">Ansök nu →</a>
-      </div>
 
-      <div class="job-card">
-        <div>
-          <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
-            <div class="icon-chip icon-chip--green" style="width:44px;height:44px;font-size:18px;">🌐</div>
-            <h3>Webbutvecklare (Frontend)</h3>
-          </div>
-          <div class="job-card__meta">
-            <span class="badge badge--blue">Heltid</span>
-            <span class="badge badge--green">Remote</span>
-            <span class="badge badge--pink">Webbutveckling</span>
-          </div>
-          <p style="margin-top:12px;color:var(--muted);font-size:14px;line-height:1.6;">Du bygger snygga, snabba restauranghemsidor. HTML, CSS, JavaScript och ett öga för design. Erfarenhet av WordPress eller liknande CMS är ett plus.</p>
+        <div class="form-group">
+          <label class="form-label" for="f-city">Stad</label>
+          <select class="form-select" id="f-city" name="city" required>
+            <option value="" disabled selected>Välj stad</option>
+            <option>Stockholm</option>
+            <option>Göteborg</option>
+            <option>Malmö</option>
+            <option>Örebro</option>
+            <option>Linköping</option>
+          </select>
         </div>
-        <a href="kontakt.html" class="btn btn--blue btn--sm" style="white-space:nowrap;flex-shrink:0;">Ansök nu →</a>
+
+        <div class="form-group">
+          <label class="form-label" for="f-role">Roll</label>
+          <select class="form-select" id="f-role" name="role" required>
+            <option value="" disabled selected>Välj roll</option>
+            <option>Content Writer / Manusförfattare</option>
+            <option>Videograf</option>
+            <option>Redigerare / Editor</option>
+            <option>Annan roll</option>
+          </select>
+        </div>
+
+        <div class="form-group span-2">
+          <label class="form-label" for="f-portfolio">Portfolio-länk</label>
+          <input class="form-input" type="url" id="f-portfolio" name="portfolio" placeholder="https://dittportfolio.se">
+        </div>
+
+        <div class="form-group span-2">
+          <label class="form-label" for="f-message">Meddelande</label>
+          <textarea class="form-textarea" id="f-message" name="message" placeholder="Berätta lite om dig själv, din erfarenhet och varför du vill jobba med oss..." required></textarea>
+        </div>
+
       </div>
-    </div>
 
-    <!-- Open application -->
-    <div class="card reveal" style="margin-top:32px;text-align:center;background:var(--blue-light);">
-      <h3 style="color:var(--blue);">Ser du inte din roll här?</h3>
-      <p style="color:var(--muted);margin:8px 0 20px;">Vi är alltid öppna för passionerade personer. Skicka ett spontanansökan!</p>
-      <a href="kontakt.html" class="btn btn--blue">Skicka spontanansökan</a>
-    </div>
-  </div>
-</section>
+      <button type="submit" class="form-submit" id="submitBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
+        Skicka ansökan
+      </button>
+    </form>
 
-<!-- CTA -->
-<section class="cta-section">
-  <div class="container">
-    <div class="cta-section__inner reveal">
-      <h2>Redo att göra skillnad för restaurangbranschen?</h2>
-      <p>Skicka en ansökan eller kontakta oss direkt. Vi svarar alltid.</p>
-      <a href="kontakt.html" class="btn btn--blue btn--lg">Kontakta oss</a>
-      <div class="cta-section__trust">
-        <span>✓ Flexibelt arbete</span>
-        <span>✓ Snabb tillväxt</span>
-        <span>✓ Kreativ miljö</span>
+    <!-- Success state -->
+    <div class="form-success" id="formSuccess">
+      <div class="form-success__icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
       </div>
+      <h3 class="form-success__title">Ansökan skickad!</h3>
+      <p class="form-success__sub">Tack för din ansökan. Vi går igenom den och återkommer inom 48 timmar.</p>
     </div>
-  </div>
-</section>
 
+  </div>
+</div>
+
+<!-- FOOTER -->
 <footer class="footer">
   <div class="container">
     <div class="footer__grid">
@@ -228,5 +819,97 @@
 </a>
 
 <script src="js/main.js"></script>
+<script>
+  // ── Scroll-reveal ──────────────────────────────────────────
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll(
+    '#jobb-hero, #cityFilterWrap, .job-card, #formWrap'
+  ).forEach(el => io.observe(el));
+
+  // ── City filter ────────────────────────────────────────────
+  const cityBtns = document.querySelectorAll('.city-btn');
+  const cityNameEl = document.querySelector('.city-name');
+  const cardCityEls = [
+    document.querySelector('#cardCity0 span'),
+    document.querySelector('#cardCity1 span'),
+    document.querySelector('#cardCity2 span'),
+  ];
+  const citySelect = document.getElementById('f-city');
+
+  cityBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      cityBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const city = btn.dataset.city;
+
+      // Update hero heading
+      cityNameEl.textContent = city;
+
+      // Update card city labels
+      cardCityEls.forEach(el => { if (el) el.textContent = city; });
+
+      // Sync form dropdown
+      if (citySelect) {
+        for (const opt of citySelect.options) {
+          if (opt.value === city) { opt.selected = true; break; }
+        }
+      }
+    });
+  });
+
+  // ── Scroll to form & pre-fill role ────────────────────────
+  function scrollToForm(role) {
+    const formEl = document.getElementById('application-form');
+    if (formEl) formEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    const roleSelect = document.getElementById('f-role');
+    if (roleSelect) {
+      for (const opt of roleSelect.options) {
+        if (opt.value === role) { opt.selected = true; break; }
+      }
+    }
+  }
+
+  // ── Form submit ───────────────────────────────────────────
+  const jobForm = document.getElementById('jobForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const formSuccess = document.getElementById('formSuccess');
+
+  jobForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Basic validation
+    if (!jobForm.checkValidity()) {
+      jobForm.reportValidity();
+      return;
+    }
+
+    // Loading state
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `
+      <svg class="loader-spin" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+      Skickar...
+    `;
+
+    // Simulate send (replace with real endpoint if needed)
+    await new Promise(r => setTimeout(r, 1400));
+
+    // Show success
+    jobForm.style.display = 'none';
+    formSuccess.style.display = 'flex';
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => formSuccess.classList.add('visible'));
+    });
+  });
+</script>
 </body>
 </html>
