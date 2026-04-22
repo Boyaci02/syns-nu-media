@@ -74,11 +74,22 @@
   border: 1px solid var(--border);
   border-radius: var(--r-xl);
   background: var(--bg);
-  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  transition: border-color 400ms var(--ease-out), box-shadow 400ms var(--ease-out), transform 400ms var(--ease-out);
 }
 
 .feature-card:hover {
   border-color: var(--border-strong);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px -12px rgba(15, 15, 16, 0.12);
+}
+
+.feature-card .icon-chip {
+  transition: transform 400ms var(--ease-out), background 400ms var(--ease-out);
+}
+.feature-card:hover .icon-chip {
+  transform: scale(1.08) rotate(-3deg);
+  background: var(--text);
+  color: white;
 }
 
 .feature-card .icon-chip {
@@ -446,14 +457,14 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
+  transition: border-color 400ms var(--ease-out), box-shadow 400ms var(--ease-out), transform 400ms var(--ease-out);
 }
 
 .case-card:hover,
 .blog-card:hover {
   border-color: var(--border-strong);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
+  box-shadow: 0 16px 40px -16px rgba(15, 15, 16, 0.18);
+  transform: translateY(-4px);
 }
 
 .case-card__photo,
@@ -462,6 +473,12 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
   background: var(--bg-soft);
   position: relative;
   overflow: hidden;
+  transition: transform 700ms var(--ease-out);
+}
+
+.case-card:hover .case-card__photo,
+.blog-card:hover .blog-card__photo {
+  transform: scale(1.04);
 }
 
 .case-card__photo img,
@@ -469,6 +486,13 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
+  transition: transform 700ms var(--ease-out);
+}
+
+.case-card:hover .case-card__photo img,
+.blog-card:hover .blog-card__photo img {
+  transform: scale(1.06);
 }
 
 .case-card__body,
@@ -1216,6 +1240,49 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
 
 .dashboard__chart svg { flex: 1; }
 
+/* Chart draw-in animation */
+@keyframes drawLine {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes fadeInPoint {
+  from { opacity: 0; transform: scale(0); transform-origin: center; }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes growBar {
+  from { transform: scaleY(0); }
+  to   { transform: scaleY(1); }
+}
+
+.dashboard-mockup .chart-line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawLine 2200ms var(--ease-out) forwards;
+  animation-delay: 900ms;
+}
+
+.dashboard-mockup .chart-point {
+  opacity: 0;
+  transform-origin: center;
+  animation: fadeInPoint 400ms var(--ease-out) forwards;
+  animation-delay: 2900ms;
+}
+
+.dashboard-mockup .chart-bar {
+  transform-origin: bottom center;
+  transform: scaleY(0);
+  animation: growBar 700ms var(--ease-out) forwards;
+}
+
+.dashboard-mockup .chart-bar:nth-child(1) { animation-delay: 1100ms; }
+.dashboard-mockup .chart-bar:nth-child(2) { animation-delay: 1200ms; }
+.dashboard-mockup .chart-bar:nth-child(3) { animation-delay: 1300ms; }
+.dashboard-mockup .chart-bar:nth-child(4) { animation-delay: 1400ms; }
+.dashboard-mockup .chart-bar:nth-child(5) { animation-delay: 1500ms; }
+.dashboard-mockup .chart-bar:nth-child(6) { animation-delay: 1600ms; }
+.dashboard-mockup .chart-bar:nth-child(7) { animation-delay: 1700ms; }
+
 /* ============================================================
    BENTO GRID (Aldrig en tråkig dag)
    ============================================================ */
@@ -1235,12 +1302,14 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease);
+  transition: border-color 400ms var(--ease-out), background 400ms var(--ease-out), transform 400ms var(--ease-out), box-shadow 400ms var(--ease-out);
 }
 
 .bento__card:hover {
   border-color: var(--border-strong);
   background: var(--bg);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px -12px rgba(15, 15, 16, 0.12);
 }
 
 .bento__card--lg { grid-column: span 4; grid-row: span 2; }
@@ -1481,9 +1550,15 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
+  animation: tabFade 500ms var(--ease-out);
 }
 
 .tabs__panel.is-active { display: grid; }
+
+@keyframes tabFade {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
 
 .tabs__visual {
   background: var(--bg);
@@ -2013,10 +2088,12 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
 .marquee__track {
   display: flex;
   gap: 4rem;
-  animation: scroll 40s linear infinite;
+  animation: scroll 50s linear infinite;
   width: max-content;
   align-items: center;
 }
+
+.marquee:hover .marquee__track { animation-play-state: paused; }
 
 .marquee__item {
   height: 40px;

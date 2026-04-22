@@ -12,16 +12,33 @@
   const isFsheroPage = document.body.classList.contains('fshero-page');
 
   if (nav) {
+    var lastScrollY = 0;
+    var scrollThreshold = 80;
+
     function updateNav() {
-      var scrolled = window.scrollY > 20;
+      var y = window.scrollY;
+      var scrolled = y > 20;
       nav.classList.toggle('scrolled', scrolled);
-      // On fshero pages: invert logo/hamburger when over dark hero
+
+      // Auto-hide when scrolling down, show when scrolling up
+      if (y > scrollThreshold) {
+        var delta = y - lastScrollY;
+        if (delta > 8) {
+          nav.classList.add('nav--hidden');
+        } else if (delta < -4) {
+          nav.classList.remove('nav--hidden');
+        }
+      } else {
+        nav.classList.remove('nav--hidden');
+      }
+      lastScrollY = y;
+
       if (isFsheroPage) {
         nav.classList.toggle('nav--over-hero', !scrolled);
       }
     }
     window.addEventListener('scroll', updateNav, { passive: true });
-    updateNav(); // run once on load
+    updateNav();
   }
 
   /* ──────────────────────────────────────────────
@@ -109,7 +126,7 @@
         revealObs.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 
   document.querySelectorAll('.reveal').forEach(function (el) {
     revealObs.observe(el);

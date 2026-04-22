@@ -285,7 +285,12 @@ p { color: var(--text-2); font-size: 1rem; line-height: 1.65; }
   right: 0;
   z-index: 100;
   padding-inline: var(--gutter);
-  transition: top var(--dur) var(--ease);
+  transform: translateY(0);
+  transition: transform 400ms var(--ease-out);
+}
+
+#nav.nav--hidden {
+  transform: translateY(calc(-100% - 32px));
 }
 
 .nav__inner {
@@ -572,13 +577,66 @@ p { color: var(--text-2); font-size: 1rem; line-height: 1.65; }
    ============================================================ */
 .reveal {
   opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
+  transform: translateY(20px);
+  transition: opacity 800ms var(--ease-out), transform 800ms var(--ease-out);
+  will-change: opacity, transform;
 }
 .reveal.visible,
 .reveal.is-visible {
   opacity: 1;
   transform: none;
+}
+
+/* Stagger — children animate in sequence */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 80ms);
+  will-change: opacity, transform;
+}
+.reveal-stagger.visible > * {
+  opacity: 1;
+  transform: none;
+}
+
+/* Hero entrance — fires immediately on load */
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.hero-in {
+  opacity: 0;
+  animation: heroFadeUp 900ms var(--ease-out) forwards;
+}
+.hero-in--1 { animation-delay: 100ms; }
+.hero-in--2 { animation-delay: 250ms; }
+.hero-in--3 { animation-delay: 400ms; }
+.hero-in--4 { animation-delay: 550ms; }
+.hero-in--5 { animation-delay: 700ms; }
+.hero-in--6 { animation-delay: 900ms; }
+
+/* Blur-in variant for hero visual */
+@keyframes heroFadeBlur {
+  from { opacity: 0; transform: translateY(40px) scale(0.98); filter: blur(8px); }
+  to   { opacity: 1; transform: none; filter: blur(0); }
+}
+
+.hero-in-blur {
+  opacity: 0;
+  animation: heroFadeBlur 1200ms var(--ease-out) forwards;
+  animation-delay: 600ms;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-stagger > *, .hero-in, .hero-in-blur {
+    opacity: 1;
+    transform: none;
+    animation: none;
+    filter: none;
+  }
 }
 
 /* ============================================================
