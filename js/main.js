@@ -371,4 +371,28 @@
     vpObs.observe(vpCard);
   }
 
+  /* ──────────────────────────────────────────────
+     13. TABS (v4 restaurangtyper)
+  ────────────────────────────────────────────── */
+  document.querySelectorAll('.tabs').forEach(function (tabs) {
+    var buttons = tabs.querySelectorAll('.tabs__btn');
+    var panels  = tabs.querySelectorAll('.tabs__panel');
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var key = btn.getAttribute('data-tab');
+
+        buttons.forEach(function (b) {
+          var isActive = b === btn;
+          b.classList.toggle('is-active', isActive);
+          b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+
+        panels.forEach(function (p) {
+          p.classList.toggle('is-active', p.getAttribute('data-panel') === key);
+        });
+      });
+    });
+  });
+
 })();
