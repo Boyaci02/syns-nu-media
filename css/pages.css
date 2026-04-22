@@ -8,37 +8,26 @@
    ============================================================ */
 .page-hero {
   position: relative;
-  padding-top: calc(var(--nav-h) + clamp(56px, 7vw, 96px));
-  padding-bottom: clamp(48px, 7vw, 88px);
-  background: var(--bg-soft);
+  padding-top: calc(var(--nav-h) + clamp(72px, 8vw, 120px));
+  padding-bottom: clamp(64px, 8vw, 104px);
+  background: var(--bg);
   overflow: hidden;
   text-align: center;
-}
-
-.page-hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(to right, rgba(26, 115, 232, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(26, 115, 232, 0.05) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: radial-gradient(ellipse at 50% 30%, rgba(0,0,0,0.6), transparent 70%);
-  -webkit-mask-image: radial-gradient(ellipse at 50% 30%, rgba(0,0,0,0.6), transparent 70%);
-  pointer-events: none;
 }
 
 .page-hero::after {
   content: '';
   position: absolute;
-  top: -10%;
+  top: -20%;
   left: 50%;
   transform: translateX(-50%);
-  width: 700px;
-  height: 700px;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, rgba(26, 115, 232, 0.06) 35%, transparent 70%);
+  width: 900px;
+  height: 550px;
+  background:
+    radial-gradient(ellipse at 40% 30%, rgba(255, 200, 180, 0.25) 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 40%, rgba(200, 220, 255, 0.22) 0%, transparent 55%);
   pointer-events: none;
-  filter: blur(40px);
+  filter: blur(50px);
 }
 
 .page-hero__inner {
@@ -81,17 +70,15 @@
 
 .feature-card {
   position: relative;
-  padding: 2rem;
+  padding: 2.25rem;
   border: 1px solid var(--border);
   border-radius: var(--r-xl);
   background: var(--bg);
-  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
+  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
 }
 
 .feature-card:hover {
   border-color: var(--border-strong);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
 }
 
 .feature-card .icon-chip {
@@ -102,9 +89,10 @@
   align-items: center;
   justify-content: center;
   font-size: 1.25rem;
-  margin-bottom: 1rem;
-  background: var(--g-blue-50);
-  color: var(--g-blue);
+  margin-bottom: 1.25rem;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  color: var(--text);
 }
 
 .feature-card h3 {
@@ -255,10 +243,10 @@
   align-items: center;
   justify-content: center;
   color: white;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 0.8125rem;
   flex-shrink: 0;
-  background: var(--g-gradient);
+  background: var(--text);
 }
 
 .review-name {
@@ -419,7 +407,7 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   padding: 2.5rem;
-  background: var(--g-gradient);
+  background: var(--bg-dark);
   border-radius: var(--r-2xl);
   color: white;
   text-align: center;
@@ -471,7 +459,7 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
 .case-card__photo,
 .blog-card__photo {
   aspect-ratio: 16 / 10;
-  background: linear-gradient(135deg, var(--g-blue-50), var(--bg-tint));
+  background: var(--bg-soft);
   position: relative;
   overflow: hidden;
 }
@@ -494,12 +482,17 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
 
 .case-card__tag,
 .blog-card__tag {
+  display: inline-block;
   font-size: 0.6875rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--g-blue);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--text-3);
   margin-bottom: 0.25rem;
+  padding: 0.25rem 0.625rem;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  align-self: flex-start;
 }
 
 .case-card h3,
@@ -525,10 +518,10 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
 }
 
 .case-card__stat-val {
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  color: var(--g-blue);
+  font-size: 1.375rem;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  color: var(--text);
   line-height: 1;
 }
 
@@ -615,11 +608,11 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
 }
 
 .pricing-card--featured {
-  background: var(--g-gradient);
+  background: var(--bg-dark);
   color: white;
-  border: none;
+  border: 1px solid var(--bg-dark);
   transform: translateY(-12px);
-  box-shadow: 0 24px 60px -16px rgba(139, 92, 246, 0.45);
+  box-shadow: 0 24px 60px -16px rgba(15, 15, 16, 0.4);
   padding-top: 2.5rem;
 }
 
@@ -629,8 +622,10 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
 .pricing-card--featured .pricing-features li { color: white; }
 
 .pricing-card--featured .pricing-features li::before {
-  background: rgba(255,255,255,0.15) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>") center/12px no-repeat;
+  background: rgba(255,255,255,0.12) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>") center/12px no-repeat;
 }
+
+.pricing-card--featured .pricing-name { color: rgba(255,255,255,0.7); }
 
 .pricing-badge {
   position: absolute;
@@ -738,8 +733,9 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background: var(--g-blue-50);
-  color: var(--g-blue);
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  color: var(--text);
   font-size: 1rem;
   flex-shrink: 0;
   display: inline-flex;
@@ -844,12 +840,12 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: var(--g-gradient);
+  background: var(--text);
   color: white;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 1.125rem;
   margin-bottom: 1rem;
 }
@@ -866,11 +862,10 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
 }
 
 .step-connector {
-  height: 2px;
-  background: linear-gradient(to right, var(--g-blue), var(--g-purple));
-  margin-top: 23px;
+  height: 1px;
+  background: var(--border-strong);
+  margin-top: 24px;
   min-width: 40px;
-  opacity: 0.4;
 }
 
 @media (max-width: 768px) {
@@ -972,56 +967,46 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
 
 
 /* ============================================================
-   HERO
+   HERO — quieter, cleaner
    ============================================================ */
 .hero {
   position: relative;
-  padding-top: calc(var(--nav-h) + clamp(48px, 7vw, 96px));
-  padding-bottom: clamp(64px, 9vw, 120px);
-  background: var(--bg-soft);
+  padding-top: calc(var(--nav-h) + clamp(80px, 10vw, 140px));
+  padding-bottom: clamp(80px, 10vw, 140px);
+  background: var(--bg);
   overflow: hidden;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(to right, rgba(26, 115, 232, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(26, 115, 232, 0.05) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: radial-gradient(ellipse at 50% 30%, rgba(0,0,0,0.75), transparent 70%);
-  -webkit-mask-image: radial-gradient(ellipse at 50% 30%, rgba(0,0,0,0.75), transparent 70%);
-  pointer-events: none;
 }
 
 .hero::after {
   content: '';
   position: absolute;
-  top: -20%;
+  top: -30%;
   left: 50%;
   transform: translateX(-50%);
-  width: 900px;
-  height: 900px;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.14) 0%, rgba(26, 115, 232, 0.08) 35%, transparent 70%);
+  width: 1100px;
+  height: 700px;
+  background:
+    radial-gradient(ellipse at 40% 30%, rgba(255, 200, 180, 0.3) 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 40%, rgba(200, 220, 255, 0.3) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 70%, rgba(230, 210, 255, 0.22) 0%, transparent 55%);
   pointer-events: none;
-  filter: blur(40px);
+  filter: blur(60px);
 }
 
 .hero__inner {
   position: relative;
   z-index: 1;
   text-align: center;
-  max-width: 860px;
-  margin: 0 auto clamp(48px, 6vw, 72px);
+  max-width: 900px;
+  margin: 0 auto clamp(56px, 7vw, 88px);
 }
 
 .hero h1 {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
 }
 
 .hero .lead {
-  margin: 0 auto 2rem;
+  margin: 0 auto 2.25rem;
   text-align: center;
 }
 
@@ -1246,17 +1231,16 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
   overflow: hidden;
   border-radius: var(--r-xl);
   border: 1px solid var(--border);
-  background: var(--bg);
-  padding: 1.75rem;
+  background: var(--bg-soft);
+  padding: 2rem;
   display: flex;
   flex-direction: column;
-  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
+  transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease);
 }
 
 .bento__card:hover {
   border-color: var(--border-strong);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
+  background: var(--bg);
 }
 
 .bento__card--lg { grid-column: span 4; grid-row: span 2; }
@@ -1265,10 +1249,9 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
 
 .bento__label {
   font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--g-blue);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--text-3);
   margin-bottom: 0.5rem;
 }
 
@@ -1293,7 +1276,7 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
   padding-top: 1.25rem;
 }
 
-/* Bento visual — IG grid */
+/* Bento visual — IG grid, monokrom */
 .ig-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1305,20 +1288,21 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
 
 .ig-grid div {
   aspect-ratio: 1;
-  background: linear-gradient(135deg, #F9FAFB, #E5E7EB);
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
   position: relative;
   overflow: hidden;
 }
 
-.ig-grid div:nth-child(1) { background: linear-gradient(135deg, #FFB88C, #DE6262); }
-.ig-grid div:nth-child(2) { background: linear-gradient(135deg, #F6D365, #FDA085); }
-.ig-grid div:nth-child(3) { background: linear-gradient(135deg, #E0C3FC, #8EC5FC); }
-.ig-grid div:nth-child(4) { background: linear-gradient(135deg, #FFD3A5, #FD6585); }
-.ig-grid div:nth-child(5) { background: linear-gradient(135deg, #4FACFE, #00F2FE); }
-.ig-grid div:nth-child(6) { background: linear-gradient(135deg, #A1C4FD, #C2E9FB); }
-.ig-grid div:nth-child(7) { background: linear-gradient(135deg, #F093FB, #F5576C); }
-.ig-grid div:nth-child(8) { background: linear-gradient(135deg, #FEE140, #FA709A); }
-.ig-grid div:nth-child(9) { background: linear-gradient(135deg, #43E97B, #38F9D7); }
+.ig-grid div:nth-child(1) { background: linear-gradient(135deg, #F4F4F2 0%, #EAEAE6 100%); }
+.ig-grid div:nth-child(2) { background: linear-gradient(135deg, #EAEAE6 0%, #F4F4F2 100%); }
+.ig-grid div:nth-child(3) { background: linear-gradient(135deg, #F7F7F5 0%, #E5E5E0 100%); }
+.ig-grid div:nth-child(4) { background: linear-gradient(135deg, #E5E5E0 0%, #F4F4F2 100%); }
+.ig-grid div:nth-child(5) { background: #0F0F10; }
+.ig-grid div:nth-child(6) { background: linear-gradient(135deg, #F4F4F2 0%, #EAEAE6 100%); }
+.ig-grid div:nth-child(7) { background: linear-gradient(135deg, #EAEAE6 0%, #F4F4F2 100%); }
+.ig-grid div:nth-child(8) { background: linear-gradient(135deg, #F7F7F5 0%, #E5E5E0 100%); }
+.ig-grid div:nth-child(9) { background: linear-gradient(135deg, #F4F4F2 0%, #EAEAE6 100%); }
 
 /* Bento stat card */
 .bento--stat {
@@ -1329,12 +1313,12 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
 }
 
 .bento__stat {
-  font-size: clamp(3rem, 5vw, 4.5rem);
-  font-weight: 700;
+  font-size: clamp(3.5rem, 5.5vw, 5rem);
+  font-weight: 500;
   line-height: 1;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.05em;
   color: var(--text);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 /* Bento chart */
@@ -1489,7 +1473,7 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
 }
 
 .tabs__btn.is-active::after {
-  background: var(--g-gradient);
+  background: var(--text);
 }
 
 .tabs__panel {
@@ -1511,10 +1495,11 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
 
 .tabs__big-stat {
   font-size: 3.5rem;
-  font-weight: 700;
-  letter-spacing: -0.04em;
+  font-weight: 500;
+  letter-spacing: -0.045em;
   line-height: 1;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--text);
 }
 
 .tabs__big-stat-sub {
@@ -1537,8 +1522,9 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: var(--g-blue-50);
-  color: var(--g-blue);
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  color: var(--text);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1578,11 +1564,11 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
 
 .sweden-map__dot {
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: var(--g-blue);
-  box-shadow: 0 0 0 4px rgba(26, 115, 232, 0.2);
+  background: var(--text);
+  box-shadow: 0 0 0 4px rgba(15, 15, 16, 0.08);
   animation: pulse 2.4s var(--ease-out) infinite;
 }
 
@@ -1591,8 +1577,8 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
   position: absolute;
   inset: -6px;
   border-radius: 50%;
-  border: 1px solid var(--g-blue);
-  opacity: 0.4;
+  border: 1px solid var(--text);
+  opacity: 0.25;
   animation: ring 2.4s var(--ease-out) infinite;
 }
 
@@ -1619,7 +1605,7 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
 }
 
 .feature-row:hover {
-  border-color: var(--g-blue);
+  border-color: var(--text);
   box-shadow: var(--shadow-sm);
   transform: translateX(4px);
 }
@@ -1629,8 +1615,9 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: var(--g-blue-50);
-  color: var(--g-blue);
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  color: var(--text);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1668,11 +1655,11 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
 }
 
 .price-card--highlight {
-  background: var(--g-gradient);
+  background: var(--bg-dark);
   color: var(--text-inv);
-  border: none;
+  border: 1px solid var(--bg-dark);
   transform: translateY(-12px);
-  box-shadow: 0 24px 60px -16px rgba(139, 92, 246, 0.5);
+  box-shadow: 0 24px 60px -16px rgba(15, 15, 16, 0.4);
   padding-top: 2.5rem;
 }
 
@@ -1868,12 +1855,12 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: var(--g-gradient);
+  background: var(--text);
   color: white;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 0.875rem;
 }
 
@@ -1941,8 +1928,8 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
 }
 
 .faq-item[open] summary::after {
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='5' y1='12' x2='19' y2='12'/></svg>");
-  background-color: var(--g-blue);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='5' y1='12' x2='19' y2='12'/></svg>");
+  background-color: white;
 }
 
 .faq-item__body {
@@ -1963,7 +1950,7 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
 }
 
 .cta-banner__inner {
-  background: var(--g-gradient);
+  background: var(--bg-dark);
   border-radius: var(--r-2xl);
   padding: clamp(2.5rem, 5vw, 4rem);
   display: grid;
@@ -1971,7 +1958,7 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
   align-items: center;
   gap: 2rem;
   color: white;
-  box-shadow: 0 32px 80px -24px rgba(139, 92, 246, 0.55);
+  box-shadow: 0 32px 80px -24px rgba(15, 15, 16, 0.35);
   overflow: hidden;
   position: relative;
 }
@@ -1980,7 +1967,9 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 80% 0%, rgba(255,255,255,0.2), transparent 50%);
+  background:
+    radial-gradient(ellipse at 80% 10%, rgba(139, 92, 246, 0.2), transparent 50%),
+    radial-gradient(ellipse at 20% 90%, rgba(236, 72, 153, 0.12), transparent 50%);
   pointer-events: none;
 }
 
