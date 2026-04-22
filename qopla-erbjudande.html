@@ -4,27 +4,58 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Qopla-erbjudande | Syns Nu Media</title>
-  <meta name="description" content="Exklusivt erbjudande för Qopla-kunder. Komplett restaurangmarknadsföring till ett specialpris.">
+  <meta name="description" content="Exklusivt partnerrabatterat erbjudande för Qopla-restauranger från Syns Nu Media. Upp till 30% rabatt på marknadsföring och webbdesign.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/old/global.v3.css"><link rel="stylesheet" href="css/global.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/pages.css">
+  <link rel="icon" type="image/png" href="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/699641283fd420658d5267af.png">
+  <style>
+    .price-strike {
+      text-decoration: line-through;
+      color: var(--text-muted);
+      font-size: 1rem;
+      font-weight: 500;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+    .pricing-card--featured .price-strike { color: rgba(255,255,255,0.6); }
+    .save-tag {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.25rem 0.625rem;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--success);
+      border-radius: var(--r-pill);
+      font-size: 0.8125rem;
+      font-weight: 600;
+    }
+    .pricing-card--featured .save-tag {
+      background: rgba(255,255,255,0.2);
+      color: white;
+    }
+  </style>
 </head>
 <body>
 
-<nav id="nav">
+<!-- NAV -->
+<nav id="nav" role="navigation" aria-label="Huvudnavigering">
   <div class="nav__inner">
-    <a class="nav__logo" href="index.html">
-      <img src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/68ebad7a0d699e0abc5558c1.png" alt="Syns Nu Media" width="160" height="40">
+    <a class="nav__logo" href="index.html" aria-label="Syns Nu Media — Hem">
+      <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/699641283fd420658d5267af.png" alt="Syns Nu Media" width="100" height="26">
     </a>
-    <div class="nav__links">
+    <div class="nav__links" role="menubar">
       <a href="index.html">Hem</a>
       <div class="nav__dropdown">
-        <a href="#">Tjänster ▾</a>
+        <span class="nav__dropdown-toggle" tabindex="0" aria-haspopup="true">
+          Tjänster
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </span>
         <div class="nav__dropdown-menu">
-          <a href="sociala-medier.html">📱 Sociala Medier</a>
-          <a href="hemsida.html">🌐 Webbdesign & SEO</a>
+          <a href="sociala-medier.html">Sociala Medier</a>
+          <a href="hemsida.html">Webbdesign</a>
+          <a href="qopla-erbjudande.html">Qopla-erbjudande</a>
         </div>
       </div>
       <a href="om-oss.html">Om oss</a>
@@ -36,64 +67,64 @@
       <a href="https://synsnumedia.com/portal/login" class="nav__login" target="_blank" rel="noopener">Logga in</a>
       <a href="kontakt.html" class="btn btn--blue btn--sm">Boka gratis möte</a>
     </div>
-    <button id="hamburger" aria-label="Meny" aria-expanded="false">
+    <button id="hamburger" aria-label="Öppna meny" aria-expanded="false" aria-controls="mobile-menu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
-<div id="mobile-menu">
-  <nav>
+<div id="mobile-menu" role="dialog" aria-modal="true">
+  <nav class="mobile-menu__links">
     <a href="index.html">Hem</a>
     <a href="sociala-medier.html">Sociala Medier</a>
-    <a href="hemsida.html">Webbdesign & SEO</a>
+    <a href="hemsida.html">Webbdesign</a>
     <a href="om-oss.html">Om oss</a>
     <a href="kundcase.html">Kundcase</a>
     <a href="blogg.html">Blogg</a>
     <a href="jobb.html">Jobb</a>
-    <a href="kontakt.html" class="btn btn--blue" style="margin-top:16px;display:inline-block;">Boka gratis möte</a>
-    <a href="https://synsnumedia.com/portal/login" target="_blank" rel="noopener" class="btn btn--ghost" style="margin-top:12px;display:inline-block;">Logga in</a>
+    <a href="kontakt.html">Kontakt</a>
   </nav>
+  <a href="kontakt.html" class="btn btn--blue">Boka gratis möte</a>
+  <a href="https://synsnumedia.com/portal/login" target="_blank" rel="noopener" class="btn btn--ghost">Logga in</a>
 </div>
 
-<!-- QOPLA HERO (blue bg) -->
-<section class="qopla-hero">
-  <div class="qopla-hero__blob" style="width:500px;height:500px;top:-200px;right:-100px;"></div>
-  <div class="qopla-hero__blob" style="width:300px;height:300px;bottom:-100px;left:-50px;"></div>
+<!-- PAGE HERO -->
+<section class="page-hero">
   <div class="container">
     <div class="page-hero__inner reveal">
-      <span class="badge badge--green" style="margin-bottom:16px;display:inline-flex;">✓ Exklusivt för Qopla-kunder</span>
-      <h1>Specialerbjudande för Qopla-restauranger</h1>
-      <p class="page-hero__subtitle" style="color:rgba(255,255,255,0.85);">Som Qopla-kund får du tillgång till Syns Nu Medias kompletta marknadsföringstjänster till ett exklusivt partnerrabatterat pris.</p>
+      <span class="eyebrow" style="background: var(--g-blue-50); padding: 0.375rem 0.75rem; border-radius: var(--r-pill); letter-spacing: 0.04em;">✓ Exklusivt för Qopla-kunder</span>
+      <h1>Specialerbjudande för <span class="gradient-text">Qopla-restauranger</span></h1>
+      <p class="page-hero__subtitle">Som Qopla-kund får du tillgång till Syns Nu Medias kompletta marknadsföringstjänster till ett exklusivt partnerrabatterat pris.</p>
       <div class="page-hero__cta">
-        <a href="#erbjudande" class="btn btn--white btn--lg">Se erbjudandet ↓</a>
-        <a href="kontakt.html" class="btn btn--outline btn--lg" style="border-color:white;color:white;">Boka möte</a>
+        <a href="#erbjudande" class="btn btn--primary btn--lg">Se erbjudandet</a>
+        <a href="kontakt.html" class="btn btn--ghost btn--lg">Boka möte</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SERVICE CARDS -->
+<!-- SERVICES -->
 <section class="section">
   <div class="container">
-    <div class="section-header reveal" style="text-align:center;margin-bottom:48px;">
-      <span class="section-eyebrow">Tjänster</span>
-      <h2>Allt din restaurang behöver — under ett tak</h2>
-      <p class="section-subtitle">Som Qopla-partner kan vi integrera med ditt befintliga kassasystem för en sömlös upplevelse.</p>
+    <div class="section-head reveal">
+      <span class="eyebrow">Tjänster</span>
+      <h2>Allt din restaurang behöver — <span class="gradient-text">under ett tak</span></h2>
+      <p>Som Qopla-partner kan vi integrera med ditt befintliga kassasystem för en sömlös upplevelse.</p>
     </div>
-    <div class="feature-grid reveal-stagger">
-      <div class="feature-card">
-        <div class="icon-chip icon-chip--blue">📱</div>
+
+    <div class="feature-grid">
+      <div class="feature-card reveal">
+        <div class="icon-chip"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
         <h3>Sociala Medier</h3>
         <p>Instagram, TikTok och Facebook — professionellt innehåll, publicering och community management varje månad.</p>
       </div>
-      <div class="feature-card">
-        <div class="icon-chip icon-chip--green">🌐</div>
+      <div class="feature-card reveal">
+        <div class="icon-chip"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
         <h3>Webbdesign & SEO</h3>
         <p>Ny restauranghemsida med lokal SEO-optimering. Integreras sömlöst med Qoplas boknings- och beställningssystem.</p>
       </div>
-      <div class="feature-card">
-        <div class="icon-chip icon-chip--orange">📸</div>
+      <div class="feature-card reveal">
+        <div class="icon-chip"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
         <h3>Menyfotografering</h3>
         <p>Professionella matfoton som ökar konvertering med upp till 30%. Bilder som också fungerar i Qoplas digitala meny.</p>
       </div>
@@ -101,36 +132,42 @@
   </div>
 </section>
 
-<!-- PRICING WITH STRUCK-THROUGH PRICES -->
+<!-- PRICING -->
 <section id="erbjudande" class="section section--soft">
   <div class="container">
-    <div class="section-header reveal" style="text-align:center;margin-bottom:16px;">
-      <span class="badge badge--orange" style="margin-bottom:16px;display:inline-flex;">🔥 Tidsbegränsat erbjudande</span>
-      <h2>Qopla-partnerpriser</h2>
-      <p class="section-subtitle">Dessa priser är exklusiva för Qopla-kunder. Ordinarie pris visas genomstruket.</p>
+    <div class="section-head reveal">
+      <span class="eyebrow" style="color: var(--g-pink);">🔥 Tidsbegränsat erbjudande</span>
+      <h2>Qopla-<span class="gradient-text">partnerpriser</span></h2>
+      <p>Exklusiva priser för Qopla-kunder. Ordinarie pris visas genomstruket.</p>
     </div>
-    <div class="pricing-grid reveal-stagger">
-      <div class="pricing-card">
+
+    <div class="pricing-grid">
+      <div class="pricing-card reveal">
         <div class="pricing-name">Start</div>
-        <div class="pricing-price--strike">4 900 kr/mån</div>
-        <div class="pricing-price" style="color:var(--blue);margin-top:4px;">3 400<span> kr/mån</span></div>
-        <div class="pricing-period" style="color:var(--green);font-weight:600;">Du sparar 1 500 kr/mån</div>
-        <ul class="pricing-features">
+        <div>
+          <span class="price-strike">4 900 kr/mån</span>
+          <div class="pricing-price">3 400<span>kr/mån</span></div>
+          <span class="save-tag">Du sparar 1 500 kr/mån</span>
+        </div>
+        <ul class="pricing-features" style="margin-top: 1.75rem;">
           <li>1 plattform (Instagram eller TikTok)</li>
           <li>12 inlägg per månad</li>
           <li>Månatlig fotosession</li>
           <li>Månadsrapport</li>
           <li>Qopla-integration</li>
         </ul>
-        <a href="kontakt.html" class="btn btn--outline" style="width:100%;text-align:center;">Välj Start</a>
+        <a href="kontakt.html" class="btn btn--ghost" style="width:100%;">Välj Start</a>
       </div>
-      <div class="pricing-card pricing-card--featured">
+
+      <div class="pricing-card pricing-card--featured reveal">
         <div class="pricing-badge">Populärast bland Qopla-kunder</div>
         <div class="pricing-name">Tillväxt</div>
-        <div class="pricing-price--strike">8 900 kr/mån</div>
-        <div class="pricing-price" style="color:var(--blue);margin-top:4px;">5 900<span> kr/mån</span></div>
-        <div class="pricing-period" style="color:var(--green);font-weight:600;">Du sparar 3 000 kr/mån</div>
-        <ul class="pricing-features">
+        <div>
+          <span class="price-strike">8 900 kr/mån</span>
+          <div class="pricing-price">5 900<span>kr/mån</span></div>
+          <span class="save-tag">Du sparar 3 000 kr/mån</span>
+        </div>
+        <ul class="pricing-features" style="margin-top: 1.75rem;">
           <li>3 plattformar (IG + TikTok + FB)</li>
           <li>20 inlägg + 4 Reels/TikToks</li>
           <li>Fotosession 4 tim/mån</li>
@@ -138,14 +175,17 @@
           <li>Veckovis rapport + möte</li>
           <li>Full Qopla-integration</li>
         </ul>
-        <a href="kontakt.html" class="btn btn--blue" style="width:100%;text-align:center;">Välj Tillväxt</a>
+        <a href="kontakt.html" class="btn btn--light" style="width:100%;">Välj Tillväxt</a>
       </div>
-      <div class="pricing-card">
+
+      <div class="pricing-card reveal">
         <div class="pricing-name">Hemsida</div>
-        <div class="pricing-price--strike">19 900 kr</div>
-        <div class="pricing-price" style="color:var(--blue);margin-top:4px;">13 900<span> kr</span></div>
-        <div class="pricing-period" style="color:var(--green);font-weight:600;">Du sparar 6 000 kr</div>
-        <ul class="pricing-features">
+        <div>
+          <span class="price-strike">19 900 kr</span>
+          <div class="pricing-price">13 900<span>kr</span></div>
+          <span class="save-tag">Du sparar 6 000 kr</span>
+        </div>
+        <ul class="pricing-features" style="margin-top: 1.75rem;">
           <li>Skräddarsydd design</li>
           <li>5–8 sidor</li>
           <li>SEO-optimerad</li>
@@ -153,51 +193,51 @@
           <li>Digital meny med QR-kod</li>
           <li>3 månaders support</li>
         </ul>
-        <a href="kontakt.html" class="btn btn--outline" style="width:100%;text-align:center;">Välj Hemsida</a>
+        <a href="kontakt.html" class="btn btn--ghost" style="width:100%;">Välj Hemsida</a>
       </div>
     </div>
-    <p class="reveal" style="text-align:center;margin-top:24px;color:var(--muted);font-size:14px;">* Qopla-priset gäller med ett löpande avtal. Inga uppstartskostnader. Avsluta med 30 dagars varsel.</p>
+    <p style="text-align:center; margin-top: 1.5rem; color: var(--text-3); font-size: 0.875rem;">* Qopla-priset gäller med ett löpande avtal. Inga uppstartskostnader. Avsluta med 30 dagars varsel.</p>
   </div>
 </section>
 
 <!-- REVIEWS -->
 <section class="section">
   <div class="container">
-    <div class="section-header reveal" style="text-align:center;margin-bottom:48px;">
-      <span class="section-eyebrow">Kundröster</span>
-      <h2>Qopla-restauranger om Syns Nu Media</h2>
+    <div class="section-head reveal">
+      <span class="eyebrow">Kundröster</span>
+      <h2>Qopla-restauranger om <span class="gradient-text">Syns Nu Media</span></h2>
     </div>
-    <div class="review-grid reveal-stagger">
-      <div class="review-card">
+    <div class="review-grid">
+      <div class="review-card reveal">
         <div class="stars">★★★★★</div>
         <p class="review-text">"Kombinationen Qopla + Syns Nu Media är perfekt. Bokningssystemet och marknadsföringen jobbar ihop sömlöst."</p>
         <hr>
         <div class="review-author">
-          <div class="review-avatar" style="background:linear-gradient(135deg,#667eea,#764ba2);">AK</div>
+          <div class="review-avatar">AK</div>
           <div>
             <div class="review-name">Ahmed Khalil</div>
             <div class="review-role">Restaurang Mezze, Göteborg</div>
           </div>
         </div>
       </div>
-      <div class="review-card">
+      <div class="review-card reveal">
         <div class="stars">★★★★★</div>
         <p class="review-text">"Priset är oslagbart för Qopla-kunder. Vi fick proffsig marknadsföring och en ny hemsida för halva normalpriset."</p>
         <hr>
         <div class="review-author">
-          <div class="review-avatar" style="background:linear-gradient(135deg,#f093fb,#f5576c);">ML</div>
+          <div class="review-avatar">ML</div>
           <div>
             <div class="review-name">Maria Lindqvist</div>
             <div class="review-role">Sushi Palace, Stockholm</div>
           </div>
         </div>
       </div>
-      <div class="review-card">
+      <div class="review-card reveal">
         <div class="stars">★★★★★</div>
-        <p class="review-text">"Smidigt, snabbt och resultatinriktat. Tack vare Syns Nu Media har vår Qopla-bokningskalendar alltid haft bokningar."</p>
+        <p class="review-text">"Smidigt, snabbt och resultatinriktat. Tack vare Syns Nu Media har vår Qopla-bokningskalender alltid varit välbokad."</p>
         <hr>
         <div class="review-author">
-          <div class="review-avatar" style="background:linear-gradient(135deg,#4facfe,#00f2fe);">HM</div>
+          <div class="review-avatar">HM</div>
           <div>
             <div class="review-name">Hassan Mahmoud</div>
             <div class="review-role">Pizzeria Roma, Malmö</div>
@@ -211,10 +251,10 @@
 <!-- FORM -->
 <section class="section section--soft">
   <div class="container">
-    <div class="split-grid reveal">
-      <div>
-        <span class="badge badge--orange" style="margin-bottom:16px;">🔥 Qopla-erbjudande</span>
-        <h2>Aktivera ditt Qopla-partnerrabatt</h2>
+    <div class="split-grid">
+      <div class="reveal">
+        <span class="eyebrow" style="color: var(--g-pink);">🔥 Qopla-erbjudande</span>
+        <h2>Aktivera ditt <span class="gradient-text">partnerrabatt</span></h2>
         <p>Fyll i formuläret och ange din Qopla-kundkod. Vi kontaktar dig inom 24 timmar för att bekräfta rabatten och boka ett strategimöte.</p>
         <ul class="checklist">
           <li>Upp till 30% rabatt jämfört med standardpris</li>
@@ -223,30 +263,32 @@
           <li>Avsluta med 30 dagars varsel</li>
         </ul>
       </div>
-      <div class="contact-form-box">
-        <h2 style="font-size:22px;margin-bottom:24px;">Aktivera erbjudandet</h2>
+      <div class="contact-form-box reveal">
+        <h3>Aktivera erbjudandet</h3>
         <form class="lead-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Namn</label>
+              <input type="text" class="form-input" placeholder="Ditt namn" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Restaurangnamn</label>
+              <input type="text" class="form-input" placeholder="Din restaurang" required>
+            </div>
+          </div>
           <div class="form-group">
-            <label class="form-label">Namn *</label>
-            <input type="text" class="form-input" placeholder="Ditt namn" required>
+            <label class="form-label">Qopla-kundkod</label>
+            <input type="text" class="form-input" placeholder="Din Qopla-kod (valfritt)">
           </div>
-          <div class="form-group" style="margin-top:16px;">
-            <label class="form-label">Restaurangnamn *</label>
-            <input type="text" class="form-input" placeholder="Din restaurang" required>
-          </div>
-          <div class="form-group" style="margin-top:16px;">
-            <label class="form-label">Din Qopla-kundkod</label>
-            <input type="text" class="form-input" placeholder="Qopla-kod (valfritt)">
-          </div>
-          <div class="form-group" style="margin-top:16px;">
-            <label class="form-label">E-post *</label>
+          <div class="form-group">
+            <label class="form-label">E-post</label>
             <input type="email" class="form-input" placeholder="din@email.se" required>
           </div>
-          <div class="form-group" style="margin-top:16px;">
+          <div class="form-group">
             <label class="form-label">Telefon</label>
             <input type="tel" class="form-input" placeholder="070 000 00 00">
           </div>
-          <div class="form-group" style="margin-top:16px;">
+          <div class="form-group">
             <label class="form-label">Vilket paket intresserar dig?</label>
             <select class="form-input">
               <option>Start — 3 400 kr/mån</option>
@@ -255,82 +297,62 @@
               <option>Osäker — vill diskutera</option>
             </select>
           </div>
-          <button type="submit" class="btn btn--blue" style="width:100%;margin-top:20px;">Aktivera erbjudandet →</button>
+          <button type="submit" class="btn btn--blue btn--lg" style="width:100%;">Aktivera erbjudandet
+            <svg class="icon icon--arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
         </form>
       </div>
     </div>
   </div>
 </section>
 
-<div class="snm-footer-wrap">
-  <footer class="snm-footer-card">
-    <div class="snm-footer-top">
-      <div class="snm-footer-brand">
-        <a href="index.html" class="snm-footer-logo">
-          <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/699641283fd420658d5267af.png" alt="Syns Nu Media" height="36">
-        </a>
-        <p class="snm-footer-desc">Syns Nu Media hjälper restauranger att synas mer online genom strategisk marknadsföring och högkvalitativ produktion — så att era bord fylls varje kväll.</p>
-        <div class="snm-footer-contact-info">
-          <a href="mailto:info@berraburra.se">info@berraburra.se</a>
-          <span>Mån–Fre: 11:00–21:00 &middot; Lör–Sön: 12:00–21:00</span>
-        </div>
-
-        <div class="snm-footer-socials">
-          <a href="https://instagram.com/synsnumedia" target="_blank" rel="noopener" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-          </a>
-          <a href="https://tiktok.com/@synsnumedia" target="_blank" rel="noopener" aria-label="TikTok">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.43V13.1a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1.19-.15 4.83 4.83 0 01-1.19-.44V6.69z"/></svg>
-          </a>
-          <a href="https://www.linkedin.com/company/synsnumedia" target="_blank" rel="noopener" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
-          </a>
-          <a href="https://x.com/synsnumedia" target="_blank" rel="noopener" aria-label="X / Twitter">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </a>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/699641283fd420658d5267af.png" alt="Syns Nu Media">
+        <p>Sveriges största marknadsföringsbyrå för restauranger. Vi hjälper dig synas, växa och öka omsättningen.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
         </div>
       </div>
-      <div class="snm-footer-links">
-        <div class="snm-footer-col">
-          <h4>Tjänster</h4>
-          <ul>
-            <li><a href="sociala-medier.html">Sociala Medier</a></li>
-            <li><a href="hemsida.html">Webbdesign &amp; SEO</a></li>
-            <li><a href="qopla-erbjudande.html">Qopla-erbjudande</a></li>
-          </ul>
-        </div>
-        <div class="snm-footer-col">
-          <h4>Resurser</h4>
-          <ul>
-            <li><a href="kundcase.html">Kundcase</a></li>
-            <li><a href="blogg.html">Blogg</a></li>
-            <li><a href="kontakt.html">FAQ</a></li>
-          </ul>
-        </div>
-        <div class="snm-footer-col">
-          <h4>Företaget</h4>
-          <ul>
-            <li><a href="om-oss.html">Om oss</a></li>
-            <li><a href="jobb.html">Jobb</a></li>
-            <li><a href="kontakt.html">Kontakt</a></li>
-          </ul>
-        </div>
+      <div class="footer__col">
+        <h5>Tjänster</h5>
+        <ul>
+          <li><a href="sociala-medier.html">Sociala Medier</a></li>
+          <li><a href="hemsida.html">Webbdesign</a></li>
+          <li><a href="kundcase.html">Kundcase</a></li>
+          <li><a href="qopla-erbjudande.html">Qopla-erbjudande</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Företag</h5>
+        <ul>
+          <li><a href="om-oss.html">Om oss</a></li>
+          <li><a href="blogg.html">Blogg</a></li>
+          <li><a href="jobb.html">Jobb</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Kontakt</h5>
+        <ul>
+          <li><a href="tel:+46708880198">070-888 01 98</a></li>
+          <li><a href="mailto:info@synsnumedia.se">info@synsnumedia.se</a></li>
+          <li>Stockholm, Sverige</li>
+        </ul>
       </div>
     </div>
-    <div class="snm-footer-bottom">
-      <p class="snm-footer-copy">© 2025 Syns Nu Media. Alla rättigheter förbehållna.</p>
-      <div class="snm-footer-legal">
-        <a href="#">Integritetspolicy</a>
-        <a href="#">Användarvillkor</a>
-        <a href="#">Cookie-inställningar</a>
-      </div>
+    <div class="footer__bottom">
+      <span>© Syns Nu AB 2026. Alla rättigheter förbehållna.</span>
+      <a href="#">Integritetspolicy</a>
     </div>
-  </footer>
-  <div class="snm-footer-watermark" aria-hidden="true">
-    <span>Syns</span>
   </div>
-</div>
-
+</footer>
 
 <script src="js/main.js"></script>
 </body>
