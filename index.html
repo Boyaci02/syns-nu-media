@@ -309,7 +309,10 @@
       .sec-transition__photo-reveal,
       .sec-transition__photo-shift,
       .sec-transition__photo img,
-      .sec-transition__body > * {
+      .sec-transition__body > *,
+      .sec-collection__head h2 .word > span,
+      .service-card,
+      .service-card__visual img {
         transform: none !important;
         transition: none !important;
         opacity: 1 !important;
@@ -342,6 +345,19 @@
       letter-spacing: -0.04em;
       line-height: 1;
     }
+    .sec-collection__head h2 .word {
+      display: inline-block;
+      overflow: hidden;
+      vertical-align: baseline;
+      margin-right: 0.22em;
+    }
+    .sec-collection__head h2 .word > span {
+      display: inline-block;
+      transform: translateY(110%);
+      transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+    .sec-collection__head h2.is-revealed .word > span { transform: translateY(0); }
     .sec-collection__nav {
       display: flex; gap: 0.5rem;
     }
@@ -386,9 +402,19 @@
       flex-direction: column;
       text-decoration: none;
       scroll-snap-align: start;
-      transition: transform 500ms var(--ease-out);
+      opacity: 0;
+      transform: translateY(40px);
+      transition:
+        opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
     }
-    .service-card:hover { transform: translateY(-6px); }
+    .sec-collection__grid.is-revealed .service-card { opacity: 1; transform: translateY(0); }
+    .sec-collection__grid.is-revealed .service-card:nth-child(1) { transition-delay: 0ms; }
+    .sec-collection__grid.is-revealed .service-card:nth-child(2) { transition-delay: 120ms; }
+    .sec-collection__grid.is-revealed .service-card:nth-child(3) { transition-delay: 240ms; }
+    .sec-collection__grid.is-revealed .service-card:nth-child(4) { transition-delay: 360ms; }
+    .service-card:hover { transform: translateY(-6px); transition-duration: 400ms, 400ms; }
 
     .service-card--dark  { background: #101010; }
     .service-card--lav   { background: #B9A3F7; color: var(--text); }
@@ -429,9 +455,12 @@
       object-fit: cover;
       border-radius: 12px;
       filter: drop-shadow(0 20px 30px rgba(0,0,0,0.25));
-      transition: transform 500ms var(--ease-out);
+      transform: scale(1.12);
+      transition: transform 1400ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
     }
-    .service-card:hover .service-card__visual img { transform: scale(1.04); }
+    .sec-collection__grid.is-revealed .service-card__visual img { transform: scale(1); }
+    .service-card:hover .service-card__visual img { transform: scale(1.04); transition-duration: 500ms; }
 
     /* ── Section 4: Lifestyle ───────────────── */
     .sec-lifestyle {
@@ -1324,7 +1353,7 @@
 <section class="sec-collection" id="tjanster">
   <div class="sec-collection__inner">
     <div class="sec-collection__head">
-      <h2 class="fx-up">Våra tjänster</h2>
+      <h2 data-reveal-words aria-label="Våra tjänster">Våra tjänster</h2>
       <div class="sec-collection__nav fx-up" aria-label="Slider-kontroller">
         <button class="sec-nav-btn" aria-label="Föregående">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
@@ -1335,8 +1364,8 @@
       </div>
     </div>
 
-    <div class="sec-collection__grid" data-carousel>
-      <a href="sociala-medier.html" class="service-card service-card--cream fx-up">
+    <div class="sec-collection__grid" data-carousel data-reveal-cards>
+      <a href="sociala-medier.html" class="service-card service-card--cream">
         <div>
           <div class="service-card__name">Sociala Medier</div>
           <div class="service-card__desc">Komplett Instagram, TikTok & Facebook — inspelning, publicering, resultat.</div>
@@ -1347,7 +1376,7 @@
         </div>
       </a>
 
-      <a href="hemsida.html" class="service-card service-card--dark fx-up">
+      <a href="hemsida.html" class="service-card service-card--dark">
         <div>
           <div class="service-card__name">Webbdesign</div>
           <div class="service-card__desc">Snabba, mobilanpassade restauranghemsidor med SEO & bokning.</div>
@@ -1358,7 +1387,7 @@
         </div>
       </a>
 
-      <a href="kontakt.html" class="service-card service-card--peach fx-up">
+      <a href="kontakt.html" class="service-card service-card--peach">
         <div>
           <div class="service-card__name">Meny-Fotografering</div>
           <div class="service-card__desc">Professionella rätt-bilder som säljer — ljussatta på plats i er restaurang.</div>
@@ -1369,7 +1398,7 @@
         </div>
       </a>
 
-      <a href="kontakt.html" class="service-card service-card--olive fx-up">
+      <a href="kontakt.html" class="service-card service-card--olive">
         <div>
           <div class="service-card__name">Google Optimering</div>
           <div class="service-card__desc">Fler gäster via Google — My Business, lokala sökningar och kartor.</div>
@@ -1862,40 +1891,39 @@
   (function(){
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    const title = document.querySelector('.sec-transition__title[data-reveal-words]');
-    if (title) {
-      const wrapAsWord = (contentNode) => {
-        const word = document.createElement('span');
-        word.className = 'word';
-        const inner = document.createElement('span');
-        inner.appendChild(contentNode);
-        word.appendChild(inner);
-        return word;
-      };
-      const processNode = (node) => {
-        if (node.nodeType === Node.TEXT_NODE) {
-          const frag = document.createDocumentFragment();
-          node.textContent.split(/(\s+)/).forEach(chunk => {
-            if (!chunk) return;
-            if (/^\s+$/.test(chunk)) { frag.appendChild(document.createTextNode(chunk)); return; }
-            frag.appendChild(wrapAsWord(document.createTextNode(chunk)));
-          });
-          node.parentNode.replaceChild(frag, node);
-        } else if (node.nodeType === Node.ELEMENT_NODE) {
-          // Preserve inline elements (e.g. <em class="gradient-text">) as one atomic word
-          // so background-clip:text styling stays intact.
-          const clone = node.cloneNode(true);
-          const word = wrapAsWord(clone);
-          node.parentNode.replaceChild(word, node);
-        }
-      };
+    const wrapAsWord = (contentNode) => {
+      const word = document.createElement('span');
+      word.className = 'word';
+      const inner = document.createElement('span');
+      inner.appendChild(contentNode);
+      word.appendChild(inner);
+      return word;
+    };
+    const processNode = (node) => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const frag = document.createDocumentFragment();
+        node.textContent.split(/(\s+)/).forEach(chunk => {
+          if (!chunk) return;
+          if (/^\s+$/.test(chunk)) { frag.appendChild(document.createTextNode(chunk)); return; }
+          frag.appendChild(wrapAsWord(document.createTextNode(chunk)));
+        });
+        node.parentNode.replaceChild(frag, node);
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+        // Preserve inline elements (e.g. <em class="gradient-text">) as one atomic word
+        // so background-clip:text styling stays intact.
+        const clone = node.cloneNode(true);
+        const word = wrapAsWord(clone);
+        node.parentNode.replaceChild(word, node);
+      }
+    };
+    document.querySelectorAll('[data-reveal-words]').forEach(title => {
       Array.from(title.childNodes).forEach(processNode);
       title.querySelectorAll('.word > span').forEach((s, i) => {
         s.style.transitionDelay = (i * 55) + 'ms';
       });
-    }
+    });
 
-    const targets = Array.from(document.querySelectorAll('[data-reveal-words], [data-reveal-photo], [data-reveal-body]'));
+    const targets = Array.from(document.querySelectorAll('[data-reveal-words], [data-reveal-photo], [data-reveal-body], [data-reveal-cards]'));
     if (!('IntersectionObserver' in window) || prefersReduced) {
       targets.forEach(el => el.classList.add('is-revealed'));
     } else {
