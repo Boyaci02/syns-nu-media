@@ -402,17 +402,21 @@
       flex-direction: column;
       text-decoration: none;
       scroll-snap-align: start;
-      transform: translate3d(var(--reveal-from, 110vw), 0, 0);
+      transform: translate3d(100vw, 0, 0);
       backface-visibility: hidden;
-      transition: transform 1000ms cubic-bezier(0.22, 1, 0.36, 1);
+      transition: transform 1100ms cubic-bezier(0.22, 1, 0.36, 1);
       will-change: transform;
     }
     .sec-collection__grid.is-revealed .service-card { transform: translate3d(0, 0, 0); }
     .sec-collection__grid.is-revealed .service-card:nth-child(1) { transition-delay: 0ms; }
-    .sec-collection__grid.is-revealed .service-card:nth-child(2) { transition-delay: 110ms; }
-    .sec-collection__grid.is-revealed .service-card:nth-child(3) { transition-delay: 220ms; }
-    .sec-collection__grid.is-revealed .service-card:nth-child(4) { transition-delay: 330ms; }
-    .service-card:hover { transform: translate3d(0, -6px, 0); transition-duration: 400ms; }
+    .sec-collection__grid.is-revealed .service-card:nth-child(2) { transition-delay: 120ms; }
+    .sec-collection__grid.is-revealed .service-card:nth-child(3) { transition-delay: 240ms; }
+    .sec-collection__grid.is-revealed .service-card:nth-child(4) { transition-delay: 360ms; }
+    /* Hover must win over the is-revealed rule (same specificity but later + :hover) */
+    .sec-collection__grid.is-revealed .service-card:hover {
+      transform: translate3d(0, -6px, 0);
+      transition-duration: 400ms;
+    }
 
     .service-card--dark  { background: #101010; }
     .service-card--lav   { background: #B9A3F7; color: var(--text); }
@@ -1850,26 +1854,6 @@
       });
     }, { threshold: 0.3 });
     nums.forEach(n => io.observe(n));
-  })();
-
-  // Services carousel: set each card's initial translate so it starts exactly at
-  // the viewport's right edge — then the reveal is a clean slide-in from screen-right.
-  (function(){
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const grid = document.querySelector('.sec-collection__grid[data-reveal-cards]');
-    if (!grid || prefersReduced) return;
-
-    const measure = () => {
-      grid.querySelectorAll('.service-card').forEach(card => {
-        if (grid.classList.contains('is-revealed')) return;
-        const rect = card.getBoundingClientRect();
-        const distance = Math.max(60, (window.innerWidth || document.documentElement.clientWidth) - rect.left + 24);
-        card.style.setProperty('--reveal-from', distance + 'px');
-      });
-    };
-    // Measure once after layout settles, and re-measure on resize until revealed.
-    requestAnimationFrame(measure);
-    window.addEventListener('resize', measure);
   })();
 
   // Services carousel: wire prev/next buttons to scroll the track by one card
