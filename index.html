@@ -311,6 +311,7 @@
       .sec-transition__photo img,
       .sec-transition__body > *,
       .sec-collection__head h2 .word > span,
+      .service-card__tile,
       .service-card,
       .service-card__visual img {
         transform: none !important;
@@ -390,10 +391,19 @@
       scroll-padding-left: 0;
     }
     .sec-collection__grid::-webkit-scrollbar { display: none; }
-    .service-card {
-      position: relative;
+    /* Wrapper carries the scroll-linked slide-in; inner card owns hover lift. */
+    .service-card__tile {
       flex: 0 0 calc((100% - 3 * 1.5rem) / 3.25);
       aspect-ratio: 5 / 7;
+      scroll-snap-align: start;
+      transform: translate3d(var(--slide-x, 100vw), 0, 0);
+      backface-visibility: hidden;
+      will-change: transform;
+    }
+    .service-card {
+      position: relative;
+      width: 100%;
+      height: 100%;
       border-radius: 22px;
       padding: 2rem;
       overflow: hidden;
@@ -401,22 +411,10 @@
       display: flex;
       flex-direction: column;
       text-decoration: none;
-      scroll-snap-align: start;
-      transform: translate3d(100vw, 0, 0);
-      backface-visibility: hidden;
-      transition: transform 1100ms cubic-bezier(0.22, 1, 0.36, 1);
-      will-change: transform;
+      transform: translate3d(0, 0, 0);
+      transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
     }
-    .sec-collection__grid.is-revealed .service-card { transform: translate3d(0, 0, 0); }
-    .sec-collection__grid.is-revealed .service-card:nth-child(1) { transition-delay: 0ms; }
-    .sec-collection__grid.is-revealed .service-card:nth-child(2) { transition-delay: 120ms; }
-    .sec-collection__grid.is-revealed .service-card:nth-child(3) { transition-delay: 240ms; }
-    .sec-collection__grid.is-revealed .service-card:nth-child(4) { transition-delay: 360ms; }
-    /* Hover must win over the is-revealed rule (same specificity but later + :hover) */
-    .sec-collection__grid.is-revealed .service-card:hover {
-      transform: translate3d(0, -6px, 0);
-      transition-duration: 400ms;
-    }
+    .service-card:hover { transform: translate3d(0, -6px, 0); }
 
     .service-card--dark  { background: #101010; }
     .service-card--lav   { background: #B9A3F7; color: var(--text); }
@@ -457,12 +455,9 @@
       object-fit: cover;
       border-radius: 12px;
       filter: drop-shadow(0 20px 30px rgba(0,0,0,0.25));
-      transform: scale(1.12);
-      transition: transform 1400ms cubic-bezier(0.22, 1, 0.36, 1);
-      will-change: transform;
+      transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
     }
-    .sec-collection__grid.is-revealed .service-card__visual img { transform: scale(1); }
-    .service-card:hover .service-card__visual img { transform: scale(1.04); transition-duration: 500ms; }
+    .service-card:hover .service-card__visual img { transform: scale(1.04); }
 
     /* ── Section 4: Lifestyle ───────────────── */
     .sec-lifestyle {
@@ -1366,50 +1361,58 @@
       </div>
     </div>
 
-    <div class="sec-collection__grid" data-carousel data-reveal-cards>
-      <a href="sociala-medier.html" class="service-card service-card--cream">
-        <div>
-          <div class="service-card__name">Sociala Medier</div>
-          <div class="service-card__desc">Komplett Instagram, TikTok & Facebook — inspelning, publicering, resultat.</div>
-          <div class="service-card__price">Från 7 500 kr/mån</div>
-        </div>
-        <div class="service-card__visual">
-          <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69ea91b1717d5dd4e173eb96.jpeg" alt="Sociala medier-produktion för restaurang">
-        </div>
-      </a>
+    <div class="sec-collection__grid" data-carousel data-scroll-cards>
+      <div class="service-card__tile">
+        <a href="sociala-medier.html" class="service-card service-card--cream">
+          <div>
+            <div class="service-card__name">Sociala Medier</div>
+            <div class="service-card__desc">Komplett Instagram, TikTok & Facebook — inspelning, publicering, resultat.</div>
+            <div class="service-card__price">Från 7 500 kr/mån</div>
+          </div>
+          <div class="service-card__visual">
+            <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69ea91b1717d5dd4e173eb96.jpeg" alt="Sociala medier-produktion för restaurang">
+          </div>
+        </a>
+      </div>
 
-      <a href="hemsida.html" class="service-card service-card--dark">
-        <div>
-          <div class="service-card__name">Webbdesign</div>
-          <div class="service-card__desc">Snabba, mobilanpassade restauranghemsidor med SEO & bokning.</div>
-          <div class="service-card__price">Från 500 kr/mån</div>
-        </div>
-        <div class="service-card__visual">
-          <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69ea9494717d5dd4e1747a18.png" alt="Webbdesign för restaurang">
-        </div>
-      </a>
+      <div class="service-card__tile">
+        <a href="hemsida.html" class="service-card service-card--dark">
+          <div>
+            <div class="service-card__name">Webbdesign</div>
+            <div class="service-card__desc">Snabba, mobilanpassade restauranghemsidor med SEO & bokning.</div>
+            <div class="service-card__price">Från 500 kr/mån</div>
+          </div>
+          <div class="service-card__visual">
+            <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69ea9494717d5dd4e1747a18.png" alt="Webbdesign för restaurang">
+          </div>
+        </a>
+      </div>
 
-      <a href="kontakt.html" class="service-card service-card--peach">
-        <div>
-          <div class="service-card__name">Meny-Fotografering</div>
-          <div class="service-card__desc">Professionella rätt-bilder som säljer — ljussatta på plats i er restaurang.</div>
-          <div class="service-card__price">Från 3 500 kr</div>
-        </div>
-        <div class="service-card__visual">
-          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=700&q=85" alt="Styled maträtt-fotografering">
-        </div>
-      </a>
+      <div class="service-card__tile">
+        <a href="kontakt.html" class="service-card service-card--peach">
+          <div>
+            <div class="service-card__name">Meny-Fotografering</div>
+            <div class="service-card__desc">Professionella rätt-bilder som säljer — ljussatta på plats i er restaurang.</div>
+            <div class="service-card__price">Från 3 500 kr</div>
+          </div>
+          <div class="service-card__visual">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=700&q=85" alt="Styled maträtt-fotografering">
+          </div>
+        </a>
+      </div>
 
-      <a href="kontakt.html" class="service-card service-card--olive">
-        <div>
-          <div class="service-card__name">Google Optimering</div>
-          <div class="service-card__desc">Fler gäster via Google — My Business, lokala sökningar och kartor.</div>
-          <div class="service-card__price">Från 1 900 kr/mån</div>
-        </div>
-        <div class="service-card__visual">
-          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&q=85" alt="Google Analytics och SEO-optimering">
-        </div>
-      </a>
+      <div class="service-card__tile">
+        <a href="kontakt.html" class="service-card service-card--olive">
+          <div>
+            <div class="service-card__name">Google Optimering</div>
+            <div class="service-card__desc">Fler gäster via Google — My Business, lokala sökningar och kartor.</div>
+            <div class="service-card__price">Från 1 900 kr/mån</div>
+          </div>
+          <div class="service-card__visual">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&q=85" alt="Google Analytics och SEO-optimering">
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -1856,6 +1859,55 @@
     nums.forEach(n => io.observe(n));
   })();
 
+  // Services cards: scroll-linked slide-in from the viewport's right edge.
+  // Each tile's --slide-x tracks the page scroll progress through the section,
+  // so the motion feels continuous with the scroll instead of an abrupt reveal.
+  (function(){
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const grid = document.querySelector('.sec-collection__grid[data-scroll-cards]');
+    if (!grid) return;
+    const tiles = Array.from(grid.querySelectorAll('.service-card__tile'));
+    if (tiles.length === 0) return;
+
+    if (prefersReduced) {
+      tiles.forEach(t => t.style.setProperty('--slide-x', '0px'));
+      return;
+    }
+
+    const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
+    let ticking = false;
+
+    const apply = () => {
+      const rect = grid.getBoundingClientRect();
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      // Section just entered viewport (rect.top ≈ vh) → progress 0.
+      // Section top reached ~30% of viewport from top → progress 1.
+      const startY = vh;
+      const endY = vh * 0.3;
+      const raw = (startY - rect.top) / (startY - endY);
+      const progress = Math.max(0, Math.min(1, raw));
+      const stagger = 0.1;   // each card trails the previous by 10% of the timeline
+      const span = 1 - stagger * (tiles.length - 1); // how much of the timeline each card uses
+      tiles.forEach((tile, i) => {
+        const local = Math.max(0, Math.min(1, (progress - i * stagger) / span));
+        const eased = easeOutCubic(local);
+        const distance = (1 - eased) * 100; // vw
+        tile.style.setProperty('--slide-x', distance + 'vw');
+      });
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(apply);
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    apply(); // initial
+  })();
+
   // Services carousel: wire prev/next buttons to scroll the track by one card
   (function(){
     const track = document.querySelector('.sec-collection__grid[data-carousel]');
@@ -1865,7 +1917,7 @@
     if (!prevBtn || !nextBtn) return;
 
     const scrollByCard = (dir) => {
-      const card = track.querySelector('.service-card');
+      const card = track.querySelector('.service-card__tile') || track.querySelector('.service-card');
       if (!card) return;
       const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || '20') || 20;
       const step = card.getBoundingClientRect().width + gap;
