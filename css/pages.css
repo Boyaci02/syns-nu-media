@@ -68,6 +68,13 @@
   gap: 1rem;
 }
 
+.feature-grid--4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.feature-grid > *,
+.feature-grid--4 > * { min-width: 0; }
+
 .feature-card {
   position: relative;
   padding: 2.25rem;
@@ -120,16 +127,27 @@
 
 @media (max-width: 1024px) {
   .feature-grid { grid-template-columns: repeat(2, 1fr); }
+  .feature-grid--4 { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 640px) {
   .feature-grid { grid-template-columns: 1fr; }
+  .feature-grid--4 { grid-template-columns: 1fr; }
 }
 
 /* ============================================================
    COMPARE TABLE (Jämförelse — Syns Nu vs göra det själv)
    ============================================================ */
+/* Wrapper enables horizontal scroll on mobile when table gets too tight */
+.compare-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: var(--r-xl);
+  -webkit-overflow-scrolling: touch;
+}
+
 .compare-table {
   width: 100%;
+  min-width: 520px;
   border-collapse: separate;
   border-spacing: 0;
   background: var(--bg);
@@ -2158,6 +2176,7 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
     grid-column: span 1;
     grid-row: auto;
     min-height: 280px;
+    padding: 1.75rem;
   }
 
   .tabs__nav { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 0.5rem; margin-left: calc(var(--gutter) * -1); margin-right: calc(var(--gutter) * -1); padding-inline: var(--gutter); }
@@ -2165,11 +2184,58 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
 
   .feature-duo { grid-template-columns: 1fr; }
 
-  .hero__trust { gap: 0.75rem 1.25rem; font-size: 0.8125rem; }
+  .hero__trust {
+    gap: 0.625rem 1rem;
+    font-size: 0.8125rem;
+    flex-direction: column;
+    align-items: center;
+  }
 
-  .dashboard__body { grid-template-columns: 1fr; }
+  .dashboard__body { grid-template-columns: 1fr; min-height: auto; }
   .dashboard__sidebar { display: none; }
   .dashboard__metrics { grid-template-columns: repeat(2, 1fr); }
+  .dashboard__main { padding: 1rem; }
+  .dashboard__metric { padding: 0.625rem 0.75rem; }
+  .dashboard__metric-value { font-size: 1rem; }
+  .dashboard__url { font-size: 0.625rem; max-width: 60%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  .split-grid { gap: 2rem; }
+
+  .cta-banner__inner { padding: 2rem 1.5rem; text-align: center; }
+
+  .stat-strip { grid-template-columns: repeat(2, 1fr); gap: 1.5rem 1rem; padding: 1.75rem 1.25rem; }
+  .stat-strip__item .stat-strip__value { font-size: 1.75rem; }
+
+  .pricing-card { padding: 1.5rem; }
+  .pricing-price { font-size: 2.25rem; }
+
+  .price-card { padding: 1.5rem; }
+  .price-card__price { font-size: 2.25rem; }
+
+  .page-hero__subtitle,
+  .page-hero .lead { font-size: 1rem; line-height: 1.55; }
+
+  .testimonial-quote { font-size: 1.125rem; line-height: 1.45; }
+}
+
+@media (max-width: 480px) {
+  .hero h1 { word-break: break-word; hyphens: auto; -webkit-hyphens: auto; }
+  .hero .lead { font-size: 0.9375rem; }
+
+  .bento__card { padding: 1.5rem; min-height: 240px; }
+  .bento__title { font-size: 1.125rem; }
+  .bento__card--lg .bento__title { font-size: 1.25rem; }
+
+  .feature-card { padding: 1.5rem; }
+
+  .pricing-grid, .pricing { gap: 1rem; }
+
+  .compare-table th,
+  .compare-table td { padding: 0.75rem 0.875rem; font-size: 0.8125rem; }
+
+  .dashboard-mockup { border-radius: 14px; }
+  .dashboard__chrome { padding: 0.5rem 0.75rem; }
+  .dashboard__metrics { gap: 0.5rem; }
 }
 /* ============================================================
    SYNS NU MEDIA — pages.css  v3 (CargoWave-stil)
