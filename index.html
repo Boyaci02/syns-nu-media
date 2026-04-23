@@ -467,40 +467,68 @@
     }
     .service-card:hover .service-card__visual img { transform: scale(1.04); }
 
-    /* ── Section 4: Lifestyle ───────────────── */
-    .sec-lifestyle {
+    /* ── Sections 4+5: Combined lifestyle + stats with sticky video bg ── */
+    .sec-combined {
       position: relative;
-      min-height: 80vh;
       background: #0A0A0B;
       color: white;
+    }
+    /* Sticky video pins to viewport while the lifestyle + stats panels scroll */
+    .sec-combined__bg {
+      position: sticky;
+      top: 0;
+      height: 100vh;
       overflow: hidden;
-      padding: clamp(80px, 10vw, 140px) 0;
+      z-index: 0;
     }
-    .sec-lifestyle__media {
+    .sec-combined__bg video,
+    .sec-combined__bg img {
       position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
     }
-    .sec-lifestyle__media img,
-    .sec-lifestyle__media video {
-      width: 100%; height: 100%; object-fit: cover;
-    }
-    .sec-lifestyle__media::after {
+    .sec-combined__bg::after {
       content: '';
       position: absolute; inset: 0;
       background:
         linear-gradient(95deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.85) 25%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.15) 70%, transparent 95%),
         linear-gradient(180deg, rgba(10,10,11,0.55) 0%, rgba(10,10,11,0.2) 25%, transparent 50%, rgba(10,10,11,0.65) 100%);
+      z-index: 1;
     }
-    .sec-lifestyle__inner {
+    /* Lifestyle panel — overlaps the sticky bg via negative margin so the
+       text sits over the video and scrolls up as the user scrolls down. */
+    .sec-combined__lifestyle {
+      position: relative;
+      z-index: 1;
+      margin-top: -100vh;
+      min-height: 100vh;
+      padding: clamp(80px, 10vw, 140px) 0;
+      display: flex;
+      align-items: flex-start;
+    }
+    /* Stats panel — scrolls in after lifestyle; its darkening gradient
+       becomes solid enough to make the stats readable while the paused
+       video still shows through as a subtle backdrop at the top. */
+    .sec-combined__stats {
+      position: relative;
+      z-index: 2;
+      padding: clamp(80px, 10vw, 140px) 0;
+      background: linear-gradient(180deg,
+        rgba(10,10,11,0) 0%,
+        rgba(10,10,11,0.82) 12%,
+        rgba(10,10,11,0.96) 26%,
+        rgba(10,10,11,0.98) 100%);
+    }
+    .sec-combined__inner {
       position: relative;
       max-width: var(--container-wide);
       margin-inline: auto;
       padding-inline: var(--gutter);
-      display: flex;
-      align-items: flex-start;
-      min-height: calc(80vh - 220px);
+      width: 100%;
       padding-top: 2rem;
     }
-    .sec-lifestyle__title {
+    .sec-combined__title {
       font-size: clamp(2.5rem, 6vw, 5rem);
       font-weight: 700;
       letter-spacing: -0.04em;
@@ -509,8 +537,8 @@
       color: white;
       text-shadow: 0 2px 24px rgba(0,0,0,0.5);
     }
-    .sec-lifestyle__title em.gradient-text { color: white; }
-    .sec-lifestyle__sub {
+    .sec-combined__title em.gradient-text { color: white; }
+    .sec-combined__sub {
       margin-top: 1.5rem;
       font-size: 1rem;
       line-height: 1.55;
@@ -518,31 +546,10 @@
       max-width: 440px;
       text-shadow: 0 1px 12px rgba(0,0,0,0.5);
     }
-
-    /* ── Section 5: Stats cards ─────────────── */
-    .sec-stats {
-      position: relative;
-      background: #0A0A0B;
-      color: white;
-      overflow: hidden;
-      padding: clamp(80px, 10vw, 140px) 0;
-    }
-    .sec-stats__media {
-      position: absolute; inset: 0;
-    }
-    .sec-stats__media img { width: 100%; height: 100%; object-fit: cover; opacity: 0.3; }
-    .sec-stats__media::after {
-      content: '';
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse at 50% 40%, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.75) 70%, rgba(0,0,0,0.92) 100%),
-        linear-gradient(180deg, rgba(10,10,11,0.3) 0%, transparent 50%, rgba(10,10,11,0.6) 100%);
-    }
-    .sec-stats__inner {
-      position: relative;
-      max-width: var(--container-wide);
-      margin-inline: auto;
-      padding-inline: var(--gutter);
+    /* Mobile-only break: "Byggd för" / "restauranger." / "Varje dag." */
+    .lt-line { display: inline; }
+    @media (max-width: 640px) {
+      .lt-line { display: block; }
     }
     .sec-stats__eyebrow {
       font-size: 0.75rem;
@@ -1440,32 +1447,29 @@
 </section>
 
 <!-- ============================================================
-     4 · LIFESTYLE — Built for accuracy
+     4 + 5 · COMBINED: lifestyle intro over sticky video, stats scroll over
      ============================================================ -->
-<section class="sec-lifestyle">
-  <div class="sec-lifestyle__media" aria-hidden="true">
+<section class="sec-combined" id="sec-lifestyle-stats">
+  <div class="sec-combined__bg" aria-hidden="true">
     <video src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/685f252da8f9d370ede1ff6f.mp4" autoplay muted loop playsinline preload="metadata"></video>
   </div>
-  <div class="sec-lifestyle__inner">
-    <div class="fx-up">
-      <h2 class="sec-lifestyle__title">
-        Byggd för restauranger.<br><em class="gradient-text" style="color:white;">Varje dag.</em>
-      </h2>
-      <p class="sec-lifestyle__sub">
-        Vi åker till er, filmar hantverket på plats och bygger content som känns äkta — inte som en reklambyrå som råkade svänga förbi.
-      </p>
+
+  <div class="sec-combined__lifestyle">
+    <div class="sec-combined__inner">
+      <div class="fx-up">
+        <h2 class="sec-combined__title">
+          <span class="lt-line">Byggd för</span> <span class="lt-line">restauranger.</span><br>
+          <em class="gradient-text" style="color:white;">Varje dag.</em>
+        </h2>
+        <p class="sec-combined__sub">
+          Vi åker till er, filmar hantverket på plats och bygger content som känns äkta — inte som en reklambyrå som råkade svänga förbi.
+        </p>
+      </div>
     </div>
   </div>
-</section>
 
-<!-- ============================================================
-     5 · STATS — performance cards on dark
-     ============================================================ -->
-<section class="sec-stats">
-  <div class="sec-stats__media" aria-hidden="true">
-    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1800&q=85" alt="">
-  </div>
-  <div class="sec-stats__inner">
+  <div class="sec-combined__stats">
+    <div class="sec-combined__inner">
     <div class="sec-stats__eyebrow fx-up">Bevis i siffror</div>
     <h2 class="sec-stats__title fx-up">
       Vi mäter framgång i bokningar och omsättning — <em class="gradient-text" style="color:white;">inte likes.</em>
@@ -1529,8 +1533,9 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
       </button>
     </div>
-  </div>
-</section>
+    </div><!-- /.sec-combined__inner -->
+  </div><!-- /.sec-combined__stats -->
+</section><!-- /.sec-combined -->
 
 <!-- ============================================================
      6 · INSIGHTS — membership split
@@ -1879,6 +1884,33 @@
       });
     }, { threshold: 0.3 });
     nums.forEach(n => io.observe(n));
+  })();
+
+  // Combined section: pause the sticky video when stats panel takes focus,
+  // resume it when the lifestyle panel is in view. Keeps the visual context
+  // but lets the data breathe.
+  (function(){
+    const sec = document.querySelector('.sec-combined');
+    if (!sec) return;
+    const video = sec.querySelector('.sec-combined__bg video');
+    const stats = sec.querySelector('.sec-combined__stats');
+    if (!video || !stats) return;
+    if (!('IntersectionObserver' in window)) return;
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.intersectionRatio >= 0.4) {
+          if (!video.paused) video.pause();
+        } else {
+          if (video.paused) {
+            const p = video.play();
+            if (p && typeof p.catch === 'function') p.catch(() => {});
+          }
+        }
+      });
+    }, { threshold: [0, 0.2, 0.4, 0.6, 0.8, 1] });
+
+    io.observe(stats);
   })();
 
   // Services cards: JS-driven slide+fade reveal.
