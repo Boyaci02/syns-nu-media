@@ -60,8 +60,8 @@
 
   /* Layout */
   --nav-h:      76px;
-  --container:  1160px;
-  --container-wide: 1280px;
+  --container:  min(1400px, 94vw);
+  --container-wide: min(1680px, 96vw);
   --gutter:     24px;
   --section-y:  clamp(96px, 12vw, 160px);
 
