@@ -226,37 +226,37 @@
       padding-inline: var(--gutter);
     }
     .sec-transition__title {
-      font-size: clamp(2rem, 4.5vw, 3.5rem);
-      font-weight: 600;
-      letter-spacing: -0.035em;
-      line-height: 1.08;
-      max-width: 880px;
-      margin-bottom: clamp(56px, 8vw, 96px);
+      font-size: clamp(2.75rem, 7vw, 6.5rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.02;
+      max-width: 1400px;
+      margin-bottom: clamp(72px, 10vw, 140px);
     }
     .sec-transition__grid {
       display: grid;
-      grid-template-columns: 300px 1fr;
-      gap: clamp(2.5rem, 6vw, 5rem);
+      grid-template-columns: minmax(520px, 700px) minmax(380px, 520px);
+      gap: clamp(3rem, 6vw, 5.5rem);
       align-items: center;
       justify-content: center;
-      max-width: 880px;
+      max-width: 1320px;
       margin-left: auto;
       margin-right: auto;
     }
     .sec-transition__photo {
       aspect-ratio: 4 / 3;
-      border-radius: 16px;
+      border-radius: 22px;
       overflow: hidden;
       background: var(--bg-soft);
       width: 100%;
     }
     .sec-transition__photo img { width: 100%; height: 100%; object-fit: cover; }
     .sec-transition__body p {
-      font-size: 1rem;
-      line-height: 1.6;
+      font-size: 1.25rem;
+      line-height: 1.55;
       color: var(--text-2);
-      max-width: 420px;
-      margin-bottom: 1.5rem;
+      max-width: 520px;
+      margin-bottom: 2rem;
     }
 
     /* ── Section 3: Service collection cards ─ */
@@ -1010,8 +1010,8 @@
     /* ── Mobile ─────────────────────────────── */
     @media (max-width: 1024px) {
       .sec-transition__grid { grid-template-columns: 1fr; justify-content: center; text-align: center; }
-      .sec-transition__photo { max-width: 380px; margin-inline: auto; }
-      .sec-transition__body p { margin-inline: auto; }
+      .sec-transition__photo { max-width: 560px; margin-inline: auto; }
+      .sec-transition__body p { margin-inline: auto; font-size: 1.125rem; }
       /* Keep 3 service cards on tablet */
       .sec-collection__grid { grid-template-columns: repeat(3, 1fr); gap: 0.875rem; }
       .service-card { padding: 1.25rem; aspect-ratio: 3 / 4.2; }
