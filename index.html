@@ -233,6 +233,21 @@
       max-width: 1000px;
       margin-bottom: clamp(64px, 8vw, 110px);
     }
+    .sec-transition__title .word {
+      display: inline-block;
+      overflow: hidden;
+      vertical-align: baseline;
+      margin-right: 0.22em;
+    }
+    .sec-transition__title .word > span {
+      display: inline-block;
+      transform: translateY(110%);
+      transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+    .sec-transition__title.is-revealed .word > span {
+      transform: translateY(0);
+    }
     .sec-transition__grid {
       display: grid;
       grid-template-columns: minmax(380px, 480px) minmax(320px, 440px);
@@ -244,19 +259,57 @@
       margin-right: auto;
     }
     .sec-transition__photo {
-      aspect-ratio: 4 / 3;
+      aspect-ratio: 5 / 4;
       border-radius: 20px;
       overflow: hidden;
       background: var(--bg-soft);
       width: 100%;
+      position: relative;
+      clip-path: inset(100% 0 0 0 round 20px);
+      transition: clip-path 1200ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: clip-path;
     }
-    .sec-transition__photo img { width: 100%; height: 100%; object-fit: cover; }
+    .sec-transition__photo.is-revealed { clip-path: inset(0 0 0 0 round 20px); }
+    .sec-transition__photo-shift {
+      position: absolute; inset: 0;
+      transform: translate3d(0, var(--parallax-y, 0px), 0);
+      will-change: transform;
+    }
+    .sec-transition__photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.18);
+      transition: transform 1600ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .sec-transition__photo.is-revealed img { transform: scale(1); }
+    .sec-transition__photo:hover img { transform: scale(1.06); transition-duration: 900ms; }
+    .sec-transition__body > * {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 800ms var(--ease-out), transform 800ms var(--ease-out);
+    }
+    .sec-transition__body.is-revealed > * { opacity: 1; transform: none; }
+    .sec-transition__body.is-revealed > *:nth-child(1) { transition-delay: 250ms; }
+    .sec-transition__body.is-revealed > *:nth-child(2) { transition-delay: 450ms; }
     .sec-transition__body p {
       font-size: 1.0625rem;
       line-height: 1.6;
       color: var(--text-2);
       max-width: 440px;
       margin-bottom: 1.75rem;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .sec-transition__title .word > span,
+      .sec-transition__photo,
+      .sec-transition__photo-shift,
+      .sec-transition__photo img,
+      .sec-transition__body > * {
+        transform: none !important;
+        clip-path: none !important;
+        transition: none !important;
+        opacity: 1 !important;
+      }
     }
 
     /* ── Section 3: Service collection cards ─ */
@@ -1202,15 +1255,17 @@
      ============================================================ -->
 <section class="sec-transition" id="precision">
   <div class="sec-transition__inner">
-    <h2 class="sec-transition__title fx-up">
+    <h2 class="sec-transition__title" data-reveal-words aria-label="Inget slumpmässigt flow — bara innehåll som når rätt gäst vid rätt tid.">
       Inget slumpmässigt flow — bara innehåll som når <em class="gradient-text">rätt gäst</em> vid rätt tid.
     </h2>
 
-    <div class="sec-transition__grid fx-up">
-      <div class="sec-transition__photo">
-        <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=900&q=85" alt="Restaurang-interior">
+    <div class="sec-transition__grid">
+      <div class="sec-transition__photo" data-reveal-photo>
+        <div class="sec-transition__photo-shift">
+          <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=900&q=85" alt="Restaurang-interior">
+        </div>
       </div>
-      <div class="sec-transition__body">
+      <div class="sec-transition__body" data-reveal-body>
         <p>Vi kombinerar branschkunskap med en produktionsprocess byggd för restauranger — inspelning på plats, edit med konverteringsfokus, distribution på rätt plattform vid rätt tid. Inget spill. Bara signaler som syns i kassan.</p>
         <a href="kundcase.html" class="pill-btn pill-btn--dark">
           Se kundresultat
@@ -1709,6 +1764,82 @@
       });
     }, { threshold: 0.3 });
     nums.forEach(n => io.observe(n));
+  })();
+
+  // Precision section: word-split reveal + staggered photo/body + gentle parallax
+  (function(){
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const title = document.querySelector('.sec-transition__title[data-reveal-words]');
+    if (title) {
+      const wrapAsWord = (contentNode) => {
+        const word = document.createElement('span');
+        word.className = 'word';
+        const inner = document.createElement('span');
+        inner.appendChild(contentNode);
+        word.appendChild(inner);
+        return word;
+      };
+      const processNode = (node) => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          const frag = document.createDocumentFragment();
+          node.textContent.split(/(\s+)/).forEach(chunk => {
+            if (!chunk) return;
+            if (/^\s+$/.test(chunk)) { frag.appendChild(document.createTextNode(chunk)); return; }
+            frag.appendChild(wrapAsWord(document.createTextNode(chunk)));
+          });
+          node.parentNode.replaceChild(frag, node);
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+          // Preserve inline elements (e.g. <em class="gradient-text">) as one atomic word
+          // so background-clip:text styling stays intact.
+          const clone = node.cloneNode(true);
+          const word = wrapAsWord(clone);
+          node.parentNode.replaceChild(word, node);
+        }
+      };
+      Array.from(title.childNodes).forEach(processNode);
+      title.querySelectorAll('.word > span').forEach((s, i) => {
+        s.style.transitionDelay = (i * 55) + 'ms';
+      });
+    }
+
+    const targets = document.querySelectorAll('[data-reveal-words], [data-reveal-photo], [data-reveal-body]');
+    if (!('IntersectionObserver' in window) || prefersReduced) {
+      targets.forEach(el => el.classList.add('is-revealed'));
+    } else {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-revealed');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
+      targets.forEach(el => io.observe(el));
+    }
+
+    // Gentle parallax on the inner shift layer (keeps img transform free for reveal + hover)
+    const photo = document.querySelector('.sec-transition__photo');
+    const shift = photo ? photo.querySelector('.sec-transition__photo-shift') : null;
+    if (photo && shift && !prefersReduced) {
+      let ticking = false;
+      const onScroll = () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          const rect = photo.getBoundingClientRect();
+          const vh = window.innerHeight || 800;
+          if (rect.bottom > 0 && rect.top < vh) {
+            const progress = (rect.top + rect.height / 2 - vh / 2) / vh;
+            const y = Math.max(-18, Math.min(18, progress * -24));
+            shift.style.setProperty('--parallax-y', y + 'px');
+          }
+          ticking = false;
+        });
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
   })();
 </script>
 </body>
