@@ -265,11 +265,16 @@
       background: var(--bg-soft);
       width: 100%;
       position: relative;
-      clip-path: inset(100% 0 0 0 round 20px);
-      transition: clip-path 1200ms cubic-bezier(0.22, 1, 0.36, 1);
-      will-change: clip-path;
     }
-    .sec-transition__photo.is-revealed { clip-path: inset(0 0 0 0 round 20px); }
+    .sec-transition__photo-reveal {
+      position: absolute; inset: 0;
+      transform: translate3d(0, 100%, 0);
+      transition: transform 1200ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+    .sec-transition__photo.is-revealed .sec-transition__photo-reveal {
+      transform: translate3d(0, 0, 0);
+    }
     .sec-transition__photo-shift {
       position: absolute; inset: 0;
       transform: translate3d(0, var(--parallax-y, 0px), 0);
@@ -301,12 +306,11 @@
     }
     @media (prefers-reduced-motion: reduce) {
       .sec-transition__title .word > span,
-      .sec-transition__photo,
+      .sec-transition__photo-reveal,
       .sec-transition__photo-shift,
       .sec-transition__photo img,
       .sec-transition__body > * {
         transform: none !important;
-        clip-path: none !important;
         transition: none !important;
         opacity: 1 !important;
       }
@@ -1261,8 +1265,10 @@
 
     <div class="sec-transition__grid">
       <div class="sec-transition__photo" data-reveal-photo>
-        <div class="sec-transition__photo-shift">
-          <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=900&q=85" alt="Restaurang-interior">
+        <div class="sec-transition__photo-reveal">
+          <div class="sec-transition__photo-shift">
+            <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=900&q=85" alt="Restaurang-interior">
+          </div>
         </div>
       </div>
       <div class="sec-transition__body" data-reveal-body>
@@ -1803,7 +1809,7 @@
       });
     }
 
-    const targets = document.querySelectorAll('[data-reveal-words], [data-reveal-photo], [data-reveal-body]');
+    const targets = Array.from(document.querySelectorAll('[data-reveal-words], [data-reveal-photo], [data-reveal-body]'));
     if (!('IntersectionObserver' in window) || prefersReduced) {
       targets.forEach(el => el.classList.add('is-revealed'));
     } else {
@@ -1814,8 +1820,14 @@
             io.unobserve(e.target);
           }
         });
-      }, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
       targets.forEach(el => io.observe(el));
+      // Safety net: if an element is still not revealed after 4s (observer never fired,
+      // element above current scroll at load, etc.), force the reveal so nothing ever
+      // stays stuck hidden.
+      setTimeout(() => {
+        targets.forEach(el => { if (!el.classList.contains('is-revealed')) el.classList.add('is-revealed'); });
+      }, 4000);
     }
 
     // Gentle parallax on the inner shift layer (keeps img transform free for reveal + hover)
