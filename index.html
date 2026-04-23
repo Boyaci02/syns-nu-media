@@ -312,6 +312,7 @@
       .sec-transition__body > *,
       .sec-collection__head h2 .word > span,
       .service-card__tile,
+      .service-card__motion,
       .service-card,
       .service-card__visual img {
         transform: none !important;
@@ -391,11 +392,17 @@
       scroll-padding-left: 0;
     }
     .sec-collection__grid::-webkit-scrollbar { display: none; }
-    /* Wrapper carries the JS-driven slide+fade; inner card owns hover lift. */
+    /* Tile = scroll-snap target. Stays at natural layout position — never
+       transformed — so snap alignment can't fight the animation. */
     .service-card__tile {
       flex: 0 0 calc((100% - 3 * 1.5rem) / 3.25);
       aspect-ratio: 5 / 7;
       scroll-snap-align: start;
+    }
+    /* Motion layer carries the JS-driven slide+fade. */
+    .service-card__motion {
+      width: 100%;
+      height: 100%;
       opacity: var(--tile-opacity, 0);
       transform: translate3d(var(--slide-x, 140px), 0, 0);
       backface-visibility: hidden;
@@ -1364,55 +1371,63 @@
 
     <div class="sec-collection__grid" data-carousel data-scroll-cards>
       <div class="service-card__tile">
-        <a href="sociala-medier.html" class="service-card service-card--cream">
-          <div>
-            <div class="service-card__name">Sociala Medier</div>
-            <div class="service-card__desc">Komplett Instagram, TikTok & Facebook — inspelning, publicering, resultat.</div>
-            <div class="service-card__price">Från 7 500 kr/mån</div>
-          </div>
-          <div class="service-card__visual">
-            <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69ea91b1717d5dd4e173eb96.jpeg" alt="Sociala medier-produktion för restaurang">
-          </div>
-        </a>
+        <div class="service-card__motion">
+          <a href="sociala-medier.html" class="service-card service-card--cream">
+            <div>
+              <div class="service-card__name">Sociala Medier</div>
+              <div class="service-card__desc">Komplett Instagram, TikTok & Facebook — inspelning, publicering, resultat.</div>
+              <div class="service-card__price">Från 7 500 kr/mån</div>
+            </div>
+            <div class="service-card__visual">
+              <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69ea91b1717d5dd4e173eb96.jpeg" alt="Sociala medier-produktion för restaurang">
+            </div>
+          </a>
+        </div>
       </div>
 
       <div class="service-card__tile">
-        <a href="hemsida.html" class="service-card service-card--dark">
-          <div>
-            <div class="service-card__name">Webbdesign</div>
-            <div class="service-card__desc">Snabba, mobilanpassade restauranghemsidor med SEO & bokning.</div>
-            <div class="service-card__price">Från 500 kr/mån</div>
-          </div>
-          <div class="service-card__visual">
-            <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69ea9494717d5dd4e1747a18.png" alt="Webbdesign för restaurang">
-          </div>
-        </a>
+        <div class="service-card__motion">
+          <a href="hemsida.html" class="service-card service-card--dark">
+            <div>
+              <div class="service-card__name">Webbdesign</div>
+              <div class="service-card__desc">Snabba, mobilanpassade restauranghemsidor med SEO & bokning.</div>
+              <div class="service-card__price">Från 500 kr/mån</div>
+            </div>
+            <div class="service-card__visual">
+              <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69ea9494717d5dd4e1747a18.png" alt="Webbdesign för restaurang">
+            </div>
+          </a>
+        </div>
       </div>
 
       <div class="service-card__tile">
-        <a href="kontakt.html" class="service-card service-card--peach">
-          <div>
-            <div class="service-card__name">Meny-Fotografering</div>
-            <div class="service-card__desc">Professionella rätt-bilder som säljer — ljussatta på plats i er restaurang.</div>
-            <div class="service-card__price">Från 3 500 kr</div>
-          </div>
-          <div class="service-card__visual">
-            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=700&q=85" alt="Styled maträtt-fotografering">
-          </div>
-        </a>
+        <div class="service-card__motion">
+          <a href="kontakt.html" class="service-card service-card--peach">
+            <div>
+              <div class="service-card__name">Meny-Fotografering</div>
+              <div class="service-card__desc">Professionella rätt-bilder som säljer — ljussatta på plats i er restaurang.</div>
+              <div class="service-card__price">Från 3 500 kr</div>
+            </div>
+            <div class="service-card__visual">
+              <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=700&q=85" alt="Styled maträtt-fotografering">
+            </div>
+          </a>
+        </div>
       </div>
 
       <div class="service-card__tile">
-        <a href="kontakt.html" class="service-card service-card--olive">
-          <div>
-            <div class="service-card__name">Google Optimering</div>
-            <div class="service-card__desc">Fler gäster via Google — My Business, lokala sökningar och kartor.</div>
-            <div class="service-card__price">Från 1 900 kr/mån</div>
-          </div>
-          <div class="service-card__visual">
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&q=85" alt="Google Analytics och SEO-optimering">
-          </div>
-        </a>
+        <div class="service-card__motion">
+          <a href="kontakt.html" class="service-card service-card--olive">
+            <div>
+              <div class="service-card__name">Google Optimering</div>
+              <div class="service-card__desc">Fler gäster via Google — My Business, lokala sökningar och kartor.</div>
+              <div class="service-card__price">Från 1 900 kr/mån</div>
+            </div>
+            <div class="service-card__visual">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&q=85" alt="Google Analytics och SEO-optimering">
+            </div>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -1868,7 +1883,9 @@
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const grid = document.querySelector('.sec-collection__grid[data-scroll-cards]');
     if (!grid) return;
-    const tiles = Array.from(grid.querySelectorAll('.service-card__tile'));
+    // Target the motion layer (inside each tile) so scroll-snap alignment on the
+    // tile itself never fights our transform.
+    const tiles = Array.from(grid.querySelectorAll('.service-card__motion'));
     if (tiles.length === 0) return;
 
     // Start state (already set in CSS via custom-property defaults — opacity 0,
