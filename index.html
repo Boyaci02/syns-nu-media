@@ -314,7 +314,9 @@
       .service-card__tile,
       .service-card__motion,
       .service-card,
-      .service-card__visual img {
+      .service-card__visual img,
+      .sec-stats__title .word > span,
+      .sec-stats__cards .stat-card {
         transform: none !important;
         transition: none !important;
         opacity: 1 !important;
@@ -566,13 +568,45 @@
       line-height: 1.1;
       max-width: 720px;
       margin-bottom: clamp(40px, 5vw, 64px);
+      color: white;
     }
+    /* Word-split reveal on the stats title (mirrors precision section) */
+    .sec-stats__title .word {
+      display: inline-block;
+      overflow: hidden;
+      vertical-align: baseline;
+      margin-right: 0.22em;
+    }
+    .sec-stats__title .word > span {
+      display: inline-block;
+      transform: translateY(110%);
+      transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+    .sec-stats__title.is-revealed .word > span { transform: translateY(0); }
+
     .sec-stats__cards {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1rem;
       align-items: stretch;
     }
+    /* Staggered reveal on stat cards */
+    .sec-stats__cards .stat-card {
+      opacity: 0;
+      transform: translateY(40px);
+      transition:
+        opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
+    }
+    .sec-stats__cards.is-revealed .stat-card { opacity: 1; transform: translateY(0); }
+    .sec-stats__cards.is-revealed .stat-card:nth-child(1) { transition-delay: 0ms; }
+    .sec-stats__cards.is-revealed .stat-card:nth-child(2) { transition-delay: 120ms; }
+    .sec-stats__cards.is-revealed .stat-card:nth-child(3) { transition-delay: 240ms; }
+    .sec-stats__cards.is-revealed .stat-card:nth-child(4) { transition-delay: 360ms; }
+    /* Hover must beat the reveal selector's specificity */
+    .sec-stats__cards.is-revealed .stat-card:hover { transform: translateY(-6px); transition-duration: 400ms; }
     .stat-card {
       position: relative;
       aspect-ratio: 3 / 4;
@@ -1471,12 +1505,12 @@
   <div class="sec-combined__stats">
     <div class="sec-combined__inner">
     <div class="sec-stats__eyebrow fx-up">Bevis i siffror</div>
-    <h2 class="sec-stats__title fx-up">
+    <h2 class="sec-stats__title" data-reveal-words aria-label="Vi mäter framgång i bokningar och omsättning — inte likes.">
       Vi mäter framgång i bokningar och omsättning — <em class="gradient-text" style="color:white;">inte likes.</em>
     </h2>
 
-    <div class="sec-stats__cards">
-      <div class="stat-card fx-up">
+    <div class="sec-stats__cards" data-reveal-cards>
+      <div class="stat-card">
         <div class="stat-card__badge stat-card__badge--a">+22%</div>
         <div class="stat-card__badge stat-card__badge--b">+8%</div>
         <div class="stat-card__badge stat-card__badge--c">+65%</div>
@@ -1494,12 +1528,12 @@
         <div class="stat-card__body">Förstå när teamet ska trycka på — och när det räcker att vårda kunden.</div>
       </div>
 
-      <div class="stat-card stat-card--photo fx-up">
+      <div class="stat-card stat-card--photo">
         <img src="https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=700&q=80" alt="">
         <div class="stat-card__cap">Se hur din restaurang svarar på varje kampanj.</div>
       </div>
 
-      <div class="stat-card fx-up" style="background:#0F1013;">
+      <div class="stat-card" style="background:#0F1013;">
         <div style="display:flex; align-items:center; gap:8px; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.6);">
           <span style="color:#E8E1FF;">✦</span> Sömn-score
         </div>
@@ -1519,7 +1553,7 @@
         <div class="stat-card__body">Se hur nattpubliken påverkar helgens omsättning.</div>
       </div>
 
-      <div class="stat-card stat-card--photo fx-up">
+      <div class="stat-card stat-card--photo">
         <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=700&q=80" alt="">
         <div class="stat-card__cap">Följ strain och respons — redo för nästa kampanj?</div>
       </div>
