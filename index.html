@@ -391,14 +391,15 @@
       scroll-padding-left: 0;
     }
     .sec-collection__grid::-webkit-scrollbar { display: none; }
-    /* Wrapper carries the scroll-linked slide-in; inner card owns hover lift. */
+    /* Wrapper carries the JS-driven slide+fade; inner card owns hover lift. */
     .service-card__tile {
       flex: 0 0 calc((100% - 3 * 1.5rem) / 3.25);
       aspect-ratio: 5 / 7;
       scroll-snap-align: start;
-      transform: translate3d(var(--slide-x, 100vw), 0, 0);
+      opacity: var(--tile-opacity, 0);
+      transform: translate3d(var(--slide-x, 140px), 0, 0);
       backface-visibility: hidden;
-      will-change: transform;
+      will-change: transform, opacity;
     }
     .service-card {
       position: relative;
@@ -1859,9 +1860,10 @@
     nums.forEach(n => io.observe(n));
   })();
 
-  // Services cards: scroll-linked slide-in from the viewport's right edge.
-  // Each tile's --slide-x tracks the page scroll progress through the section,
-  // so the motion feels continuous with the scroll instead of an abrupt reveal.
+  // Services cards: JS-driven slide+fade reveal.
+  // Triggered once the grid crosses a visibility threshold. Every frame is
+  // computed explicitly via requestAnimationFrame — no CSS transitions involved,
+  // so nothing can collide with hover or visual-viewport changes.
   (function(){
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const grid = document.querySelector('.sec-collection__grid[data-scroll-cards]');
@@ -1869,43 +1871,64 @@
     const tiles = Array.from(grid.querySelectorAll('.service-card__tile'));
     if (tiles.length === 0) return;
 
+    // Start state (already set in CSS via custom-property defaults — opacity 0,
+    // slide 140px right). We re-assert here so any missing defaults are filled.
+    const START_X = 140;          // pixels the tile starts offset to the right
+    const DURATION = 900;         // ms per-tile
+    const STAGGER = 140;          // ms between tiles
+    const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
+
+    const setTile = (tile, slide, opacity) => {
+      tile.style.setProperty('--slide-x', slide + 'px');
+      tile.style.setProperty('--tile-opacity', String(opacity));
+    };
+
     if (prefersReduced) {
-      tiles.forEach(t => t.style.setProperty('--slide-x', '0px'));
+      tiles.forEach(t => setTile(t, 0, 1));
       return;
     }
 
-    const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
-    let ticking = false;
+    tiles.forEach(t => setTile(t, START_X, 0));
 
-    const apply = () => {
-      const rect = grid.getBoundingClientRect();
-      const vh = window.innerHeight || document.documentElement.clientHeight;
-      // Section just entered viewport (rect.top ≈ vh) → progress 0.
-      // Section top reached ~30% of viewport from top → progress 1.
-      const startY = vh;
-      const endY = vh * 0.3;
-      const raw = (startY - rect.top) / (startY - endY);
-      const progress = Math.max(0, Math.min(1, raw));
-      const stagger = 0.1;   // each card trails the previous by 10% of the timeline
-      const span = 1 - stagger * (tiles.length - 1); // how much of the timeline each card uses
-      tiles.forEach((tile, i) => {
-        const local = Math.max(0, Math.min(1, (progress - i * stagger) / span));
-        const eased = easeOutCubic(local);
-        const distance = (1 - eased) * 100; // vw
-        tile.style.setProperty('--slide-x', distance + 'vw');
-      });
-      ticking = false;
+    let started = false;
+    const startAnimation = () => {
+      if (started) return;
+      started = true;
+      const t0 = performance.now();
+      const tick = (now) => {
+        const elapsed = now - t0;
+        let allDone = true;
+        tiles.forEach((tile, i) => {
+          const local = elapsed - i * STAGGER;
+          if (local < 0) { allDone = false; return; }
+          const t = Math.min(1, local / DURATION);
+          const eased = easeOutCubic(t);
+          const slide = (1 - eased) * START_X;
+          const opacity = eased;
+          setTile(tile, slide, opacity);
+          if (t < 1) allDone = false;
+        });
+        if (!allDone) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
     };
 
-    const onScroll = () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(apply);
-    };
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    apply(); // initial
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            startAnimation();
+            io.unobserve(grid);
+          }
+        });
+      }, { threshold: 0.2 });
+      io.observe(grid);
+      // Safety net if the observer never fires (e.g. section already in view
+      // and observer initial pass misses it for any reason).
+      setTimeout(startAnimation, 3500);
+    } else {
+      startAnimation();
+    }
   })();
 
   // Services carousel: wire prev/next buttons to scroll the track by one card
