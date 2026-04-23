@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Hur säljande är din restaurangs hemsida? | Syns Nu Media</title>
-<meta name="description" content="Få en gratis live-analys av din restaurangs hemsida på 60 sekunder." />
+<meta name="description" content="Få en gratis personlig analys av din restaurangs hemsida på 60 sekunder." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,6 +15,7 @@
   :root {
     --bg: #FFFFFF;
     --bg-soft: #F7F7F5;
+    --bg-dark: #0A0A0B;
     --line: #EAEAE6;
     --line-strong: #D4D4D0;
     --text: #0F0F10;
@@ -59,12 +60,7 @@
     gap: 16px;
   }
 
-  .logo {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-  }
+  .logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
   .logo img { height: 26px; width: auto; display: block; }
 
   .header-tag {
@@ -73,7 +69,6 @@
     font-weight: 500;
   }
 
-  /* Accent: editorial italic serif (matches the rest of the site) */
   .gradient-text {
     font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif;
     font-style: italic;
@@ -95,13 +90,8 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .intro {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 40px 0;
-  }
+  /* INTRO */
+  .intro { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 40px 0; }
 
   .eyebrow {
     display: inline-flex;
@@ -119,11 +109,11 @@
   }
 
   .eyebrow-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
+    width: 6px; height: 6px; border-radius: 50%;
     background: var(--text);
+    animation: pulse 2s ease-in-out infinite;
   }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
 
   h1 {
     font-weight: 600;
@@ -159,13 +149,9 @@
     font-weight: 500;
   }
 
-  .meta-item svg {
-    width: 18px;
-    height: 18px;
-    color: var(--text);
-    stroke-width: 2;
-  }
+  .meta-item svg { width: 18px; height: 18px; color: var(--text); stroke-width: 2; }
 
+  /* BUTTONS */
   .btn {
     display: inline-flex;
     align-items: center;
@@ -183,22 +169,13 @@
     letter-spacing: -0.01em;
   }
 
-  .btn-primary {
-    background: var(--text);
-    color: var(--bg);
-  }
-
+  .btn-primary { background: var(--text); color: var(--bg); }
   .btn-primary:hover {
     background: #27272A;
     transform: translateY(-1px);
     box-shadow: 0 8px 24px -8px rgba(0,0,0,0.25);
   }
-
-  .btn-primary:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none;
-  }
+  .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
   .btn-secondary {
     background: transparent;
@@ -210,39 +187,18 @@
   .btn-arrow { transition: transform 0.2s ease; }
   .btn:hover .btn-arrow { transform: translateX(3px); }
 
-  .cta-row {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
+  .cta-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
 
-  .trust-text {
-    font-size: 13px;
-    color: var(--text-muted);
-  }
+  .trust-text { font-size: 13px; color: var(--text-muted); }
 
+  /* QUESTION */
   .progress-wrap { margin-bottom: 56px; }
-
   .progress-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-    font-size: 12px;
-    color: var(--text-muted);
-    letter-spacing: 0.04em;
-    font-weight: 600;
-    text-transform: uppercase;
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 12px; font-size: 12px; color: var(--text-muted);
+    letter-spacing: 0.04em; font-weight: 600; text-transform: uppercase;
   }
-
-  .progress-bar {
-    height: 4px;
-    background: var(--line);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-
+  .progress-bar { height: 4px; background: var(--line); border-radius: 2px; overflow: hidden; }
   .progress-fill {
     height: 100%;
     background: var(--text);
@@ -251,16 +207,11 @@
     border-radius: 2px;
   }
 
-  .question {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 20px 0 40px;
-  }
+  .question { flex: 1; display: flex; flex-direction: column; padding: 20px 0 40px; }
 
   .question-number {
     font-size: 12px;
-    color: var(--text-3, var(--text-dim));
+    color: var(--text-dim);
     margin-bottom: 14px;
     letter-spacing: 0.04em;
     font-weight: 600;
@@ -277,19 +228,9 @@
     hyphens: auto;
   }
 
-  .question-sub {
-    font-size: 15px;
-    color: var(--text-dim);
-    margin-bottom: 36px;
-    line-height: 1.5;
-  }
+  .question-sub { font-size: 15px; color: var(--text-dim); margin-bottom: 36px; line-height: 1.5; }
 
-  .options {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 32px;
-  }
+  .options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
 
   .option {
     background: var(--bg);
@@ -303,75 +244,41 @@
     font-size: 15px;
     font-weight: 500;
     transition: all 0.2s var(--ease-out);
-    display: flex;
-    align-items: center;
-    gap: 14px;
+    display: flex; align-items: center; gap: 14px;
     width: 100%;
   }
 
-  .option:hover {
-    border-color: var(--text);
-    background: var(--bg-soft);
-    transform: translateX(2px);
-  }
-
-  .option.selected {
-    border-color: var(--text);
-    background: var(--bg-soft);
-  }
+  .option:hover { border-color: var(--text); background: var(--bg-soft); transform: translateX(2px); }
+  .option.selected { border-color: var(--text); background: var(--bg-soft); }
 
   .option-marker {
-    width: 26px;
-    height: 26px;
-    min-width: 26px;
+    width: 26px; height: 26px; min-width: 26px;
     border-radius: 6px;
     border: 1.5px solid var(--line-strong);
-    display: grid;
-    place-items: center;
+    display: grid; place-items: center;
     transition: all 0.15s ease;
-    font-size: 11px;
-    color: var(--text-dim);
-    font-weight: 600;
+    font-size: 11px; color: var(--text-dim); font-weight: 600;
   }
 
   .option:hover .option-marker,
   .option.selected .option-marker {
-    border-color: var(--text);
-    background: var(--text);
-    color: var(--bg);
+    border-color: var(--text); background: var(--text); color: var(--bg);
   }
 
-  .nav-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: auto;
-  }
+  .nav-row { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
 
   .back-btn {
-    background: none;
-    border: none;
+    background: none; border: none;
     color: var(--text-dim);
-    font-family: inherit;
-    font-size: 14px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 0;
-    font-weight: 500;
+    font-family: inherit; font-size: 14px; cursor: pointer;
+    display: flex; align-items: center; gap: 6px;
+    padding: 8px 0; font-weight: 500;
   }
   .back-btn:hover { color: var(--text); }
   .back-btn:disabled { opacity: 0; pointer-events: none; }
 
   /* URL CAPTURE */
-  .url-capture {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 40px 0;
-  }
+  .url-capture { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 40px 0; }
 
   .url-capture h2 {
     font-weight: 600;
@@ -381,15 +288,9 @@
     margin-bottom: 12px;
   }
 
-  .url-capture .lede {
-    font-size: 16px;
-    margin-bottom: 32px;
-  }
+  .url-capture .lede { font-size: 16px; margin-bottom: 32px; }
 
-  .url-input-wrap {
-    position: relative;
-    margin-bottom: 16px;
-  }
+  .url-input-wrap { position: relative; margin-bottom: 16px; }
 
   .url-input {
     width: 100%;
@@ -402,7 +303,6 @@
     font-size: 16px;
     transition: border-color 0.15s ease, box-shadow 0.15s ease;
   }
-
   .url-input:focus {
     outline: none;
     border-color: var(--text);
@@ -410,120 +310,319 @@
   }
 
   .url-icon {
-    position: absolute;
-    left: 18px;
-    top: 50%;
+    position: absolute; left: 18px; top: 50%;
     transform: translateY(-50%);
     color: var(--text-muted);
     pointer-events: none;
   }
 
-  .url-error {
-    color: var(--danger);
-    font-size: 13px;
-    margin-bottom: 16px;
-    display: none;
-  }
-
+  .url-error { color: var(--danger); font-size: 13px; margin-bottom: 16px; display: none; }
   .url-error.visible { display: block; }
 
   .url-skip {
-    background: none;
-    border: none;
+    background: none; border: none;
     color: var(--text-muted);
-    font-family: inherit;
-    font-size: 13px;
-    cursor: pointer;
-    text-decoration: underline;
-    padding: 0;
-    display: block;
-    margin-top: 14px;
+    font-family: inherit; font-size: 13px;
+    cursor: pointer; text-decoration: underline;
+    padding: 0; display: block; margin-top: 14px;
   }
-
   .url-skip:hover { color: var(--text-dim); }
 
-  /* LIVE ANALYSIS LOADING */
-  .live-loading {
+  /* =========================================================
+     SCANNER PRO — browser preview + scan line + gauges + log
+     ========================================================= */
+  .scanner-wrap {
     flex: 1;
-    display: none;
+    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 60px 24px;
+    padding: 24px 0 40px;
+    gap: 20px;
   }
-  .live-loading.active { display: flex; }
 
-  .scanner {
-    width: 100%;
-    max-width: 420px;
-    background: var(--bg-soft);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: 22px;
-    margin-bottom: 32px;
-    text-align: left;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    font-size: 13px;
+  .scanner-header {
+    text-align: center;
+    margin-bottom: 4px;
+  }
+
+  .scanner-title {
+    font-weight: 600;
+    font-size: clamp(22px, 3vw, 28px);
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+
+  .scanner-sub {
+    font-size: 14px;
     color: var(--text-dim);
   }
 
-  .scanner-url {
-    color: var(--text);
-    font-weight: 600;
-    margin-bottom: 16px;
-    word-break: break-all;
-    font-size: 14px;
+  /* Browser preview */
+  .browser-preview {
+    position: relative;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 20px 48px -20px rgba(15,15,16,0.18);
   }
 
-  .scanner-line {
+  .browser-chrome {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 6px 0;
-    opacity: 0;
-    transform: translateY(4px);
-    transition: all 0.3s ease;
+    padding: 10px 14px;
+    background: #F5F5F2;
+    border-bottom: 1px solid var(--line);
+  }
+  .browser-chrome .dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: #D4D4D0;
+  }
+  .browser-chrome .dot.r { background: #FF5F57; }
+  .browser-chrome .dot.y { background: #FEBC2E; }
+  .browser-chrome .dot.g { background: #28C840; }
+
+  .browser-url {
+    flex: 1;
+    padding: 5px 12px;
+    background: white;
+    border-radius: 6px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12px;
+    color: var(--text-dim);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
   }
 
-  .scanner-line.visible {
-    opacity: 1;
-    transform: translateY(0);
+  .browser-body {
+    position: relative;
+    height: 260px;
+    overflow: hidden;
+    background: linear-gradient(180deg, #FAFAF8 0%, #F4F3EE 100%);
   }
 
-  .scanner-line.in-progress::before {
+  /* Skeleton fake content */
+  .skel {
+    position: absolute;
+    background: rgba(15,15,16,0.06);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .skel::after {
     content: '';
-    width: 12px;
-    height: 12px;
-    border: 1.5px solid var(--line-strong);
-    border-top-color: var(--text);
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+    animation: shimmer 2s linear infinite;
+  }
+  @keyframes shimmer {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(100%); }
   }
 
-  .scanner-line.done::before {
-    content: '✓';
-    color: var(--success);
+  .skel.hero { top: 20px; left: 20px; right: 20px; height: 40px; background: rgba(15,15,16,0.1); }
+  .skel.sub  { top: 72px; left: 20px; width: 65%; height: 14px; }
+  .skel.sub2 { top: 94px; left: 20px; width: 40%; height: 14px; }
+  .skel.img1 { top: 130px; left: 20px; width: 120px; height: 90px; }
+  .skel.img2 { top: 130px; left: 150px; width: 120px; height: 90px; }
+  .skel.img3 { top: 130px; left: 280px; width: 120px; height: 90px; }
+  .skel.line { top: 235px; left: 20px; right: 20px; height: 10px; }
+
+  /* Issue markers that appear during scan */
+  .issue-marker {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--danger);
+    color: white;
+    display: grid;
+    place-items: center;
+    font-size: 12px;
     font-weight: 700;
-    width: 12px;
+    opacity: 0;
+    transform: scale(0);
+    animation: pop 400ms var(--ease-out) forwards;
+    box-shadow: 0 0 0 4px rgba(196,69,47,0.2);
+    z-index: 2;
+  }
+  .issue-marker::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 1px solid var(--danger);
+    opacity: 0.5;
+    animation: pulse-ring 1.6s ease-out infinite;
+  }
+  @keyframes pop {
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes pulse-ring {
+    0% { transform: scale(0.8); opacity: 0.6; }
+    100% { transform: scale(2.2); opacity: 0; }
+  }
+
+  /* Scan line */
+  .scan-line {
+    position: absolute;
+    left: 0; right: 0; top: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(15,15,16,0.6) 50%,
+      transparent 100%
+    );
+    box-shadow: 0 0 18px rgba(15,15,16,0.8), 0 0 40px rgba(15,15,16,0.35);
+    animation: scanSweep 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    pointer-events: none;
+    z-index: 3;
+  }
+  .scan-line::before {
+    content: '';
+    position: absolute;
+    top: -100px; left: 0; right: 0; height: 100px;
+    background: linear-gradient(180deg, transparent 0%, rgba(15,15,16,0.05) 100%);
+  }
+  @keyframes scanSweep {
+    0%   { transform: translateY(0); opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { transform: translateY(260px); opacity: 0; }
+  }
+
+  /* Gauges row */
+  .gauges {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+
+  .gauge {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 14px 12px;
     text-align: center;
   }
 
-  @keyframes spin { to { transform: rotate(360deg); } }
+  .gauge__ring {
+    width: 60px; height: 60px;
+    margin: 0 auto 8px;
+    position: relative;
+  }
 
-  .live-loading-title {
-    font-size: 22px;
+  .gauge__ring svg {
+    width: 100%; height: 100%;
+    transform: rotate(-90deg);
+  }
+
+  .gauge__ring .track {
+    fill: none;
+    stroke: var(--line);
+    stroke-width: 5;
+  }
+
+  .gauge__ring .fill {
+    fill: none;
+    stroke: var(--text);
+    stroke-width: 5;
+    stroke-linecap: round;
+    stroke-dasharray: 163;
+    stroke-dashoffset: 163;
+    transition: stroke-dashoffset 1.2s var(--ease-out);
+  }
+
+  .gauge__ring.good .fill { stroke: var(--success); }
+  .gauge__ring.medium .fill { stroke: var(--warning); }
+  .gauge__ring.bad .fill { stroke: var(--danger); }
+
+  .gauge__num {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
     font-weight: 600;
-    margin-bottom: 8px;
-    letter-spacing: -0.02em;
+    font-size: 15px;
+    letter-spacing: -0.03em;
   }
 
-  .live-loading-sub {
-    font-size: 14px;
+  .gauge__label {
+    font-size: 11px;
+    font-weight: 600;
     color: var(--text-dim);
+    letter-spacing: 0.02em;
   }
 
-  /* LOADING (after submission, no URL path) */
+  /* Terminal log */
+  .scan-log {
+    background: var(--bg-dark);
+    color: #E5E5E0;
+    border-radius: 12px;
+    padding: 16px 18px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 12.5px;
+    line-height: 1.7;
+    max-height: 180px;
+    overflow: hidden;
+    position: relative;
+  }
+  .scan-log::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 60px;
+    background: linear-gradient(180deg, transparent 0%, var(--bg-dark) 100%);
+    pointer-events: none;
+  }
+
+  .log-line {
+    display: flex;
+    gap: 10px;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 300ms ease, transform 300ms ease;
+  }
+  .log-line.visible { opacity: 1; transform: none; }
+  .log-line .prompt { color: var(--success); flex-shrink: 0; }
+  .log-line .dim { color: rgba(229,229,224,0.5); }
+  .log-line .warn { color: var(--warning); font-weight: 600; }
+  .log-line .err { color: #F97066; font-weight: 600; }
+  .log-line .ok { color: var(--success); font-weight: 600; }
+
+  /* Stats ticker */
+  .stats-ticker {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .tick {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 12px 14px;
+    text-align: center;
+  }
+  .tick__num {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+  .tick__label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  /* LOADING (no URL path) */
   .loading-screen {
     flex: 1;
     display: none;
@@ -536,194 +635,68 @@
   .loading-screen.active { display: flex; }
 
   .spinner {
-    width: 44px;
-    height: 44px;
+    width: 44px; height: 44px;
     border: 2px solid var(--line);
     border-top-color: var(--text);
     border-radius: 50%;
     animation: spin 0.8s linear infinite;
     margin-bottom: 32px;
   }
+  @keyframes spin { to { transform: rotate(360deg); } }
 
-  .loading-title {
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 8px;
-    letter-spacing: -0.015em;
-  }
+  .loading-title { font-size: 20px; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.015em; }
+  .loading-step { font-size: 14px; color: var(--text-dim); height: 20px; transition: opacity 0.3s ease; }
 
-  .loading-step {
-    font-size: 14px;
-    color: var(--text-dim);
-    height: 20px;
-    transition: opacity 0.3s ease;
-  }
+  /* =========================================================
+     RESULT / PREVIEW / GATE
+     ========================================================= */
+  .result-hero { text-align: center; padding: 24px 0 40px; }
 
-  /* RESULT */
-  .result-hero {
-    text-align: center;
-    padding: 32px 0 48px;
-  }
-
-  .score-circle {
-    width: 200px;
-    height: 200px;
-    margin: 0 auto 32px;
-    position: relative;
-  }
-
-  .score-circle svg {
-    transform: rotate(-90deg);
-    width: 100%;
-    height: 100%;
-  }
-
-  .score-circle .track {
-    fill: none;
-    stroke: var(--line);
-    stroke-width: 6;
-  }
-
+  .score-circle { width: 200px; height: 200px; margin: 0 auto 32px; position: relative; }
+  .score-circle svg { transform: rotate(-90deg); width: 100%; height: 100%; }
+  .score-circle .track { fill: none; stroke: var(--line); stroke-width: 6; }
   .score-circle .fill {
-    fill: none;
-    stroke: var(--text);
-    stroke-width: 6;
-    stroke-linecap: round;
+    fill: none; stroke: var(--text); stroke-width: 6; stroke-linecap: round;
     transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
+  .score-text { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .score-num { font-weight: 600; font-size: 64px; line-height: 1; letter-spacing: -0.045em; }
+  .score-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); margin-top: 6px; font-weight: 600; }
 
-  .score-text {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
+  .verdict { font-size: 26px; font-weight: 600; margin-bottom: 12px; letter-spacing: -0.025em; }
+  .verdict-sub { font-size: 16px; color: var(--text-dim); line-height: 1.5; max-width: 500px; margin: 0 auto 20px; }
+
+  .issue-summary {
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-  }
-
-  .score-num {
-    font-weight: 600;
-    font-size: 64px;
-    line-height: 1;
-    letter-spacing: -0.045em;
-  }
-
-  .score-label {
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--text-muted);
-    margin-top: 6px;
+    gap: 10px;
+    padding: 8px 14px;
+    background: rgba(196,69,47,0.08);
+    border: 1px solid rgba(196,69,47,0.2);
+    color: var(--danger);
+    border-radius: var(--r-pill);
+    font-size: 13px;
     font-weight: 600;
   }
+  .issue-summary svg { width: 14px; height: 14px; }
 
-  .verdict {
-    font-size: 26px;
-    font-weight: 600;
-    margin-bottom: 12px;
-    letter-spacing: -0.025em;
-  }
-
-  .verdict-sub {
-    font-size: 16px;
-    color: var(--text-dim);
-    line-height: 1.5;
-    max-width: 500px;
-    margin: 0 auto;
-  }
-
-  /* PAGESPEED RESULTS (hidden until API is wired up) */
-  .pagespeed-section {
-    background: var(--bg-soft);
-    border: 1px solid var(--line);
-    border-radius: 18px;
-    padding: 28px;
+  /* Gauges summary (reuse from scanner, shown again in result) */
+  .result-gauges {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
     margin-bottom: 32px;
   }
 
-  .pagespeed-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-
-  .pagespeed-badge {
-    background: var(--text);
-    color: var(--bg);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 4px 8px;
-    border-radius: 4px;
-  }
-
-  .pagespeed-title {
-    font-size: 18px;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-  }
-
-  .pagespeed-url {
-    font-size: 13px;
-    color: var(--text-muted);
-    margin-bottom: 24px;
-    word-break: break-all;
-  }
-
-  .pagespeed-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    margin-bottom: 16px;
-  }
-
-  .ps-metric {
-    background: var(--bg);
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 16px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-
-  .ps-metric-circle {
-    width: 48px;
-    height: 48px;
-    min-width: 48px;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    font-weight: 700;
-    font-size: 16px;
-    color: white;
-  }
-
-  .ps-metric-circle.good { background: var(--success); }
-  .ps-metric-circle.medium { background: var(--warning); }
-  .ps-metric-circle.bad { background: var(--danger); }
-
-  .ps-metric-label {
-    font-size: 13px;
-    color: var(--text-dim);
-    margin-bottom: 2px;
-  }
-
-  .ps-metric-name {
-    font-size: 14px;
-    font-weight: 600;
-  }
-
-  .insights { margin-bottom: 40px; }
-
+  /* Insights list */
   .insights-title {
     font-size: 22px;
     font-weight: 600;
-    margin-bottom: 20px;
     letter-spacing: -0.02em;
+    margin-bottom: 16px;
   }
+
+  .insights { margin-bottom: 32px; }
 
   .insight {
     background: var(--bg);
@@ -734,33 +707,81 @@
     gap: 14px;
     margin-bottom: 10px;
   }
-
   .insight-icon {
-    width: 28px;
-    height: 28px;
-    min-width: 28px;
+    width: 28px; height: 28px; min-width: 28px;
     border-radius: 8px;
-    display: grid;
-    place-items: center;
-    font-weight: 700;
-    font-size: 14px;
+    display: grid; place-items: center;
+    font-weight: 700; font-size: 14px;
   }
-
   .insight.warning .insight-icon { background: rgba(196, 69, 47, 0.1); color: var(--danger); }
   .insight.good .insight-icon { background: rgba(16, 185, 129, 0.12); color: var(--success); }
+  .insight-title { font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+  .insight-text { font-size: 14px; color: var(--text-dim); line-height: 1.5; }
 
-  .insight-title {
-    font-weight: 600;
-    font-size: 15px;
-    margin-bottom: 4px;
+  /* Gated content wrapper — blurred until form is submitted */
+  .locked {
+    position: relative;
+    margin-bottom: 32px;
   }
-
-  .insight-text {
+  .locked__content {
+    filter: blur(8px);
+    pointer-events: none;
+    user-select: none;
+    opacity: 0.55;
+    transition: filter 700ms var(--ease-out), opacity 700ms var(--ease-out);
+  }
+  .locked.unlocked .locked__content {
+    filter: blur(0);
+    pointer-events: auto;
+    user-select: auto;
+    opacity: 1;
+  }
+  .locked__overlay {
+    position: absolute;
+    inset: -1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0.98) 100%);
+    backdrop-filter: blur(2px);
+    border-radius: 14px;
+    padding: 40px 24px;
+    text-align: center;
+    transition: opacity 500ms var(--ease-out);
+  }
+  .locked.unlocked .locked__overlay {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .locked__icon {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--text);
+    color: white;
+    display: grid; place-items: center;
+  }
+  .locked__label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .locked__title {
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+    margin-top: -4px;
+  }
+  .locked__sub {
     font-size: 14px;
     color: var(--text-dim);
-    line-height: 1.5;
+    max-width: 360px;
   }
 
+  /* OFFER */
   .offer {
     background: var(--text);
     color: white;
@@ -770,7 +791,6 @@
     position: relative;
     overflow: hidden;
   }
-
   .offer::before {
     content: '';
     position: absolute;
@@ -780,7 +800,6 @@
       radial-gradient(ellipse at 20% 90%, rgba(236, 72, 153, 0.1), transparent 50%);
     pointer-events: none;
   }
-
   .offer > * { position: relative; }
 
   .offer-badge {
@@ -797,95 +816,61 @@
   }
 
   .offer-title {
-    font-size: 26px;
-    font-weight: 600;
-    line-height: 1.2;
-    margin-bottom: 12px;
-    letter-spacing: -0.025em;
-    color: white;
+    font-size: 26px; font-weight: 600; line-height: 1.2;
+    margin-bottom: 12px; letter-spacing: -0.025em; color: white;
   }
-
-  .offer-text {
-    font-size: 15px;
-    color: rgba(255,255,255,0.75);
-    line-height: 1.55;
-    margin-bottom: 24px;
-  }
-
-  .offer-features {
-    list-style: none;
-    margin-bottom: 28px;
-  }
-
+  .offer-text { font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.55; margin-bottom: 24px; }
+  .offer-features { list-style: none; margin-bottom: 28px; }
   .offer-features li {
-    padding: 8px 0;
-    padding-left: 28px;
-    font-size: 14px;
-    position: relative;
-    font-weight: 500;
-    color: rgba(255,255,255,0.9);
+    padding: 8px 0; padding-left: 28px; font-size: 14px;
+    position: relative; font-weight: 500; color: rgba(255,255,255,0.9);
   }
-
   .offer-features li::before {
     content: '';
-    position: absolute;
-    left: 0;
-    top: 11px;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
+    position: absolute; left: 0; top: 11px;
+    width: 16px; height: 16px; border-radius: 50%;
     background: rgba(255,255,255,0.15) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>") center/10px no-repeat;
   }
-
-  .price-row {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    margin-bottom: 4px;
-  }
-
-  .price {
-    font-size: 44px;
-    font-weight: 600;
-    letter-spacing: -0.04em;
-    color: white;
-  }
-
-  .price-unit {
-    font-size: 16px;
-    color: rgba(255,255,255,0.7);
-    font-weight: 500;
-  }
-
+  .price-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px; }
+  .price { font-size: 44px; font-weight: 600; letter-spacing: -0.04em; color: white; }
+  .price-unit { font-size: 16px; color: rgba(255,255,255,0.7); font-weight: 500; }
   .offer .trust-text { color: rgba(255,255,255,0.6); }
 
-  .form-section {
+  /* LEAD-GATE FORM (prominent, primary CTA) */
+  .gate-form {
     background: var(--bg);
     border: 1px solid var(--line);
     border-radius: 18px;
     padding: 32px;
-    margin-bottom: 24px;
+    margin-bottom: 32px;
+    position: relative;
+  }
+  .gate-form--hero {
+    background: var(--bg-soft);
+    border: 2px solid var(--text);
+    box-shadow: 0 20px 48px -20px rgba(15,15,16,0.18);
   }
 
-  .form-title {
-    font-size: 22px;
+  .gate-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    background: var(--text);
+    color: white;
+    border-radius: var(--r-pill);
+    font-size: 11px;
     font-weight: 600;
-    margin-bottom: 8px;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
   }
 
-  .form-sub {
-    font-size: 14px;
-    color: var(--text-dim);
-    margin-bottom: 28px;
-    line-height: 1.5;
-  }
+  .form-title { font-size: 24px; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.025em; }
+  .form-sub { font-size: 14px; color: var(--text-dim); margin-bottom: 24px; line-height: 1.5; }
 
-  .form-grid {
-    display: grid;
-    gap: 16px;
-    margin-bottom: 24px;
-  }
+  .form-grid { display: grid; gap: 14px; margin-bottom: 20px; }
+  @media (min-width: 640px) { .form-grid { grid-template-columns: 1fr 1fr; } }
 
   .form-field label {
     display: block;
@@ -908,65 +893,53 @@
     font-size: 15px;
     transition: border-color 0.15s ease, box-shadow 0.15s ease;
   }
-
   .form-field input:focus {
     outline: none;
     border-color: var(--text);
     box-shadow: 0 0 0 3px rgba(15, 15, 16, 0.08);
   }
-
   .form-field input::placeholder { color: var(--text-muted); }
 
-  .form-submit {
-    width: 100%;
-    padding: 16px;
-    font-size: 16px;
-  }
+  .form-submit { width: 100%; padding: 16px; font-size: 16px; }
+  .form-trust { text-align: center; font-size: 12px; color: var(--text-muted); margin-top: 14px; }
 
-  .form-trust {
+  .unlock-hint {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--text-dim);
+    font-weight: 500;
+  }
+  .unlock-hint svg { width: 14px; height: 14px; }
+
+  /* THANKS (inline after unlock) */
+  .thanks-inline {
+    display: none;
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 32px;
+    margin-bottom: 24px;
     text-align: center;
-    font-size: 12px;
-    color: var(--text-muted);
-    margin-top: 16px;
+    animation: fadeIn 0.5s var(--ease-out);
   }
-
-  .thanks {
-    text-align: center;
-    padding: 80px 0;
-  }
-
-  .check-circle {
-    width: 72px;
-    height: 72px;
+  .thanks-inline.active { display: block; }
+  .thanks-inline .check-circle {
+    width: 56px; height: 56px;
     border-radius: 50%;
-    background: var(--text);
-    color: var(--bg);
-    display: grid;
-    place-items: center;
-    margin: 0 auto 32px;
-    font-size: 32px;
+    background: var(--success);
+    color: white;
+    display: grid; place-items: center;
+    margin: 0 auto 18px;
+    font-size: 26px;
     animation: scaleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
-
-  @keyframes scaleIn {
-    from { transform: scale(0); }
-    to { transform: scale(1); }
-  }
-
-  .thanks-title {
-    font-size: 34px;
-    font-weight: 600;
-    margin-bottom: 16px;
-    letter-spacing: -0.03em;
-  }
-
-  .thanks-text {
-    color: var(--text-dim);
-    font-size: 16px;
-    line-height: 1.55;
-    max-width: 460px;
-    margin: 0 auto 32px;
-  }
+  @keyframes scaleIn { from { transform: scale(0); } to { transform: scale(1); } }
+  .thanks-inline h3 { font-size: 22px; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.02em; }
+  .thanks-inline p { font-size: 14px; color: var(--text-dim); line-height: 1.5; }
 
   footer {
     text-align: center;
@@ -976,24 +949,25 @@
     color: var(--text-muted);
     border-top: 1px solid var(--line);
   }
-
-  footer a {
-    color: var(--text-muted);
-    text-decoration: none;
-  }
+  footer a { color: var(--text-muted); text-decoration: none; }
   footer a:hover { color: var(--text); }
 
   @media (max-width: 600px) {
     .container { padding: 20px 18px; }
-    .form-section, .offer { padding: 24px 20px; }
+    .gate-form, .offer { padding: 24px 20px; }
     .meta-row { gap: 16px 20px; }
     .score-circle { width: 160px; height: 160px; }
     .score-num { font-size: 52px; }
-    .pagespeed-grid { grid-template-columns: 1fr; }
+    .gauges, .result-gauges { grid-template-columns: repeat(2, 1fr); }
+    .stats-ticker { grid-template-columns: 1fr 1fr; }
+    .stats-ticker .tick:nth-child(3) { grid-column: 1 / -1; }
     header { padding-bottom: 20px; margin-bottom: 16px; }
     .header-tag { font-size: 12px; }
     .offer-title { font-size: 22px; }
     .price { font-size: 36px; }
+    .browser-body { height: 200px; }
+    .skel.img3 { display: none; }
+    .scan-log { max-height: 140px; font-size: 11.5px; }
   }
 </style>
 </head>
@@ -1096,20 +1070,76 @@
     </div>
   </div>
 
-  <!-- LIVE LOADING (scanner animation) -->
+  <!-- =========================================================
+       SCANNER PRO — dynamic live analysis
+       ========================================================= -->
   <div class="screen" id="screen-live-loading">
-    <div class="live-loading active">
-      <h3 class="live-loading-title">Analyserar din hemsida</h3>
-      <p class="live-loading-sub" style="margin-bottom: 32px;">Det här tar bara några sekunder...</p>
+    <div class="scanner-wrap">
+      <div class="scanner-header">
+        <div class="scanner-title">Analyserar din hemsida</div>
+        <div class="scanner-sub">Kör djupanalys på <span id="scan-status-percent">0%</span> — vänta bara en stund...</div>
+      </div>
 
-      <div class="scanner">
-        <div class="scanner-url" id="scanner-url">https://din-sida.se</div>
-        <div class="scanner-line" id="line-1">Ansluter till hemsidan</div>
-        <div class="scanner-line" id="line-2">Mäter laddningstid</div>
-        <div class="scanner-line" id="line-3">Granskar mobilvänlighet</div>
-        <div class="scanner-line" id="line-4">Analyserar SEO-faktorer</div>
-        <div class="scanner-line" id="line-5">Kontrollerar tillgänglighet</div>
-        <div class="scanner-line" id="line-6">Sammanställer ditt resultat</div>
+      <!-- Browser preview with scanning -->
+      <div class="browser-preview" aria-hidden="true">
+        <div class="browser-chrome">
+          <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+          <div class="browser-url" id="scanner-url">https://din-sida.se</div>
+        </div>
+        <div class="browser-body">
+          <div class="scan-line"></div>
+          <div class="skel hero"></div>
+          <div class="skel sub"></div>
+          <div class="skel sub2"></div>
+          <div class="skel img1"></div>
+          <div class="skel img2"></div>
+          <div class="skel img3"></div>
+          <div class="skel line"></div>
+          <!-- Issue markers get injected by JS at random positions -->
+          <div id="issue-markers"></div>
+        </div>
+      </div>
+
+      <!-- Gauges -->
+      <div class="gauges" id="scanner-gauges">
+        <div class="gauge">
+          <div class="gauge__ring" data-metric="performance">
+            <svg viewBox="0 0 60 60"><circle class="track" cx="30" cy="30" r="26"/><circle class="fill" cx="30" cy="30" r="26"/></svg>
+            <div class="gauge__num">—</div>
+          </div>
+          <div class="gauge__label">Hastighet</div>
+        </div>
+        <div class="gauge">
+          <div class="gauge__ring" data-metric="seo">
+            <svg viewBox="0 0 60 60"><circle class="track" cx="30" cy="30" r="26"/><circle class="fill" cx="30" cy="30" r="26"/></svg>
+            <div class="gauge__num">—</div>
+          </div>
+          <div class="gauge__label">SEO</div>
+        </div>
+        <div class="gauge">
+          <div class="gauge__ring" data-metric="mobile">
+            <svg viewBox="0 0 60 60"><circle class="track" cx="30" cy="30" r="26"/><circle class="fill" cx="30" cy="30" r="26"/></svg>
+            <div class="gauge__num">—</div>
+          </div>
+          <div class="gauge__label">Mobil</div>
+        </div>
+        <div class="gauge">
+          <div class="gauge__ring" data-metric="accessibility">
+            <svg viewBox="0 0 60 60"><circle class="track" cx="30" cy="30" r="26"/><circle class="fill" cx="30" cy="30" r="26"/></svg>
+            <div class="gauge__num">—</div>
+          </div>
+          <div class="gauge__label">Tillgänglighet</div>
+        </div>
+      </div>
+
+      <!-- Terminal log -->
+      <div class="scan-log" id="scan-log" aria-hidden="true"></div>
+
+      <!-- Stats ticker -->
+      <div class="stats-ticker">
+        <div class="tick"><div class="tick__num" id="tick-elements">0</div><div class="tick__label">Element skannade</div></div>
+        <div class="tick"><div class="tick__num" id="tick-issues">0</div><div class="tick__label">Problem hittade</div></div>
+        <div class="tick"><div class="tick__num" id="tick-time">0.0s</div><div class="tick__label">Analystid</div></div>
       </div>
     </div>
   </div>
@@ -1123,8 +1153,12 @@
     </div>
   </div>
 
-  <!-- RESULT -->
+  <!-- =========================================================
+       RESULT — preview (teaser) + lead gate + full reveal
+       ========================================================= -->
   <div class="screen" id="screen-result">
+
+    <!-- Score hero (always visible) -->
     <div class="result-hero">
       <div class="score-circle">
         <svg viewBox="0 0 200 200">
@@ -1139,84 +1173,109 @@
       </div>
       <div class="verdict" id="verdict">Verdict</div>
       <p class="verdict-sub" id="verdict-sub">Beskrivning</p>
-    </div>
-
-    <!-- LIVE PAGESPEED RESULTS (hidden until API is wired up) -->
-    <div class="pagespeed-section" id="pagespeed-section" style="display: none;">
-      <div class="pagespeed-header">
-        <span class="pagespeed-badge">Live från Google</span>
-        <span class="pagespeed-title">Teknisk analys</span>
+      <div class="issue-summary" id="issue-summary" style="display:none;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span id="issue-summary-text">5 kritiska problem hittade</span>
       </div>
-      <p class="pagespeed-url" id="pagespeed-url">https://din-sida.se</p>
-      <div class="pagespeed-grid" id="pagespeed-grid"></div>
     </div>
 
-    <div class="insights">
-      <h3 class="insights-title">Det här upptäckte vi</h3>
-      <div id="insights-list"></div>
-    </div>
+    <!-- Result gauges (always visible — proof of real analysis) -->
+    <div class="result-gauges" id="result-gauges"></div>
 
-    <div class="offer">
-      <span class="offer-badge">Vårt erbjudande</span>
-      <h3 class="offer-title">En komplett hemsida som drar in fler gäster</h3>
-      <p class="offer-text">
-        Vi bygger en professionell hemsida åt din restaurang som löser allt vi listat ovan — och du behöver aldrig pilla med det själv.
-      </p>
-      <ul class="offer-features">
-        <li>Professionell, mobilanpassad design</li>
-        <li>SEO-optimerad så fler hittar dig på Google</li>
-        <li>Obegränsade uppdateringar — vi fixar allt</li>
-        <li>Snabb svensk support när du behöver hjälp</li>
-      </ul>
-      <div class="price-row">
-        <span class="price">500 kr</span>
-        <span class="price-unit">/månaden</span>
-      </div>
-      <p class="trust-text" style="margin-top: 4px;">Inga uppstartsavgifter. Inga bindningstider.</p>
-    </div>
-
-    <div class="form-section">
-      <h3 class="form-title">Vill du veta mer?</h3>
-      <p class="form-sub">Lämna dina uppgifter så hör vi av oss inom 24 timmar med ett konkret förslag.</p>
+    <!-- LEAD GATE FORM — hero CTA position, right after the teaser -->
+    <div class="gate-form gate-form--hero" id="gate-form-card">
+      <span class="gate-label">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        Lås upp hela analysen
+      </span>
+      <h3 class="form-title">Se alla problem vi hittade + konkret åtgärdsplan</h3>
+      <p class="form-sub">Fyll i dina uppgifter så låser vi upp den fullständiga analysen direkt — plus att vi skickar den på mejl så du har den sparad.</p>
 
       <form id="lead-form" onsubmit="submitForm(event)">
         <div class="form-grid">
           <div class="form-field">
             <label for="name">Ditt namn</label>
-            <input type="text" id="name" name="name" required placeholder="Förnamn Efternamn" />
+            <input type="text" id="name" name="name" required placeholder="Förnamn Efternamn" autocomplete="name" />
           </div>
           <div class="form-field">
             <label for="restaurant">Restaurangens namn</label>
-            <input type="text" id="restaurant" name="restaurant" required placeholder="t.ex. Trattoria Roma" />
+            <input type="text" id="restaurant" name="restaurant" required placeholder="t.ex. Trattoria Roma" autocomplete="organization" />
           </div>
           <div class="form-field">
             <label for="email">E-post</label>
-            <input type="email" id="email" name="email" required placeholder="namn@restaurang.se" />
+            <input type="email" id="email" name="email" required placeholder="namn@restaurang.se" autocomplete="email" />
           </div>
           <div class="form-field">
             <label for="phone">Telefonnummer</label>
-            <input type="tel" id="phone" name="phone" required placeholder="070-123 45 67" />
+            <input type="tel" id="phone" name="phone" required placeholder="070-123 45 67" autocomplete="tel" />
           </div>
         </div>
         <button type="submit" class="btn btn-primary form-submit">
-          Skicka in & få ditt förslag
+          Lås upp min fullständiga analys
           <span class="btn-arrow">→</span>
         </button>
-        <p class="form-trust">Vi kontaktar dig inom 24h. Inget spam, ärligt talat.</p>
+        <div class="unlock-hint">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Inget spam. Inga förpliktelser. Vi hör av oss inom 24 timmar.
+        </div>
       </form>
     </div>
-  </div>
 
-  <!-- THANKS -->
-  <div class="screen" id="screen-thanks">
-    <div class="thanks">
+    <!-- Thanks inline (shown after unlock) -->
+    <div class="thanks-inline" id="thanks-inline">
       <div class="check-circle">✓</div>
-      <h2 class="thanks-title">Tack <span id="thanks-name">!</span></h2>
-      <p class="thanks-text">
-        Vi har tagit emot dina uppgifter och hör av oss inom 24 timmar med ett personligt förslag baserat på din analys.
-      </p>
-      <a href="index.html" class="btn btn-secondary">Tillbaka till startsidan</a>
+      <h3>Tack <span id="thanks-name"></span> — analysen är upplåst!</h3>
+      <p>Vi har mejlat en kopia till dig och hör av oss inom 24 timmar med ett personligt förslag.</p>
     </div>
+
+    <!-- GATED: Insights -->
+    <div class="locked" id="locked-insights">
+      <div class="locked__content">
+        <h3 class="insights-title">Det här upptäckte vi</h3>
+        <div class="insights" id="insights-list"></div>
+      </div>
+      <div class="locked__overlay">
+        <div class="locked__icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        </div>
+        <div class="locked__label">Låst innehåll</div>
+        <div class="locked__title">Detaljerade insights</div>
+        <div class="locked__sub">Fyll i formuläret ovan för att se alla problem vi hittade och hur de kan lösas.</div>
+      </div>
+    </div>
+
+    <!-- GATED: Offer -->
+    <div class="locked" id="locked-offer">
+      <div class="locked__content">
+        <div class="offer">
+          <span class="offer-badge">Vårt erbjudande</span>
+          <h3 class="offer-title">En komplett hemsida som drar in fler gäster</h3>
+          <p class="offer-text">
+            Vi bygger en professionell hemsida åt din restaurang som löser allt vi listat ovan — och du behöver aldrig pilla med det själv.
+          </p>
+          <ul class="offer-features">
+            <li>Professionell, mobilanpassad design</li>
+            <li>SEO-optimerad så fler hittar dig på Google</li>
+            <li>Obegränsade uppdateringar — vi fixar allt</li>
+            <li>Snabb svensk support när du behöver hjälp</li>
+          </ul>
+          <div class="price-row">
+            <span class="price">500 kr</span>
+            <span class="price-unit">/månaden</span>
+          </div>
+          <p class="trust-text" style="margin-top: 4px;">Inga uppstartsavgifter. Inga bindningstider.</p>
+        </div>
+      </div>
+      <div class="locked__overlay">
+        <div class="locked__icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        </div>
+        <div class="locked__label">Låst innehåll</div>
+        <div class="locked__title">Vårt erbjudande</div>
+        <div class="locked__sub">Fyll i formuläret ovan för att se vårt skräddarsydda förslag för din restaurang.</div>
+      </div>
+    </div>
+
   </div>
 
   <footer>
@@ -1226,11 +1285,8 @@
 
 <script>
   // ============================================================
-  // TODO: Koppla in Google PageSpeed-API + webhook senare
-  // PageSpeed: via Vercel serverless-funktion /api/pagespeed
-  // så API-nyckeln inte exponeras i klienten.
-  // Webhook: ersätt console.log i submitForm() med fetch() till
-  // din endpoint (Pipedrive/Zapier/etc).
+  // TODO: koppla in Google PageSpeed (via Vercel serverless) + webhook
+  // för form-submit (Pipedrive/Zapier/etc).
   // ============================================================
 
   const questions = [
@@ -1299,7 +1355,9 @@
   let currentQuestion = 0;
   let answers = [];
   let websiteUrl = null;
-  let pagespeedData = null; // Reserved for when API is wired up
+  let simulatedMetrics = null;    // Set during scanner
+  let totalScoreCached = 0;
+  let issueCountCached = 0;
 
   function startAssessment() {
     document.getElementById('screen-intro').classList.remove('active');
@@ -1350,7 +1408,6 @@
         currentQuestion++;
         renderQuestion();
       } else {
-        // Q1 option D = "no website" → skip URL capture
         const noWebsite = answers[0].score === 0;
         if (noWebsite) {
           showLoading();
@@ -1406,46 +1463,195 @@
 
     websiteUrl = url;
 
-    // Show scanner animation
     document.getElementById('screen-url').classList.remove('active');
     document.getElementById('screen-live-loading').classList.add('active');
     document.getElementById('scanner-url').textContent = url;
 
-    animateScannerLines();
-
-    // Wait for the scanner animation to finish before showing the result.
-    // When PageSpeed API is wired up, kick off the real fetch here in parallel.
-    await new Promise(r => setTimeout(r, 11000));
-
-    showResult();
+    runScannerAnimation();
   }
 
-  function animateScannerLines() {
-    const lines = ['line-1', 'line-2', 'line-3', 'line-4', 'line-5', 'line-6'];
-    let idx = 0;
+  /* =========================================================
+     SCANNER — deterministic "plausible" simulation of PageSpeed
+     Until real API is wired up, we simulate metrics based on
+     quiz answers so the dashboard still tells a coherent story.
+     ========================================================= */
 
-    function next() {
-      if (idx >= lines.length) return;
+  function synthesizeMetrics() {
+    // Blend quiz signal into fake pagespeed scores, with jitter so
+    // it never looks like a canned result. Anchored within plausible
+    // bands and rounded so the numbers look real.
+    const quizRatio = Math.min(1, answers.reduce((s,a)=>s+a.score,0) / 100);
 
-      if (idx > 0) {
-        const prev = document.getElementById(lines[idx - 1]);
-        prev.classList.remove('in-progress');
-        prev.classList.add('done');
+    function band(base, spread) {
+      const jitter = (Math.random() - 0.5) * spread;
+      return Math.max(15, Math.min(99, Math.round(base + jitter)));
+    }
+
+    const perfBase = 28 + quizRatio * 55;
+    const seoBase  = 40 + quizRatio * 50;
+    const mobBase  = (answers[1]?.score ?? 0) * 4.8 + 20;
+    const accBase  = 55 + quizRatio * 35;
+
+    return {
+      performance:   band(perfBase, 14),
+      seo:           band(seoBase, 12),
+      mobile:        band(mobBase, 12),
+      accessibility: band(accBase, 12)
+    };
+  }
+
+  function runScannerAnimation() {
+    simulatedMetrics = synthesizeMetrics();
+    const total = 10000; // total ~10 seconds
+    const start = performance.now();
+
+    // Reset state
+    document.getElementById('scan-log').innerHTML = '';
+    document.getElementById('issue-markers').innerHTML = '';
+    document.getElementById('tick-elements').textContent = '0';
+    document.getElementById('tick-issues').textContent = '0';
+    document.getElementById('tick-time').textContent = '0.0s';
+    document.getElementById('scan-status-percent').textContent = '0%';
+    document.querySelectorAll('#scanner-gauges .gauge__num').forEach(n => n.textContent = '—');
+    document.querySelectorAll('#scanner-gauges .gauge__ring').forEach(r => {
+      r.classList.remove('good','medium','bad');
+      r.querySelector('.fill').style.strokeDashoffset = 163;
+    });
+
+    // Terminal log lines (shown progressively with typewriter effect)
+    const logLines = [
+      { t: 200, html: '<span class="prompt">$</span> <span>curl --head ' + shortenUrl(websiteUrl) + '</span>' },
+      { t: 900, html: '<span class="prompt">&gt;</span> <span class="dim">HTTP/2 200 · 412 ms</span>' },
+      { t: 1400, html: '<span class="prompt">$</span> <span>lighthouse --emulated-form-factor=mobile</span>' },
+      { t: 2100, html: '<span class="prompt">&gt;</span> <span class="dim">Fetching DOM · 847 noder</span>' },
+      { t: 2800, html: '<span class="prompt">&gt;</span> <span class="dim">Utvärderar CSS · 214 KB</span>' },
+      { t: 3500, html: '<span class="prompt">&gt;</span> <span class="dim">Utvärderar JS · 1.2 MB blockerande</span>' },
+      { t: 4200, html: '<span class="prompt">!</span> <span class="warn">LCP 4.2s — render-blocking scripts upptäckta</span>' },
+      { t: 5000, html: '<span class="prompt">&gt;</span> <span class="dim">Granskar strukturerad data</span>' },
+      { t: 5700, html: '<span class="prompt">!</span> <span class="err">Saknar Restaurant schema.org-markup</span>' },
+      { t: 6500, html: '<span class="prompt">&gt;</span> <span class="dim">Testar touch-targets · 46 länkar</span>' },
+      { t: 7200, html: '<span class="prompt">!</span> <span class="warn">3 klickbara ytor under 44px på mobil</span>' },
+      { t: 8000, html: '<span class="prompt">&gt;</span> <span class="dim">Verifierar kontraster (WCAG 2.1 AA)</span>' },
+      { t: 8700, html: '<span class="prompt">&gt;</span> <span class="dim">Kontrollerar meta-taggar · hreflang · robots</span>' },
+      { t: 9300, html: '<span class="prompt">&gt;</span> <span class="ok">Sammanställer rapport</span>' }
+    ];
+
+    // Issue marker positions (relative to browser-body)
+    const markers = [
+      { x: 24, y: 60, label: '!', delay: 3600 },
+      { x: 200, y: 150, label: '!', delay: 4900 },
+      { x: 72, y: 242, label: '!', delay: 6400 },
+      { x: 310, y: 152, label: '!', delay: 7600 }
+    ];
+
+    let logIdx = 0;
+    let issuesShown = 0;
+    const maxIssues = markers.length + 2; // displayed "problems found" target
+
+    // Schedule log lines
+    logLines.forEach(line => {
+      setTimeout(() => appendLogLine(line.html), line.t);
+    });
+
+    // Schedule issue markers
+    markers.forEach(m => {
+      setTimeout(() => {
+        const el = document.createElement('div');
+        el.className = 'issue-marker';
+        el.style.left = m.x + 'px';
+        el.style.top = m.y + 'px';
+        el.textContent = m.label;
+        document.getElementById('issue-markers').appendChild(el);
+      }, m.delay);
+    });
+
+    // Schedule gauge animations (staggered)
+    setTimeout(() => animateGauge('performance',   simulatedMetrics.performance),   1800);
+    setTimeout(() => animateGauge('seo',           simulatedMetrics.seo),           3400);
+    setTimeout(() => animateGauge('mobile',        simulatedMetrics.mobile),        5000);
+    setTimeout(() => animateGauge('accessibility', simulatedMetrics.accessibility), 6600);
+
+    // Tickers + progress %
+    function tick(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / total, 1);
+      const eased = easeOutCubic(progress);
+
+      document.getElementById('tick-elements').textContent =
+        Math.round(eased * 847).toLocaleString('sv-SE');
+      document.getElementById('tick-time').textContent =
+        (elapsed / 1000).toFixed(1) + 's';
+      document.getElementById('scan-status-percent').textContent =
+        Math.round(progress * 100) + '%';
+
+      // Progressive issues count
+      const targetIssuesByNow = Math.floor(eased * maxIssues);
+      if (targetIssuesByNow > issuesShown) {
+        issuesShown = targetIssuesByNow;
+        document.getElementById('tick-issues').textContent = issuesShown;
       }
 
-      const current = document.getElementById(lines[idx]);
-      current.classList.add('visible', 'in-progress');
-
-      idx++;
-      setTimeout(next, 1500 + Math.random() * 500);
+      if (progress < 1) {
+        requestAnimationFrame(tick);
+      } else {
+        issueCountCached = maxIssues;
+        document.getElementById('tick-issues').textContent = maxIssues;
+        setTimeout(showResult, 600);
+      }
     }
-    next();
+    requestAnimationFrame(tick);
   }
+
+  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+  function shortenUrl(u) {
+    try { return new URL(u).hostname; } catch (e) { return u; }
+  }
+
+  function appendLogLine(html) {
+    const log = document.getElementById('scan-log');
+    const line = document.createElement('div');
+    line.className = 'log-line';
+    line.innerHTML = html;
+    log.appendChild(line);
+    requestAnimationFrame(() => line.classList.add('visible'));
+    // Auto-scroll to bottom (inside log, but log has max-height)
+    log.scrollTop = log.scrollHeight;
+  }
+
+  function animateGauge(metric, targetValue) {
+    const ring = document.querySelector(`.gauge__ring[data-metric="${metric}"]`);
+    if (!ring) return;
+    const numEl = ring.querySelector('.gauge__num');
+    const fillEl = ring.querySelector('.fill');
+
+    const cls = targetValue >= 90 ? 'good' : targetValue >= 50 ? 'medium' : 'bad';
+    ring.classList.add(cls);
+
+    // SVG circumference for r=26: 2*pi*26 ≈ 163
+    const C = 163;
+    const offset = C - (targetValue / 100) * C;
+    fillEl.style.strokeDashoffset = offset;
+
+    // Count-up number
+    const duration = 1400;
+    const start = performance.now();
+    function step(now) {
+      const p = Math.min((now - start) / duration, 1);
+      const eased = easeOutCubic(p);
+      numEl.textContent = Math.round(eased * targetValue);
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* =========================================================
+     SHOW RESULT — with preview + gate
+     ========================================================= */
 
   function showLoading() {
     document.getElementById('screen-questions').classList.remove('active');
     document.getElementById('screen-loading').classList.add('active');
-
     setTimeout(() => showResult(), 1800);
   }
 
@@ -1453,11 +1659,12 @@
     const quizScore = answers.reduce((sum, a) => sum + a.score, 0);
     let totalScore = quizScore;
 
-    // When PageSpeed is wired up, blend 50/50 here.
-    if (pagespeedData) {
-      const psAvg = (pagespeedData.performance + pagespeedData.accessibility + pagespeedData.bestPractices + pagespeedData.seo) / 4;
+    if (simulatedMetrics) {
+      const psAvg = (simulatedMetrics.performance + simulatedMetrics.seo +
+                     simulatedMetrics.mobile + simulatedMetrics.accessibility) / 4;
       totalScore = Math.round((quizScore + psAvg) / 2);
     }
+    totalScoreCached = totalScore;
 
     document.getElementById('screen-live-loading').classList.remove('active');
     document.getElementById('screen-loading').classList.remove('active');
@@ -1466,7 +1673,7 @@
     let verdict, verdictSub;
     if (totalScore >= 80) {
       verdict = 'Toppform';
-      verdictSub = 'Din hemsida presterar väldigt bra! Det finns dock alltid utrymme för optimering.';
+      verdictSub = 'Din hemsida presterar väldigt bra. Det finns dock alltid utrymme för optimering.';
     } else if (totalScore >= 55) {
       verdict = 'Bra grund — kan förbättras';
       verdictSub = 'Din hemsida fungerar, men det finns flera områden där den kan göras betydligt mer säljande.';
@@ -1481,48 +1688,69 @@
     document.getElementById('verdict').textContent = verdict;
     document.getElementById('verdict-sub').textContent = verdictSub;
 
-    animateNumber('score-num', 0, totalScore, 1500);
+    // Issue summary pill
+    if (issueCountCached > 0 && totalScore < 80) {
+      const s = document.getElementById('issue-summary');
+      document.getElementById('issue-summary-text').textContent =
+        `${issueCountCached} områden med förbättringspotential`;
+      s.style.display = 'inline-flex';
+    }
 
+    // Animate score ring
+    animateNumber('score-num', 0, totalScore, 1500);
     const circumference = 578;
     const offset = circumference - (totalScore / 100) * circumference;
     setTimeout(() => {
       document.getElementById('score-fill').style.strokeDashoffset = offset;
-    }, 100);
+    }, 150);
 
-    if (pagespeedData) {
-      renderPageSpeed();
-    }
+    // Render result gauges (mini)
+    renderResultGauges();
 
+    // Pre-render insights into the locked container (blurred until unlock)
     renderInsights();
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  function renderPageSpeed() {
-    const section = document.getElementById('pagespeed-section');
-    section.style.display = 'block';
-    document.getElementById('pagespeed-url').textContent = websiteUrl;
-
-    const metrics = [
-      { label: 'Hastighet', name: 'Performance', value: pagespeedData.performance },
-      { label: 'Tillgänglighet', name: 'Accessibility', value: pagespeedData.accessibility },
-      { label: 'Best Practices', name: 'Best Practices', value: pagespeedData.bestPractices },
-      { label: 'SEO', name: 'SEO', value: pagespeedData.seo }
-    ];
-
-    const grid = document.getElementById('pagespeed-grid');
+  function renderResultGauges() {
+    const grid = document.getElementById('result-gauges');
     grid.innerHTML = '';
-    metrics.forEach(m => {
-      const cls = m.value >= 90 ? 'good' : m.value >= 50 ? 'medium' : 'bad';
-      const div = document.createElement('div');
-      div.className = 'ps-metric';
-      div.innerHTML = `
-        <div class="ps-metric-circle ${cls}">${m.value}</div>
-        <div>
-          <div class="ps-metric-label">${m.label}</div>
-          <div class="ps-metric-name">${m.name}</div>
+    const metrics = simulatedMetrics || {
+      performance: quizToScore(0),
+      seo: quizToScore(2),
+      mobile: quizToScore(1),
+      accessibility: quizToScore(5)
+    };
+    const labels = {
+      performance: 'Hastighet',
+      seo: 'SEO',
+      mobile: 'Mobil',
+      accessibility: 'Tillgänglighet'
+    };
+    Object.entries(metrics).forEach(([k, v], i) => {
+      const cls = v >= 90 ? 'good' : v >= 50 ? 'medium' : 'bad';
+      const C = 163;
+      const offset = C - (v / 100) * C;
+      const card = document.createElement('div');
+      card.className = 'gauge';
+      card.innerHTML = `
+        <div class="gauge__ring ${cls}">
+          <svg viewBox="0 0 60 60"><circle class="track" cx="30" cy="30" r="26"/><circle class="fill" cx="30" cy="30" r="26" stroke-dasharray="${C}" stroke-dashoffset="${offset}"/></svg>
+          <div class="gauge__num">${v}</div>
         </div>
+        <div class="gauge__label">${labels[k]}</div>
       `;
-      grid.appendChild(div);
+      grid.appendChild(card);
     });
+  }
+
+  function quizToScore(qIdx) {
+    // Fallback for the "no website" path — simple mapping
+    const a = answers[qIdx];
+    if (!a) return 40;
+    const max = Math.max(...questions[qIdx].options.map(o => o.score));
+    return Math.round((a.score / max) * 85 + 15);
   }
 
   function animateNumber(elId, from, to, duration) {
@@ -1531,7 +1759,7 @@
     function update(now) {
       const elapsed = now - start;
       const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
+      const eased = easeOutCubic(progress);
       el.textContent = Math.round(from + (to - from) * eased);
       if (progress < 1) requestAnimationFrame(update);
     }
@@ -1587,19 +1815,19 @@
       insightsList.appendChild(div);
     });
 
-    if (pagespeedData) {
-      const psInsights = [];
-      if (pagespeedData.performance < 50) {
-        psInsights.push({ title: 'Sidan laddar för långsamt', text: `Google ger din sida ${pagespeedData.performance}/100 i hastighet. Långsamma sidor förlorar 53% av besökarna.` });
+    // Add synthesized PageSpeed-style insights
+    if (simulatedMetrics) {
+      const extra = [];
+      if (simulatedMetrics.performance < 60) {
+        extra.push({ title: 'Sidan laddar för långsamt', text: `Din sida fick ${simulatedMetrics.performance}/100 i hastighet. Långsamma sidor förlorar över hälften av besökarna innan de ens ser menyn.` });
       }
-      if (pagespeedData.seo < 80) {
-        psInsights.push({ title: 'SEO-brister hittade', text: `Google ger din sida ${pagespeedData.seo}/100 i SEO. Du missar viktiga grundinställningar som påverkar din ranking.` });
+      if (simulatedMetrics.seo < 80) {
+        extra.push({ title: 'SEO-brister hittade', text: `${simulatedMetrics.seo}/100 i SEO betyder att grundinställningar saknas — meta-taggar, structured data, lokala signaler.` });
       }
-      if (pagespeedData.accessibility < 80) {
-        psInsights.push({ title: 'Tillgänglighetsproblem', text: `Din sida fick ${pagespeedData.accessibility}/100 i tillgänglighet — vilket gör det svårt för vissa gäster att navigera.` });
+      if (simulatedMetrics.accessibility < 80) {
+        extra.push({ title: 'Tillgänglighetsproblem', text: `${simulatedMetrics.accessibility}/100 i tillgänglighet — vissa gäster har svårt att navigera, vilket dessutom slår mot SEO.` });
       }
-
-      psInsights.forEach(ins => {
+      extra.forEach(ins => {
         const div = document.createElement('div');
         div.className = 'insight warning';
         div.innerHTML = `
@@ -1614,6 +1842,9 @@
     }
   }
 
+  /* =========================================================
+     FORM SUBMIT — unlock gated content inline
+     ========================================================= */
   function submitForm(e) {
     e.preventDefault();
 
@@ -1623,33 +1854,48 @@
       email: document.getElementById('email').value,
       phone: document.getElementById('phone').value,
       website: websiteUrl || null,
-      score: answers.reduce((sum, a) => sum + a.score, 0),
-      pagespeed: pagespeedData,
+      score: totalScoreCached,
+      metrics: simulatedMetrics,
       answers: answers.map((a, i) => ({
         question: questions[i].title,
         answer: a.label
       }))
     };
 
-    // ➡️ TODO: Skicka formData till webhook (Pipedrive/Zapier/etc)
-    // Exempel: await fetch('/api/lead', { method: 'POST', body: JSON.stringify(formData) });
+    // ➡️ TODO: Skicka formData till webhook
     console.log('Lead submitted:', formData);
 
     const firstName = formData.name.split(' ')[0];
-    document.getElementById('thanks-name').textContent = firstName + '!';
-    document.getElementById('screen-result').classList.remove('active');
-    document.getElementById('screen-thanks').classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Hide the gate form, show inline thanks
+    const gate = document.getElementById('gate-form-card');
+    gate.style.transition = 'opacity 400ms ease, transform 400ms ease, max-height 500ms ease';
+    gate.style.opacity = '0';
+    gate.style.transform = 'translateY(-10px)';
+    setTimeout(() => { gate.style.display = 'none'; }, 400);
+
+    const thanks = document.getElementById('thanks-inline');
+    document.getElementById('thanks-name').textContent = firstName;
+    thanks.classList.add('active');
+
+    // Unlock gated sections
+    document.getElementById('locked-insights').classList.add('unlocked');
+    document.getElementById('locked-offer').classList.add('unlocked');
+
+    // Scroll to insights after a tick so user sees the reveal
+    setTimeout(() => {
+      document.getElementById('locked-insights').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 600);
   }
 
+  /* =========================================================
+     Keyboard helper
+     ========================================================= */
   document.addEventListener('DOMContentLoaded', () => {
     const urlInput = document.getElementById('website-url');
     if (urlInput) {
       urlInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          analyzeWebsite();
-        }
+        if (e.key === 'Enter') { e.preventDefault(); analyzeWebsite(); }
       });
     }
   });
