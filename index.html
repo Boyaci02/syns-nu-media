@@ -395,7 +395,10 @@
       padding-bottom: 0.5rem;
       /* Bleed all the way out to the viewport's right edge so cards scroll off screen */
       margin-right: calc(50% - 50vw);
+      /* Internal right padding so the last card is not flush with the viewport edge */
+      padding-right: var(--gutter);
       scroll-padding-left: 0;
+      scroll-padding-inline-end: var(--gutter);
     }
     .sec-collection__grid::-webkit-scrollbar { display: none; }
     /* Tile = scroll-snap target. Stays at natural layout position — never
@@ -616,6 +619,9 @@
       padding-bottom: 0.5rem;
       /* Bleed to the viewport's right edge so the 4th card peeks off screen */
       margin-right: calc(50% - 50vw);
+      /* Internal right padding so the last card is not flush with the viewport edge */
+      padding-right: var(--gutter);
+      scroll-padding-inline-end: var(--gutter);
     }
     .sec-stats__cards::-webkit-scrollbar { display: none; }
     /* Staggered slide-in from the right on stat cards. Cards are also the
@@ -871,6 +877,9 @@
       padding-bottom: 0.5rem;
       /* Bleed to the viewport's right edge so panels scroll off screen */
       margin-right: calc(50% - 50vw);
+      /* Internal right padding so the last panel is not flush with the viewport edge */
+      padding-right: var(--gutter);
+      scroll-padding-inline-end: var(--gutter);
     }
     .sec-insights__grid::-webkit-scrollbar { display: none; }
     /* Outer panel = flex item + scroll-snap target. No visual. */
