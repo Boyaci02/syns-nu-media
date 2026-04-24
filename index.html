@@ -315,6 +315,7 @@
       .service-card__motion,
       .service-card,
       .service-card__visual img,
+      .sec-stats__eyebrow .word > span,
       .sec-stats__title .word > span,
       .sec-stats__cards .stat-card,
       .sec-insights__head h2 .word > span,
@@ -564,6 +565,20 @@
       color: rgba(255,255,255,0.6);
       margin-bottom: 1.25rem;
     }
+    /* Word-split reveal on the eyebrow too, so the whole header moves in unison */
+    .sec-stats__eyebrow .word {
+      display: inline-block;
+      overflow: hidden;
+      vertical-align: baseline;
+      margin-right: 0.22em;
+    }
+    .sec-stats__eyebrow .word > span {
+      display: inline-block;
+      transform: translateY(110%);
+      transition: transform 750ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+    .sec-stats__eyebrow.is-revealed .word > span { transform: translateY(0); }
     .sec-stats__title {
       font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 600;
@@ -594,22 +609,23 @@
       gap: 1rem;
       align-items: stretch;
     }
-    /* Staggered reveal on stat cards */
+    /* Staggered slide-in from the right on stat cards */
     .sec-stats__cards .stat-card {
       opacity: 0;
-      transform: translateY(40px);
+      transform: translate3d(80px, 0, 0);
+      backface-visibility: hidden;
       transition:
-        opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
-        transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+        opacity 950ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 950ms cubic-bezier(0.22, 1, 0.36, 1);
       will-change: opacity, transform;
     }
-    .sec-stats__cards.is-revealed .stat-card { opacity: 1; transform: translateY(0); }
+    .sec-stats__cards.is-revealed .stat-card { opacity: 1; transform: translate3d(0, 0, 0); }
     .sec-stats__cards.is-revealed .stat-card:nth-child(1) { transition-delay: 0ms; }
     .sec-stats__cards.is-revealed .stat-card:nth-child(2) { transition-delay: 120ms; }
     .sec-stats__cards.is-revealed .stat-card:nth-child(3) { transition-delay: 240ms; }
     .sec-stats__cards.is-revealed .stat-card:nth-child(4) { transition-delay: 360ms; }
     /* Hover must beat the reveal selector's specificity */
-    .sec-stats__cards.is-revealed .stat-card:hover { transform: translateY(-6px); transition-duration: 400ms; }
+    .sec-stats__cards.is-revealed .stat-card:hover { transform: translate3d(0, -6px, 0); transition-duration: 400ms; }
     .stat-card {
       position: relative;
       aspect-ratio: 3 / 4;
@@ -1561,7 +1577,7 @@
 
   <div class="sec-combined__stats">
     <div class="sec-combined__inner">
-    <div class="sec-stats__eyebrow fx-up">Bevis i siffror</div>
+    <div class="sec-stats__eyebrow" data-reveal-words aria-label="Bevis i siffror">Bevis i siffror</div>
     <h2 class="sec-stats__title" data-reveal-words aria-label="Vi mäter framgång i bokningar och omsättning — inte likes.">
       Vi mäter framgång i bokningar och omsättning — <em class="gradient-text" style="color:white;">inte likes.</em>
     </h2>
