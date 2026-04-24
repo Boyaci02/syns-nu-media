@@ -1584,51 +1584,51 @@
 
     <div class="sec-stats__cards" data-reveal-cards>
       <div class="stat-card">
-        <div class="stat-card__badge stat-card__badge--a">+22%</div>
-        <div class="stat-card__badge stat-card__badge--b">+8%</div>
-        <div class="stat-card__badge stat-card__badge--c">+65%</div>
+        <div class="stat-card__badge stat-card__badge--a">+856%</div>
+        <div class="stat-card__badge stat-card__badge--b">+3 760%</div>
+        <div class="stat-card__badge stat-card__badge--c">+41%</div>
         <div class="stat-card__ring">
           <svg viewBox="0 0 140 140">
             <circle class="track" cx="70" cy="70" r="55"/>
-            <circle class="seg" data-pct="65" stroke="#4EBFB8" cx="70" cy="70" r="55" stroke-dasharray="345" stroke-dashoffset="345"/>
-            <circle class="seg" data-pct="22" stroke="#E5EE9E" cx="70" cy="70" r="55" stroke-dasharray="345" stroke-dashoffset="345" style="opacity:0;"/>
+            <circle class="seg" data-pct="42" stroke="#4EBFB8" cx="70" cy="70" r="55" stroke-dasharray="345" stroke-dashoffset="345"/>
+            <circle class="seg" data-pct="14" stroke="#E5EE9E" cx="70" cy="70" r="55" stroke-dasharray="345" stroke-dashoffset="345" style="opacity:0;"/>
           </svg>
           <div class="stat-card__ring-text">
-            <div class="stat-card__ring-val" data-count="95">0</div>
-            <div class="stat-card__ring-label">Happy minutes</div>
+            <div class="stat-card__ring-val" data-count="10170" data-divisor="1000" data-decimals="2" data-suffix="K">0</div>
+            <div class="stat-card__ring-label">Följare</div>
           </div>
         </div>
-        <div class="stat-card__body">Förstå när teamet ska trycka på — och när det räcker att vårda kunden.</div>
+        <div class="stat-card__body">Totalt över Facebook, Instagram & TikTok — +41% tillväxt på 3,5 månader.</div>
       </div>
 
       <div class="stat-card stat-card--photo">
         <video src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69eb311b9fe87a999495342b.mov" autoplay muted loop playsinline preload="metadata"></video>
-        <div class="stat-card__cap">Se hur din restaurang svarar på varje kampanj.</div>
+        <div class="stat-card__cap">1 845 nya Instagram-följare — +39,47% tillväxt.</div>
       </div>
 
       <div class="stat-card" style="background:#0F1013;">
         <div style="display:flex; align-items:center; gap:8px; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.6);">
-          <span style="color:#E8E1FF;">✦</span> Sömn-score
+          <span style="color:#E8E1FF;">✦</span> Svensk publik
         </div>
         <div class="stat-card__ring" style="width:120px; height:120px;">
           <svg viewBox="0 0 140 140">
             <circle class="track" cx="70" cy="70" r="55"/>
-            <path class="seg" data-pct="74" stroke="#4EBFB8" fill="none" stroke-width="10" stroke-linecap="round" d="M 30 70 a 40 40 0 1 1 80 0" stroke-dasharray="200" stroke-dashoffset="200"/>
+            <path class="seg" data-pct="88" stroke="#4EBFB8" fill="none" stroke-width="10" stroke-linecap="round" d="M 30 70 a 40 40 0 1 1 80 0" stroke-dasharray="200" stroke-dashoffset="200"/>
           </svg>
           <div class="stat-card__ring-text">
             <div style="display:flex; align-items:baseline; gap:4px;">
-              <div class="stat-card__ring-val" data-count="74">0</div>
+              <div class="stat-card__ring-val" data-count="88">0</div>
               <div style="font-size:1rem; color:rgba(255,255,255,0.6);">%</div>
             </div>
-            <div class="stat-card__ring-label">Score</div>
+            <div class="stat-card__ring-label">Från Sverige</div>
           </div>
         </div>
-        <div class="stat-card__body">Se hur nattpubliken påverkar helgens omsättning.</div>
+        <div class="stat-card__body">55% från Stockholm — en genuint lokal räckvidd.</div>
       </div>
 
       <div class="stat-card stat-card--photo">
         <video src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69eb3184717d5dd4e19349da.mov" autoplay muted loop playsinline preload="metadata"></video>
-        <div class="stat-card__cap">Följ strain och respons — redo för nästa kampanj?</div>
+        <div class="stat-card__cap">1 miljon visningar på 3,5 månader — +856% från tidigare period.</div>
       </div>
     </div>
 
@@ -1975,13 +1975,21 @@
         if (!e.isIntersecting) return;
         const el = e.target;
         io.unobserve(el);
-        const target = parseInt(el.dataset.count, 10);
+        const target = parseFloat(el.dataset.count);
+        const divisor = parseFloat(el.dataset.divisor || '1');
+        const decimals = parseInt(el.dataset.decimals || '0', 10);
+        const suffix = el.dataset.suffix || '';
         const dur = 1400;
         const start = performance.now();
+        function format(n) {
+          // Swedish locale: comma as decimal separator
+          return n.toFixed(decimals).replace('.', ',');
+        }
         function step(now) {
           const p = Math.min((now - start) / dur, 1);
           const eased = 1 - Math.pow(1 - p, 3);
-          el.textContent = Math.round(target * eased);
+          const current = (target * eased) / divisor;
+          el.textContent = format(current) + suffix;
           if (p < 1) requestAnimationFrame(step);
         }
         requestAnimationFrame(step);
