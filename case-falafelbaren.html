@@ -704,38 +704,215 @@
       .case-quote { min-height: 100vh; }
       .case-quote__card { --p: 0.5 !important; }
     }
+
+    /* ── Nav transparency over hero (matches homepage) ──── */
+    body.index-v6 #nav:not(.scrolled) .nav__inner {
+      background: transparent;
+      border-color: transparent;
+      box-shadow: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+    body.index-v6 #nav.scrolled .nav__inner {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-color: var(--border);
+    }
+    body.index-v6 #nav:not(.scrolled) .nav__links > a,
+    body.index-v6 #nav:not(.scrolled) .nav__dropdown-toggle { color: rgba(255,255,255,0.82); }
+    body.index-v6 #nav:not(.scrolled) .nav__login { color: rgba(255,255,255,0.82); }
+    body.index-v6 #nav:not(.scrolled) .nav__logo img { filter: brightness(0) invert(1); opacity: 0.95; }
+    body.index-v6 #nav:not(.scrolled) .nav__links > a:hover,
+    body.index-v6 #nav:not(.scrolled) .nav__dropdown-toggle:hover,
+    body.index-v6 #nav:not(.scrolled) .nav__login:hover {
+      background: rgba(255,255,255,0.1);
+      color: white;
+    }
+    body.index-v6 #nav:not(.scrolled) .nav__cta .btn--blue {
+      background: white;
+      color: var(--text);
+    }
+    body.index-v6 #nav:not(.scrolled) .nav__cta .btn--blue:hover {
+      background: rgba(255,255,255,0.9);
+    }
+
+    /* ── Tri-dot (used in footer logo) ─────────── */
+    .tri-dot {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.08em;
+      margin-right: 0.18em;
+    }
+    .tri-dot b {
+      width: 0.22em;
+      height: 0.22em;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .tri-dot b:nth-child(1) { background: var(--edit-peach, #FFCFA8); }
+    .tri-dot b:nth-child(2) { background: var(--edit-teal, #4EBFB8); }
+    .tri-dot b:nth-child(3) { background: var(--edit-lavender, #E8E1FF); }
+
+    /* ── Big footer (matches homepage) ─────────── */
+    .sec-footer-big {
+      background: #0A0A0B;
+      color: white;
+      padding: clamp(80px, 10vw, 120px) 0 40px;
+    }
+    .sec-footer-big__inner {
+      max-width: var(--container-wide);
+      margin-inline: auto;
+      padding-inline: var(--gutter);
+    }
+    .footer-big__grid {
+      display: grid;
+      grid-template-columns: 1.5fr repeat(3, 1fr) auto;
+      gap: clamp(2rem, 4vw, 4rem);
+      padding-bottom: 4rem;
+    }
+    .footer-big__brand p {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.9375rem;
+      margin-bottom: 1.5rem;
+      max-width: 260px;
+    }
+    .footer-big__form {
+      display: flex; gap: 0;
+      background: white;
+      border-radius: 9999px;
+      padding: 4px;
+      max-width: 320px;
+    }
+    .footer-big__form input {
+      flex: 1;
+      background: transparent;
+      border: none; outline: none;
+      padding: 10px 16px;
+      font: inherit;
+      color: var(--text);
+      font-size: 0.875rem;
+      min-width: 0;
+    }
+    .footer-big__form button {
+      padding: 8px 16px;
+      background: var(--text); color: white;
+      border: none; border-radius: 9999px;
+      font: inherit; font-size: 0.8125rem; font-weight: 500;
+      cursor: pointer;
+    }
+    .footer-big h5 {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: white;
+      margin-bottom: 1.25rem;
+    }
+    .footer-big ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.625rem; margin: 0; }
+    .footer-big a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .footer-big a:hover { color: white; }
+    .footer-big__mark {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 2.5rem;
+      margin-top: 1.5rem;
+      font-size: clamp(3rem, 14vw, 12rem);
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      line-height: 0.9;
+      color: white;
+      text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    .footer-big__mark-logo {
+      color: white;
+      letter-spacing: -0.05em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3em;
+    }
+    .footer-big__mark-dash {
+      font-weight: 300;
+      opacity: 0.9;
+      margin: 0 0.25em;
+    }
+    .footer-big__bottom {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin-top: 1.5rem;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+    }
+    @media (max-width: 1024px) {
+      .footer-big__grid { grid-template-columns: 1fr 1fr; }
+      .footer-big__brand { grid-column: 1 / -1; }
+      .footer-big__payments-col { grid-column: 1 / -1; }
+    }
+    @media (max-width: 640px) {
+      .footer-big__grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
-<body class="case-page">
+<body class="case-page index-v6">
 
 <!-- NAV -->
 <nav id="nav" role="navigation" aria-label="Huvudnavigering">
   <div class="nav__inner">
     <a class="nav__logo" href="index.html" aria-label="Syns Nu Media — Hem">
-      <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/699641283fd420658d5267af.png" alt="Syns Nu Media" width="100" height="26">
+      <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/699641283fd420658d5267af.png"
+           alt="Syns Nu Media" width="100" height="26">
     </a>
+
     <div class="nav__links" role="menubar">
-      <a href="index.html">Hem</a>
-      <div class="nav__dropdown">
+      <a href="index.html" role="menuitem">Hem</a>
+      <div class="nav__dropdown" role="menuitem">
         <span class="nav__dropdown-toggle" tabindex="0" aria-haspopup="true">
           Tjänster
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </span>
-        <div class="nav__dropdown-menu">
-          <a href="sociala-medier.html">Sociala Medier</a>
-          <a href="hemsida.html">Webbdesign</a>
-          <a href="qopla-erbjudande.html">Qopla-erbjudande</a>
+        <div class="nav__dropdown-menu" role="menu">
+          <a href="sociala-medier.html" role="menuitem">Sociala Medier</a>
+          <a href="hemsida.html" role="menuitem">Webbdesign</a>
+          <a href="qopla-erbjudande.html" role="menuitem">Qopla-erbjudande</a>
         </div>
       </div>
-      <a href="om-oss.html">Om oss</a>
-      <a href="kundcase.html">Kundcase</a>
-      <a href="blogg.html">Blogg</a>
-      <a href="jobb.html">Jobb</a>
+      <a href="om-oss.html" role="menuitem">Om oss</a>
+      <a href="kundcase.html" role="menuitem">Kundcase</a>
+      <a href="blogg.html" role="menuitem">Blogg</a>
+      <a href="jobb.html" role="menuitem">Jobb</a>
     </div>
-    <a href="kontakt.html" class="btn btn--blue">Boka gratis möte</a>
-    <a href="https://synsnumedia.com/portal/login" target="_blank" rel="noopener" class="btn btn--ghost">Logga in</a>
+
+    <div class="nav__cta">
+      <a href="https://synsnumedia.com/portal/login" class="nav__login" target="_blank" rel="noopener">Logga in</a>
+      <a href="kontakt.html" class="btn btn--blue btn--sm">Boka gratis möte</a>
+    </div>
+
+    <button id="hamburger" aria-label="Öppna meny" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobilmeny">
+  <nav class="mobile-menu__links">
+    <a href="index.html">Hem</a>
+    <a href="sociala-medier.html">Sociala Medier</a>
+    <a href="hemsida.html">Webbdesign</a>
+    <a href="om-oss.html">Om oss</a>
+    <a href="kundcase.html">Kundcase</a>
+    <a href="blogg.html">Blogg</a>
+    <a href="jobb.html">Jobb</a>
+    <a href="kontakt.html">Kontakt</a>
+  </nav>
+  <a href="kontakt.html" class="btn btn--blue">Boka gratis möte</a>
+  <a href="https://synsnumedia.com/portal/login" target="_blank" rel="noopener" class="btn btn--ghost">Logga in</a>
+</div>
 
 <!-- STICKY IMAGE BG + HEADER + STATS -->
 <section class="sec-combined">
@@ -949,6 +1126,69 @@
     </div>
   </div>
 </section>
+
+<!-- FOOTER -->
+<footer class="sec-footer-big">
+  <div class="sec-footer-big__inner footer-big">
+    <div class="footer-big__grid">
+      <div class="footer-big__brand">
+        <h5>Få uppdateringar</h5>
+        <p>Artiklar, tips och erbjudanden för restaurangägare.</p>
+        <form class="footer-big__form" onsubmit="event.preventDefault(); this.innerHTML='<span style=\'padding: 10px 16px; color: var(--text); font-size: 0.875rem;\'>✓ Tack!</span>';">
+          <input type="email" placeholder="din@email.se" required>
+          <button type="submit">Prenumerera</button>
+        </form>
+      </div>
+      <div>
+        <h5>Företaget</h5>
+        <ul>
+          <li><a href="om-oss.html">Om oss</a></li>
+          <li><a href="jobb.html">Jobb</a></li>
+          <li><a href="blogg.html">Blogg</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Tjänster</h5>
+        <ul>
+          <li><a href="sociala-medier.html">Sociala medier</a></li>
+          <li><a href="hemsida.html">Webbdesign</a></li>
+          <li><a href="qopla-erbjudande.html">Qopla-erbjudande</a></li>
+          <li><a href="kundcase.html">Kundcase</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Partner med oss</h5>
+        <ul>
+          <li><a href="kontakt.html">För restaurangkedjor</a></li>
+          <li><a href="kontakt.html">Franchise-samarbete</a></li>
+          <li><a href="jobb.html">Bli kreatör</a></li>
+        </ul>
+      </div>
+      <div class="footer-big__payments-col">
+        <h5>Kontakt</h5>
+        <ul>
+          <li><a href="tel:+46708880198">070-888 01 98</a></li>
+          <li><a href="mailto:info@synsnumedia.se">info@synsnumedia.se</a></li>
+          <li>Stockholm, Sverige</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-big__mark" aria-hidden="true">
+      <span class="footer-big__mark-logo">
+        <span class="tri-dot"><b></b><b></b><b></b></span>SYNS NU
+      </span>
+      <span class="footer-big__mark-dash">—</span>
+      <span>MEDIA</span>
+    </div>
+
+    <div class="footer-big__bottom">
+      <span>© 2026 Syns Nu AB. Alla rättigheter förbehållna.</span>
+      <span><a href="#">Integritetspolicy</a> · <a href="#">Villkor</a></span>
+    </div>
+  </div>
+</footer>
 
 <script src="js/main.js"></script>
 <script>
