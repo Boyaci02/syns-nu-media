@@ -652,11 +652,14 @@
       position: relative;
       z-index: 2;
       padding: clamp(80px, 10vw, 140px) 0;
+      /* Lighter overlay so the paused video stays visible behind the stats.
+         Tops out around 70% darkness — enough contrast for the title while
+         keeping the restaurant footage readable through the panel. */
       background: linear-gradient(180deg,
         rgba(10,10,11,0) 0%,
-        rgba(10,10,11,0.82) 12%,
-        rgba(10,10,11,0.96) 26%,
-        rgba(10,10,11,0.98) 100%);
+        rgba(10,10,11,0.35) 10%,
+        rgba(10,10,11,0.62) 30%,
+        rgba(10,10,11,0.7) 100%);
     }
     .sec-combined__inner {
       position: relative;
@@ -719,6 +722,7 @@
       max-width: 720px;
       margin-bottom: clamp(40px, 5vw, 64px);
       color: white;
+      text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
     }
     /* Word-split reveal on the stats title (mirrors precision section) */
     .sec-stats__title .word {
