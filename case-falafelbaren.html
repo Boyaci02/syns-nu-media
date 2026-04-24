@@ -27,39 +27,54 @@
 
     body.case-page { margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; background: #0A0A0B; color: white; }
 
-    /* ── Header with background image ─────────── */
-    .case-header {
+    /* ── Combined: sticky image bg + header + stats panels ──── */
+    .sec-combined {
       position: relative;
-      padding: calc(var(--nav-h, 76px) + clamp(60px, 8vw, 120px)) 0 clamp(60px, 8vw, 100px);
       background: #0A0A0B;
       color: white;
-      overflow: hidden;
-      isolation: isolate;
     }
-    .case-header__bg {
-      position: absolute;
-      inset: 0;
+    /* Sticky image pinned to the viewport while header + stats scroll */
+    .sec-combined__bg {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
       z-index: 0;
     }
-    .case-header__bg img,
-    .case-header__bg video {
+    .sec-combined__bg img {
+      position: absolute; inset: 0;
       width: 100%; height: 100%;
       object-fit: cover;
       display: block;
     }
-    .case-header__bg::after {
+    .sec-combined__bg::after {
       content: '';
       position: absolute; inset: 0;
       background:
-        linear-gradient(100deg, rgba(10,10,11,0.92) 0%, rgba(10,10,11,0.75) 40%, rgba(10,10,11,0.4) 70%, rgba(10,10,11,0.15) 100%),
-        linear-gradient(180deg, rgba(10,10,11,0.45) 0%, transparent 40%, rgba(10,10,11,0.85) 100%);
+        linear-gradient(100deg,
+          rgba(10,10,11,0.78) 0%,
+          rgba(10,10,11,0.55) 40%,
+          rgba(10,10,11,0.25) 75%,
+          rgba(10,10,11,0.1) 100%),
+        linear-gradient(180deg, rgba(10,10,11,0.3) 0%, transparent 30%, rgba(10,10,11,0.55) 100%);
     }
-    .case-header__inner {
+
+    /* Header panel sits over the sticky bg via margin-top: -100vh */
+    .case-header {
       position: relative;
       z-index: 1;
+      margin-top: -100vh;
+      min-height: 100vh;
+      padding: calc(var(--nav-h, 76px) + clamp(60px, 8vw, 120px)) 0 clamp(60px, 8vw, 100px);
+      color: white;
+      display: flex;
+      align-items: flex-start;
+    }
+    .case-header__inner {
       max-width: min(1680px, 96vw);
       margin: 0 auto;
       padding: 0 var(--gutter);
+      width: 100%;
     }
     .case-header__back {
       display: inline-flex;
@@ -136,9 +151,17 @@
     /* ── Stats section (reused proof block) ───── */
     .sec-stats {
       position: relative;
-      padding: clamp(40px, 5vw, 80px) 0 clamp(80px, 10vw, 140px);
-      background: #0A0A0B;
+      z-index: 2;
+      padding: clamp(60px, 8vw, 120px) 0 clamp(80px, 10vw, 140px);
       color: white;
+      /* Semi-transparent overlay so the sticky image is still subtly visible
+         through the stats — lighter than before so the data section doesn't
+         feel like a solid black slab. */
+      background: linear-gradient(180deg,
+        rgba(10,10,11,0) 0%,
+        rgba(10,10,11,0.3) 8%,
+        rgba(10,10,11,0.55) 30%,
+        rgba(10,10,11,0.6) 100%);
     }
     .sec-stats__inner {
       position: relative;
@@ -570,12 +593,14 @@
   </div>
 </nav>
 
-<!-- COMPACT HEADER -->
-<section class="case-header">
-  <div class="case-header__bg" aria-hidden="true">
+<!-- STICKY IMAGE BG + HEADER + STATS -->
+<section class="sec-combined">
+  <div class="sec-combined__bg" aria-hidden="true">
     <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69eb554a717d5dd4e19b9657.jpg" alt="">
   </div>
-  <div class="case-header__inner">
+
+  <div class="case-header">
+    <div class="case-header__inner">
     <a href="kundcase.html" class="case-header__back">
       <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <line x1="19" y1="12" x2="5" y2="12"/>
@@ -605,10 +630,10 @@
       </div>
     </div>
   </div>
-</section>
+  </div><!-- /.case-header -->
 
-<!-- STATS / PROOF -->
-<section class="sec-stats">
+  <!-- STATS / PROOF -->
+  <section class="sec-stats">
   <div class="sec-stats__inner">
     <div class="sec-stats__eyebrow" data-reveal-words aria-label="Bevis i siffror">Bevis i siffror</div>
     <h2 class="sec-stats__title" data-reveal-words aria-label="Vi mäter framgång i bokningar och omsättning — inte likes.">
@@ -678,7 +703,8 @@
       </div>
     </div>
   </div>
-</section>
+  </section><!-- /.sec-stats -->
+</section><!-- /.sec-combined -->
 
 <!-- STORY 01 — UTMANINGEN -->
 <section class="case-story case-story--light">
