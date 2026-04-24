@@ -1305,8 +1305,29 @@
       .service-card__name { font-size: 1.375rem; }
       .service-card__desc { font-size: 0.9375rem; max-width: none; }
       .service-card__visual img { min-height: 0; }
-      .sec-stats__cards { grid-template-columns: 1fr; }
-      .stat-card { aspect-ratio: 4 / 3; }
+      /* Mobile: stats turns into a horizontal scroll carousel (1 full card + peek of the next) */
+      .sec-stats__cards {
+        display: flex;
+        grid-template-columns: none;
+        gap: 0.875rem;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 0.5rem;
+        margin-right: calc(50% - 50vw);
+      }
+      .sec-stats__cards::-webkit-scrollbar { display: none; }
+      .sec-stats__cards .stat-card {
+        flex: 0 0 calc((100% - 0.875rem) / 1.15);
+        aspect-ratio: 4 / 5;
+        scroll-snap-align: start;
+        /* Drop the reveal translate on mobile so scroll-snap can't fight it */
+        transform: none;
+      }
+      .sec-stats__cards.is-revealed .stat-card { transform: none; }
       .sec-detail__features { grid-template-columns: 1fr; }
       .sec-team__grid { grid-template-columns: 1fr; }
       .sec-team__grid > :nth-child(3) { display: block; }
