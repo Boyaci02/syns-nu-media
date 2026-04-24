@@ -318,7 +318,8 @@
       .sec-stats__title .word > span,
       .sec-stats__cards .stat-card,
       .sec-insights__head h2 .word > span,
-      .sec-insights__grid .insight-panel {
+      .sec-insights__head .keep-scroll,
+      .sec-insights__grid .insight-panel__motion {
         transform: none !important;
         transition: none !important;
         opacity: 1 !important;
@@ -737,6 +738,18 @@
       color: var(--text-3);
       font-weight: 500;
     }
+    /* Slide-in from the right, slightly after the title's word-reveal starts */
+    .sec-insights__head .keep-scroll {
+      opacity: 0;
+      transform: translateX(28px);
+      transition:
+        opacity 750ms cubic-bezier(0.22, 1, 0.36, 1) 450ms,
+        transform 750ms cubic-bezier(0.22, 1, 0.36, 1) 450ms;
+    }
+    .sec-insights__head .keep-scroll.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
     .keep-scroll__bar {
       width: 180px;
       height: 6px;
@@ -746,9 +759,10 @@
     }
     .keep-scroll__fill {
       height: 100%;
-      width: 45%;
+      width: var(--fill-percent, 8%);
       background: linear-gradient(90deg, #F97316, #F97316);
       border-radius: 3px;
+      transition: width 180ms linear;
     }
 
     .sec-insights__grid {
@@ -774,33 +788,39 @@
       color: white;
       background: #0A0A0B;
       scroll-snap-align: start;
+      transition: transform 400ms var(--ease-out);
+    }
+    .insight-panel:hover { transform: translateY(-4px); }
+    /* Inner motion layer carries the slide-in-from-right + fade so the
+       panel itself is free to handle scroll-snap and hover. */
+    .insight-panel__motion {
+      position: absolute; inset: 0;
       opacity: 0;
-      transform: translateY(40px);
+      transform: translate3d(80px, 0, 0);
       transition:
-        opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
-        transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+        opacity 950ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 950ms cubic-bezier(0.22, 1, 0.36, 1);
       will-change: opacity, transform;
     }
-    .sec-insights__grid.is-revealed .insight-panel { opacity: 1; transform: translateY(0); }
-    .sec-insights__grid.is-revealed .insight-panel:nth-child(1) { transition-delay: 0ms; }
-    .sec-insights__grid.is-revealed .insight-panel:nth-child(2) { transition-delay: 120ms; }
-    .sec-insights__grid.is-revealed .insight-panel:nth-child(3) { transition-delay: 240ms; }
-    .sec-insights__grid.is-revealed .insight-panel:nth-child(4) { transition-delay: 360ms; }
-    /* Hover lift still wins post-reveal */
-    .sec-insights__grid.is-revealed .insight-panel:hover {
-      transform: translateY(-4px);
-      transition-duration: 400ms;
+    .sec-insights__grid.is-revealed .insight-panel__motion {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
     }
-    .insight-panel img,
-    .insight-panel video {
+    .sec-insights__grid.is-revealed .insight-panel:nth-child(1) .insight-panel__motion { transition-delay: 0ms; }
+    .sec-insights__grid.is-revealed .insight-panel:nth-child(2) .insight-panel__motion { transition-delay: 120ms; }
+    .sec-insights__grid.is-revealed .insight-panel:nth-child(3) .insight-panel__motion { transition-delay: 240ms; }
+    .sec-insights__grid.is-revealed .insight-panel:nth-child(4) .insight-panel__motion { transition-delay: 360ms; }
+    .insight-panel__motion img,
+    .insight-panel__motion video {
       position: absolute; inset: 0;
       width: 100%; height: 100%; object-fit: cover;
       display: block;
     }
-    .insight-panel::after {
+    .insight-panel__motion::after {
       content: '';
       position: absolute; inset: 0;
       background: linear-gradient(180deg, transparent 45%, rgba(0,0,0,0.65) 100%);
+      pointer-events: none;
     }
     .insight-panel__cap {
       position: absolute;
@@ -1616,20 +1636,28 @@
 
     <div class="sec-insights__grid" data-reveal-cards>
       <div class="insight-panel">
-        <video src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69ea9cafbd268b0120aa7de6.mov" autoplay muted loop playsinline preload="metadata"></video>
-        <div class="insight-panel__cap">Vi filmar hantverket där det händer.</div>
+        <div class="insight-panel__motion">
+          <video src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69ea9cafbd268b0120aa7de6.mov" autoplay muted loop playsinline preload="metadata"></video>
+          <div class="insight-panel__cap">Vi filmar hantverket där det händer.</div>
+        </div>
       </div>
       <div class="insight-panel">
-        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1400&q=85" alt="Restaurang-miljö">
-        <div class="insight-panel__cap">Vet om gästerna kommer — innan de bokar bord.</div>
+        <div class="insight-panel__motion">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1400&q=85" alt="Restaurang-miljö">
+          <div class="insight-panel__cap">Vet om gästerna kommer — innan de bokar bord.</div>
+        </div>
       </div>
       <div class="insight-panel">
-        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1400&q=85" alt="Styled maträtt-fotografering">
-        <div class="insight-panel__cap">Signaler som syns i kassan — inte bara i likes.</div>
+        <div class="insight-panel__motion">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1400&q=85" alt="Styled maträtt-fotografering">
+          <div class="insight-panel__cap">Signaler som syns i kassan — inte bara i likes.</div>
+        </div>
       </div>
       <div class="insight-panel">
-        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1400&q=85" alt="Rätt serverad på tallrik">
-        <div class="insight-panel__cap">Sätt ert mål. Vi bygger flowet som tar er dit.</div>
+        <div class="insight-panel__motion">
+          <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1400&q=85" alt="Rätt serverad på tallrik">
+          <div class="insight-panel__cap">Sätt ert mål. Vi bygger flowet som tar er dit.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -1948,6 +1976,29 @@
       });
     }, { threshold: 0.3 });
     nums.forEach(n => io.observe(n));
+  })();
+
+  // Insights carousel: fill the progress bar as the track scrolls horizontally.
+  (function(){
+    const track = document.querySelector('.sec-insights__grid');
+    const fill = document.querySelector('.sec-insights .keep-scroll__fill');
+    if (!track || !fill) return;
+    let ticking = false;
+    const update = () => {
+      const max = track.scrollWidth - track.clientWidth;
+      const pct = max > 0 ? (track.scrollLeft / max) * 100 : 0;
+      const clamped = Math.max(8, Math.min(100, pct || 8));
+      fill.style.setProperty('--fill-percent', clamped + '%');
+      ticking = false;
+    };
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    };
+    track.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', update);
+    update();
   })();
 
   // Combined section: pause the sticky video when stats panel takes focus,
