@@ -779,22 +779,22 @@
       margin-right: calc(50% - 50vw);
     }
     .sec-insights__grid::-webkit-scrollbar { display: none; }
+    /* Outer panel = flex item + scroll-snap target. No visual. */
     .insight-panel {
       position: relative;
       flex: 0 0 calc((100% - 1rem) / 1.85);
       aspect-ratio: 3 / 2;
+      scroll-snap-align: start;
+    }
+    /* Motion layer = the actual visible card that slides + fades in, and
+       that takes the hover lift. Carrying the visuals here (bg, radius,
+       overflow, gradient) means the whole card animates, not just media. */
+    .insight-panel__motion {
+      position: absolute; inset: 0;
       border-radius: 18px;
       overflow: hidden;
       color: white;
       background: #0A0A0B;
-      scroll-snap-align: start;
-      transition: transform 400ms var(--ease-out);
-    }
-    .insight-panel:hover { transform: translateY(-4px); }
-    /* Inner motion layer carries the slide-in-from-right + fade so the
-       panel itself is free to handle scroll-snap and hover. */
-    .insight-panel__motion {
-      position: absolute; inset: 0;
       opacity: 0;
       transform: translate3d(80px, 0, 0);
       transition:
@@ -810,6 +810,11 @@
     .sec-insights__grid.is-revealed .insight-panel:nth-child(2) .insight-panel__motion { transition-delay: 120ms; }
     .sec-insights__grid.is-revealed .insight-panel:nth-child(3) .insight-panel__motion { transition-delay: 240ms; }
     .sec-insights__grid.is-revealed .insight-panel:nth-child(4) .insight-panel__motion { transition-delay: 360ms; }
+    /* Hover lift goes on the visible layer; post-reveal specificity. */
+    .sec-insights__grid.is-revealed .insight-panel__motion:hover {
+      transform: translate3d(0, -4px, 0);
+      transition-duration: 400ms;
+    }
     .insight-panel__motion img,
     .insight-panel__motion video {
       position: absolute; inset: 0;
