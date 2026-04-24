@@ -316,7 +316,9 @@
       .service-card,
       .service-card__visual img,
       .sec-stats__title .word > span,
-      .sec-stats__cards .stat-card {
+      .sec-stats__cards .stat-card,
+      .sec-insights__head h2 .word > span,
+      .sec-insights__grid .insight-panel {
         transform: none !important;
         transition: none !important;
         opacity: 1 !important;
@@ -711,6 +713,20 @@
       letter-spacing: -0.04em;
       line-height: 1;
     }
+    /* Word-split reveal on the insights title */
+    .sec-insights__head h2 .word {
+      display: inline-block;
+      overflow: hidden;
+      vertical-align: baseline;
+      margin-right: 0.22em;
+    }
+    .sec-insights__head h2 .word > span {
+      display: inline-block;
+      transform: translateY(110%);
+      transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+    .sec-insights__head h2.is-revealed .word > span { transform: translateY(0); }
     .keep-scroll {
       display: flex;
       align-items: center;
@@ -752,15 +768,29 @@
     .insight-panel {
       position: relative;
       flex: 0 0 calc((100% - 1rem) / 1.85);
-      aspect-ratio: 4 / 3;
+      aspect-ratio: 3 / 2;
       border-radius: 18px;
       overflow: hidden;
       color: white;
       background: #0A0A0B;
       scroll-snap-align: start;
-      transition: transform 400ms var(--ease-out);
+      opacity: 0;
+      transform: translateY(40px);
+      transition:
+        opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
     }
-    .insight-panel:hover { transform: translateY(-4px); }
+    .sec-insights__grid.is-revealed .insight-panel { opacity: 1; transform: translateY(0); }
+    .sec-insights__grid.is-revealed .insight-panel:nth-child(1) { transition-delay: 0ms; }
+    .sec-insights__grid.is-revealed .insight-panel:nth-child(2) { transition-delay: 120ms; }
+    .sec-insights__grid.is-revealed .insight-panel:nth-child(3) { transition-delay: 240ms; }
+    .sec-insights__grid.is-revealed .insight-panel:nth-child(4) { transition-delay: 360ms; }
+    /* Hover lift still wins post-reveal */
+    .sec-insights__grid.is-revealed .insight-panel:hover {
+      transform: translateY(-4px);
+      transition-duration: 400ms;
+    }
     .insight-panel img,
     .insight-panel video {
       position: absolute; inset: 0;
@@ -1186,7 +1216,7 @@
       .sec-stats__cards { grid-template-columns: 1fr 1fr; }
       .stat-card { aspect-ratio: 4 / 5; }
       .sec-insights__grid { gap: 0.875rem; }
-      .insight-panel { flex: 0 0 calc(100% - 3rem); aspect-ratio: 4 / 3.2; }
+      .insight-panel { flex: 0 0 calc(100% - 3rem); aspect-ratio: 3 / 2; }
       .sec-detail__features { grid-template-columns: 1fr 1fr; }
       .sec-team__grid { grid-template-columns: 1fr 1fr; }
       .sec-team__grid > :nth-child(3) { display: none; }
@@ -1577,27 +1607,27 @@
 <section class="sec-insights">
   <div class="sec-insights__inner">
     <div class="sec-insights__head">
-      <h2 class="fx-up">Våra insikter</h2>
+      <h2 data-reveal-words aria-label="Våra insikter">Våra insikter</h2>
       <div class="keep-scroll fx-up">
         Fortsätt scrolla
         <div class="keep-scroll__bar"><div class="keep-scroll__fill"></div></div>
       </div>
     </div>
 
-    <div class="sec-insights__grid">
-      <div class="insight-panel fx-up">
+    <div class="sec-insights__grid" data-reveal-cards>
+      <div class="insight-panel">
         <video src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69ea9cafbd268b0120aa7de6.mov" autoplay muted loop playsinline preload="metadata"></video>
         <div class="insight-panel__cap">Vi filmar hantverket där det händer.</div>
       </div>
-      <div class="insight-panel fx-up">
+      <div class="insight-panel">
         <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1400&q=85" alt="Restaurang-miljö">
         <div class="insight-panel__cap">Vet om gästerna kommer — innan de bokar bord.</div>
       </div>
-      <div class="insight-panel fx-up">
+      <div class="insight-panel">
         <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1400&q=85" alt="Styled maträtt-fotografering">
         <div class="insight-panel__cap">Signaler som syns i kassan — inte bara i likes.</div>
       </div>
-      <div class="insight-panel fx-up">
+      <div class="insight-panel">
         <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1400&q=85" alt="Rätt serverad på tallrik">
         <div class="insight-panel__cap">Sätt ert mål. Vi bygger flowet som tar er dit.</div>
       </div>
