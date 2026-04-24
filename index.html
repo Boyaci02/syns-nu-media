@@ -628,13 +628,16 @@
     .sec-stats__cards.is-revealed .stat-card:hover { transform: translate3d(0, -6px, 0); transition-duration: 400ms; }
     .stat-card {
       position: relative;
-      aspect-ratio: 3 / 4;
+      aspect-ratio: 4 / 5;
       border-radius: 18px;
       padding: 1.5rem;
       background: #141416;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: center;
+      align-items: center;
+      gap: 1.25rem;
+      text-align: center;
       color: white;
       overflow: hidden;
       transition: transform 400ms var(--ease-out);
@@ -666,9 +669,10 @@
     }
 
     .stat-card__ring {
-      width: 200px; height: 200px;
+      width: min(220px, 75%);
+      aspect-ratio: 1 / 1;
       position: relative;
-      margin: 0.5rem auto;
+      flex-shrink: 0;
     }
     .stat-card__ring svg { transform: rotate(-90deg); width: 100%; height: 100%; }
     .stat-card__ring .track { fill: none; stroke: rgba(255,255,255,0.08); stroke-width: 18; }
@@ -703,6 +707,8 @@
       font-size: 0.9375rem;
       color: rgba(255,255,255,0.7);
       line-height: 1.5;
+      max-width: 26ch;
+      align-self: center;
     }
     .stat-card__badge {
       position: absolute;
@@ -714,9 +720,9 @@
       box-shadow: 0 4px 14px -2px rgba(0, 0, 0, 0.35);
       z-index: 3;
     }
-    .stat-card__badge--a { top: 16px; right: 18px; background: #E5EE9E; }
-    .stat-card__badge--b { top: 72px; left: 14px; background: #F9D7AE; }
-    .stat-card__badge--c { top: 172px; right: 20px; background: #D7C2FF; }
+    .stat-card__badge--a { top: 20px; right: 20px; background: #E5EE9E; }
+    .stat-card__badge--b { top: 38%; left: 16px; background: #F9D7AE; }
+    .stat-card__badge--c { bottom: 26%; right: 18px; background: #D7C2FF; }
 
     /* ── Section 6: Insights split ──────────── */
     .sec-insights {
