@@ -657,6 +657,42 @@
     .case-quote__cta:hover .case-quote__cta-arrow { transform: translateX(4px); }
     .case-quote__cta-arrow svg { width: 14px; height: 14px; }
 
+    /* Mobile: emphasize card-size growth, keep text growth gentle */
+    @media (max-width: 640px) {
+      .case-quote__card {
+        width: calc(min(360px, 62vw) + (94vw - min(360px, 62vw)) * var(--p));
+        height: calc(min(480px, 58vh) + (94vh - min(480px, 58vh)) * var(--p));
+        padding: calc(1.5rem + 1.25rem * var(--p));
+        border-radius: calc(22px + 2px * (1 - var(--p)));
+      }
+      .case-quote__mark {
+        font-size: calc(3.25rem + 2rem * var(--p, 0));
+      }
+      .case-quote__text {
+        font-size: calc(1rem + 0.625rem * var(--p, 0));
+        max-width: 22ch;
+      }
+      .case-quote__attr {
+        margin-top: calc(1.25rem + 0.75rem * var(--p, 0));
+        padding-top: calc(1rem + 0.25rem * var(--p, 0));
+      }
+      .case-quote__name {
+        font-size: calc(0.875rem + 0.25rem * var(--p, 0));
+      }
+      .case-quote__role {
+        font-size: calc(0.75rem + 0.125rem * var(--p, 0));
+      }
+      .case-quote__cta {
+        margin-top: calc(1.25rem + 0.5rem * var(--p, 0));
+        font-size: calc(0.875rem + 0.125rem * var(--p, 0));
+        padding: 0.75rem 1rem 0.75rem 1.25rem;
+      }
+      .case-quote__cta-arrow {
+        width: calc(26px + 4px * var(--p, 0));
+        height: calc(26px + 4px * var(--p, 0));
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .sec-stats__title .word > span,
       .sec-stats__eyebrow .word > span,
