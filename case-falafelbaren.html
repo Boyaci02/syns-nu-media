@@ -27,13 +27,36 @@
 
     body.case-page { margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; background: #0A0A0B; color: white; }
 
-    /* ── Compact header (no big hero) ─────────── */
+    /* ── Header with background image ─────────── */
     .case-header {
-      padding: calc(var(--nav-h, 76px) + clamp(40px, 6vw, 80px)) 0 clamp(32px, 5vw, 56px);
+      position: relative;
+      padding: calc(var(--nav-h, 76px) + clamp(60px, 8vw, 120px)) 0 clamp(60px, 8vw, 100px);
       background: #0A0A0B;
       color: white;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .case-header__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .case-header__bg img,
+    .case-header__bg video {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .case-header__bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(100deg, rgba(10,10,11,0.92) 0%, rgba(10,10,11,0.75) 40%, rgba(10,10,11,0.4) 70%, rgba(10,10,11,0.15) 100%),
+        linear-gradient(180deg, rgba(10,10,11,0.45) 0%, transparent 40%, rgba(10,10,11,0.85) 100%);
     }
     .case-header__inner {
+      position: relative;
+      z-index: 1;
       max-width: min(1680px, 96vw);
       margin: 0 auto;
       padding: 0 var(--gutter);
@@ -549,6 +572,9 @@
 
 <!-- COMPACT HEADER -->
 <section class="case-header">
+  <div class="case-header__bg" aria-hidden="true">
+    <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69eb554a717d5dd4e19b9657.jpg" alt="">
+  </div>
   <div class="case-header__inner">
     <a href="kundcase.html" class="case-header__back">
       <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
