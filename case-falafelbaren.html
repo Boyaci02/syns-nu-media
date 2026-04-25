@@ -27,6 +27,32 @@
 
     body.case-page { margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; background: #0A0A0B; color: white; }
 
+    /* ── Hero entrance animations ─────────────── */
+    @keyframes caseHeroImgIn {
+      from { opacity: 0; transform: scale(1.08); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    @keyframes caseHeroOverlayIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes casePillIn {
+      from { opacity: 0; transform: translateY(-14px); filter: blur(6px); }
+      to   { opacity: 1; transform: translateY(0);     filter: blur(0); }
+    }
+    @keyframes caseTitleWordIn {
+      from { transform: translateY(110%); }
+      to   { transform: translateY(0); }
+    }
+    @keyframes caseMetaIn {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes caseMetaBorderIn {
+      from { transform: scaleX(0); opacity: 0; }
+      to   { transform: scaleX(1); opacity: 1; }
+    }
+
     /* ── Combined: sticky image bg + header + stats panels ──── */
     .sec-combined {
       position: relative;
@@ -46,6 +72,7 @@
       width: 100%; height: 100%;
       object-fit: cover;
       display: block;
+      animation: caseHeroImgIn 1800ms cubic-bezier(0.22, 1, 0.36, 1) both;
     }
     .sec-combined__bg::after {
       content: '';
@@ -57,6 +84,7 @@
           rgba(10,10,11,0.25) 75%,
           rgba(10,10,11,0.1) 100%),
         linear-gradient(180deg, rgba(10,10,11,0.3) 0%, transparent 30%, rgba(10,10,11,0.55) 100%);
+      animation: caseHeroOverlayIn 1200ms cubic-bezier(0.22, 1, 0.36, 1) 200ms both;
     }
 
     /* Header panel sits over the sticky bg via margin-top: -100vh */
@@ -100,6 +128,7 @@
     }
     .case-header__back {
       left: calc(var(--gutter) + 0.5rem);
+      animation: casePillIn 900ms cubic-bezier(0.22, 1, 0.36, 1) 350ms both;
     }
     .case-header__back:hover {
       background: rgba(255, 255, 255, 0.18);
@@ -110,6 +139,7 @@
       padding: 0.5rem 0.875rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
+      animation: casePillIn 900ms cubic-bezier(0.22, 1, 0.36, 1) 500ms both;
     }
     .case-header__label::before {
       content: '';
@@ -133,14 +163,42 @@
       font-weight: 400;
       letter-spacing: -0.015em;
     }
+    /* Word-split reveal on the case title — runs on page load */
+    .case-header__title .word {
+      display: inline-block;
+      overflow: hidden;
+      vertical-align: baseline;
+      margin-right: 0.15em;
+    }
+    .case-header__title .word > span {
+      display: inline-block;
+      animation: caseTitleWordIn 1100ms cubic-bezier(0.22, 1, 0.36, 1) 600ms both;
+    }
     .case-header__meta {
+      position: relative;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: clamp(1.25rem, 2vw, 2rem);
       padding-top: 1.75rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      border-top: 1px solid transparent;
       max-width: 960px;
     }
+    .case-header__meta::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.18);
+      transform-origin: left;
+      animation: caseMetaBorderIn 900ms cubic-bezier(0.22, 1, 0.36, 1) 950ms both;
+    }
+    .case-header__meta-item {
+      animation: caseMetaIn 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    .case-header__meta-item:nth-child(1) { animation-delay: 1050ms; }
+    .case-header__meta-item:nth-child(2) { animation-delay: 1200ms; }
+    .case-header__meta-item:nth-child(3) { animation-delay: 1350ms; }
     .case-header__meta-item label {
       display: block;
       font-size: 0.6875rem;
@@ -696,10 +754,19 @@
     @media (prefers-reduced-motion: reduce) {
       .sec-stats__title .word > span,
       .sec-stats__eyebrow .word > span,
-      .sec-stats__cards .stat-card {
+      .sec-stats__cards .stat-card,
+      .sec-combined__bg img,
+      .sec-combined__bg::after,
+      .case-header__back,
+      .case-header__label,
+      .case-header__title .word > span,
+      .case-header__meta::before,
+      .case-header__meta-item {
+        animation: none !important;
         transform: none !important;
         transition: none !important;
         opacity: 1 !important;
+        filter: none !important;
       }
       .case-quote { min-height: 100vh; }
       .case-quote__card { --p: 0.5 !important; }
@@ -931,7 +998,7 @@
     <div class="case-header__label">Case</div>
 
     <div class="case-header__inner">
-      <h1 class="case-header__title">Falafelbaren</h1>
+      <h1 class="case-header__title" data-reveal-words aria-label="Falafelbaren">Falafelbaren</h1>
       <div class="case-header__meta">
         <div class="case-header__meta-item">
           <label>Tjänst</label>
