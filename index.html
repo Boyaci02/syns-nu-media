@@ -320,7 +320,11 @@
       .sec-stats__cards .stat-card,
       .sec-insights__head h2 .word > span,
       .sec-insights__head .keep-scroll,
-      .sec-insights__grid .insight-panel__motion {
+      .sec-insights__grid .insight-panel__motion,
+      .sec-detail__title .word > span,
+      .sec-detail__visual,
+      .sec-detail__visual img,
+      .sec-detail__features .feat {
         transform: none !important;
         transition: none !important;
         opacity: 1 !important;
@@ -1095,7 +1099,23 @@
       line-height: 1.05;
       max-width: 880px;
       margin: 0 auto 1.5rem;
+      color: white;
     }
+    .sec-detail__title em.gradient-text { color: white; }
+    /* Word-split reveal on the detail title */
+    .sec-detail__title .word {
+      display: inline-block;
+      overflow: hidden;
+      vertical-align: baseline;
+      margin-right: 0.22em;
+    }
+    .sec-detail__title .word > span {
+      display: inline-block;
+      transform: translateY(110%);
+      transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+    .sec-detail__title.is-revealed .word > span { transform: translateY(0); }
     .sec-detail__sub {
       max-width: 640px;
       margin: 0 auto 2.25rem;
@@ -1111,10 +1131,20 @@
       overflow: hidden;
       position: relative;
       background: #141416;
+      opacity: 0;
+      transform: translateY(40px);
+      transition:
+        opacity 1100ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 1100ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
     }
+    .sec-detail__visual.is-revealed { opacity: 1; transform: translateY(0); }
     .sec-detail__visual img {
       width: 100%; height: 100%; object-fit: cover;
+      transform: scale(1.12);
+      transition: transform 1500ms cubic-bezier(0.22, 1, 0.36, 1);
     }
+    .sec-detail__visual.is-revealed img { transform: scale(1); }
     .sec-detail__visual::after {
       content: '';
       position: absolute; inset: 0;
@@ -1128,6 +1158,22 @@
       margin-top: 3rem;
       text-align: center;
     }
+    /* Staggered reveal on the 6 feature blocks */
+    .sec-detail__features .feat {
+      opacity: 0;
+      transform: translate3d(0, 30px, 0);
+      transition:
+        opacity 800ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
+    }
+    .sec-detail__features.is-revealed .feat { opacity: 1; transform: translate3d(0, 0, 0); }
+    .sec-detail__features.is-revealed .feat:nth-child(1) { transition-delay: 0ms; }
+    .sec-detail__features.is-revealed .feat:nth-child(2) { transition-delay: 90ms; }
+    .sec-detail__features.is-revealed .feat:nth-child(3) { transition-delay: 180ms; }
+    .sec-detail__features.is-revealed .feat:nth-child(4) { transition-delay: 270ms; }
+    .sec-detail__features.is-revealed .feat:nth-child(5) { transition-delay: 360ms; }
+    .sec-detail__features.is-revealed .feat:nth-child(6) { transition-delay: 450ms; }
     .feat {
       display: flex;
       flex-direction: column;
@@ -1997,7 +2043,7 @@
      ============================================================ -->
 <section class="sec-detail">
   <div class="sec-detail__inner">
-    <h2 class="sec-detail__title fx-up">
+    <h2 class="sec-detail__title" data-reveal-words aria-label="Byggt för att växa modern restauranghandel">
       Byggt för att växa <em class="gradient-text" style="color:white;">modern restauranghandel</em>
     </h2>
     <p class="sec-detail__sub fx-up">
@@ -2011,47 +2057,47 @@
       </span>
     </a>
 
-    <div class="sec-detail__visual fx-up">
+    <div class="sec-detail__visual" data-reveal-photo>
       <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1400&q=85" alt="Produktionsteam på plats hos restaurang">
     </div>
 
-    <div class="sec-detail__features">
-      <div class="feat fx-up">
+    <div class="sec-detail__features" data-reveal-cards>
+      <div class="feat">
         <div class="feat__icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M22 8l-6 4 6 4V8z"/></svg>
         </div>
         <div class="feat__title">Inspelning</div>
         <div class="feat__text">Månatliga besök på plats — mat, miljö, personal i fokus.</div>
       </div>
-      <div class="feat feat--teal fx-up">
+      <div class="feat feat--teal">
         <div class="feat__icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
         </div>
         <div class="feat__title">Menyfotografering</div>
         <div class="feat__text">Wolt- & Foodora-godkända bilder, snabb leverans.</div>
       </div>
-      <div class="feat feat--peach fx-up">
+      <div class="feat feat--peach">
         <div class="feat__icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
         </div>
         <div class="feat__title">Annonsering</div>
         <div class="feat__text">Meta & Google ads med lokal targeting och A/B-test.</div>
       </div>
-      <div class="feat fx-up">
+      <div class="feat">
         <div class="feat__icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         </div>
         <div class="feat__title">Lokal SEO</div>
         <div class="feat__text">Bli #1 på "restaurang [din stad]" på Google.</div>
       </div>
-      <div class="feat feat--olive fx-up">
+      <div class="feat feat--olive">
         <div class="feat__icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><polyline points="7 14 11 10 15 13 21 7"/></svg>
         </div>
         <div class="feat__title">Analys</div>
         <div class="feat__text">Månadsrapporter i klarspråk — inte stirrande excel-ark.</div>
       </div>
-      <div class="feat feat--teal fx-up">
+      <div class="feat feat--teal">
         <div class="feat__icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
         </div>
