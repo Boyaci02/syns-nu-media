@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/pages.css">
-  <link rel="icon" type="image/png" href="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/699641283fd420658d5267af.png">
+  <link rel="icon" type="image/png" href="assets/hash-mark-black.png">
 
   <!-- Editorial-page overrides (index v6, CIRLO-inspired) -->
   <style>
@@ -479,6 +479,14 @@
       transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
     }
     .service-card:hover .service-card__visual img { transform: scale(1.04); }
+    /* Hash-mark variant: contain (not cover) so the icon isn't cropped */
+    .service-card__visual--mark { background: transparent; align-items: center; }
+    .service-card__visual--mark img {
+      object-fit: contain;
+      padding: 12%;
+      filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.18));
+    }
+    .service-card:hover .service-card__visual--mark img { transform: scale(1.06) rotate(-2deg); }
 
     /* ── Google Optimering CSS mockup (replaces the img inside that card) ── */
     .gmap-mockup {
@@ -1388,6 +1396,29 @@
     }
 
     /* ── Section 11: Big-mark footer ─────────── */
+    /* ── Signature — small dark brand-stamp section above the footer ── */
+    .sec-signature {
+      background: #0A0A0B;
+      color: white;
+      padding: clamp(80px, 10vw, 140px) 0 clamp(40px, 6vw, 80px);
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .sec-signature__mark {
+      width: clamp(140px, 16vw, 220px);
+      height: auto;
+      margin: 0 auto 1.75rem;
+      display: block;
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));
+    }
+    .sec-signature__label {
+      font-size: 0.6875rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      font-weight: 500;
+    }
+
     .sec-footer-big {
       background: #0A0A0B;
       color: white;
@@ -1769,8 +1800,8 @@
               <div class="service-card__desc">Komplett Instagram, TikTok & Facebook — inspelning, publicering, resultat.</div>
               <div class="service-card__price">Från 7 500 kr/mån</div>
             </div>
-            <div class="service-card__visual">
-              <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69ea91b1717d5dd4e173eb96.jpeg" alt="Sociala medier-produktion för restaurang">
+            <div class="service-card__visual service-card__visual--mark">
+              <img src="assets/hash-mark-black.png" alt="Hashtag — sociala medier är vår grej">
             </div>
           </a>
         </div>
@@ -2230,6 +2261,14 @@
       </a>
     </div>
   </div>
+</section>
+
+<!-- ============================================================
+     10½ · SIGNATURE — hash-mark brand stamp before footer
+     ============================================================ -->
+<section class="sec-signature" aria-hidden="true">
+  <img class="sec-signature__mark" src="assets/hash-mark-white.png" alt="">
+  <div class="sec-signature__label">Syns Nu Media · Stockholm</div>
 </section>
 
 <!-- ============================================================
