@@ -3676,3 +3676,17 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
 .case-story--dark .case-story__heading em { color: #fff; }
 .case-story--light .case-story__heading,
 .case-story--light .case-story__heading em { color: var(--text); }
+
+/* ============================================================
+   WORD-REVEAL — prevent descender clipping
+   The `.word` reveal pattern uses overflow:hidden on each word
+   so the inner span can slide up from below. With tight heading
+   line-heights (0.9), descenders (g, j, p, q, y) and italic
+   glyphs from Instrument Serif sit below the box and get clipped.
+   The padding/negative-margin pair extends the visible region
+   downward without changing layout.
+   ============================================================ */
+.word {
+  padding-bottom: 0.18em;
+  margin-bottom: -0.18em;
+}
