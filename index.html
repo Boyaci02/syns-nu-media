@@ -24,46 +24,34 @@
       --edit-warm: #F5D7B8;
     }
 
-    body.index-v6 { background: #0A0A0B; }
-
-    /* ── Big hero ───────────────────────────── */
+    /* ── Big hero — solid lime, brand-forward messaging panel ── */
     .big-hero {
       position: relative;
       margin-top: -16px;
-      padding-top: calc(var(--nav-h) + 120px);
+      padding-top: calc(var(--nav-h) + clamp(64px, 10vw, 140px));
       padding-bottom: clamp(64px, 10vw, 120px);
       min-height: 100vh;
-      background: #0A0A0B;
-      color: white;
+      background: #E5EE9E;
+      color: var(--text);
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
-    .big-hero__media {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-    }
-    .big-hero__media video,
-    .big-hero__media img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.55;
-      animation: bgSlow 18s ease-in-out infinite alternate;
-    }
-    @keyframes bgSlow {
-      from { transform: scale(1.0); }
-      to   { transform: scale(1.06); }
-    }
-    .big-hero__media::after {
+    /* Subtle hash-mark watermark in the bottom-right corner */
+    .big-hero::before {
       content: '';
       position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse at 50% 15%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 60%, #0A0A0B 100%),
-        linear-gradient(180deg, rgba(10,10,11,0.55) 0%, rgba(10,10,11,0.1) 30%, rgba(10,10,11,0.85) 100%);
+      right: -6%;
+      bottom: -8%;
+      width: clamp(280px, 38vw, 540px);
+      aspect-ratio: 1 / 1;
+      background-image: url('assets/hash-mark-black.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0.06;
       pointer-events: none;
+      z-index: 0;
     }
 
     .big-hero__inner {
@@ -74,7 +62,35 @@
       padding-inline: var(--gutter);
       display: flex;
       flex-direction: column;
+      flex: 1;
+      width: 100%;
       min-height: calc(100vh - var(--nav-h) - 140px);
+    }
+
+    /* Eyebrow positioning above the lead */
+    .big-hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.625rem;
+      align-self: flex-start;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(0, 0, 0, 0.65);
+      font-weight: 500;
+      margin-bottom: 2rem;
+      padding: 0.4rem 0.875rem 0.4rem 0.75rem;
+      background: rgba(255, 255, 255, 0.4);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 9999px;
+      opacity: 0;
+      animation: heroInUp 900ms var(--ease-out) 150ms forwards;
+    }
+    .big-hero__eyebrow::before {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--text);
     }
 
     .big-hero__mark {
@@ -120,18 +136,18 @@
       margin: 0 0.25em;
     }
 
-    .big-hero__spacer { flex: 1; min-height: 120px; }
+    .big-hero__spacer { flex: 1; min-height: 60px; }
 
     .big-hero__lead {
-      max-width: 720px;
-      font-size: clamp(1.875rem, 3.4vw, 3rem);
-      font-weight: 500;
-      line-height: 1.1;
-      letter-spacing: -0.035em;
-      color: white;
-      margin-bottom: 2rem;
+      max-width: 1080px;
+      font-size: clamp(2.5rem, 6vw, 5.25rem);
+      font-weight: 600;
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+      color: var(--text);
+      margin: 0 0 2.5rem;
       opacity: 0;
-      animation: heroInUp 1000ms var(--ease-out) 500ms forwards;
+      animation: heroInUp 1100ms var(--ease-out) 350ms forwards;
     }
     .big-hero__lead em {
       font-family: 'Instrument Serif', Georgia, serif;
@@ -141,9 +157,31 @@
     }
 
     .big-hero__cta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.5rem;
       opacity: 0;
-      animation: heroInUp 1000ms var(--ease-out) 750ms forwards;
+      animation: heroInUp 1000ms var(--ease-out) 600ms forwards;
     }
+    .big-hero__cta .pill-btn {
+      background: var(--text);
+      color: white;
+    }
+    .big-hero__cta .pill-btn .pill-btn__arrow {
+      background: white;
+      color: var(--text);
+    }
+    .big-hero__cta-link {
+      font-size: 0.9375rem;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.35);
+      padding-bottom: 2px;
+      transition: border-color 200ms var(--ease-out);
+    }
+    .big-hero__cta-link:hover { border-bottom-color: var(--text); }
 
     .big-hero__stats {
       display: grid;
@@ -151,19 +189,21 @@
       gap: clamp(2rem, 5vw, 4rem);
       justify-content: flex-end;
       margin-top: 3rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.15);
       opacity: 0;
-      animation: heroInUp 1000ms var(--ease-out) 900ms forwards;
+      animation: heroInUp 1000ms var(--ease-out) 850ms forwards;
     }
     .big-hero__stat-val {
       font-size: clamp(1.75rem, 2.8vw, 2.5rem);
       font-weight: 600;
       letter-spacing: -0.035em;
       line-height: 1;
-      color: white;
+      color: var(--text);
     }
     .big-hero__stat-label {
       font-size: 0.75rem;
-      color: rgba(255,255,255,0.6);
+      color: rgba(0, 0, 0, 0.55);
       margin-top: 0.5rem;
       font-weight: 500;
       max-width: 140px;
@@ -1637,7 +1677,7 @@
     }
   </style>
 </head>
-<body class="index-v6">
+<body>
 
 <!-- ============================================================
      NAV (reused from shared styles)
@@ -1695,20 +1735,15 @@
 </div>
 
 <!-- ============================================================
-     1 · HERO — cinematic
+     1 · HERO — solid lime, brand-forward messaging
      ============================================================ -->
 <section class="big-hero" aria-label="Hero">
-  <div class="big-hero__media" aria-hidden="true">
-    <video src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/66fae28a5cef956031c6d083.mp4"
-           autoplay muted loop playsinline preload="metadata"></video>
-  </div>
-
   <div class="big-hero__inner">
-    <div class="big-hero__spacer"></div>
+    <div class="big-hero__eyebrow">Sveriges största marknadsföringsbyrå för restauranger</div>
 
-    <p class="big-hero__lead">
+    <h1 class="big-hero__lead">
       Marknadsföring som faktiskt driver <em>bokningar</em> — inte bara visningar.
-    </p>
+    </h1>
 
     <div class="big-hero__cta">
       <a href="#tjanster" class="pill-btn">
@@ -1717,7 +1752,10 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </span>
       </a>
+      <a href="kontakt.html" class="big-hero__cta-link">Boka gratis möte →</a>
     </div>
+
+    <div class="big-hero__spacer"></div>
 
     <div class="big-hero__stats">
       <div>
