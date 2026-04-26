@@ -3665,3 +3665,14 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
     gap: 20px;
   }
 }
+
+/* ============================================================
+   CASE-PAGE — shared dark/light story variants
+   Override the global h1–h6 { color: var(--text) } rule so the
+   "story 02" dark section reads white on every case page,
+   without per-page tweaks.
+   ============================================================ */
+.case-story--dark .case-story__heading,
+.case-story--dark .case-story__heading em { color: #fff; }
+.case-story--light .case-story__heading,
+.case-story--light .case-story__heading em { color: var(--text); }
