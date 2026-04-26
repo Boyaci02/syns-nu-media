@@ -11,6 +11,288 @@
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/pages.css">
   <link rel="icon" type="image/png" href="assets/hash-mark-black.png">
+
+  <style>
+    /* ════════════════════════════════════════════════════════════════
+       Kundcase listing — editorial design system (matches homepage)
+       ════════════════════════════════════════════════════════════════ */
+    :root {
+      --edit-lavender: #E8E1FF;
+      --edit-peach: #FFCFA8;
+      --edit-olive: #E5EE9E;
+      --edit-teal: #4EBFB8;
+    }
+
+    /* fx-up reveal */
+    .fx-up { opacity: 0; transform: translateY(28px); transition: opacity 800ms cubic-bezier(0.22, 1, 0.36, 1), transform 800ms cubic-bezier(0.22, 1, 0.36, 1); }
+    .fx-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── Editorial page hero ─────────────── */
+    .cases-hero {
+      background: #F3F1EC;
+      padding: clamp(120px, 14vw, 180px) 0 clamp(60px, 7vw, 90px);
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+    }
+    .cases-hero__inner {
+      max-width: var(--container-wide);
+      margin-inline: auto;
+      padding-inline: var(--gutter);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: end;
+    }
+    .cases-hero__eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-3);
+      margin-bottom: 1.25rem;
+    }
+    .cases-hero h1 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 600;
+      letter-spacing: -0.045em;
+      line-height: 1;
+      margin: 0;
+    }
+    .cases-hero h1 em {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .cases-hero__lead {
+      font-size: clamp(1rem, 1.4vw, 1.125rem);
+      color: var(--text-2);
+      max-width: 480px;
+      line-height: 1.55;
+      margin: 0;
+    }
+    @media (max-width: 768px) {
+      .cases-hero__inner { grid-template-columns: 1fr; gap: 1.75rem; align-items: start; }
+    }
+
+    /* ── Section: real cases (2 equal feature cards) ─── */
+    .sec-cases {
+      background: #F3F1EC;
+      color: var(--text);
+      padding: clamp(60px, 7vw, 100px) 0 clamp(80px, 10vw, 140px);
+    }
+    .sec-cases__inner {
+      max-width: var(--container-wide);
+      margin-inline: auto;
+      padding-inline: var(--gutter);
+    }
+    .sec-cases__head { margin-bottom: clamp(32px, 4vw, 56px); }
+    .sec-cases__eyebrow {
+      display: inline-block;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-3);
+      margin-bottom: 1rem;
+    }
+    .sec-cases__title {
+      font-size: clamp(1.875rem, 3.6vw, 3rem);
+      font-weight: 600;
+      letter-spacing: -0.035em;
+      line-height: 1.05;
+      margin: 0;
+      max-width: 760px;
+    }
+    .sec-cases__title em {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+    }
+    .sec-cases__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .case-feature {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 400ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .case-feature:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -12px rgba(0,0,0,0.12); }
+    .case-feature__img { aspect-ratio: 16 / 10; overflow: hidden; }
+    .case-feature__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1); }
+    .case-feature:hover .case-feature__img img { transform: scale(1.04); }
+    .case-feature__body { padding: clamp(1.5rem, 2.4vw, 2.25rem); display: flex; flex-direction: column; flex: 1; }
+    .case-feature__tag {
+      display: inline-block;
+      padding: 0.3rem 0.7rem;
+      background: #F3F1EC;
+      border: 1px solid #E5E5E0;
+      color: var(--text-2);
+      border-radius: 9999px;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      margin-bottom: 1rem;
+      align-self: flex-start;
+    }
+    .case-feature h3 {
+      font-size: clamp(1.25rem, 1.8vw, 1.625rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin: 0 0 0.875rem;
+    }
+    .case-feature h3 em {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+    }
+    .case-feature__lead {
+      font-size: 0.9375rem;
+      color: var(--text-2);
+      line-height: 1.55;
+      margin: 0 0 1.5rem;
+    }
+    .case-feature__stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.625rem;
+      margin-top: auto;
+    }
+    .case-feature__stat {
+      padding: 0.875rem 1rem;
+      border: 1px solid #ECECE6;
+      border-radius: 12px;
+      background: #FAF8F4;
+    }
+    .case-feature__stat-val {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--text);
+    }
+    .case-feature__stat-label {
+      font-size: 0.75rem;
+      color: var(--text-3);
+      margin-top: 0.25rem;
+    }
+
+    .sec-cases__note {
+      margin-top: clamp(32px, 4vw, 56px);
+      text-align: center;
+      font-size: 0.875rem;
+      color: var(--text-3);
+      font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+      .sec-cases__grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── CTA banner — editorial dark version ─── */
+    .sec-cta-cases {
+      background: #0A0A0B;
+      color: white;
+      padding: clamp(70px, 9vw, 120px) 0;
+    }
+    .sec-cta-cases__inner {
+      max-width: var(--container-wide);
+      margin-inline: auto;
+      padding-inline: var(--gutter);
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: center;
+    }
+    .sec-cta-cases h2 {
+      font-size: clamp(1.875rem, 4vw, 3.25rem);
+      font-weight: 600;
+      letter-spacing: -0.035em;
+      line-height: 1.05;
+      margin: 0 0 1rem;
+      color: white;
+    }
+    .sec-cta-cases h2 em {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+    }
+    .sec-cta-cases p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.62);
+      line-height: 1.55;
+      margin: 0;
+      max-width: 480px;
+    }
+    .sec-cta-cases__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.625rem;
+      padding: 0.875rem 1.5rem 0.875rem 1.75rem;
+      background: white;
+      color: var(--text);
+      border-radius: 9999px;
+      font-weight: 500;
+      font-size: 1rem;
+      text-decoration: none;
+      justify-self: end;
+      transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .sec-cta-cases__btn:hover { transform: translateY(-1px); box-shadow: 0 14px 28px -10px rgba(0,0,0,0.5); }
+    .sec-cta-cases__btn-arrow {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--text);
+      color: white;
+      display: inline-grid; place-items: center;
+    }
+    .sec-cta-cases__btn-arrow svg { width: 14px; height: 14px; }
+    @media (max-width: 768px) {
+      .sec-cta-cases__inner { grid-template-columns: 1fr; }
+      .sec-cta-cases__btn { justify-self: start; }
+    }
+
+    /* ── Tri-dot (footer logo) ───────── */
+    .tri-dot { display: inline-flex; align-items: center; gap: 0.08em; margin-right: 0.18em; }
+    .tri-dot b { width: 0.22em; height: 0.22em; border-radius: 50%; display: inline-block; }
+    .tri-dot b:nth-child(1) { background: var(--edit-peach); }
+    .tri-dot b:nth-child(2) { background: var(--edit-teal); }
+    .tri-dot b:nth-child(3) { background: var(--edit-lavender); }
+
+    /* ── Big footer (matches homepage) ───────── */
+    .sec-footer-big { background: #0A0A0B; color: white; padding: clamp(80px, 10vw, 120px) 0 40px; }
+    .sec-footer-big__inner { max-width: var(--container-wide); margin-inline: auto; padding-inline: var(--gutter); }
+    .footer-big__grid { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr) auto; gap: clamp(2rem, 4vw, 4rem); padding-bottom: 4rem; }
+    .footer-big__brand p { color: rgba(255,255,255,0.55); font-size: 0.9375rem; margin-bottom: 1.5rem; max-width: 260px; }
+    .footer-big__form { display: flex; gap: 0; background: white; border-radius: 9999px; padding: 4px; max-width: 320px; }
+    .footer-big__form input { flex: 1; background: transparent; border: none; outline: none; padding: 10px 16px; font: inherit; color: var(--text); font-size: 0.875rem; min-width: 0; }
+    .footer-big__form button { padding: 8px 16px; background: var(--text); color: white; border: none; border-radius: 9999px; font: inherit; font-size: 0.8125rem; font-weight: 500; cursor: pointer; }
+    .footer-big h5 { font-size: 0.8125rem; font-weight: 500; color: white; margin-bottom: 1.25rem; }
+    .footer-big ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.625rem; margin: 0; }
+    .footer-big a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem; transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1); }
+    .footer-big a:hover { color: white; }
+    .footer-big__mark { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2.5rem; margin-top: 1.5rem; font-size: clamp(3rem, 14vw, 12rem); font-weight: 700; letter-spacing: -0.05em; line-height: 0.9; color: white; text-transform: uppercase; white-space: nowrap; overflow: hidden; }
+    .footer-big__mark-logo { color: white; letter-spacing: -0.05em; display: inline-flex; align-items: center; gap: 0.3em; }
+    .footer-big__mark-dash { font-weight: 300; opacity: 0.9; margin: 0 0.25em; }
+    .footer-big__bottom { display: flex; justify-content: space-between; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 1.5rem; font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+    @media (max-width: 1024px) {
+      .footer-big__grid { grid-template-columns: 1fr 1fr; }
+      .footer-big__brand { grid-column: 1 / -1; }
+      .footer-big__payments-col { grid-column: 1 / -1; }
+    }
+    @media (max-width: 640px) {
+      .footer-big__grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
@@ -64,230 +346,146 @@
 </div>
 
 <!-- PAGE HERO -->
-<section class="page-hero">
-  <div class="container">
-    <div class="page-hero__inner reveal">
-      <span class="eyebrow">Kundcase</span>
-      <h1>Riktiga resultat från <span class="gradient-text">riktiga restauranger</span></h1>
-      <p class="page-hero__subtitle">Se hur vi hjälpt svenska restauranger att öka räckvidd, få fler bokningar och bygga starkare varumärken online.</p>
+<section class="cases-hero">
+  <div class="cases-hero__inner">
+    <div class="fx-up">
+      <div class="cases-hero__eyebrow">Kundcase</div>
+      <h1>Riktiga resultat från <em>riktiga restauranger</em>.</h1>
     </div>
+    <p class="cases-hero__lead fx-up">Här visar vi bara restauranger vi faktiskt har jobbat med — riktiga siffror från Metricool, ingen utsmyckad statistik. Fler cases publiceras löpande när nya kunder hinner ihop ett kvartals-data.</p>
   </div>
 </section>
 
-<!-- FEATURED CASE -->
-<section class="section">
-  <div class="container">
-    <div class="testimonial-split">
-      <div class="video-wrap reveal" onclick="this.classList.add('playing'); this.querySelector('video').play();">
-        <video src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/685f252da8f9d370ede1ff6f.mp4" preload="metadata" playsinline></video>
-        <div class="video-overlay">
-          <button class="video-play-btn" aria-label="Spela upp video">▶</button>
-        </div>
-      </div>
-      <div class="reveal">
-        <span class="eyebrow">Utvalt kundcase</span>
-        <h2 style="margin-bottom: 1rem;">Falafelbaren — <span class="gradient-text">från osynlig till topprankad</span></h2>
-        <p>Nidal Kerch driver Falafelbaren på Hornsgatan. Från noll TikTok till över 1 miljon visningar på 3,5 månader — riktiga siffror från Metricool, inte uppskattningar.</p>
-
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1.75rem;">
-          <div style="padding: 1rem; border: 1px solid var(--border); border-radius: var(--r-lg);">
-            <div style="font-size: 1.5rem; font-weight: 700; letter-spacing: -0.03em; color: var(--text);">10,17K</div>
-            <div style="font-size: 0.8125rem; color: var(--text-3);">Totala följare (+41%)</div>
-          </div>
-          <div style="padding: 1rem; border: 1px solid var(--border); border-radius: var(--r-lg);">
-            <div style="font-size: 1.5rem; font-weight: 700; letter-spacing: -0.03em; color: var(--text);">1 M</div>
-            <div style="font-size: 0.8125rem; color: var(--text-3);">Visningar (+856%)</div>
-          </div>
-          <div style="padding: 1rem; border: 1px solid var(--border); border-radius: var(--r-lg);">
-            <div style="font-size: 1.5rem; font-weight: 700; letter-spacing: -0.03em; color: var(--text);">39,6K</div>
-            <div style="font-size: 0.8125rem; color: var(--text-3);">Interaktioner (+3 760%)</div>
-          </div>
-          <div style="padding: 1rem; border: 1px solid var(--border); border-radius: var(--r-lg);">
-            <div style="font-size: 1.5rem; font-weight: 700; letter-spacing: -0.03em; color: var(--text);">+3 481%</div>
-            <div style="font-size: 0.8125rem; color: var(--text-3);">TikTok-följartillväxt</div>
-          </div>
-        </div>
-
-        <a href="case-falafelbaren.html" class="btn btn--blue" style="margin-top: 1.75rem;">
-          Se hela caset →
-        </a>
-      </div>
+<!-- REAL CASES — 2 equal-weight feature cards -->
+<section class="sec-cases">
+  <div class="sec-cases__inner">
+    <div class="sec-cases__head fx-up">
+      <span class="sec-cases__eyebrow">Riktiga kundresultat</span>
+      <h2 class="sec-cases__title">Restauranger där siffrorna gjort <em>jobbet på riktigt</em>.</h2>
     </div>
+
+    <div class="sec-cases__grid">
+      <a href="case-mazraa.html" class="case-feature fx-up">
+        <div class="case-feature__img">
+          <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69ee52f90d66f2a6655bb6e4.jpg" alt="Mazra'a — palestinsk restaurang i Stockholm" loading="lazy">
+        </div>
+        <div class="case-feature__body">
+          <span class="case-feature__tag">Sociala medier · Pågående uppdrag</span>
+          <h3>Mazra'a — <em>en palestinsk klassiker hittar sin digitala röst</em></h3>
+          <p class="case-feature__lead">Skånegatan, Stockholm. Pro-paketet sedan november 2025. På 5,5 månader: 1,42 miljoner visningar och +13 499% interaktioner.</p>
+          <div class="case-feature__stats">
+            <div class="case-feature__stat">
+              <div class="case-feature__stat-val">1,42M</div>
+              <div class="case-feature__stat-label">Visningar (+640%)</div>
+            </div>
+            <div class="case-feature__stat">
+              <div class="case-feature__stat-val">47,9K</div>
+              <div class="case-feature__stat-label">Interaktioner (+13 499%)</div>
+            </div>
+            <div class="case-feature__stat">
+              <div class="case-feature__stat-val">+46%</div>
+              <div class="case-feature__stat-label">Instagram-följare</div>
+            </div>
+            <div class="case-feature__stat">
+              <div class="case-feature__stat-val">78</div>
+              <div class="case-feature__stat-label">Inlägg (+1 460%)</div>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="case-falafelbaren.html" class="case-feature fx-up">
+        <div class="case-feature__img">
+          <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69ea91b1717d5dd4e173eb96.jpeg" alt="Falafelbaren — Hornsgatan, Stockholm" loading="lazy">
+        </div>
+        <div class="case-feature__body">
+          <span class="case-feature__tag">Sociala medier · Pro-paketet</span>
+          <h3>Falafelbaren — <em>från osynlig till topprankad</em></h3>
+          <p class="case-feature__lead">Hornsgatan, Stockholm. Nidal Kerch och teamet. Från noll TikTok till över 1 miljon visningar på 3,5 månader — riktiga siffror från Metricool.</p>
+          <div class="case-feature__stats">
+            <div class="case-feature__stat">
+              <div class="case-feature__stat-val">1M</div>
+              <div class="case-feature__stat-label">Visningar (+856%)</div>
+            </div>
+            <div class="case-feature__stat">
+              <div class="case-feature__stat-val">39,6K</div>
+              <div class="case-feature__stat-label">Interaktioner (+3 760%)</div>
+            </div>
+            <div class="case-feature__stat">
+              <div class="case-feature__stat-val">10,17K</div>
+              <div class="case-feature__stat-label">Följare (+41%)</div>
+            </div>
+            <div class="case-feature__stat">
+              <div class="case-feature__stat-val">+3 481%</div>
+              <div class="case-feature__stat-label">TikTok-tillväxt</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <p class="sec-cases__note fx-up">Fler riktiga kundcase publiceras löpande — inga utsmyckade exempel, bara restauranger vi faktiskt har levererat resultat åt.</p>
   </div>
 </section>
 
-<!-- CASE GRID -->
-<section class="section section--soft">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Fler cases</span>
-      <h2>Ännu fler <span class="gradient-text">framgångshistorier</span></h2>
+<!-- CTA -->
+<section class="sec-cta-cases">
+  <div class="sec-cta-cases__inner">
+    <div class="fx-up">
+      <h2>Din restaurang kan vara <em>nästa</em>.</h2>
+      <p>Boka ett gratis strategimöte och se hur vi kan hjälpa just din restaurang nå samma typ av resultat.</p>
     </div>
-
-    <div class="case-grid reveal-stagger">
-      <div class="case-card">
-        <div class="case-card__photo"><img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=600&q=80" alt="Sushi Palace" loading="lazy"></div>
-        <div class="case-card__body">
-          <span class="case-card__tag">Webbdesign & SEO</span>
-          <h3>Sushi Palace</h3>
-          <p>Ny hemsida + lokal SEO-strategi. Nu rankar de #1 på Google för "sushi Stockholm" och har trefaldigat sin online-bokningstrafik.</p>
-          <div class="case-card__stats">
-            <div>
-              <div class="case-card__stat-val">3×</div>
-              <div class="case-card__stat-label">Online-bokningar</div>
-            </div>
-            <div>
-              <div class="case-card__stat-val">#1</div>
-              <div class="case-card__stat-label">Google-ranking</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="case-card">
-        <div class="case-card__photo"><img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&q=80" alt="Pizzeria Roma" loading="lazy"></div>
-        <div class="case-card__body">
-          <span class="case-card__tag">Sociala medier</span>
-          <h3>Pizzeria Roma</h3>
-          <p>TikTok-strategi med veckovisa matlagningsvideor. Deras "pizza-pull"-video gick viralt med 500 000 visningar på 48 timmar.</p>
-          <div class="case-card__stats">
-            <div>
-              <div class="case-card__stat-val">500K</div>
-              <div class="case-card__stat-label">Viral video-views</div>
-            </div>
-            <div>
-              <div class="case-card__stat-val">+60%</div>
-              <div class="case-card__stat-label">Helgomsättning</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="case-card">
-        <div class="case-card__photo"><img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=600&q=80" alt="Café Linnéa" loading="lazy"></div>
-        <div class="case-card__body">
-          <span class="case-card__tag">Helhetspaket</span>
-          <h3>Café Linnéa</h3>
-          <p>Komplett rebrand med ny hemsida, sociala medier och fotosessioner. Från 200 till 5 000 Instagram-följare på 4 månader.</p>
-          <div class="case-card__stats">
-            <div>
-              <div class="case-card__stat-val">25×</div>
-              <div class="case-card__stat-label">Följartillväxt</div>
-            </div>
-            <div>
-              <div class="case-card__stat-val">+35%</div>
-              <div class="case-card__stat-label">Ökad omsättning</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="case-card">
-        <div class="case-card__photo"><img src="https://images.unsplash.com/photo-1543362906-acfc16c67564?w=600&q=80" alt="Green Bowl" loading="lazy"></div>
-        <div class="case-card__body">
-          <span class="case-card__tag">Annonsering</span>
-          <h3>Green Bowl</h3>
-          <p>Meta Ads-kampanj riktad mot hälsomedvetna 25–40-åringar i Stockholm. 6× avkastning på annonsspend under lansering.</p>
-          <div class="case-card__stats">
-            <div>
-              <div class="case-card__stat-val">6×</div>
-              <div class="case-card__stat-label">ROAS</div>
-            </div>
-            <div>
-              <div class="case-card__stat-val">2 500+</div>
-              <div class="case-card__stat-label">Nya kunder</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="case-card">
-        <div class="case-card__photo"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=80" alt="Burger Brothers" loading="lazy"></div>
-        <div class="case-card__body">
-          <span class="case-card__tag">Sociala medier</span>
-          <h3>Burger Brothers</h3>
-          <p>Instagram-strategi med "behind the scenes"-innehåll och influencer-samarbeten. Nu en av Malmös mest followade matrestauranger.</p>
-          <div class="case-card__stats">
-            <div>
-              <div class="case-card__stat-val">12K</div>
-              <div class="case-card__stat-label">IG-följare</div>
-            </div>
-            <div>
-              <div class="case-card__stat-val">+55%</div>
-              <div class="case-card__stat-label">Lunch-trafik</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="case-card">
-        <div class="case-card__photo"><img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=600&q=80" alt="Istanbul Kebab" loading="lazy"></div>
-        <div class="case-card__body">
-          <span class="case-card__tag">Webbdesign</span>
-          <h3>Istanbul Kebab</h3>
-          <p>Ny hemsida med digital meny och online-beställning. Direkt-beställningar ökade med 200% och köerna på plats minskade.</p>
-          <div class="case-card__stats">
-            <div>
-              <div class="case-card__stat-val">+200%</div>
-              <div class="case-card__stat-label">Online-ordrar</div>
-            </div>
-            <div>
-              <div class="case-card__stat-val">4.8★</div>
-              <div class="case-card__stat-label">Google-betyg</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA BANNER -->
-<div class="container cta-banner">
-  <div class="cta-banner__inner reveal">
-    <div>
-      <h2>Din restaurang kan vara nästa framgångshistoria.</h2>
-      <p>Boka ett gratis strategimöte och se hur vi kan hjälpa just din restaurang.</p>
-    </div>
-    <a href="kontakt.html" class="btn btn--light btn--lg">Boka gratis möte
-      <svg class="icon icon--arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    <a href="kontakt.html" class="sec-cta-cases__btn fx-up">
+      Boka gratis möte
+      <span class="sec-cta-cases__btn-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </span>
     </a>
   </div>
-</div>
+</section>
 
 <!-- FOOTER -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer__grid">
-      <div class="footer__brand">
-        <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/699641283fd420658d5267af.png" alt="Syns Nu Media">
-        <p>Sveriges största marknadsföringsbyrå för restauranger. Vi hjälper dig synas, växa och öka omsättningen.</p>
-        <div class="footer__social">
-          <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-          <a href="#" aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a>
-          <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-          <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
-        </div>
+<footer class="sec-footer-big">
+  <div class="sec-footer-big__inner footer-big">
+    <div class="footer-big__grid">
+      <div class="footer-big__brand">
+        <h5>Få uppdateringar</h5>
+        <p>Artiklar, tips och erbjudanden för restaurangägare.</p>
+        <form class="footer-big__form" onsubmit="event.preventDefault(); this.innerHTML='<span style=\'padding: 10px 16px; color: var(--text); font-size: 0.875rem;\'>✓ Tack!</span>';">
+          <input type="email" placeholder="din@email.se" required>
+          <button type="submit">Prenumerera</button>
+        </form>
       </div>
-      <div class="footer__col">
-        <h5>Tjänster</h5>
-        <ul>
-          <li><a href="sociala-medier.html">Sociala Medier</a></li>
-          <li><a href="hemsida.html">Webbdesign</a></li>
-          <li><a href="kundcase.html">Kundcase</a></li>
-          <li><a href="qopla-erbjudande.html">Qopla-erbjudande</a></li>
-        </ul>
-      </div>
-      <div class="footer__col">
-        <h5>Företag</h5>
+      <div>
+        <h5>Företaget</h5>
         <ul>
           <li><a href="om-oss.html">Om oss</a></li>
-          <li><a href="blogg.html">Blogg</a></li>
           <li><a href="jobb.html">Jobb</a></li>
+          <li><a href="blogg.html">Blogg</a></li>
           <li><a href="kontakt.html">Kontakt</a></li>
         </ul>
       </div>
-      <div class="footer__col">
+      <div>
+        <h5>Tjänster</h5>
+        <ul>
+          <li><a href="sociala-medier.html">Sociala medier</a></li>
+          <li><a href="hemsida.html">Webbdesign</a></li>
+          <li><a href="qopla-erbjudande.html">Qopla-erbjudande</a></li>
+          <li><a href="kundcase.html">Kundcase</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Partner med oss</h5>
+        <ul>
+          <li><a href="kontakt.html">För restaurangkedjor</a></li>
+          <li><a href="kontakt.html">Franchise-samarbete</a></li>
+          <li><a href="jobb.html">Bli kreatör</a></li>
+        </ul>
+      </div>
+      <div class="footer-big__payments-col">
         <h5>Kontakt</h5>
         <ul>
           <li><a href="tel:+46708880198">070-888 01 98</a></li>
@@ -296,13 +494,40 @@
         </ul>
       </div>
     </div>
-    <div class="footer__bottom">
-      <span>© Syns Nu AB 2026. Alla rättigheter förbehållna.</span>
-      <a href="#">Integritetspolicy</a>
+
+    <div class="footer-big__mark" aria-hidden="true">
+      <span class="footer-big__mark-logo">
+        <span class="tri-dot"><b></b><b></b><b></b></span>SYNS NU
+      </span>
+      <span class="footer-big__mark-dash">—</span>
+      <span>MEDIA</span>
+    </div>
+
+    <div class="footer-big__bottom">
+      <span>© 2026 Syns Nu AB. Alla rättigheter förbehållna.</span>
+      <span><a href="#">Integritetspolicy</a> · <a href="#">Villkor</a></span>
     </div>
   </div>
 </footer>
 
 <script src="js/main.js"></script>
+<script>
+  (function(){
+    const els = document.querySelectorAll('.fx-up');
+    if (!('IntersectionObserver' in window) || els.length === 0) {
+      els.forEach(el => el.classList.add('visible'));
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+    els.forEach(el => io.observe(el));
+  })();
+</script>
 </body>
 </html>
