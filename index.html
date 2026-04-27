@@ -1492,43 +1492,6 @@
       gap: clamp(2rem, 4vw, 4rem);
       padding-bottom: 4rem;
     }
-    .footer-big__brand p {
-      color: rgba(255,255,255,0.55);
-      font-size: 0.9375rem;
-      margin-bottom: 1.5rem;
-      max-width: 260px;
-    }
-    .footer-big__form {
-      display: flex;
-      gap: 0;
-      background: white;
-      border-radius: 9999px;
-      padding: 4px;
-      max-width: 320px;
-    }
-    .footer-big__form input {
-      flex: 1;
-      background: transparent;
-      border: none;
-      outline: none;
-      padding: 10px 16px;
-      font: inherit;
-      color: var(--text);
-      font-size: 0.875rem;
-      min-width: 0;
-    }
-    .footer-big__form button {
-      padding: 8px 16px;
-      background: var(--text);
-      color: white;
-      border: none;
-      border-radius: 9999px;
-      font: inherit;
-      font-size: 0.8125rem;
-      font-weight: 500;
-      cursor: pointer;
-    }
-
     .footer-big h5 {
       font-size: 0.8125rem;
       font-weight: 500;
@@ -2355,12 +2318,7 @@
   <div class="sec-footer-big__inner footer-big">
     <div class="footer-big__grid">
       <div class="footer-big__brand">
-        <h5>Få uppdateringar</h5>
-        <p>Artiklar, tips och erbjudanden för restaurangägare.</p>
-        <form class="footer-big__form" onsubmit="event.preventDefault(); this.innerHTML='<span style=\'padding: 10px 16px; color: var(--text); font-size: 0.875rem;\'>✓ Tack!</span>';">
-          <input type="email" placeholder="din@email.se" required>
-          <button type="submit">Prenumerera</button>
-        </form>
+        <img class="footer-big__mark-img" src="assets/hash-mark-white.png" alt="Syns Nu Media" loading="lazy">
       </div>
       <div>
         <h5>Företaget</h5>

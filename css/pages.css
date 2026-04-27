@@ -3678,6 +3678,18 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
 .case-story--light .case-story__heading em { color: var(--text); }
 
 /* ============================================================
+   FOOTER — hash-mark logo replaces newsletter signup
+   Sits in the .footer-big__brand column on every page that uses
+   the big footer pattern.
+   ============================================================ */
+.footer-big__mark-img {
+  width: clamp(96px, 9vw, 132px);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.3));
+}
+
+/* ============================================================
    WORD-REVEAL — prevent descender clipping
    The `.word` reveal pattern uses overflow:hidden on each word
    so the inner span can slide up from below. With tight heading
