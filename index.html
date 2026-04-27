@@ -544,14 +544,6 @@
       transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
     }
     .service-card:hover .service-card__visual img { transform: scale(1.04); }
-    /* Hash-mark variant: contain (not cover) so the icon isn't cropped */
-    .service-card__visual--mark { background: transparent; align-items: center; }
-    .service-card__visual--mark img {
-      object-fit: contain;
-      padding: 12%;
-      filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.18));
-    }
-    .service-card:hover .service-card__visual--mark img { transform: scale(1.06) rotate(-2deg); }
 
     /* ── Google Optimering CSS mockup (replaces the img inside that card) ── */
     .gmap-mockup {
@@ -1885,8 +1877,8 @@
               <div class="service-card__desc">Komplett Instagram, TikTok & Facebook — inspelning, publicering, resultat.</div>
               <div class="service-card__price">Från 7 500 kr/mån</div>
             </div>
-            <div class="service-card__visual service-card__visual--mark">
-              <img src="assets/hash-mark-black.png" alt="Hashtag — sociala medier är vår grej">
+            <div class="service-card__visual">
+              <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69ea91b1717d5dd4e173eb96.jpeg" alt="Sociala medier-produktion för restaurang">
             </div>
           </a>
         </div>
