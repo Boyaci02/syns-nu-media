@@ -1588,6 +1588,9 @@
     }
 
     @media (max-width: 640px) {
+      /* Insights panels switch to phone-portrait 9:16 — fits vertical-shot
+         videos better. Carousel stays horizontal-scroll with snap. */
+      .insight-panel { aspect-ratio: 9 / 16; }
       .big-hero { padding-top: calc(var(--nav-h) + 60px); min-height: auto; }
       .big-hero__mark { font-size: clamp(2.25rem, 13vw, 4rem); margin-bottom: 1.25rem; }
       .big-hero__eyebrow {
