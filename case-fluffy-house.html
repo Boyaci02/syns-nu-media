@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kundcase: Fluffy House | Syns Nu Media</title>
+  <meta name="description" content="Se hur Fluffy House gick från noll till 8,68M visningar, 25 100 följare och två fysiska enheter på 8 månader — riktiga siffror från Metricool.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="icon" type="image/png" href="assets/hash-mark-black.png">
+
+  <style>
+    /* ════════════════════════════════════════════════════════════════
+       Case page — Fluffy House
+       Stats first (no hero). Story sections with image + text below.
+       ════════════════════════════════════════════════════════════════ */
+
+    :root {
+      --text: #0A0A0B;
+      --text-2: #2A2A2E;
+      --text-3: #6B6B70;
+      --gutter: 24px;
+    }
+
+    body.case-page { margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; background: #0A0A0B; color: white; }
+
+    /* ── Hero entrance animations ─────────────── */
+    @keyframes caseHeroImgIn {
+      from { opacity: 0; transform: scale(1.08); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    @keyframes caseHeroOverlayIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes casePillIn {
+      from { opacity: 0; transform: translateY(-14px); filter: blur(6px); }
+      to   { opacity: 1; transform: translateY(0);     filter: blur(0); }
+    }
+    @keyframes caseTitleWordIn {
+      from { transform: translateY(110%); }
+      to   { transform: translateY(0); }
+    }
+    @keyframes caseMetaIn {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes caseMetaBorderIn {
+      from { transform: scaleX(0); opacity: 0; }
+      to   { transform: scaleX(1); opacity: 1; }
+    }
+
+    /* ── Combined: sticky image bg + header + stats panels ──── */
+    .sec-combined {
+      position: relative;
+      background: #0A0A0B;
+      color: white;
+    }
+    .sec-combined__bg {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .sec-combined__bg img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      animation: caseHeroImgIn 1800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    .sec-combined__bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(100deg,
+          rgba(10,10,11,0.78) 0%,
+          rgba(10,10,11,0.55) 40%,
+          rgba(10,10,11,0.25) 75%,
+          rgba(10,10,11,0.1) 100%),
+        linear-gradient(180deg, rgba(10,10,11,0.3) 0%, transparent 30%, rgba(10,10,11,0.55) 100%);
+      animation: caseHeroOverlayIn 1200ms cubic-bezier(0.22, 1, 0.36, 1) 200ms both;
+    }
+
+    .case-header {
+      position: relative;
+      z-index: 1;
+      margin-top: -100vh;
+      min-height: 100vh;
+      padding: calc(var(--nav-h, 76px) + clamp(80px, 10vw, 160px)) 0 clamp(60px, 8vw, 100px);
+      color: white;
+      display: flex;
+      align-items: flex-end;
+    }
+    .case-header__inner {
+      max-width: min(1680px, 96vw);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+      width: 100%;
+    }
+    .case-header__back,
+    .case-header__label {
+      position: absolute;
+      top: calc(var(--nav-h, 76px) + 1.5rem);
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.875rem 0.5rem 0.75rem;
+      background: rgba(255, 255, 255, 0.1);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.88);
+      text-decoration: none;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: background 200ms, color 200ms;
+    }
+    .case-header__back {
+      left: calc(var(--gutter) + 0.5rem);
+      animation: casePillIn 900ms cubic-bezier(0.22, 1, 0.36, 1) 350ms both;
+    }
+    .case-header__back:hover {
+      background: rgba(255, 255, 255, 0.18);
+      color: white;
+    }
+    .case-header__label {
+      right: calc(var(--gutter) + 0.5rem);
+      padding: 0.5rem 0.875rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      animation: casePillIn 900ms cubic-bezier(0.22, 1, 0.36, 1) 500ms both;
+    }
+    .case-header__label::before {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #4EBFB8;
+      box-shadow: 0 0 10px #4EBFB8;
+    }
+    .case-header__title {
+      font-size: clamp(3rem, 8vw, 7.25rem);
+      font-weight: 700;
+      letter-spacing: -0.045em;
+      line-height: 0.9;
+      margin: 0 0 2.5rem;
+      color: white;
+      text-shadow: 0 2px 32px rgba(0, 0, 0, 0.45);
+    }
+    .case-header__title em {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: -0.015em;
+    }
+    .case-header__title .word {
+      display: inline-block;
+      overflow: hidden;
+      vertical-align: baseline;
+      margin-right: 0.15em;
+    }
+    .case-header__title .word > span {
+      display: inline-block;
+      animation: caseTitleWordIn 1100ms cubic-bezier(0.22, 1, 0.36, 1) 600ms both;
+    }
+    .case-header__meta {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: clamp(1.25rem, 2vw, 2rem);
+      padding-top: 1.75rem;
+      border-top: 1px solid transparent;
+      max-width: 960px;
+    }
+    .case-header__meta::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.18);
+      transform-origin: left;
+      animation: caseMetaBorderIn 900ms cubic-bezier(0.22, 1, 0.36, 1) 950ms both;
+    }
+    .case-header__meta-item {
+      animation: caseMetaIn 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    .case-header__meta-item:nth-child(1) { animation-delay: 1050ms; }
+    .case-header__meta-item:nth-child(2) { animation-delay: 1200ms; }
+    .case-header__meta-item:nth-child(3) { animation-delay: 1350ms; }
+    .case-header__meta-item label {
+      display: block;
+      font-size: 0.6875rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 0.375rem;
+      font-weight: 500;
+    }
+    .case-header__meta-item span {
+      font-size: 0.9375rem;
+      color: white;
+      font-weight: 500;
+    }
+    @media (max-width: 640px) {
+      .case-header__title { font-size: clamp(2.5rem, 13vw, 4rem); }
+    }
+
+    /* ── Stats section ───────────────────────── */
+    .sec-stats {
+      position: relative;
+      z-index: 2;
+      padding: clamp(60px, 8vw, 120px) 0 clamp(80px, 10vw, 140px);
+      color: white;
+      background: linear-gradient(180deg,
+        rgba(10,10,11,0) 0%,
+        rgba(10,10,11,0.3) 8%,
+        rgba(10,10,11,0.55) 30%,
+        rgba(10,10,11,0.6) 100%);
+    }
+    .sec-stats__inner {
+      position: relative;
+      max-width: min(1680px, 96vw);
+      margin-inline: auto;
+      padding-inline: var(--gutter);
+    }
+    .sec-stats__eyebrow {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 1.25rem;
+    }
+    .sec-stats__eyebrow .word {
+      display: inline-block; overflow: hidden; vertical-align: baseline; margin-right: 0.22em;
+    }
+    .sec-stats__eyebrow .word > span {
+      display: inline-block; transform: translateY(110%);
+      transition: transform 750ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .sec-stats__eyebrow.is-revealed .word > span { transform: translateY(0); }
+    .sec-stats__title {
+      font-size: clamp(1.875rem, 3.5vw, 2.75rem);
+      font-weight: 600;
+      letter-spacing: -0.035em;
+      line-height: 1.1;
+      max-width: 760px;
+      margin: 0 0 clamp(40px, 5vw, 64px);
+      color: white;
+    }
+    .sec-stats__title em {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-style: italic; font-weight: 400; letter-spacing: -0.015em;
+    }
+    .sec-stats__title .word {
+      display: inline-block; overflow: hidden; vertical-align: baseline; margin-right: 0.22em;
+    }
+    .sec-stats__title .word > span {
+      display: inline-block; transform: translateY(110%);
+      transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .sec-stats__title.is-revealed .word > span { transform: translateY(0); }
+
+    .sec-stats__cards {
+      display: flex;
+      gap: 1rem;
+      align-items: stretch;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 0.5rem;
+      margin-right: calc(50% - 50vw);
+      padding-right: var(--gutter);
+      scroll-padding-inline-end: var(--gutter);
+    }
+    .sec-stats__cards::-webkit-scrollbar { display: none; }
+    .sec-stats__cards .stat-card {
+      flex: 0 0 calc((100% - 4 * 1rem) / 4.25);
+      scroll-snap-align: start;
+      opacity: 0;
+      transform: translate3d(80px, 0, 0);
+      backface-visibility: hidden;
+      transition:
+        opacity 950ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 950ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
+    }
+    .sec-stats__cards.is-revealed .stat-card { opacity: 1; transform: translate3d(0, 0, 0); }
+    .sec-stats__cards.is-revealed .stat-card:nth-child(1) { transition-delay: 0ms; }
+    .sec-stats__cards.is-revealed .stat-card:nth-child(2) { transition-delay: 120ms; }
+    .sec-stats__cards.is-revealed .stat-card:nth-child(3) { transition-delay: 240ms; }
+    .sec-stats__cards.is-revealed .stat-card:nth-child(4) { transition-delay: 360ms; }
+    .sec-stats__cards.is-revealed .stat-card:nth-child(5) { transition-delay: 480ms; }
+    .sec-stats__cards.is-revealed .stat-card:hover { transform: translate3d(0, -6px, 0); transition-duration: 400ms; }
+
+    .stat-card {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      border-radius: 18px;
+      padding: 1.5rem;
+      background: #141416;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      color: white;
+      overflow: hidden;
+      transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .stat-card--photo { padding: 0; }
+    .stat-card--photo img,
+    .stat-card--photo video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+      display: block;
+    }
+    .stat-card--photo::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 0%, transparent 60%, rgba(0,0,0,0.5) 100%);
+    }
+    .stat-card--photo .stat-card__cap {
+      position: absolute;
+      inset: auto 1.5rem 1.5rem;
+      z-index: 2;
+      color: white;
+      font-size: 0.9375rem;
+      font-weight: 500;
+    }
+    .stat-card__ring {
+      width: min(300px, 88%);
+      aspect-ratio: 1 / 1;
+      position: relative;
+      flex-shrink: 0;
+      align-self: center;
+      margin-top: 0.25rem;
+    }
+    .stat-card__ring svg { transform: rotate(-90deg); width: 100%; height: 100%; }
+    .stat-card__ring .track { fill: none; stroke: rgba(255,255,255,0.08); stroke-width: 18; }
+    .stat-card__ring .seg {
+      fill: none;
+      stroke-width: 18;
+      stroke-linecap: round;
+      transition: stroke-dashoffset 1.6s cubic-bezier(0.22, 1, 0.36, 1),
+                  stroke-dasharray 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+      filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.35));
+    }
+    .stat-card__ring-text {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding-inline: 1rem;
+    }
+    .stat-card__ring-val {
+      font-size: clamp(2rem, 2.6vw, 2.75rem);
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .stat-card__ring-label {
+      font-size: 0.625rem;
+      color: rgba(255,255,255,0.55);
+      margin-top: 0.5rem;
+      letter-spacing: 0.14em;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+    .stat-card__body {
+      font-size: 0.9375rem;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.5;
+      margin-top: auto;
+      text-align: left;
+    }
+    .stat-card__badge {
+      position: absolute;
+      padding: 0.25rem 0.625rem;
+      border-radius: 9999px;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      color: var(--text);
+      box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.35);
+      z-index: 3;
+    }
+    .stat-card__badge--a { top: 14px; right: 30%; background: #EBF3B6; }
+    .stat-card__badge--b { top: 44%; right: 10px; background: #F9D4B5; }
+    .stat-card__badge--c { bottom: 32%; left: 12px; background: #E6D4F5; }
+
+    .stat-card--quote {
+      background: #E5EE9E;
+      color: var(--text);
+      padding: 2rem;
+      gap: 0;
+      justify-content: flex-start;
+    }
+    .stat-card__quote-mark {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-style: italic;
+      font-size: 5.5rem;
+      line-height: 0.65;
+      color: rgba(0, 0, 0, 0.2);
+      margin-bottom: 0.75rem;
+    }
+    .stat-card__quote {
+      font-size: 1.0625rem;
+      line-height: 1.5;
+      color: var(--text);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: auto;
+    }
+    .stat-card__quote-attr {
+      margin-top: 1.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.12);
+    }
+    .stat-card__quote-name {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    .stat-card__quote-role {
+      font-size: 0.75rem;
+      color: rgba(0, 0, 0, 0.6);
+      margin-top: 3px;
+      letter-spacing: 0.02em;
+    }
+
+    @media (max-width: 1024px) {
+      .sec-stats__cards .stat-card { flex: 0 0 calc((100% - 1rem) / 1.7); aspect-ratio: 4 / 5; }
+    }
+    @media (max-width: 640px) {
+      .sec-stats__cards { gap: 0.875rem; }
+      .sec-stats__cards .stat-card {
+        flex: 0 0 calc((100% - 0.875rem) / 1.15);
+        transform: none;
+      }
+      .sec-stats__cards.is-revealed .stat-card { transform: none; }
+    }
+
+    /* ── Story sections ─────────────────────── */
+    .case-story {
+      padding: clamp(80px, 10vw, 140px) 0;
+    }
+    .case-story--light { background: #F7F3E0; color: var(--text); }
+    .case-story--dark { background: #0F0F11; color: white; }
+    .case-story__inner {
+      max-width: min(1280px, 94vw);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+    .case-story__split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2.5rem, 5vw, 5rem);
+      align-items: center;
+    }
+    .case-story__split--reversed .case-story__media { order: 2; }
+    .case-story__media {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      border-radius: 22px;
+      overflow: hidden;
+      background: #141416;
+      box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.3);
+    }
+    .case-story__media img,
+    .case-story__media video {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block;
+    }
+    .case-story__label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(0, 0, 0, 0.6);
+      margin-bottom: 1.25rem;
+      font-weight: 500;
+    }
+    .case-story--dark .case-story__label { color: rgba(255, 255, 255, 0.55); }
+    .case-story__label-num {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-style: italic;
+      font-size: 0.9375rem;
+      letter-spacing: -0.01em;
+      text-transform: none;
+      color: currentColor;
+      opacity: 0.8;
+    }
+    .case-story__heading {
+      font-size: clamp(1.875rem, 3.6vw, 3rem);
+      font-weight: 600;
+      letter-spacing: -0.035em;
+      line-height: 1.05;
+      margin: 0 0 1.5rem;
+    }
+    .case-story__heading em {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: -0.015em;
+    }
+    .case-story__body p {
+      font-size: 1rem;
+      line-height: 1.65;
+      color: rgba(0, 0, 0, 0.72);
+      margin: 0 0 1.25rem;
+      max-width: 46ch;
+    }
+    .case-story--dark .case-story__body p { color: rgba(255, 255, 255, 0.72); }
+    .case-story__list {
+      list-style: none;
+      padding: 0;
+      margin: 2rem 0 0;
+    }
+    .case-story__list li {
+      padding: 0.875rem 0 0.875rem 1.75rem;
+      position: relative;
+      font-size: 0.9375rem;
+      line-height: 1.5;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      color: rgba(0, 0, 0, 0.82);
+    }
+    .case-story--dark .case-story__list li {
+      border-top-color: rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.82);
+    }
+    .case-story__list li:first-child { border-top: none; padding-top: 0; }
+    .case-story__list li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 1.25rem;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #4EBFB8;
+    }
+    .case-story__list li:first-child::before { top: 0.5rem; }
+
+    @media (max-width: 768px) {
+      .case-story__split { grid-template-columns: 1fr; }
+      .case-story__split--reversed .case-story__media { order: 0; }
+      .case-story__media { aspect-ratio: 4 / 3; max-width: 520px; }
+    }
+
+    /* ── Scroll-expanding testimonial section ───── */
+    .case-quote {
+      position: relative;
+      min-height: 200vh;
+      background: #0A0A0B;
+    }
+    .case-quote__sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: clamp(1rem, 3vw, 2rem);
+      overflow: hidden;
+    }
+    .case-quote__card {
+      --p: 0;
+      width: calc(min(720px, 86vw) + (min(1680px, 94vw) - min(720px, 86vw)) * var(--p));
+      height: calc(min(640px, 72vh) + (min(94vh, 900px) - min(640px, 72vh)) * var(--p));
+      max-width: 94vw;
+      max-height: 94vh;
+      background: #E5EE9E;
+      color: var(--text);
+      border-radius: calc(24px + 4px * (1 - var(--p)));
+      padding: calc(2rem + 3rem * var(--p));
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.45);
+      will-change: width, height;
+    }
+    .case-quote__mark {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-style: italic;
+      font-size: calc(4rem + 6rem * var(--p, 0));
+      line-height: 0.6;
+      color: rgba(0, 0, 0, 0.2);
+      margin-bottom: calc(0.75rem + 1rem * var(--p, 0));
+    }
+    .case-quote__text {
+      font-size: calc(1.125rem + 1.875rem * var(--p, 0));
+      line-height: 1.3;
+      color: var(--text);
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      margin: 0 0 auto;
+      max-width: 30ch;
+    }
+    .case-quote__attr {
+      margin-top: calc(1.5rem + 1.5rem * var(--p, 0));
+      padding-top: calc(1.25rem + 0.5rem * var(--p, 0));
+      border-top: 1px solid rgba(0, 0, 0, 0.15);
+    }
+    .case-quote__name {
+      font-size: calc(0.9375rem + 0.5rem * var(--p, 0));
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    .case-quote__role {
+      font-size: calc(0.75rem + 0.25rem * var(--p, 0));
+      color: rgba(0, 0, 0, 0.6);
+      margin-top: 4px;
+      letter-spacing: 0.02em;
+    }
+    .case-quote__cta {
+      margin-top: calc(1.5rem + 1rem * var(--p, 0));
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: calc(0.75rem + 0.25rem * var(--p, 0)) 1rem calc(0.75rem + 0.25rem * var(--p, 0)) 1.5rem;
+      background: var(--text);
+      color: white;
+      border-radius: 9999px;
+      font-weight: 500;
+      font-size: calc(0.9375rem + 0.25rem * var(--p, 0));
+      text-decoration: none;
+      transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .case-quote__cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px -8px rgba(0, 0, 0, 0.35);
+    }
+    .case-quote__cta-arrow {
+      width: calc(28px + 6px * var(--p, 0));
+      height: calc(28px + 6px * var(--p, 0));
+      border-radius: 50%;
+      background: white;
+      color: var(--text);
+      display: grid; place-items: center;
+      transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .case-quote__cta:hover .case-quote__cta-arrow { transform: translateX(4px); }
+    .case-quote__cta-arrow svg { width: 14px; height: 14px; }
+
+    @media (max-width: 640px) {
+      .case-quote__card {
+        width: calc(min(360px, 62vw) + (94vw - min(360px, 62vw)) * var(--p));
+        height: calc(min(480px, 58vh) + (94vh - min(480px, 58vh)) * var(--p));
+        padding: calc(1.5rem + 1.25rem * var(--p));
+        border-radius: calc(22px + 2px * (1 - var(--p)));
+      }
+      .case-quote__mark { font-size: calc(3.25rem + 2rem * var(--p, 0)); }
+      .case-quote__text { font-size: calc(1rem + 0.625rem * var(--p, 0)); max-width: 22ch; }
+      .case-quote__attr { margin-top: calc(1.25rem + 0.75rem * var(--p, 0)); padding-top: calc(1rem + 0.25rem * var(--p, 0)); }
+      .case-quote__name { font-size: calc(0.875rem + 0.25rem * var(--p, 0)); }
+      .case-quote__role { font-size: calc(0.75rem + 0.125rem * var(--p, 0)); }
+      .case-quote__cta { margin-top: calc(1.25rem + 0.5rem * var(--p, 0)); font-size: calc(0.875rem + 0.125rem * var(--p, 0)); padding: 0.75rem 1rem 0.75rem 1.25rem; }
+      .case-quote__cta-arrow { width: calc(26px + 4px * var(--p, 0)); height: calc(26px + 4px * var(--p, 0)); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .sec-stats__title .word > span,
+      .sec-stats__eyebrow .word > span,
+      .sec-stats__cards .stat-card,
+      .sec-combined__bg img,
+      .sec-combined__bg::after,
+      .case-header__back,
+      .case-header__label,
+      .case-header__title .word > span,
+      .case-header__meta::before,
+      .case-header__meta-item {
+        animation: none !important;
+        transform: none !important;
+        transition: none !important;
+        opacity: 1 !important;
+        filter: none !important;
+      }
+      .case-quote { min-height: 100vh; }
+      .case-quote__card { --p: 0.5 !important; }
+    }
+
+    /* ── Nav transparency over hero ──── */
+    body.index-v6 #nav:not(.scrolled) .nav__inner {
+      background: transparent;
+      border-color: transparent;
+      box-shadow: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+    body.index-v6 #nav.scrolled .nav__inner {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-color: var(--border);
+    }
+    body.index-v6 #nav:not(.scrolled) .nav__links > a,
+    body.index-v6 #nav:not(.scrolled) .nav__dropdown-toggle { color: rgba(255,255,255,0.82); }
+    body.index-v6 #nav:not(.scrolled) .nav__login { color: rgba(255,255,255,0.82); }
+    body.index-v6 #nav:not(.scrolled) .nav__logo img { filter: brightness(0) invert(1); opacity: 0.95; }
+    body.index-v6 #nav:not(.scrolled) .nav__links > a:hover,
+    body.index-v6 #nav:not(.scrolled) .nav__dropdown-toggle:hover,
+    body.index-v6 #nav:not(.scrolled) .nav__login:hover {
+      background: rgba(255,255,255,0.1);
+      color: white;
+    }
+    body.index-v6 #nav:not(.scrolled) .nav__cta .btn--blue {
+      background: white;
+      color: var(--text);
+    }
+    body.index-v6 #nav:not(.scrolled) .nav__cta .btn--blue:hover {
+      background: rgba(255,255,255,0.9);
+    }
+
+    /* ── Tri-dot ─────────── */
+    .tri-dot {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.08em;
+      margin-right: 0.18em;
+    }
+    .tri-dot b {
+      width: 0.22em;
+      height: 0.22em;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .tri-dot b:nth-child(1) { background: var(--edit-peach, #FFCFA8); }
+    .tri-dot b:nth-child(2) { background: var(--edit-teal, #4EBFB8); }
+    .tri-dot b:nth-child(3) { background: var(--edit-lavender, #E8E1FF); }
+
+    /* ── Big footer ─────────── */
+    .sec-footer-big {
+      background: #0A0A0B;
+      color: white;
+      padding: clamp(80px, 10vw, 120px) 0 40px;
+    }
+    .sec-footer-big__inner {
+      max-width: var(--container-wide);
+      margin-inline: auto;
+      padding-inline: var(--gutter);
+    }
+    .footer-big__grid {
+      display: grid;
+      grid-template-columns: 1.5fr repeat(3, 1fr) auto;
+      gap: clamp(2rem, 4vw, 4rem);
+      padding-bottom: 4rem;
+    }
+    .footer-big h5 {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: white;
+      margin-bottom: 1.25rem;
+    }
+    .footer-big ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.625rem; margin: 0; }
+    .footer-big a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .footer-big a:hover { color: white; }
+    .footer-big__mark {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 2.5rem;
+      margin-top: 1.5rem;
+      font-size: clamp(3rem, 14vw, 12rem);
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      line-height: 0.9;
+      color: white;
+      text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    .footer-big__mark-logo {
+      color: white;
+      letter-spacing: -0.05em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3em;
+    }
+    .footer-big__mark-dash {
+      font-weight: 300;
+      opacity: 0.9;
+      margin: 0 0.25em;
+    }
+    .footer-big__bottom {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin-top: 1.5rem;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+    }
+    @media (max-width: 1024px) {
+      .footer-big__grid { grid-template-columns: 1fr 1fr; }
+      .footer-big__brand { grid-column: 1 / -1; }
+      .footer-big__payments-col { grid-column: 1 / -1; }
+    }
+    @media (max-width: 640px) {
+      .footer-big__grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="case-page index-v6">
+
+<!-- NAV -->
+<nav id="nav" role="navigation" aria-label="Huvudnavigering">
+  <div class="nav__inner">
+    <a class="nav__logo" href="index.html" aria-label="Syns Nu Media — Hem">
+      <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/699641283fd420658d5267af.png"
+           alt="Syns Nu Media" width="100" height="26">
+    </a>
+
+    <div class="nav__links" role="menubar">
+      <a href="index.html" role="menuitem">Hem</a>
+      <div class="nav__dropdown" role="menuitem">
+        <span class="nav__dropdown-toggle" tabindex="0" aria-haspopup="true">
+          Tjänster
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </span>
+        <div class="nav__dropdown-menu" role="menu">
+          <a href="sociala-medier.html" role="menuitem">Sociala Medier</a>
+          <a href="hemsida.html" role="menuitem">Webbdesign</a>
+          <a href="qopla-erbjudande.html" role="menuitem">Qopla-erbjudande</a>
+        </div>
+      </div>
+      <a href="om-oss.html" role="menuitem">Om oss</a>
+      <a href="kundcase.html" role="menuitem">Kundcase</a>
+      <a href="blogg.html" role="menuitem">Blogg</a>
+      <a href="jobb.html" role="menuitem">Jobb</a>
+    </div>
+
+    <div class="nav__cta">
+      <a href="https://synsnumedia.com/portal/login" class="nav__login" target="_blank" rel="noopener">Logga in</a>
+      <a href="kontakt.html" class="btn btn--blue btn--sm">Boka gratis möte</a>
+    </div>
+
+    <button id="hamburger" aria-label="Öppna meny" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobilmeny">
+  <nav class="mobile-menu__links">
+    <a href="index.html">Hem</a>
+    <a href="sociala-medier.html">Sociala Medier</a>
+    <a href="hemsida.html">Webbdesign</a>
+    <a href="om-oss.html">Om oss</a>
+    <a href="kundcase.html">Kundcase</a>
+    <a href="blogg.html">Blogg</a>
+    <a href="jobb.html">Jobb</a>
+    <a href="kontakt.html">Kontakt</a>
+  </nav>
+  <a href="kontakt.html" class="btn btn--blue">Boka gratis möte</a>
+  <a href="https://synsnumedia.com/portal/login" target="_blank" rel="noopener" class="btn btn--ghost">Logga in</a>
+</div>
+
+<!-- STICKY IMAGE BG + HEADER + STATS -->
+<section class="sec-combined">
+  <div class="sec-combined__bg" aria-hidden="true">
+    <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69ef7626481c62debadf58b9.jpg" alt="">
+  </div>
+
+  <div class="case-header">
+    <a href="kundcase.html" class="case-header__back">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"/>
+        <polyline points="12 19 5 12 12 5"/>
+      </svg>
+      Alla kundcase
+    </a>
+    <div class="case-header__label">Case</div>
+
+    <div class="case-header__inner">
+      <h1 class="case-header__title" data-reveal-words aria-label="Fluffy House">Fluffy House</h1>
+      <div class="case-header__meta">
+        <div class="case-header__meta-item">
+          <label>Tjänst</label>
+          <span>Sociala medier — Turbo-paketet</span>
+        </div>
+        <div class="case-header__meta-item">
+          <label>Plattformar</label>
+          <span>Instagram · TikTok · Facebook</span>
+        </div>
+        <div class="case-header__meta-item">
+          <label>Plats</label>
+          <span>Stockholm · Uppsala</span>
+        </div>
+      </div>
+    </div>
+  </div><!-- /.case-header -->
+
+  <!-- STATS / PROOF -->
+  <section class="sec-stats">
+  <div class="sec-stats__inner">
+    <div class="sec-stats__eyebrow" data-reveal-words aria-label="Bevis i siffror">Bevis i siffror</div>
+    <h2 class="sec-stats__title" data-reveal-words aria-label="Vi mäter framgång i kö utanför dörren — inte likes.">
+      Vi mäter framgång i kö utanför dörren — <em>inte likes.</em>
+    </h2>
+
+    <div class="sec-stats__cards" data-reveal-cards>
+      <div class="stat-card">
+        <div class="stat-card__badge stat-card__badge--a">+11 400%</div>
+        <div class="stat-card__badge stat-card__badge--b">+60 200%</div>
+        <div class="stat-card__badge stat-card__badge--c">+6 100%</div>
+        <div class="stat-card__ring">
+          <svg viewBox="0 0 180 180">
+            <circle class="track" cx="90" cy="90" r="72"/>
+            <circle class="seg" data-seg-dash="320 132" stroke="#4EBFB8" cx="90" cy="90" r="72" stroke-dasharray="0 452" stroke-dashoffset="0"/>
+            <circle class="seg" data-seg-dash="112 340" stroke="#E5EE9E" cx="90" cy="90" r="72" stroke-dasharray="0 452" stroke-dashoffset="-320"/>
+            <circle class="seg" data-seg-dash="20 432"  stroke="#D7C2FF" cx="90" cy="90" r="72" stroke-dasharray="0 452" stroke-dashoffset="-432"/>
+          </svg>
+          <div class="stat-card__ring-text">
+            <div class="stat-card__ring-val" data-count="25100" data-divisor="1000" data-decimals="2" data-suffix="K">0</div>
+            <div class="stat-card__ring-label">Följare</div>
+          </div>
+        </div>
+        <div class="stat-card__body">Totalt över Instagram, TikTok & Facebook — byggt från i princip noll på 8 månader.</div>
+      </div>
+
+      <div class="stat-card stat-card--photo">
+        <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69ef7626481c62debadf58b9.jpg" alt="Fluffy House — fluffiga japanska pannkakor" loading="lazy">
+        <div class="stat-card__cap">Topp-Reel: 502 520 visningar, 15 730 interaktioner — "Glutenfria pannkakor".</div>
+      </div>
+
+      <div class="stat-card" style="background:#0F1013;">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#E8E1FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </div>
+        <div class="stat-card__ring" style="align-self: flex-start; margin-left: -1rem;">
+          <svg viewBox="0 0 180 180" style="transform: none;">
+            <path class="track" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="18" stroke-linecap="round" d="M 90 20 A 70 70 0 0 0 90 160"/>
+            <path class="seg" data-pct="100" fill="none" stroke="#4EBFB8" stroke-width="18" stroke-linecap="round" d="M 90 20 A 70 70 0 0 0 90 160" stroke-dasharray="220" stroke-dashoffset="220"/>
+          </svg>
+          <div class="stat-card__ring-text" style="align-items: flex-end; padding-right: 1rem; padding-left: 0;">
+            <div style="display:flex; align-items:baseline; gap:4px;">
+              <div class="stat-card__ring-val" data-count="6.87" data-decimals="2" data-suffix="M" style="font-size: clamp(3rem, 4.5vw, 4.75rem);">0</div>
+            </div>
+            <div class="stat-card__ring-label" style="text-align: right;">Instagram-visningar</div>
+          </div>
+        </div>
+        <div class="stat-card__body">6,87 miljoner visningar på Instagram — den dominerande kanalen i 8,68M-totalen över tre plattformar.</div>
+      </div>
+
+      <div class="stat-card stat-card--photo">
+        <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69ef7626481c62debadf58b9.jpg" alt="Fluffy House — Uppsala-lanseringen" loading="lazy">
+        <div class="stat-card__cap">Uppsala-lanseringen: 70 K + 41 K visningar — kön stod redan när dörrarna öppnade 21 mars.</div>
+      </div>
+
+      <div class="stat-card stat-card--quote">
+        <div class="stat-card__quote-mark" aria-hidden="true">"</div>
+        <p class="stat-card__quote">Vi öppnade på S:t Eriksgatan 10 oktober 2025 och Uppsala 21 mars 2026. Lanseringsklippen byggde köerna innan dörrarna ens öppnade.</p>
+        <div class="stat-card__quote-attr">
+          <div class="stat-card__quote-name">Fluffy House × Syns Nu Media</div>
+          <div class="stat-card__quote-role">Stockholm · Uppsala</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section><!-- /.sec-stats -->
+</section><!-- /.sec-combined -->
+
+<!-- STORY 01 — UTMANINGEN -->
+<section class="case-story case-story--light">
+  <div class="case-story__inner">
+    <div class="case-story__split">
+      <div class="case-story__media">
+        <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69ef7626481c62debadf58b9.jpg" alt="Fluffy House — fluffiga japanska pannkakor" loading="lazy">
+      </div>
+      <div class="case-story__text">
+        <div class="case-story__label">
+          <span class="case-story__label-num">01</span> Utmaningen
+        </div>
+        <h2 class="case-story__heading">Ett virusformat utan svensk publik — <em>och ingen kö</em> ännu.</h2>
+        <div class="case-story__body">
+          <p>De fluffiga japanska pannkakorna hade tagit världen med storm — men i Sverige hade formatet aldrig riktigt landat. Fluffy House skulle bygga varumärket från noll. Ingen fysisk enhet att skylta med, ingen kundbas, inga etablerade konton. Allt skulle byggas på sociala innan dörrarna ens öppnade på S:t Eriksgatan i Stockholm.</p>
+          <p>Räknat på baslinjeperioden var alla kanaler i princip på noll. Facebook obefintligt. Instagram nystartat. TikTok i sin linda. Ingen löpande mätning, ingen plan för hur sociala skulle driva både öppningsdagen och en kommande expansion till nästa stad.</p>
+        </div>
+        <ul class="case-story__list">
+          <li>Facebook: i princip noll följare och noll inlägg vid start</li>
+          <li>Instagram: nystartat konto med begränsad räckvidd</li>
+          <li>TikTok: outnyttjat — virusformatet låg och väntade</li>
+          <li>Ingen koppling mellan sociala och fysiska öppningar</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY 02 — VÅR APPROACH -->
+<section class="case-story case-story--dark">
+  <div class="case-story__inner">
+    <div class="case-story__split case-story__split--reversed">
+      <div class="case-story__media">
+        <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69ef7626481c62debadf58b9.jpg" alt="Fluffy House — bakom kulisserna i caféet" loading="lazy">
+      </div>
+      <div class="case-story__text">
+        <div class="case-story__label">
+          <span class="case-story__label-num">02</span> Vår approach
+        </div>
+        <h2 class="case-story__heading">En gång i månaden i caféet. Ett <em>format</em> byggt för delning.</h2>
+        <div class="case-story__body">
+          <p>Det finns ingen genväg. En gång i månaden är vi på plats hos Fluffy House med kamera — vid pannan, vid kassan, ute i kön. Vi fångar fluffigheten i pannkakorna, smakerna, ögonblicken med gästerna. Innehållet är produktnära, varmt och skickat för att delas.</p>
+          <p>Strategin: tre veckor förlansering med teaser-Reels innan S:t Eriksgatan öppnade. Lanseringsdagen som event ("IMORGON SMÄLLER DET" — 174 950 visningar). Sedan löpande produktreveals — glutenfri-launchen i december drog 502 520 visningar på en enda Reel, och Uppsala-lanseringen i mars upprepade samma rytm med kö redan första dagen.</p>
+        </div>
+        <ul class="case-story__list">
+          <li>Produktionsbesök på plats en gång i månaden</li>
+          <li>Förlansering 3 veckor innan varje öppning</li>
+          <li>Produktreveals som drivit topplistor — glutenfri, matcha, mango</li>
+          <li>Stadsspecifik lanseringsstrategi för varje ny enhet</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY 03 — PRODUKTIONEN -->
+<section class="case-story case-story--light">
+  <div class="case-story__inner">
+    <div class="case-story__split">
+      <div class="case-story__media">
+        <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69ef7626481c62debadf58b9.jpg" alt="Fluffy House — content och hantverk" loading="lazy">
+      </div>
+      <div class="case-story__text">
+        <div class="case-story__label">
+          <span class="case-story__label-num">03</span> Produktionen
+        </div>
+        <h2 class="case-story__heading">261 inlägg på <em>8 månader</em>.</h2>
+        <div class="case-story__body">
+          <p>Volym utan relevans når ingen. Relevans utan volym syns inte. Tillsammans publicerade vi 261 inlägg under perioden — 115 på Facebook, 102 på Instagram och 44 på TikTok. Varje plattform sin roll: Instagram-Reels för räckvidd och brand, TikTok för viralitet, Facebook för en äldre demografi (33% av Instagram-publiken är 35–44).</p>
+          <p>Topp-Reel "Glutenfria fluffiga pannkakor" landade på 502 520 visningar och 15 730 interaktioner — på en post. Uppsala-lanseringen i mars: 70 000 visningar på TikTok och 41 000 på Instagram — och 21 mars stod kön där, från första timmen.</p>
+        </div>
+        <ul class="case-story__list">
+          <li>261 inlägg över tre plattformar</li>
+          <li>8,68M visningar · 201 120 interaktioner</li>
+          <li>Topp-Reel "Glutenfria pannkakor": 502 520 visningar</li>
+          <li>Två fysiska expansioner — S:t Eriksgatan (10 okt 2025) & Uppsala (21 mar 2026)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPANDING TESTIMONIAL -->
+<section class="case-quote">
+  <div class="case-quote__sticky">
+    <div class="case-quote__card">
+      <div class="case-quote__mark" aria-hidden="true">"</div>
+      <p class="case-quote__text">8,68 miljoner visningar. 25 100 följare över tre plattformar. Två fysiska enheter med kö redan första dagen — på 8 månader.</p>
+      <div class="case-quote__attr">
+        <div class="case-quote__name">Fluffy House × Syns Nu Media</div>
+        <div class="case-quote__role">Stockholm · Uppsala</div>
+      </div>
+      <a href="kontakt.html" class="case-quote__cta">
+        Liknande resultat? Boka möte
+        <span class="case-quote__cta-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="sec-footer-big">
+  <div class="sec-footer-big__inner footer-big">
+    <div class="footer-big__grid">
+      <div class="footer-big__brand">
+        <img class="footer-big__mark-img" src="assets/hash-mark-white.png" alt="Syns Nu Media" loading="lazy">
+      </div>
+      <div>
+        <h5>Företaget</h5>
+        <ul>
+          <li><a href="om-oss.html">Om oss</a></li>
+          <li><a href="jobb.html">Jobb</a></li>
+          <li><a href="blogg.html">Blogg</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Tjänster</h5>
+        <ul>
+          <li><a href="sociala-medier.html">Sociala medier</a></li>
+          <li><a href="hemsida.html">Webbdesign</a></li>
+          <li><a href="qopla-erbjudande.html">Qopla-erbjudande</a></li>
+          <li><a href="kundcase.html">Kundcase</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Partner med oss</h5>
+        <ul>
+          <li><a href="kontakt.html">För restaurangkedjor</a></li>
+          <li><a href="kontakt.html">Franchise-samarbete</a></li>
+          <li><a href="jobb.html">Bli kreatör</a></li>
+        </ul>
+      </div>
+      <div class="footer-big__payments-col">
+        <h5>Kontakt</h5>
+        <ul>
+          <li><a href="tel:+46708880198">070-888 01 98</a></li>
+          <li><a href="mailto:info@synsnumedia.se">info@synsnumedia.se</a></li>
+          <li>Stockholm, Sverige</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-big__mark" aria-hidden="true">
+      <span class="footer-big__mark-logo">
+        <span class="tri-dot"><b></b><b></b><b></b></span>SYNS NU
+      </span>
+      <span class="footer-big__mark-dash">—</span>
+      <span>MEDIA</span>
+    </div>
+
+    <div class="footer-big__bottom">
+      <span>© 2026 Syns Nu AB. Alla rättigheter förbehållna.</span>
+      <span><a href="#">Integritetspolicy</a> · <a href="#">Villkor</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  // Word-split reveal
+  (function(){
+    const wrapAsWord = (contentNode) => {
+      const word = document.createElement('span');
+      word.className = 'word';
+      const inner = document.createElement('span');
+      inner.appendChild(contentNode);
+      word.appendChild(inner);
+      return word;
+    };
+    const processNode = (node) => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const frag = document.createDocumentFragment();
+        node.textContent.split(/(\s+)/).forEach(chunk => {
+          if (!chunk) return;
+          if (/^\s+$/.test(chunk)) { frag.appendChild(document.createTextNode(chunk)); return; }
+          frag.appendChild(wrapAsWord(document.createTextNode(chunk)));
+        });
+        node.parentNode.replaceChild(frag, node);
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+        const clone = node.cloneNode(true);
+        const word = wrapAsWord(clone);
+        node.parentNode.replaceChild(word, node);
+      }
+    };
+    document.querySelectorAll('[data-reveal-words]').forEach(title => {
+      Array.from(title.childNodes).forEach(processNode);
+      title.querySelectorAll('.word > span').forEach((s, i) => {
+        s.style.transitionDelay = (i * 55) + 'ms';
+      });
+    });
+
+    const targets = Array.from(document.querySelectorAll('[data-reveal-words], [data-reveal-cards]'));
+    if (!('IntersectionObserver' in window)) {
+      targets.forEach(el => el.classList.add('is-revealed'));
+    } else {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-revealed');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      targets.forEach(el => io.observe(el));
+      setTimeout(() => {
+        targets.forEach(el => { if (!el.classList.contains('is-revealed')) el.classList.add('is-revealed'); });
+      }, 4000);
+    }
+  })();
+
+  // Expanding testimonial
+  (function(){
+    const section = document.querySelector('.case-quote');
+    if (!section) return;
+    const card = section.querySelector('.case-quote__card');
+    if (!card) return;
+
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) {
+      card.style.setProperty('--p', '0.6');
+      return;
+    }
+
+    let ticking = false;
+    const update = () => {
+      const rect = section.getBoundingClientRect();
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      const sh = section.offsetHeight;
+      const scrolled = Math.max(0, -rect.top);
+      const scrollable = Math.max(1, sh - vh);
+      const progress = Math.max(0, Math.min(1, scrolled / scrollable));
+      card.style.setProperty('--p', progress.toFixed(4));
+      ticking = false;
+    };
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+
+  // Count-up on stat rings
+  (function(){
+    const nums = document.querySelectorAll('.stat-card__ring-val[data-count]');
+    if (!('IntersectionObserver' in window) || nums.length === 0) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target;
+        io.unobserve(el);
+        const target = parseFloat(el.dataset.count);
+        const divisor = parseFloat(el.dataset.divisor || '1');
+        const decimals = parseInt(el.dataset.decimals || '0', 10);
+        const suffix = el.dataset.suffix || '';
+        const dur = 1400;
+        const start = performance.now();
+        function format(n) { return n.toFixed(decimals).replace('.', ','); }
+        function step(now) {
+          const p = Math.min((now - start) / dur, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          const current = (target * eased) / divisor;
+          el.textContent = format(current) + suffix;
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+
+        const card = el.closest('.stat-card');
+        if (card) {
+          card.querySelectorAll('.seg').forEach(seg => {
+            if (seg.dataset.segDash) {
+              setTimeout(() => { seg.setAttribute('stroke-dasharray', seg.dataset.segDash); }, 150);
+              return;
+            }
+            if (seg.dataset.pct) {
+              const pct = parseFloat(seg.dataset.pct) || 0;
+              const dash = parseFloat(seg.getAttribute('stroke-dasharray')) || 345;
+              const offset = dash - (pct / 100) * dash;
+              setTimeout(() => { seg.style.strokeDashoffset = offset; }, 150);
+            }
+          });
+        }
+      });
+    }, { threshold: 0.3 });
+    nums.forEach(n => io.observe(n));
+  })();
+</script>
+</body>
+</html>
