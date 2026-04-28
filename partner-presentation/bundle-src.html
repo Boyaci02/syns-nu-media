@@ -1,0 +1,943 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8" />
+<meta name="robots" content="noindex,nofollow">
+<title>Syns Nu Media — Partnerpresentation</title>
+<template id="__bundler_thumbnail" data-bg-color="#0A0A0B">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#0A0A0B"/>
+    <text x="600" y="380" font-family="Georgia, serif" font-size="140" font-weight="600" fill="#ffffff" text-anchor="middle" letter-spacing="-4">SYNSNU</text>
+    <text x="600" y="470" font-family="system-ui, sans-serif" font-size="28" font-weight="500" fill="#ffffff" opacity="0.55" text-anchor="middle" letter-spacing="6">— MEDIA —</text>
+    <circle cx="600" cy="560" r="6" fill="#D4EB7A"/>
+    <circle cx="624" cy="560" r="6" fill="#FF9C6B"/>
+    <circle cx="648" cy="560" r="6" fill="#B9A3F7"/>
+  </svg>
+</template>
+<link rel="stylesheet" href="colors_and_type.css">
+<script src="deck-stage.js"></script>
+<style>
+  /* ============== DECK-LEVEL OVERRIDES ============== */
+  /* The design system uses fluid clamp() type, but slides are fixed at 1920×1080,
+     so we set hard pixel sizes that match the spirit of the system. */
+
+  html, body { background: #0A0A0B; }
+  deck-stage { background: #0A0A0B; }
+
+  section.slide {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    display: block;
+    font-size: 22px;
+    line-height: var(--lh-body);
+  }
+  section.slide.dark      { background: var(--bg-dark);    color: rgba(255,255,255,0.92); }
+  section.slide.soft      { background: var(--bg-soft); }
+  section.slide.lavender  { background: var(--edit-lavender); }
+  section.slide.peach     { background: var(--edit-peach-soft); }
+  section.slide.olive     { background: var(--edit-olive); }
+  section.slide.cream     { background: var(--edit-warm); }
+
+  .slide-inner {
+    position: absolute;
+    inset: 0;
+    padding: 96px 120px;
+    box-sizing: border-box;
+  }
+
+  /* ============== TYPE PRIMITIVES (slide-scaled) ============== */
+  .eyebrow-d {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    color: var(--text-3);
+    text-transform: uppercase;
+  }
+  .dark .eyebrow-d { color: rgba(255,255,255,0.55); }
+  .eyebrow-d::before {
+    content: ""; width: 8px; height: 8px; border-radius: 50%;
+    background: var(--edit-peach-chip);
+  }
+
+  h1.h1, h2.h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+  }
+  h1.h1 {
+    font-size: 88px;
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+  }
+  h2.h2 {
+    font-size: 64px;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+  }
+  .dark h1.h1, .dark h2.h2 { color: #fff; }
+
+  /* The signature italic-serif emphasis word */
+  em.gs {
+    font-family: var(--font-italic);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    color: inherit;
+  }
+
+  .lead-d {
+    font-family: var(--font-sans);
+    font-size: 26px;
+    line-height: 1.55;
+    color: var(--text-3);
+    max-width: 1080px;
+    margin: 0;
+    font-weight: 400;
+  }
+  .dark .lead-d { color: rgba(255,255,255,0.65); }
+
+  /* ============== BRAND MARK ============== */
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 700;
+    display: inline-flex; align-items: center; gap: 0.42em;
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
+    line-height: 1;
+    display: inline-flex; align-items: center; gap: 0.25em;
+    color: var(--text);
+  }
+  .dark .wordmark { color: #fff; }
+  .wordmark .hash-mark {
+    width: 1.05em; height: 1.05em; flex: 0 0 auto;
+    object-fit: contain;
+    content: url("assets/hash-mark-black.png");
+  }
+  .dark .wordmark .hash-mark { content: url("assets/hash-mark-white.png"); }
+  /* legacy class names kept harmless in case any slide still uses them */
+  .tri-dot { display: none; }
+  .wordmark .dash { font-weight: 300; opacity: .55; margin: 0 .15em; }
+
+  /* slide chrome wordmark */
+  .chrome-mark {
+    position: absolute; bottom: 56px; left: 120px;
+    font-size: 18px;
+  }
+  .chrome-mark .wordmark { font-size: 18px; }
+  .chrome-page {
+    position: absolute; bottom: 56px; right: 120px;
+    font-family: var(--font-sans); font-size: 14px; font-weight: 500;
+    letter-spacing: 0.18em; color: var(--text-3); text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+  }
+  .dark .chrome-page { color: rgba(255,255,255,0.45); }
+
+  /* ============== UTILITIES ============== */
+  .row { display: flex; gap: 24px; }
+  .col { display: flex; flex-direction: column; }
+  .grow{ flex: 1; }
+  .em-dash { font-weight: 300; opacity: 0.4; margin: 0 0.2em; }
+
+  /* ============== COMPONENTS ============== */
+
+  /* Pill button (display only, non-interactive on slides) */
+  .pill-btn {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 14px 18px 14px 28px;
+    background: #fff; color: var(--text);
+    border-radius: var(--r-pill);
+    font-family: var(--font-sans); font-weight: 500; font-size: 18px;
+    letter-spacing: -0.01em;
+    border: 1px solid var(--border);
+  }
+  .pill-btn--dark { background: var(--text); color: #fff; border-color: transparent; }
+  .pill-btn--lav  { background: var(--edit-lavender); border-color: transparent; }
+  .pill-btn__arrow {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--text); color: #fff;
+    display: inline-grid; place-items: center;
+  }
+  .pill-btn--dark .pill-btn__arrow { background: #fff; color: var(--text); }
+
+  /* Standard editorial card (white) */
+  .ed-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--r-card);
+    padding: 32px;
+    box-sizing: border-box;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .ed-card h3 {
+    font-family: var(--font-display); font-weight: 600;
+    font-size: 26px; letter-spacing: -0.025em; color: var(--text); margin: 0;
+    line-height: 1.2;
+  }
+  .ed-card p {
+    font-size: 18px; line-height: 1.55; color: var(--text-3); margin: 0;
+  }
+  .ed-card .icon-chip {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: var(--bg-soft); border: 1px solid var(--border);
+    display: inline-grid; place-items: center; color: var(--text);
+  }
+
+  /* Service / pastel cards */
+  .svc-card {
+    border-radius: var(--r-card); padding: 32px; box-sizing: border-box;
+    display: flex; flex-direction: column; gap: 14px;
+    color: var(--text); flex: 1;
+  }
+  .svc-card.dark { background: #101010; color: #fff; }
+  .svc-card.dark h3, .svc-card.dark h4, .svc-card.dark h5 { color: #fff; }
+  .svc-card.dark p, .svc-card.dark .small { color: rgba(255,255,255,0.78); }
+  .svc-card.dark .small { color: rgba(255,255,255,0.62); }
+  /* Dark slides — make all card heads white when card sits on near-black */
+  section.slide.dark .ed-card { background: #141416; border-color: rgba(255,255,255,0.08); }
+  section.slide.dark .ed-card h3,
+  section.slide.dark .ed-card h4 { color: #fff; }
+  section.slide.dark .ed-card p { color: rgba(255,255,255,0.72); }
+  section.slide.dark .ed-card .icon-chip { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1); color: #fff; }
+  section.slide.dark .svc-card h3,
+  section.slide.dark .svc-card h4,
+  section.slide.dark .svc-card h5 { color: #fff; }
+  .svc-card.lav   { background: var(--edit-lavender-chip); }
+  .svc-card.peach { background: var(--edit-peach); }
+  .svc-card.olive { background: var(--edit-olive-chip); }
+  .svc-card.teal  { background: var(--edit-teal); color: #fff; }
+  .svc-card.teal p, .svc-card.teal .small { color: rgba(255,255,255,0.85); }
+  .svc-card.cream { background: var(--edit-warm); }
+
+  .svc-card h4 {
+    font-family: var(--font-display); font-weight: 600;
+    font-size: 28px; letter-spacing: -0.025em; line-height: 1.15; margin: 0;
+  }
+  .svc-card p { font-size: 18px; line-height: 1.5; margin: 0; }
+  .svc-card .small { font-size: 15px; opacity: 0.78; margin-top: auto; }
+
+  /* Check + cross */
+  .check, .xmark {
+    display: inline-grid; place-items: center;
+    width: 26px; height: 26px; border-radius: 50%;
+    flex: 0 0 26px;
+    margin-top: 4px;
+  }
+  .check { background: rgba(16,185,129,0.14); color: var(--success); }
+  .xmark { background: rgba(15,15,16,0.06); color: var(--text-3); }
+  .dark .xmark { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5); }
+
+  ul.bullets { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+  ul.bullets li { display: flex; gap: 14px; font-size: 19px; line-height: 1.5; align-items: flex-start; }
+
+  /* Stat ring (from stat-card preview) */
+  .ring-card {
+    background: #141416; color: #fff;
+    border-radius: 22px; padding: 28px;
+    display: flex; flex-direction: column; gap: 14px;
+    position: relative; box-sizing: border-box;
+    overflow: visible;
+  }
+  .ring { width: 460px; aspect-ratio: 1/1; align-self: center; position: relative; margin-top: -160px; z-index: 1; }
+  .ring svg { width: 100%; height: 100%; transform: rotate(-90deg); overflow: visible; }
+  .ring .track { fill: none; stroke: rgba(255,255,255,0.08); stroke-width: 14; }
+  .ring .seg   { fill: none; stroke-width: 14; stroke-linecap: round; }
+  .ring .txt   { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .ring .val   { font-family: var(--font-display); font-size: 76px; font-weight: 600; letter-spacing: -0.04em; line-height: 1; }
+  .ring .lbl   { font-size: 13px; color: rgba(255,255,255,0.55); letter-spacing: 0.18em; font-weight: 500; text-transform: uppercase; margin-top: 8px; }
+
+  .badge-chip {
+    position: absolute; padding: 6px 12px; border-radius: 9999px;
+    font-size: 12px; font-weight: 600; color: var(--text);
+    font-family: var(--font-sans); letter-spacing: -0.005em;
+    z-index: 3;
+  }
+
+  /* Page number tag */
+  .num-tag {
+    font-family: var(--font-italic); font-style: italic;
+    font-size: 32px; color: var(--edit-peach-chip);
+    letter-spacing: -0.01em;
+  }
+  .dark .num-tag { color: var(--edit-peach); }
+
+  /* Hairline */
+  .hr { height: 1px; background: var(--border); width: 100%; }
+  .dark .hr { background: rgba(255,255,255,0.08); }
+
+  /* Nav / cover stripe */
+  .ds-nav {
+    position: absolute; top: 56px; left: 120px; right: 120px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+</style>
+
+<script type="application/json" id="speaker-notes">
+[
+  "Hej och välkomna. Tack för att ni tar er tid. Jag heter [namn] från Syns Nu Media. Vi är Sveriges största marknadsföringsbyrå för restauranger — och idag vill jag visa er hur vi tänker, vad vi gör, och varför det syns i kassan, inte bara i visningar.",
+  "Så här ser dom kommande tjugo minuterna ut. Vi börjar med vilka vi är, problemet vi löser, vår filosofi, tjänsterna, priserna, riktiga resultat — och hur vi kommer igång tillsammans. Hugg mig mitt i om ni undrar något.",
+  "Vi är inte en generell byrå som råkar ta restaurangkunder. Vi är restaurangbyrån. Hundrasjuttio plus partners runt om i landet, och hundra procent av vår tid går till den här branschen.",
+  "Tre saker skadar restauranger just nu. Konkurrenten lägger redan pengar på TikTok och Instagram. Byråer producerar fina videos som får likes men ingen awareness hos rätt gäster. Och de flesta byråer förstår inte restaurangbranschen. Vi gör tvärtom på alla tre.",
+  "Det här är hjärtat. Vi mäter alla siffror från sociala medier och hemsidan — och följer hur de översätts till fler besökare i restaurangen. Tre principer styr allt vi gör — räckvidd som syns, partnerskap över tid, och total transparens.",
+  "Skillnaden mot en vanlig byrå. Vi pratar ert språk — marginaler, dagskassa, lojala gäster. Vi mäter det som faktiskt betyder något. Och vi är transparenta hela vägen.",
+  "Vi täcker hela kedjan. Sociala medier, webbdesign och menyfotografering. Allt jobbar tillsammans — det är därför det funkar.",
+  "Tjänst nummer ett — sociala medier. Vi bygger hela er digitala närvaro, från strategi till daglig hantering. Resultat: plus femtio procent dagskassa hos Östermalmsgrillen by Garo. Det är riktiga pengar.",
+  "Då priserna för sociala medier. Tre nivåer. Basic för er som vill synas lite mer, sju femhundra. Pro — vårt populäraste paket — tolv femhundra. Turbo, tjugofemtusen, för er som vill gasa hårt med nykundar. Sociala medier 3 mån bindning. Qopla-kunder får specialpris.",
+  "Webben och menyfotograferingen går hand i hand. En mobilanpassad sajt som konverterar. Och hela menyn fotograferad professionellt — redo för Foodora, Wolt, er egen sajt. Samma look överallt.",
+  "Här är fyra riktiga kundcase ni kan läsa själva — Fluffy House, Brams Burgers, Sushi Revolution och Mazraa. Klicka er in på varje case för strategin, leveranserna och resultatet. Det här är restauranger precis som er.",
+  "Lyssna på partners själva — George, Garo, Mansour. Restaurangägare precis som ni.",
+  "Hur vi kommer igång. Tre steg — ni introducerar, vi möter kunden, onboarding. Inga konstigheter.",
+  "Boka ett gratis möte. Inget säljsnack — bara en ärlig genomgång. Tack för er tid."
+]
+</script>
+</head>
+<body>
+
+<deck-stage width="1920" height="1080">
+
+  <!-- ============== SLIDE 1 — COVER (DARK HERO) ============== -->
+  <section class="slide dark" data-label="01 Cover">
+    <div class="ds-nav">
+      <span class="wordmark" style="font-size: 26px;">
+        <img class="hash-mark" alt="" src="assets/hash-mark-white.png">
+        <span>SYNSNU</span>
+        <span class="dash">—</span>
+        <span style="opacity:0.7; font-weight: 500;">MEDIA</span>
+      </span>
+      <span style="font-family: var(--font-sans); font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.55); font-weight: 500;">
+        För våra samarbetspartners · 2026
+      </span>
+    </div>
+
+    <div style="position:absolute; left: 120px; right: 120px; top: 50%; transform: translateY(-52%);">
+      <div class="eyebrow-d" style="margin-bottom: 40px;">Lär känna byrån — så ni kan sälja oss vidare</div>
+      <h1 class="h1" style="font-size: 148px; line-height: 0.95; max-width: 1600px">
+        Det här är <em class="gs">Syns Nu</em><br/>
+        — byrån era kunder<br/>
+        kommer älska.
+      </h1>
+      <p class="lead-d" style="margin-top: 48px; max-width: 1100px; font-size: 28px;">
+        En genomgång av vilka vi är, hur vi jobbar och varför restauranger stannar hos oss — så ni kan föra det vidare till era kunder med trygghet.
+      </p>
+    </div>
+
+    <div style="position:absolute; bottom: 56px; left: 120px; right: 120px; display: flex; justify-content: space-between; align-items: end; color: rgba(255,255,255,0.45); font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500;">
+      <span>Stockholm · Sverige</span>
+      <span>info@synsnumedia.se · 070-842 58 33</span>
+    </div>
+  </section>
+
+  <!-- ============== SLIDE 2 — INNEHÅLL ============== -->
+  <section class="slide" data-label="02 Innehåll">
+    <div class="slide-inner">
+      <div class="eyebrow-d">Innehåll</div>
+      <h1 class="h1" style="margin-top: 24px;">
+        Det här tar vi<br/>er igenom idag.
+      </h1>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 36px 80px; margin-top: 64px;">
+        <div style="display: grid; grid-template-columns: 80px 1fr; gap: 24px; align-items: start;">
+          <span class="num-tag">01</span>
+          <div>
+            <h3 style="font-family: var(--font-display); font-size: 26px; font-weight: 600; letter-spacing: -0.02em; margin: 0 0 6px;">Vilka vi är</h3>
+            <p style="margin: 0; color: var(--text-3); font-size: 19px; line-height: 1.5;">Sveriges nischbyrå för restauranger — sedan dag ett.</p>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 80px 1fr; gap: 24px; align-items: start;">
+          <span class="num-tag">02</span>
+          <div>
+            <h3 style="font-family: var(--font-display); font-size: 26px; font-weight: 600; letter-spacing: -0.02em; margin: 0 0 6px;">Marknaden vi möter</h3>
+            <p style="margin: 0; color: var(--text-3); font-size: 19px; line-height: 1.5;">Restauranger som tappar gäster till osynlighet.</p>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 80px 1fr; gap: 24px; align-items: start;">
+          <span class="num-tag">03</span>
+          <div>
+            <h3 style="font-family: var(--font-display); font-size: 26px; font-weight: 600; letter-spacing: -0.02em; margin: 0 0 6px;">Vår filosofi</h3>
+            <p style="margin: 0; color: var(--text-3); font-size: 19px; line-height: 1.5;">Vi mäter framgång i dagskassa, inte visningar.</p>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 80px 1fr; gap: 24px; align-items: start;">
+          <span class="num-tag">04</span>
+          <div>
+            <h3 style="font-family: var(--font-display); font-size: 26px; font-weight: 600; letter-spacing: -0.02em; margin: 0 0 6px;">Vad ni kan erbjuda</h3>
+            <p style="margin: 0; color: var(--text-3); font-size: 19px; line-height: 1.5;">Tre pelare som täcker hela behovet.</p>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 80px 1fr; gap: 24px; align-items: start;">
+          <span class="num-tag">05</span>
+          <div>
+            <h3 style="font-family: var(--font-display); font-size: 26px; font-weight: 600; letter-spacing: -0.02em; margin: 0 0 6px;">Priser &amp; paket</h3>
+            <p style="margin: 0; color: var(--text-3); font-size: 19px; line-height: 1.5;">Tydlig prislista — lätt att kommunicera.</p>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 80px 1fr; gap: 24px; align-items: start;">
+          <span class="num-tag">06</span>
+          <div>
+            <h3 style="font-family: var(--font-display); font-size: 26px; font-weight: 600; letter-spacing: -0.02em; margin: 0 0 6px;">Resultat &amp; kundcase</h3>
+            <p style="margin: 0; color: var(--text-3); font-size: 19px; line-height: 1.5;">Konkreta bevis ni kan visa kunderna.</p>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 80px 1fr; gap: 24px; align-items: start;">
+          <span class="num-tag">07</span>
+          <div>
+            <h3 style="font-family: var(--font-display); font-size: 26px; font-weight: 600; letter-spacing: -0.02em; margin: 0 0 6px;">Samarbetet</h3>
+            <p style="margin: 0; color: var(--text-3); font-size: 19px; line-height: 1.5;">Så ser flödet ut — från lead till resultat.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="chrome-mark"><span class="wordmark"><img class="hash-mark" alt="" src="assets/hash-mark-black.png"><span>SYNSNU</span><span class="dash">—</span><span style="opacity:0.7;">MEDIA</span></span></div>
+    <div class="chrome-page">02 / 14</div>
+  </section>
+
+  <!-- ============== SLIDE 3 — VILKA VI ÄR ============== -->
+  <section class="slide soft" data-label="03 Vilka vi är">
+    <div class="slide-inner">
+      <div class="eyebrow-d">01 — Vilka vi är</div>
+      <h1 class="h1" style="margin-top: 24px;">
+        En byrå, byggd helt<br/>
+        kring <em class="gs">restauranger</em>.
+      </h1>
+
+      <div class="row" style="margin-top: 56px; gap: 64px; align-items: flex-start;">
+        <div class="col" style="flex: 1.1; gap: 22px; padding-top: 8px;">
+          <p class="lead-d" style="font-size: 24px; max-width: 720px;">
+            Syns Nu Media är en svensk byrå som uteslutande jobbar med restauranger. Inga frisörer, inga advokatbyråer — bara kök, servering och gäster. Det är vår nisch, och det är därför era kunder kan lita på oss.
+          </p>
+          <p class="lead-d" style="font-size: 22px; max-width: 720px;">
+            Vi kan branschens marginaler, rusningstider och rytmer — fredagskvällar, lunch, Wolt och Foodora. När ni rekommenderar oss vidare vet ni att kunden landar hos någon som faktiskt förstår deras vardag.
+          </p>
+        </div>
+
+        <div class="col" style="flex: 1; gap: 16px; min-width: 640px;">
+          <div class="ed-card" style="flex-direction: row; gap: 28px; align-items: center; padding: 24px 32px;">
+            <span style="font-family: var(--font-display); font-size: 72px; font-weight: 600; letter-spacing: -0.045em; min-width: 200px;">170+</span>
+            <span style="font-size: 19px; color: var(--text-3); line-height: 1.45;">restauranger som partners — Sveriges största nischbyrå</span>
+          </div>
+          <div class="ed-card" style="flex-direction: row; gap: 28px; align-items: center; padding: 24px 32px;">
+            <span style="font-family: var(--font-display); font-size: 72px; font-weight: 600; letter-spacing: -0.045em; min-width: 200px;">100%</span>
+            <span style="font-size: 19px; color: var(--text-3); line-height: 1.45;">fokus på restaurangbranschen — inget annat</span>
+          </div>
+          <div class="svc-card lav" style="flex-direction: row; gap: 28px; align-items: center; padding: 28px 32px; flex: 0 0 auto;">
+            <span style="font-family: var(--font-display); font-size: 32px; font-weight: 600; letter-spacing: -0.025em; line-height: 1.1; color: var(--text);">Sveriges största marknadsföringsbyrå för restauranger.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="chrome-mark"><span class="wordmark"><img class="hash-mark" alt="" src="assets/hash-mark-black.png"><span>SYNSNU</span><span class="dash">—</span><span style="opacity:0.7;">MEDIA</span></span></div>
+    <div class="chrome-page">03 / 14</div>
+  </section>
+
+  <!-- ============== SLIDE 4 — PROBLEMET (DARK) ============== -->
+  <section class="slide dark" data-label="04 Problemet">
+    <div class="slide-inner">
+      <div class="eyebrow-d">02 — Marknaden</div>
+      <h1 class="h1" style="margin-top: 24px;">
+        Det här möter <em class="gs">era kunder</em><br/>
+        varje dag.
+      </h1>
+
+      <div class="row" style="margin-top: 64px; gap: 24px; align-items: stretch;">
+        <div class="svc-card dark" style="border: 1px solid rgba(255,255,255,0.08); flex: 1;">
+          <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(255,156,107,0.18); color: var(--edit-peach-chip); display: grid; place-items: center;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 8l8 8M16 8l-8 8"/></svg>
+          </div>
+          <h4>Konkurrenterna tar deras gäster</h4>
+          <p>Medan restaurangägaren står i köket investerar grannrestaurangen i sociala medier. Gäster som kunde varit deras hamnar någon annanstans.</p>
+        </div>
+        <div class="svc-card dark" style="border: 1px solid rgba(255,255,255,0.08); flex: 1;">
+          <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(185,163,247,0.18); color: var(--edit-lavender-chip); display: grid; place-items: center;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
+          </div>
+          <h4>Fina videos — ingen awareness</h4>
+          <p>De har redan testat byråer som levererar snygg film utan effekt. Visningar och likes når inte rätt gäster — det är där vi gör skillnad.</p>
+        </div>
+        <div class="svc-card dark" style="border: 1px solid rgba(255,255,255,0.08); flex: 1;">
+          <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(78,191,184,0.18); color: var(--edit-teal); display: grid; place-items: center;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+          </div>
+          <h4>Generella byråer utan branschkunskap</h4>
+          <p>De flesta byråer förstår inte restaurangvärlden. Vi gör inget annat — det är därför våra partners syns där rätt gäster faktiskt är.</p>
+        </div>
+      </div>
+    </div>
+    <div class="chrome-mark"><span class="wordmark"><img class="hash-mark" alt="" src="assets/hash-mark-black.png"><span>SYNSNU</span><span class="dash">—</span><span style="opacity:0.7;">MEDIA</span></span></div>
+    <div class="chrome-page">04 / 14</div>
+  </section>
+
+  <!-- ============== SLIDE 5 — VÅR FILOSOFI (LAVENDER) ============== -->
+  <section class="slide lavender" data-label="05 Filosofi">
+    <div class="slide-inner">
+      <div class="eyebrow-d">03 — Vår filosofi</div>
+      <h1 class="h1" style="margin-top: 24px; font-size: 80px; max-width: 1500px;">
+        Vi mäter <em class="gs">räckvidd</em> —<br/>
+        som leder till fler besökare.
+      </h1>
+
+      <div class="hr" style="margin: 80px 0 48px; background: rgba(15,15,16,0.12);"></div>
+
+      <div class="row" style="gap: 28px;">
+        <div class="ed-card" style="flex: 1; background: #fff;">
+          <div class="icon-chip">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>
+          </div>
+          <h3>Räckvidd som syns</h3>
+          <p>Vi mäter alla siffror från sociala medier och visningar på hemsidan — och följer hur de översätts till fler besökare i restaurangen.</p>
+        </div>
+        <div class="ed-card" style="flex: 1; background: #fff;">
+          <div class="icon-chip">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 11V7a4 4 0 10-8 0v4"/><rect x="5" y="11" width="14" height="10" rx="2"/></svg>
+          </div>
+          <h3>Partnerskap</h3>
+          <p>Långsiktiga relationer där vi växer tillsammans med dig, säsong efter säsong.</p>
+        </div>
+        <div class="ed-card" style="flex: 1; background: #fff;">
+          <div class="icon-chip">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          </div>
+          <h3>Transparens</h3>
+          <p>Tydliga avtal, tydliga priser och inga överraskningar på fakturan.</p>
+        </div>
+      </div>
+    </div>
+    <div class="chrome-mark"><span class="wordmark"><img class="hash-mark" alt="" src="assets/hash-mark-black.png"><span>SYNSNU</span><span class="dash">—</span><span style="opacity:0.7;">MEDIA</span></span></div>
+    <div class="chrome-page">05 / 14</div>
+  </section>
+
+  <!-- ============== SLIDE 6 — OSS VS ANDRA ============== -->
+  <section class="slide" data-label="06 Oss vs andra">
+    <div class="slide-inner">
+      <div class="eyebrow-d">Varför oss</div>
+      <h1 class="h1" style="margin-top: 24px;">
+        Vi jobbar inte som en<br/>
+        <em class="gs">vanlig byrå</em>.
+      </h1>
+
+      <div class="row" style="margin-top: 64px; gap: 24px; align-items: stretch;">
+        <div class="svc-card dark" style="padding: 44px;">
+          <div class="eyebrow-d" style="color: rgba(255,255,255,0.55);"><span style="background: var(--edit-olive-chip); width:8px; height:8px; border-radius:50%; display:inline-block; margin-right: 10px;"></span>Syns Nu Media</div>
+          <h4 style="font-size: 36px; margin-top: 8px;">Byggt för restauranger.</h4>
+          <ul class="bullets" style="margin-top: 16px;">
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="color: rgba(255,255,255,0.92);">Djup förståelse av restaurangbranschen</span></li>
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="color: rgba(255,255,255,0.92);">Strategier som driver dagskassa</span></li>
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="color: rgba(255,255,255,0.92);">Tydliga avtal med löpande support &amp; SEO</span></li>
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="color: rgba(255,255,255,0.92);">Fokus på återkommande, lojala gäster</span></li>
+          </ul>
+        </div>
+        <div class="ed-card" style="padding: 44px; flex: 1;">
+          <div class="eyebrow-d">Vanliga byråer</div>
+          <h3 style="font-size: 36px; margin-top: 8px;">Byggt för alla — och ingen.</h3>
+          <ul class="bullets" style="margin-top: 16px;">
+            <li><span class="xmark"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></span><span>Svag förståelse för restaurangbranschen</span></li>
+            <li><span class="xmark"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></span><span>Fina reklamvideos — ingen effekt i kassan</span></li>
+            <li><span class="xmark"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></span><span>Otydliga priser, vaga leveranser</span></li>
+            <li><span class="xmark"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></span><span>Mäter visningar istället för omsättning</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="chrome-mark"><span class="wordmark"><img class="hash-mark" alt="" src="assets/hash-mark-black.png"><span>SYNSNU</span><span class="dash">—</span><span style="opacity:0.7;">MEDIA</span></span></div>
+    <div class="chrome-page">06 / 14</div>
+  </section>
+
+  <!-- ============== SLIDE 7 — TJÄNSTER ÖVERSIKT (BENTO) ============== -->
+  <section class="slide soft" data-label="07 Tjänster">
+    <div class="slide-inner">
+      <div class="eyebrow-d">04 — Våra tjänster</div>
+      <h1 class="h1" style="margin-top: 24px;">
+        Tre pelare som lyfter<br/>
+        din <em class="gs">restaurang</em>.
+      </h1>
+      <p class="lead-d" style="margin-top: 28px; font-size: 24px;">
+        Det här är hela paletten ni kan erbjuda era kunder — från första bilden av maten till strategin som driver beställningarna.
+      </p>
+
+      <div class="row" style="margin-top: 56px; gap: 20px; align-items: stretch;">
+        <div class="svc-card dark">
+          <span class="eyebrow-d" style="color: rgba(255,255,255,0.55);"><span style="background: var(--edit-peach-chip); width:8px; height:8px; border-radius:50%; display:inline-block; margin-right: 10px;"></span>01</span>
+          <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(255,255,255,0.06); color: #fff; display: grid; place-items: center; margin-top: 4px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="3"/><circle cx="12" cy="17" r="1.2" fill="currentColor"/><path d="M9 7h6"/></svg>
+          </div>
+          <h4>Sociala medier</h4>
+          <p>Innehåll, redigering och distribution. Som bygger awareness och får fler gäster att hitta till er.</p>
+          <span class="small">Från 7 500 kr/mån</span>
+        </div>
+        <div class="svc-card lav">
+          <span class="eyebrow-d"><span style="background: var(--text); width:8px; height:8px; border-radius:50%; display:inline-block; margin-right: 10px;"></span>02</span>
+          <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(15,15,16,0.08); color: var(--text); display: grid; place-items: center; margin-top: 4px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <h4>Webbdesign</h4>
+          <p>Mobilanpassade sidor som höjer varumärket, lyfter awareness och gör det enkelt för gäster att hitta er.</p>
+          <span class="small">500 kr/mån</span>
+        </div>
+        <div class="svc-card peach">
+          <span class="eyebrow-d"><span style="background: var(--edit-teal); width:8px; height:8px; border-radius:50%; display:inline-block; margin-right: 10px;"></span>03</span>
+          <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(15,15,16,0.08); color: var(--text); display: grid; place-items: center; margin-top: 4px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h4l2-2h6l2 2h4v12H3z"/><circle cx="12" cy="13" r="4"/></svg>
+          </div>
+          <h4>Menyfotografering</h4>
+          <p>Hela menyn fotograferad professionellt — för Qopla, Foodora, Wolt, </p>
+          <span class="small">5 000 kr · engångskostnad</span>
+        </div>
+      </div>
+    </div>
+    <div class="chrome-mark"><span class="wordmark"><img class="hash-mark" alt="" src="assets/hash-mark-black.png"><span>SYNSNU</span><span class="dash">—</span><span style="opacity:0.7;">MEDIA</span></span></div>
+    <div class="chrome-page">07 / 14</div>
+  </section>
+
+  <!-- ============== SLIDE 8 — SOCIALA MEDIER (DEEP DIVE) ============== -->
+  <section class="slide" data-label="08 Sociala medier">
+    <div class="slide-inner">
+      <div class="eyebrow-d">Tjänst 01</div>
+      <h1 class="h1" style="margin-top: 24px;">Sociala medier.</h1>
+      <p class="lead-d" style="margin-top: 20px; font-size: 24px;">Vår mest sålda tjänst — den som driver flest gäster tillbaka till er.</p>
+
+      <div class="row" style="margin-top: 48px; gap: 28px; align-items: stretch;">
+        <div class="ed-card" style="flex: 1.15; padding: 44px;">
+          <div class="eyebrow-d">Vad ingår</div>
+          <h3 style="font-family: var(--font-display); font-size: 38px; font-weight: 600; letter-spacing: -0.025em; margin: 8px 0 20px;">Vi bygger hela din digitala närvaro.</h3>
+          <ul class="bullets">
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Strategi anpassad efter din restaurang</span></li>
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Månatlig inspelningsdag på plats</span></li>
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Videoproduktion för TikTok, Reels, Shorts</span></li>
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Matbilder i hög kvalitet</span></li>
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Hantering av Instagram, TikTok &amp; Facebook</span></li>
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Google-optimering och profilhantering</span></li>
+          </ul>
+        </div>
+
+        <div class="ring-card" style="flex: 1.35; min-width: 600px; padding-top: 56px; padding-bottom: 36px; padding-left: 56px; padding-right: 56px; align-items: center;">
+          <div class="ring">
+            <span class="badge-chip" style="top: -18px; left: 50%; transform: translateX(-50%); background: var(--edit-olive); box-shadow: 0 4px 16px rgba(0,0,0,0.35);">Sociala</span>
+            <span class="badge-chip" style="top: 50%; right: -8px; transform: translate(100%, -50%); background: var(--edit-peach-soft); box-shadow: 0 4px 16px rgba(0,0,0,0.35);">Foto</span>
+            <span class="badge-chip" style="top: 50%; left: -8px; transform: translate(-100%, -50%); background: var(--edit-lavender-soft); box-shadow: 0 4px 16px rgba(0,0,0,0.35);">Webb</span>
+            <svg viewBox="0 0 120 120">
+              <circle class="track" cx="60" cy="60" r="55"/>
+              <circle class="seg" cx="60" cy="60" r="55" stroke="#B9A3F7" stroke-dasharray="180 345"/>
+              <circle class="seg" cx="60" cy="60" r="55" stroke="#FF9C6B" stroke-dasharray="80 345" stroke-dashoffset="-180"/>
+              <circle class="seg" cx="60" cy="60" r="55" stroke="#D4EB7A" stroke-dasharray="60 345" stroke-dashoffset="-260"/>
+            </svg>
+            <div class="txt">
+              <div class="val">+50%</div>
+              <div class="lbl">Dagskassa</div>
+            </div>
+          </div>
+          <p style="font-size: 18px; color: rgba(255,255,255,0.72); line-height: 1.5; text-align: center; margin: 0;">
+            Dokumenterad ökning hos <em class="gs" style="color: rgba(255,255,255,0.92);">Östermalmsgrillen by Garo</em> sedan partnerskapet inleddes.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="chrome-mark"><span class="wordmark"><img class="hash-mark" alt="" src="assets/hash-mark-black.png"><span>SYNSNU</span><span class="dash">—</span><span style="opacity:0.7;">MEDIA</span></span></div>
+    <div class="chrome-page">08 / 14</div>
+  </section>
+
+  <!-- ============== SLIDE 9 — PRISER ============== -->
+  <section class="slide soft" data-label="09 Priser">
+    <div class="slide-inner">
+      <div class="eyebrow-d">05 — Priser &amp; paket</div>
+      <h1 class="h1" style="margin-top: 24px; font-size: 72px;">
+        Tre nivåer, en <em class="gs">tydlig resa</em>.
+      </h1>
+      <p class="lead-d" style="margin-top: 20px; font-size: 22px; max-width: 1400px;">
+        Trygg och stabil start utan att påverka din budget negativt. Sociala medier — 3 mån bindning.
+      </p>
+
+      <div class="row" style="margin-top: 48px; gap: 22px; align-items: stretch;">
+        <!-- Basic -->
+        <div class="ed-card" style="background: #fff; padding: 36px; flex: 1; gap: 16px;">
+          <div class="eyebrow-d" style="color: var(--text-3);">Basic</div>
+          <div style="font-family: var(--font-display); font-weight: 600; font-size: 56px; letter-spacing: -0.04em; line-height: 1;">7 500 kr<span style="font-family: var(--font-sans); font-weight: 500; font-size: 18px; color: var(--text-3); margin-left: 8px; letter-spacing: 0;">/ mån</span></div>
+          <p style="font-family: var(--font-italic); font-style: italic; font-size: 20px; color: var(--text-2); line-height: 1.4; min-height: 56px; margin: 0;">För dig som vill synas lite mer.</p>
+          <div class="hr"></div>
+          <ul class="bullets">
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size: 17px;">1 inspelning / mån</span></li>
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size: 17px;">2 videos / mån</span></li>
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size: 17px;">6 bilder / mån</span></li>
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size: 17px;">Sociala medier-hantering</span></li>
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size: 17px;">Google-optimering</span></li>
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size: 17px;">Hantering av Google-profil</span></li>
+          </ul>
+        </div>
+
+        <!-- Pro (popular) -->
+        <div class="svc-card dark" style="padding: 36px; gap: 16px; position: relative; border: 1px solid rgba(255,255,255,0.1);">
+          <span style="position: absolute; top: -16px; left: 50%; transform: translateX(-50%); background: var(--edit-lavender); color: var(--text); padding: 8px 18px; border-radius: 9999px; font-size: 12px; letter-spacing: 0.18em; font-weight: 600; text-transform: uppercase; white-space: nowrap;">Mest populär</span>
+          <div class="eyebrow-d" style="color: rgba(255,255,255,0.7);"><span style="background: var(--edit-lavender-chip); width:8px; height:8px; border-radius:50%; display:inline-block; margin-right: 10px;"></span>Pro</div>
+          <div style="font-family: var(--font-display); font-weight: 600; font-size: 56px; letter-spacing: -0.04em; line-height: 1; color: #fff;">12 500 kr<span style="font-family: var(--font-sans); font-weight: 500; font-size: 18px; color: rgba(255,255,255,0.55); margin-left: 8px; letter-spacing: 0;">/ mån</span></div>
+          <p style="font-family: var(--font-italic); font-style: italic; font-size: 20px; color: rgba(255,255,255,0.78); line-height: 1.4; min-height: 56px; margin: 0;">För dig som vill öka omsättning med fler lojala kunder.</p>
+          <div class="hr"></div>
+          <ul class="bullets">
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size: 17px; color: rgba(255,255,255,0.92);">1 inspelning / mån</span></li>
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size: 17px; color: rgba(255,255,255,0.92);">4 videos / mån</span></li>
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size: 17px; color: rgba(255,255,255,0.92);">4 bilder / mån</span></li>
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size: 17px; color: rgba(255,255,255,0.92);">Sociala medier-hantering</span></li>
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size: 17px; color: rgba(255,255,255,0.92);">Sociala medier-strategi</span></li>
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size: 17px; color: rgba(255,255,255,0.92);">Marknadsföring (ads)</span></li>
+          </ul>
+        </div>
+
+        <!-- Turbo -->
+        <div class="ed-card" style="background: #fff; padding: 36px; flex: 1; gap: 16px;">
+          <div class="eyebrow-d" style="color: var(--text-3);">Turbo</div>
+          <div style="font-family: var(--font-display); font-weight: 600; font-size: 56px; letter-spacing: -0.04em; line-height: 1;">25 000 kr<span style="font-family: var(--font-sans); font-weight: 500; font-size: 18px; color: var(--text-3); margin-left: 8px; letter-spacing: 0;">/ mån</span></div>
+          <p style="font-family: var(--font-italic); font-style: italic; font-size: 20px; color: var(--text-2); line-height: 1.4; min-height: 56px; margin: 0;">För dig som vill öka omsättningen snabbt med nya kunder.</p>
+          <div class="hr"></div>
+          <ul class="bullets">
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size: 17px;">1 inspelning / mån</span></li>
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size: 17px;">12 videos / mån</span></li>
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size: 17px;">8 bilder / mån</span></li>
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size: 17px;">Sociala medier-hantering</span></li>
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size: 17px;">Sociala medier-strategi</span></li>
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size: 17px;">Marknadsföring + ad-targeting</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <p style="margin: 28px 0 0; text-align: center; font-size: 16px; color: var(--text-3); letter-spacing: 0.04em;">
+        Alla priser exkl. moms · Sociala medier 3 mån bindning.
+      </p>
+    </div>
+    <div class="chrome-mark"><span class="wordmark"><img class="hash-mark" alt="" src="assets/hash-mark-black.png"><span>SYNSNU</span><span class="dash">—</span><span style="opacity:0.7;">MEDIA</span></span></div>
+    <div class="chrome-page">09 / 14</div>
+  </section>
+
+  <!-- ============== SLIDE 10 — WEBB & FOTO ============== -->
+  <section class="slide" data-label="10 Webb och foto">
+    <div class="slide-inner">
+      <div class="eyebrow-d">Tjänst 02 &amp; 03</div>
+      <h1 class="h1" style="margin-top: 24px;">
+        Webbdesign &amp; <em class="gs">menyfotografering</em>.
+      </h1>
+
+      <div class="row" style="margin-top: 56px; gap: 24px; align-items: stretch;">
+        <div class="svc-card lav" style="padding: 44px;">
+          <div style="width: 56px; height: 56px; border-radius: 14px; background: #fff; color: var(--text); display: grid; place-items: center;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <h4 style="font-size: 36px;">Webbdesign</h4>
+          <p style="font-family: var(--font-italic); font-style: italic; font-size: 22px; color: var(--text-2); line-height: 1.4;">Hemsidor skräddarsydda för restauranger.</p>
+          <div style="display: flex; align-items: baseline; gap: 12px; margin-top: 4px;">
+            <span style="font-family: var(--font-display); font-weight: 600; font-size: 44px; letter-spacing: -0.03em; line-height: 1;">500 kr</span>
+            <span style="font-size: 16px; color: var(--text-3); letter-spacing: 0.04em;">/ mån · 24 mån bindning · löpande support &amp; SEO</span>
+          </div>
+          <ul class="bullets" style="margin-top: 8px;">
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Mobilanpassad, snabb och SEO-redo</span></li>
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Integration med Qopla &amp; beställningssystem</span></li>
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Menyhantering och bildgalleri</span></li>
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Tydliga CTA för bokning och beställning</span></li>
+          </ul>
+        </div>
+
+        <div class="svc-card peach" style="padding: 44px;">
+          <div style="width: 56px; height: 56px; border-radius: 14px; background: #fff; color: var(--text); display: grid; place-items: center;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h4l2-2h6l2 2h4v12H3z"/><circle cx="12" cy="13" r="4"/></svg>
+          </div>
+          <h4 style="font-size: 36px;">Menyfotografering</h4>
+          <p style="font-family: var(--font-italic); font-style: italic; font-size: 22px; color: var(--text-2); line-height: 1.4;">Hela menyn fotograferad för onlinebeställningar.</p>
+          <div style="display: flex; align-items: baseline; gap: 12px; margin-top: 4px;">
+            <span style="font-family: var(--font-display); font-weight: 600; font-size: 44px; letter-spacing: -0.03em; line-height: 1;">5 000 kr</span>
+            <span style="font-size: 16px; color: var(--text-3); letter-spacing: 0.04em;">engångskostnad</span>
+          </div>
+          <ul class="bullets" style="margin-top: 8px;">
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Professionell studiokvalitet på plats</span></li>
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Hela menyn fotograferad på en dag</span></li>
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Färdiga bilder för Foodora, Wolt &amp; hemsida</span></li>
+            <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Konsekvent look som höjer varumärket</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="chrome-mark"><span class="wordmark"><img class="hash-mark" alt="" src="assets/hash-mark-black.png"><span>SYNSNU</span><span class="dash">—</span><span style="opacity:0.7;">MEDIA</span></span></div>
+    <div class="chrome-page">10 / 14</div>
+  </section>
+
+  <!-- ============== SLIDE 11 — RESULTAT (DARK) ============== -->
+  <section class="slide dark" data-label="11 Resultat">
+    <div class="slide-inner">
+      <div class="eyebrow-d">06 — Resultat</div>
+      <h1 class="h1" style="margin-top: 24px;">
+        Kundcase från <em class="gs">våra partners</em>.
+      </h1>
+      <p class="lead-d" style="margin-top: 20px; font-size: 24px;">
+        Klicka på ett case för att läsa hela historien — strategi, leverans, resultat.
+      </p>
+
+      <div class="row" style="margin-top: 56px; gap: 22px; align-items: stretch;">
+        <a href="https://syns-nu-media.vercel.app/case-fluffy-house.html" target="_blank" rel="noopener" class="svc-card case-card" style="background: #141416; border: 1px solid rgba(255,255,255,0.08); flex: 1; align-items: flex-start; text-decoration: none; color: inherit; transition: transform .25s ease, border-color .25s ease, background .25s ease;">
+          <div class="eyebrow-d" style="color: var(--edit-olive-chip);">01 — Kundcase</div>
+          <div style="font-family: var(--font-display); font-weight: 600; font-size: 56px; letter-spacing: -0.04em; line-height: 1; color: #fff; margin-top: 4px;">Fluffy<br/>House</div>
+          <div class="hr" style="background: rgba(255,255,255,0.1); width: 60px;"></div>
+          <p style="font-family: var(--font-italic); font-style: italic; font-size: 18px; color: rgba(255,255,255,0.72); line-height: 1.5; margin: 0; flex: 1;">Soufflé-pannkakor som blev en Stockholmssensation.</p>
+          <span class="small" style="color: var(--edit-olive-chip); letter-spacing: 0.18em; text-transform: uppercase; font-size: 13px; display: inline-flex; align-items: center; gap: 8px;">Läs caset <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+        </a>
+        <a href="https://syns-nu-media.vercel.app/case-brams-burgers.html" target="_blank" rel="noopener" class="svc-card case-card" style="background: #141416; border: 1px solid rgba(255,255,255,0.08); flex: 1; align-items: flex-start; text-decoration: none; color: inherit; transition: transform .25s ease, border-color .25s ease, background .25s ease;">
+          <div class="eyebrow-d" style="color: var(--edit-peach-chip);">02 — Kundcase</div>
+          <div style="font-family: var(--font-display); font-weight: 600; font-size: 56px; letter-spacing: -0.04em; line-height: 1; color: #fff; margin-top: 4px;">Brams<br/>Burgers</div>
+          <div class="hr" style="background: rgba(255,255,255,0.1); width: 60px;"></div>
+          <p style="font-family: var(--font-italic); font-style: italic; font-size: 18px; color: rgba(255,255,255,0.72); line-height: 1.5; margin: 0; flex: 1;">Smashburgare som syns där rätt gäster scrollar.</p>
+          <span class="small" style="color: var(--edit-peach-chip); letter-spacing: 0.18em; text-transform: uppercase; font-size: 13px; display: inline-flex; align-items: center; gap: 8px;">Läs caset <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+        </a>
+        <a href="https://syns-nu-media.vercel.app/case-sushirevolution.html" target="_blank" rel="noopener" class="svc-card case-card" style="background: #141416; border: 1px solid rgba(255,255,255,0.08); flex: 1; align-items: flex-start; text-decoration: none; color: inherit; transition: transform .25s ease, border-color .25s ease, background .25s ease;">
+          <div class="eyebrow-d" style="color: var(--edit-lavender-chip);">03 — Kundcase</div>
+          <div style="font-family: var(--font-display); font-weight: 600; font-size: 56px; letter-spacing: -0.04em; line-height: 1; color: #fff; margin-top: 4px;">Sushi<br/>Revolution</div>
+          <div class="hr" style="background: rgba(255,255,255,0.1); width: 60px;"></div>
+          <p style="font-family: var(--font-italic); font-style: italic; font-size: 18px; color: rgba(255,255,255,0.72); line-height: 1.5; margin: 0; flex: 1;">Premium-sushi med en närvaro som matchar kvaliteten.</p>
+          <span class="small" style="color: var(--edit-lavender-chip); letter-spacing: 0.18em; text-transform: uppercase; font-size: 13px; display: inline-flex; align-items: center; gap: 8px;">Läs caset <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+        </a>
+        <a href="https://syns-nu-media.vercel.app/case-mazraa.html" target="_blank" rel="noopener" class="svc-card case-card" style="background: #141416; border: 1px solid rgba(255,255,255,0.08); flex: 1; align-items: flex-start; text-decoration: none; color: inherit; transition: transform .25s ease, border-color .25s ease, background .25s ease;">
+          <div class="eyebrow-d" style="color: var(--edit-teal);">04 — Kundcase</div>
+          <div style="font-family: var(--font-display); font-weight: 600; font-size: 56px; letter-spacing: -0.04em; line-height: 1; color: #fff; margin-top: 4px;">Mazraa</div>
+          <div class="hr" style="background: rgba(255,255,255,0.1); width: 60px;"></div>
+          <p style="font-family: var(--font-italic); font-style: italic; font-size: 18px; color: rgba(255,255,255,0.72); line-height: 1.5; margin: 0; flex: 1;">Libanesisk matupplevelse — synlig hos rätt målgrupp.</p>
+          <span class="small" style="color: var(--edit-teal); letter-spacing: 0.18em; text-transform: uppercase; font-size: 13px; display: inline-flex; align-items: center; gap: 8px;">Läs caset <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+        </a>
+      </div>
+      <style>
+        .case-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.22) !important; background: #1a1a1d !important; }
+      </style>
+    </div>
+    <div class="chrome-mark"><span class="wordmark"><img class="hash-mark" alt="" src="assets/hash-mark-black.png"><span>SYNSNU</span><span class="dash">—</span><span style="opacity:0.7;">MEDIA</span></span></div>
+    <div class="chrome-page">11 / 14</div>
+  </section>
+
+  <!-- ============== SLIDE 12 — TESTIMONIALS ============== -->
+  <section class="slide soft" data-label="12 Testimonials">
+    <div class="slide-inner">
+      <div class="eyebrow-d">Vad våra partners säger</div>
+      <h1 class="h1" style="margin-top: 24px;">
+        Äkta röster från<br/>
+        <em class="gs">riktiga restauranger</em>.
+      </h1>
+
+      <div class="row" style="margin-top: 56px; gap: 22px; align-items: stretch;">
+        <div class="ed-card" style="padding: 40px; flex: 1; gap: 18px;">
+          <div style="color: var(--edit-peach-chip); font-size: 22px; letter-spacing: 4px;">★★★★★</div>
+          <div style="font-family: var(--font-italic); font-style: italic; color: var(--text-3); font-size: 64px; line-height: 0.5; height: 28px;">“</div>
+          <p style="font-family: var(--font-italic); font-style: italic; font-size: 22px; color: var(--text-2); line-height: 1.5; flex: 1; margin: 0;">Otroligt bra videos och bilder som dom fixar. Kan rekommendera starkt för dig som behöver hemsida eller någon som kan ta hand om dina sociala medier.</p>
+          <div class="hr" style="width: 48px;"></div>
+          <div>
+            <div style="font-family: var(--font-display); font-weight: 600; font-size: 20px; letter-spacing: -0.02em;">George</div>
+            <div style="font-family: var(--font-italic); font-style: italic; color: var(--text-3); font-size: 17px;">Dripp'n Burgers</div>
+          </div>
+        </div>
+        <div class="ed-card" style="padding: 40px; flex: 1; gap: 18px;">
+          <div style="color: var(--edit-peach-chip); font-size: 22px; letter-spacing: 4px;">★★★★★</div>
+          <div style="font-family: var(--font-italic); font-style: italic; color: var(--text-3); font-size: 64px; line-height: 0.5; height: 28px;">“</div>
+          <p style="font-family: var(--font-italic); font-style: italic; font-size: 22px; color: var(--text-2); line-height: 1.5; flex: 1; margin: 0;">Fantastiskt team bakom företaget. Kreativa idéer, hög kvalitet samt toppen kundbemötande. Skulle gett sex stjärnor om det var möjligt.</p>
+          <div class="hr" style="width: 48px;"></div>
+          <div>
+            <div style="font-family: var(--font-display); font-weight: 600; font-size: 20px; letter-spacing: -0.02em;">Garo</div>
+            <div style="font-family: var(--font-italic); font-style: italic; color: var(--text-3); font-size: 17px;">Östermalmsgrillen</div>
+          </div>
+        </div>
+        <div class="ed-card" style="padding: 40px; flex: 1; gap: 18px;">
+          <div style="color: var(--edit-peach-chip); font-size: 22px; letter-spacing: 4px;">★★★★★</div>
+          <div style="font-family: var(--font-italic); font-style: italic; color: var(--text-3); font-size: 64px; line-height: 0.5; height: 28px;">“</div>
+          <p style="font-family: var(--font-italic); font-style: italic; font-size: 22px; color: var(--text-2); line-height: 1.5; flex: 1; margin: 0;">Professionella, engagerade och otroligt trevliga. Slutresultatet, både i form av videor och bilder, är helt enkelt enastående.</p>
+          <div class="hr" style="width: 48px;"></div>
+          <div>
+            <div style="font-family: var(--font-display); font-weight: 600; font-size: 20px; letter-spacing: -0.02em;">Mansour</div>
+            <div style="font-family: var(--font-italic); font-style: italic; color: var(--text-3); font-size: 17px;">Berra Burras Kebab</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="chrome-mark"><span class="wordmark"><img class="hash-mark" alt="" src="assets/hash-mark-black.png"><span>SYNSNU</span><span class="dash">—</span><span style="opacity:0.7;">MEDIA</span></span></div>
+    <div class="chrome-page">12 / 14</div>
+  </section>
+
+  <!-- ============== SLIDE 13 — PROCESSEN ============== -->
+  <section class="slide" data-label="13 Processen">
+    <div class="slide-inner">
+      <div class="eyebrow-d">07 — Nästa steg</div>
+      <h1 class="h1" style="margin-top: 24px;">
+        Så ser <em class="gs">samarbetet</em><br/>
+        ut i praktiken.
+      </h1>
+
+      <div class="row" style="margin-top: 64px; gap: 18px; align-items: stretch;">
+        <div class="ed-card" style="flex: 1; gap: 14px;">
+          <span class="num-tag">01</span>
+          <h3>Ni introducerar</h3>
+          <p>Ni tipsar er kund om oss och kopplar ihop oss. Vi tar det därifrån — ni behöver inte sälja själva.</p>
+        </div>
+        <div style="align-self: center; color: var(--text-3); font-size: 28px; font-weight: 300;">→</div>
+        <div class="ed-card" style="flex: 1; gap: 14px;">
+          <span class="num-tag">02</span>
+          <h3>Vi möter kunden</h3>
+          <p>Gratis introduktionsmöte med oss. Behovsanalys, strategi och paketval — utan press.</p>
+        </div>
+        <div style="align-self: center; color: var(--text-3); font-size: 28px; font-weight: 300;">→</div>
+        <div class="ed-card" style="flex: 1; gap: 14px;">
+          <span class="num-tag">03</span>
+          <h3>Onboarding</h3>
+          <p>Avtal skrivs, första inspelningsdagen bokas. Ni får en rapport om att kunden är i hamn.</p>
+        </div>
+      </div>
+    </div>
+    <div class="chrome-mark"><span class="wordmark"><img class="hash-mark" alt="" src="assets/hash-mark-black.png"><span>SYNSNU</span><span class="dash">—</span><span style="opacity:0.7;">MEDIA</span></span></div>
+    <div class="chrome-page">13 / 14</div>
+  </section>
+
+  <!-- ============== SLIDE 14 — CLOSING (DARK) ============== -->
+  <section class="slide dark" data-label="14 CTA">
+    <div class="ds-nav">
+      <span class="wordmark" style="font-size: 26px;">
+        <img class="hash-mark" alt="" src="assets/hash-mark-white.png">
+        <span>SYNSNU</span>
+        <span class="dash">—</span>
+        <span style="opacity:0.7; font-weight: 500;">MEDIA</span>
+      </span>
+      <span style="font-family: var(--font-sans); font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.55); font-weight: 500;">
+        Tack
+      </span>
+    </div>
+
+    <div style="position: absolute; left: 120px; right: 120px; top: 50%; transform: translateY(-52%);">
+      <div class="eyebrow-d" style="margin-bottom: 32px;">Låt oss bygga något ihop</div>
+      <h1 class="h1" style="font-size: 144px; line-height: 0.98; max-width: 1700px;">
+        Redo att bli <em class="gs">partner</em><br/>
+        med Syns Nu?
+      </h1>
+
+      <p class="lead-d" style="margin: 36px 0 56px; max-width: 1100px; font-size: 28px;">
+        Boka ett partnermöte med oss. Vi går igenom upplägg, ersättning och vilka kunder ni har i pipen — så hittar vi en form som passar er.
+      </p>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; max-width: 1400px;">
+        <div class="svc-card" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 28px;">
+          <div style="font-size: 12px; letter-spacing: 0.18em; color: var(--edit-peach-chip); font-weight: 600; text-transform: uppercase;">Telefon</div>
+          <div style="font-family: var(--font-display); font-size: 28px; font-weight: 600; letter-spacing: -0.025em; color: #fff;">070-842 58 33</div>
+        </div>
+        <div class="svc-card" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 28px;">
+          <div style="font-size: 12px; letter-spacing: 0.18em; color: var(--edit-teal); font-weight: 600; text-transform: uppercase;">E-post</div>
+          <div style="font-family: var(--font-display); font-size: 28px; font-weight: 600; letter-spacing: -0.025em; color: #fff;">info@synsnumedia.se</div>
+        </div>
+        <div class="svc-card" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 28px;">
+          <div style="font-size: 12px; letter-spacing: 0.18em; color: var(--edit-lavender-chip); font-weight: 600; text-transform: uppercase;">Hemsida</div>
+          <div style="font-family: var(--font-display); font-size: 28px; font-weight: 600; letter-spacing: -0.025em; color: #fff;">synsnumedia.se</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="position: absolute; bottom: 56px; left: 120px; right: 120px; display: flex; justify-content: space-between; color: rgba(255,255,255,0.45); font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500;">
+      <span>Stockholm · Sverige · 2026</span>
+      <span>Sveriges största marknadsföringsbyrå för restauranger</span>
+    </div>
+  </section>
+
+</deck-stage>
+
+</body>
+</html>

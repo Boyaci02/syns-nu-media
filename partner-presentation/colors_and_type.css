@@ -1,0 +1,217 @@
+/* ============================================================
+   SYNS NU MEDIA — colors_and_type.css
+   Foundation tokens (color + type) extracted from the live
+   v6 build (CIRLO-editorial). Imports Plus Jakarta Sans + Instrument
+   Serif from Google Fonts. Drop this file into any new HTML and the
+   brand foundations are in place.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap');
+
+:root {
+  /* ── Editorial pastel palette (v6 CIRLO direction) ───────── */
+  --edit-lavender:        #E8E1FF;
+  --edit-lavender-soft:   #F4EFFF;
+  --edit-lavender-chip:   #B9A3F7;
+  --edit-peach:           #FFCFA8;
+  --edit-peach-soft:      #FFE6D2;
+  --edit-peach-chip:      #FF9C6B;
+  --edit-olive:           #E5EE9E;
+  --edit-olive-chip:      #D4EB7A;
+  --edit-teal:            #4EBFB8;
+  --edit-cream:           #E5CDAB;
+  --edit-warm:            #F5D7B8;
+
+  /* ── Gemini palette (legacy v4 — kept for sub-pages) ─────── */
+  --g-blue:               #1A73E8;
+  --g-blue-dark:          #1557B0;
+  --g-blue-50:            #F0F4FA;
+  --g-blue-100:           #E3EDFC;
+  --g-purple:             #8B5CF6;
+  --g-pink:               #EC4899;
+  --g-gradient:           linear-gradient(135deg, #1A73E8 0%, #8B5CF6 50%, #EC4899 100%);
+  --g-gradient-soft:      linear-gradient(135deg, rgba(26,115,232,0.08) 0%, rgba(139,92,246,0.06) 50%, rgba(236,72,153,0.04) 100%);
+
+  /* ── Neutrals ────────────────────────────────────────────── */
+  --bg:                   #FFFFFF;
+  --bg-soft:              #F7F7F5;
+  --bg-tint:              #F4F4F2;
+  --bg-press:             #F3F1EC;
+  --bg-dark:              #0A0A0B;
+  --bg-dark-2:            #141416;
+
+  --text:                 #0F0F10;
+  --text-2:               #52525B;
+  --text-3:               #71717A;
+  --text-muted:           #A1A1AA;
+  --text-inv:             #FFFFFF;
+
+  --border:               #EAEAE6;
+  --border-strong:        #D4D4D0;
+  --border-dark:          rgba(255,255,255,0.08);
+
+  --success:              #10B981;
+  --warning:              #F59E0B;
+  --danger:               #EF4444;
+
+  /* ── Typography stacks ───────────────────────────────────── */
+  --font-sans:            'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display:         'Plus Jakarta Sans', -apple-system, sans-serif;
+  --font-italic:          'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-body:            var(--font-sans);
+
+  /* ── Type ramp (semantic) ────────────────────────────────── */
+  --fs-display:           clamp(2.75rem, 9vw, 7.5rem);   /* hero ALL-CAPS mark */
+  --fs-h1:                clamp(2.25rem, 6vw, 5rem);     /* page hero */
+  --fs-h2:                clamp(1.75rem, 3.8vw, 3.25rem);
+  --fs-h2-lg:             clamp(2.25rem, 5vw, 4rem);     /* big editorial */
+  --fs-h3:                clamp(1.125rem, 1.8vw, 1.625rem);
+  --fs-h4:                1.0625rem;
+  --fs-lead:              clamp(1.0625rem, 1.35vw, 1.1875rem);
+  --fs-body:              1rem;
+  --fs-sm:                0.9375rem;
+  --fs-xs:                0.8125rem;
+  --fs-eyebrow:           0.75rem;
+
+  /* ── Tracking ────────────────────────────────────────────── */
+  --tr-display:           -0.05em;
+  --tr-h1:                -0.045em;
+  --tr-h2:                -0.04em;
+  --tr-h3:                -0.02em;
+  --tr-body:              0;
+  --tr-eyebrow:           0.04em;
+
+  /* ── Line height ─────────────────────────────────────────── */
+  --lh-display:           0.95;
+  --lh-heading:           1.1;
+  --lh-body:              1.65;
+  --lh-tight:             1.5;
+
+  /* ── Radii ───────────────────────────────────────────────── */
+  --r-xs:                 6px;
+  --r-sm:                 10px;
+  --r-md:                 14px;
+  --r-lg:                 20px;
+  --r-xl:                 28px;
+  --r-2xl:                40px;
+  --r-card:               18px;   /* editorial card default */
+  --r-pill:               9999px;
+
+  /* ── Elevation ───────────────────────────────────────────── */
+  --shadow-xs:            0 1px 2px rgba(15,15,16,0.04);
+  --shadow-sm:            0 2px 8px rgba(15,15,16,0.06);
+  --shadow-md:            0 8px 24px rgba(15,15,16,0.08);
+  --shadow-lg:            0 20px 48px rgba(15,15,16,0.12);
+  --shadow-nav:           0 1px 3px rgba(15,15,16,0.04), 0 8px 32px -8px rgba(15,15,16,0.08);
+  --shadow-press:         0 24px 44px -10px rgba(0,0,0,0.28), 0 8px 16px -4px rgba(0,0,0,0.14);
+
+  /* ── Spacing scale ───────────────────────────────────────── */
+  --sp-1:                 4px;
+  --sp-2:                 8px;
+  --sp-3:                 12px;
+  --sp-4:                 16px;
+  --sp-5:                 24px;
+  --sp-6:                 32px;
+  --sp-7:                 48px;
+  --sp-8:                 64px;
+  --sp-9:                 96px;
+  --sp-section:           clamp(96px, 12vw, 160px);
+
+  /* ── Layout ──────────────────────────────────────────────── */
+  --container:            min(1400px, 94vw);
+  --container-wide:       min(1680px, 96vw);
+  --gutter:               24px;
+  --nav-h:                76px;
+
+  /* ── Motion ──────────────────────────────────────────────── */
+  --ease:                 cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out:             cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-quart:           cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast:             150ms;
+  --dur:                  260ms;
+  --dur-slow:             500ms;
+  --dur-reveal:           900ms;
+}
+
+/* ============================================================
+   BASE — minimal reset + body type
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img, video, svg { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; }
+button { cursor: pointer; font: inherit; border: none; background: none; color: inherit; }
+::selection { background: rgba(26,115,232,0.18); color: var(--text); }
+
+/* ============================================================
+   SEMANTIC TYPE — apply to plain HTML and it Just Looks Right™
+   ============================================================ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--text);
+  line-height: var(--lh-heading);
+  font-weight: 600;
+  overflow-wrap: break-word;
+  -webkit-hyphens: manual; hyphens: manual;
+}
+h1 { font-size: var(--fs-h1);    letter-spacing: var(--tr-h1); font-weight: 600; }
+h2 { font-size: var(--fs-h2);    letter-spacing: var(--tr-h2); font-weight: 600; }
+h3 { font-size: var(--fs-h3);    letter-spacing: var(--tr-h3); }
+h4 { font-size: var(--fs-h4);    letter-spacing: -0.015em; }
+p  { color: var(--text-2); font-size: var(--fs-body); line-height: var(--lh-body); }
+
+/* Editorial display — used for big section titles in v6 */
+.display {
+  font-family: var(--font-display);
+  font-size: var(--fs-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tr-display);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* The signature italic-serif emphasis word, inline in a sans headline */
+.gradient-text,
+em.gradient-text {
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  color: inherit;
+}
+
+/* Hero lead — large editorial paragraph below ALL-CAPS mark */
+.lead, .editorial-lead {
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+  color: var(--text-3);
+  max-width: 640px;
+  font-weight: 400;
+}
+
+/* Eyebrow / micro-label */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--tr-eyebrow);
+  color: var(--text-3);
+  text-transform: uppercase;
+}
+
+/* Caption / metadata */
+.meta { font-size: var(--fs-xs); color: var(--text-3); }
+
+/* Mono numerics (Swedish locale — comma decimals are formatted in JS) */
+.numeric { font-variant-numeric: tabular-nums; }
