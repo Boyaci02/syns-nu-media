@@ -1488,7 +1488,7 @@
     }
     .footer-big__grid {
       display: grid;
-      grid-template-columns: 1.5fr repeat(3, 1fr) auto;
+      grid-template-columns: repeat(3, 1fr) auto;
       gap: clamp(2rem, 4vw, 4rem);
       padding-bottom: 4rem;
     }
@@ -1525,26 +1525,22 @@
       border-top: 1px solid rgba(255,255,255,0.08);
       padding-top: 2.5rem;
       margin-top: 1.5rem;
-      font-size: clamp(3rem, 14vw, 12rem);
+      font-size: clamp(3rem, 11vw, 10rem);
       font-weight: 700;
       letter-spacing: -0.05em;
       line-height: 0.9;
       color: white;
       text-transform: uppercase;
-      white-space: nowrap;
       overflow: hidden;
+    }
+    .footer-big__mark-row {
+      display: flex;
+      align-items: center;
+      gap: clamp(1rem, 2vw, 2rem);
     }
     .footer-big__mark-logo {
       color: white;
       letter-spacing: -0.05em;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3em;
-    }
-    .footer-big__mark-dash {
-      font-weight: 300;
-      opacity: 0.9;
-      margin: 0 0.25em;
     }
 
     .footer-big__bottom {
@@ -1583,7 +1579,7 @@
       .sec-accel { grid-template-columns: 1fr; min-height: auto; }
       .sec-accel__video { min-height: 480px; }
       .footer-big__grid { grid-template-columns: 1fr 1fr; }
-      .footer-big__brand { grid-column: 1 / -1; }
+      .footer-big__mark-row { flex-wrap: wrap; }
       .footer-big__payments-col { grid-column: 1 / -1; }
     }
 
@@ -2320,9 +2316,6 @@
 <footer class="sec-footer-big">
   <div class="sec-footer-big__inner footer-big">
     <div class="footer-big__grid">
-      <div class="footer-big__brand">
-        <img class="footer-big__mark-img" src="assets/hash-mark-white.png" alt="Syns Nu Media" loading="lazy">
-      </div>
       <div>
         <h5>Företaget</h5>
         <ul>
@@ -2360,16 +2353,15 @@
     </div>
 
     <div class="footer-big__mark" aria-hidden="true">
-      <span class="footer-big__mark-logo">
-        <span class="tri-dot"><b></b><b></b><b></b></span>SYNS NU
-      </span>
-      <span class="footer-big__mark-dash">—</span>
-      <span>MEDIA</span>
+      <div class="footer-big__mark-row">
+        <img class="footer-big__mark-img" src="assets/hash-mark-white.png" alt="Syns Nu Media" loading="lazy">
+        <span class="footer-big__mark-logo">SYNS NU MEDIA</span>
+      </div>
     </div>
 
     <div class="footer-big__bottom">
       <span>© 2026 Syns Nu AB. Alla rättigheter förbehållna.</span>
-      <span><a href="#">Integritetspolicy</a> · <a href="#">Villkor</a></span>
+      <span><a href="integritetspolicy.html">Integritetspolicy</a> · <a href="#">Villkor</a></span>
     </div>
   </div>
 </footer>
