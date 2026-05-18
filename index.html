@@ -1772,8 +1772,8 @@
         <div class="big-hero__stat-label">Restaurangpartners</div>
       </div>
       <div>
-        <div class="big-hero__stat-val">30+</div>
-        <div class="big-hero__stat-label">Aktiva restaurangkunder</div>
+        <div class="big-hero__stat-val">50M+</div>
+        <div class="big-hero__stat-label">Visningar genererade</div>
       </div>
       <div>
         <div class="big-hero__stat-val">3+ År</div>
@@ -2254,6 +2254,233 @@
     </div>
   </div>
 </footer>
+
+<!-- SEO GRADER POPUP -->
+<div class="seo-popup" id="seoPopup">
+  <button class="seo-popup__close" aria-label="Stäng" onclick="document.getElementById('seoPopup').classList.remove('seo-popup--visible')">&times;</button>
+  <div class="seo-popup__preview">
+    <div class="seo-popup__screen">
+      <div class="seo-popup__scan-line"></div>
+      <div class="seo-popup__score-ring">
+        <svg viewBox="0 0 120 120" width="80" height="80">
+          <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="6"/>
+          <circle cx="60" cy="60" r="52" fill="none" stroke="url(#scoreGrad)" stroke-width="6" stroke-dasharray="327" stroke-dashoffset="327" stroke-linecap="round" class="seo-popup__score-circle"/>
+          <defs><linearGradient id="scoreGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#22c55e"/><stop offset="100%" stop-color="#3b82f6"/></linearGradient></defs>
+        </svg>
+        <span class="seo-popup__score-num">0</span>
+      </div>
+      <div class="seo-popup__bars">
+        <div class="seo-popup__bar"><span style="--w:85%"></span><small>SEO</small></div>
+        <div class="seo-popup__bar"><span style="--w:72%"></span><small>Hastighet</small></div>
+        <div class="seo-popup__bar"><span style="--w:90%"></span><small>Mobil</small></div>
+        <div class="seo-popup__bar"><span style="--w:60%"></span><small>AI-Synlighet</small></div>
+      </div>
+    </div>
+  </div>
+  <div class="seo-popup__content">
+    <p class="seo-popup__label">Gratis verktyg</p>
+    <p class="seo-popup__title">Analysera din restaurangs hemsida</p>
+    <p class="seo-popup__body">Se hur din hemsida presterar inom SEO, hastighet, mobilvänlighet och AI-synlighet. Helt gratis.</p>
+    <a href="https://seo-grader-two.vercel.app/" class="btn btn--primary seo-popup__cta" target="_blank" rel="noopener">Starta analys</a>
+  </div>
+</div>
+
+<style>
+  .seo-popup {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #0a0a0b;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    max-width: 380px;
+    z-index: 9000;
+    overflow: hidden;
+    transform: translateY(120%) scale(.95);
+    opacity: 0;
+    transition: transform .6s cubic-bezier(.16,1,.3,1), opacity .4s ease;
+  }
+  .seo-popup--visible {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  .seo-popup__close {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: rgba(255,255,255,.4);
+    z-index: 2;
+    line-height: 1;
+  }
+  .seo-popup__close:hover { color: #fff; }
+
+  .seo-popup__preview {
+    padding: 24px 24px 16px;
+    position: relative;
+  }
+  .seo-popup__screen {
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.06);
+    border-radius: 12px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .seo-popup__scan-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+    animation: scanDown 2.5s ease-in-out infinite;
+  }
+  @keyframes scanDown {
+    0% { top: 0; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+  }
+
+  .seo-popup__score-ring {
+    position: relative;
+    flex-shrink: 0;
+  }
+  .seo-popup__score-circle {
+    transform: rotate(-90deg);
+    transform-origin: center;
+  }
+  .seo-popup--visible .seo-popup__score-circle {
+    animation: drawScore 2s ease-out .5s forwards;
+  }
+  @keyframes drawScore {
+    to { stroke-dashoffset: 72; }
+  }
+  .seo-popup__score-num {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fff;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .seo-popup__bars {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .seo-popup__bar {
+    position: relative;
+    height: 6px;
+    background: rgba(255,255,255,.06);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .seo-popup__bar span {
+    display: block;
+    height: 100%;
+    width: 0;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #3b82f6, #22c55e);
+  }
+  .seo-popup--visible .seo-popup__bar span {
+    animation: fillBar 1.5s ease-out .8s forwards;
+  }
+  @keyframes fillBar {
+    to { width: var(--w); }
+  }
+  .seo-popup__bar small {
+    position: absolute;
+    top: -16px;
+    left: 0;
+    font-size: .6rem;
+    color: rgba(255,255,255,.35);
+    letter-spacing: .04em;
+  }
+
+  .seo-popup__content {
+    padding: 8px 24px 24px;
+  }
+  .seo-popup__label {
+    font-size: .65rem;
+    font-weight: 600;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: #3b82f6;
+    margin: 0 0 4px;
+  }
+  .seo-popup__title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 6px;
+    line-height: 1.3;
+  }
+  .seo-popup__body {
+    font-size: .8rem;
+    color: rgba(255,255,255,.5);
+    margin: 0 0 16px;
+    line-height: 1.5;
+  }
+  .seo-popup__cta {
+    display: block;
+    text-align: center;
+    width: 100%;
+    padding: 12px;
+    font-size: .9rem;
+  }
+
+  @media (max-width: 640px) {
+    .seo-popup {
+      bottom: 12px;
+      right: 12px;
+      left: 12px;
+      max-width: none;
+    }
+  }
+</style>
+
+<script>
+  // SEO Grader popup — appears after 5 seconds, auto-close after 15s
+  // Score counter animation
+  (function(){
+    var shown = sessionStorage.getItem('seo-popup-closed');
+    if (shown) return;
+    setTimeout(function(){
+      var popup = document.getElementById('seoPopup');
+      if (!popup) return;
+      popup.classList.add('seo-popup--visible');
+      // Animate score number
+      var numEl = popup.querySelector('.seo-popup__score-num');
+      var start = 0, end = 78, dur = 2000, t0 = null;
+      function tick(ts) {
+        if (!t0) t0 = ts;
+        var p = Math.min((ts - t0) / dur, 1);
+        numEl.textContent = Math.round(start + (end - start) * p);
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      setTimeout(function(){ requestAnimationFrame(tick); }, 500);
+      // Auto-close after 15s
+      setTimeout(function(){ popup.classList.remove('seo-popup--visible'); }, 15000);
+    }, 5000);
+    // Remember close
+    document.getElementById('seoPopup').querySelector('.seo-popup__close').addEventListener('click', function(){
+      sessionStorage.setItem('seo-popup-closed', '1');
+    });
+  })();
+</script>
 
 <script src="js/main.js"></script>
 <script>
