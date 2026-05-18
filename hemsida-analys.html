@@ -1191,7 +1191,8 @@
       <h3 class="form-title">Se alla problem vi hittade + konkret åtgärdsplan</h3>
       <p class="form-sub">Fyll i dina uppgifter så låser vi upp den fullständiga analysen direkt — plus att vi skickar den på mejl så du har den sparad.</p>
 
-      <form id="lead-form" onsubmit="submitForm(event)">
+      <form id="lead-form" action="https://formspree.io/f/xjkvrpke" method="POST" onsubmit="submitForm(event)">
+        <input type="hidden" name="_subject" value="Ny förfrågan från Hemsida-analys">
         <div class="form-grid">
           <div class="form-field">
             <label for="name">Ditt namn</label>
@@ -1848,24 +1849,34 @@
   function submitForm(e) {
     e.preventDefault();
 
-    const formData = {
-      name: document.getElementById('name').value,
-      restaurant: document.getElementById('restaurant').value,
-      email: document.getElementById('email').value,
-      phone: document.getElementById('phone').value,
-      website: websiteUrl || null,
-      score: totalScoreCached,
-      metrics: simulatedMetrics,
-      answers: answers.map((a, i) => ({
-        question: questions[i].title,
-        answer: a.label
-      }))
-    };
+    const form = document.getElementById('lead-form');
+    const formData = new FormData(form);
 
-    // ➡️ TODO: Skicka formData till webhook
-    console.log('Lead submitted:', formData);
+    // Add extra context fields
+    formData.append('website', websiteUrl || 'Ingen hemsida');
+    formData.append('score', totalScoreCached);
+    if (simulatedMetrics) {
+      formData.append('metrics_performance', simulatedMetrics.performance);
+      formData.append('metrics_seo', simulatedMetrics.seo);
+      formData.append('metrics_mobile', simulatedMetrics.mobile);
+      formData.append('metrics_accessibility', simulatedMetrics.accessibility);
+    }
+    answers.forEach((a, i) => {
+      formData.append('fraga_' + (i + 1), questions[i].title + ': ' + a.label);
+    });
 
-    const firstName = formData.name.split(' ')[0];
+    // Send to Formspree
+    fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    }).then(function (response) {
+      if (!response.ok) console.error('Formspree error:', response.statusText);
+    }).catch(function (err) {
+      console.error('Formspree error:', err);
+    });
+
+    const firstName = document.getElementById('name').value.split(' ')[0];
 
     // Hide the gate form, show inline thanks
     const gate = document.getElementById('gate-form-card');

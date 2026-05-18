@@ -199,17 +199,46 @@
       e.preventDefault();
       var btn = form.querySelector('[type="submit"]');
       if (!btn) return;
-      var orig     = btn.textContent;
-      var origBg   = btn.style.background;
-      btn.textContent = '✓ Skickat!';
-      btn.style.background = '#16a34a';
-      btn.disabled = true;
-      setTimeout(function () {
-        btn.textContent     = orig;
-        btn.style.background = origBg;
-        btn.disabled = false;
-        form.reset();
-      }, 4000);
+      var orig   = btn.textContent;
+      var origBg = btn.style.background;
+
+      var formData = new FormData(form);
+
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      }).then(function (response) {
+        if (response.ok) {
+          btn.textContent = '✓ Skickat!';
+          btn.style.background = '#16a34a';
+          btn.disabled = true;
+          setTimeout(function () {
+            btn.textContent     = orig;
+            btn.style.background = origBg;
+            btn.disabled = false;
+            form.reset();
+          }, 4000);
+        } else {
+          btn.textContent = 'Fel — försök igen';
+          btn.style.background = '#dc2626';
+          btn.disabled = true;
+          setTimeout(function () {
+            btn.textContent     = orig;
+            btn.style.background = origBg;
+            btn.disabled = false;
+          }, 4000);
+        }
+      }).catch(function () {
+        btn.textContent = 'Fel — försök igen';
+        btn.style.background = '#dc2626';
+        btn.disabled = true;
+        setTimeout(function () {
+          btn.textContent     = orig;
+          btn.style.background = origBg;
+          btn.disabled = false;
+        }, 4000);
+      });
     });
   });
 

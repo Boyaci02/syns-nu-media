@@ -30,6 +30,8 @@
         <div class="nav__dropdown-menu">
           <a href="sociala-medier.html">Sociala Medier</a>
           <a href="hemsida.html">Webbdesign</a>
+          <a href="matfotografering.html">Marknadsföring</a>
+          <a href="qopla-matfotografering.html">Qopla Matfotografering</a>
           <a href="qopla-erbjudande.html">Qopla-erbjudande</a>
         </div>
       </div>
@@ -133,28 +135,29 @@
       <div class="contact-form-box reveal">
         <h3>Skicka ett meddelande</h3>
         <p style="color: var(--text-3); font-size: 0.9375rem; margin-top: -0.75rem; margin-bottom: 1.5rem;">Vi återkommer inom 24 timmar.</p>
-        <form class="contact-form">
+        <form class="contact-form" action="https://formspree.io/f/xjkvrpke" method="POST">
+          <input type="hidden" name="_subject" value="Ny förfrågan från Kontakt">
           <div class="form-row">
             <div class="form-group">
               <label class="form-label">Namn</label>
-              <input type="text" class="form-input" placeholder="Ditt namn" required>
+              <input type="text" name="namn" class="form-input" placeholder="Ditt namn" required>
             </div>
             <div class="form-group">
               <label class="form-label">Restaurangnamn</label>
-              <input type="text" class="form-input" placeholder="Din restaurang" required>
+              <input type="text" name="restaurang" class="form-input" placeholder="Din restaurang" required>
             </div>
           </div>
           <div class="form-group">
             <label class="form-label">E-post</label>
-            <input type="email" class="form-input" placeholder="din@email.se" required>
+            <input type="email" name="email" class="form-input" placeholder="din@email.se" required>
           </div>
           <div class="form-group">
             <label class="form-label">Telefon</label>
-            <input type="tel" class="form-input" placeholder="070 000 00 00">
+            <input type="tel" name="telefon" class="form-input" placeholder="070 000 00 00">
           </div>
           <div class="form-group">
             <label class="form-label">Vad kan vi hjälpa dig med?</label>
-            <select class="form-input">
+            <select name="tjanst" class="form-input">
               <option value="">Välj tjänst...</option>
               <option>Sociala Medier (Instagram, TikTok, Facebook)</option>
               <option>Webbdesign & SEO</option>
@@ -165,7 +168,7 @@
           </div>
           <div class="form-group">
             <label class="form-label">Berätta om din restaurang</label>
-            <textarea class="form-input" rows="4" placeholder="Restaurangtyp, stad, nuvarande utmaningar och vad du vill uppnå..."></textarea>
+            <textarea name="meddelande" class="form-input" rows="4" placeholder="Restaurangtyp, stad, nuvarande utmaningar och vad du vill uppnå..."></textarea>
           </div>
           <button type="submit" class="btn btn--blue btn--lg" style="width:100%;">Skicka meddelande
             <svg class="icon icon--arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
