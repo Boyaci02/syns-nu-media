@@ -2427,10 +2427,19 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
 }
 
 .pricing-card--featured {
-  border-color: var(--blue);
-  box-shadow: 0 0 0 4px var(--blue-light), var(--shadow-lg);
+  background: var(--bg-dark);
+  color: white;
+  border-color: var(--bg-dark);
+  box-shadow: 0 24px 60px -16px rgba(15, 15, 16, 0.4);
   transform: translateY(-8px);
 }
+
+.pricing-card--featured .pricing-name,
+.pricing-card--featured .pricing-price,
+.pricing-card--featured .pricing-price span,
+.pricing-card--featured .pricing-features li { color: white; }
+
+.pricing-card--featured .pricing-name { color: rgba(255,255,255,0.7); }
 
 .pricing-card--featured:hover {
   transform: translateY(-12px);
