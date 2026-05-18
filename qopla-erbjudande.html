@@ -158,7 +158,7 @@
           <li>Redigering och efterbehandling</li>
           <li>Fotografering i studio eller på plats</li>
         </ul>
-        <a href="kontakt.html" class="btn btn--ghost" style="width:100%;">Boka fotografering</a>
+        <a href="#qopla-form" class="btn btn--ghost" style="width:100%;" onclick="document.querySelector('[name=paket]').value='Menyfotografering — 5 000 kr'">Boka fotografering</a>
       </div>
 
       <div class="pricing-card pricing-card--featured">
@@ -177,7 +177,7 @@
           <li>Marknadsföring</li>
           <li>Full Qopla-integration</li>
         </ul>
-        <a href="kontakt.html" class="btn btn--light" style="width:100%;">Välj Sociala Medier</a>
+        <a href="#qopla-form" class="btn btn--light" style="width:100%;" onclick="document.querySelector('[name=paket]').value='Sociala Medier — 11 250 kr/mån'">Välj Sociala Medier</a>
       </div>
 
       <div class="pricing-card">
@@ -195,7 +195,7 @@
           <li>Digital meny med QR-kod</li>
           <li>Löpande support och uppdateringar</li>
         </ul>
-        <a href="kontakt.html" class="btn btn--ghost" style="width:100%;">Välj Hemsida</a>
+        <a href="#qopla-form" class="btn btn--ghost" style="width:100%;" onclick="document.querySelector('[name=paket]').value='Hemsida — 500 kr/mån'">Välj Hemsida</a>
       </div>
     </div>
     <p style="text-align:center; margin-top: 1.5rem; color: var(--text-3); font-size: 0.875rem;">* Sociala medier-rabatten gäller de första 3 månaderna för Qopla-kunder. Hemsidepriset gäller med löpande avtal.</p>
@@ -251,7 +251,7 @@
 </section>
 
 <!-- FORM -->
-<section class="section section--soft">
+<section class="section section--soft" id="qopla-form">
   <div class="container">
     <div class="split-grid">
       <div class="reveal">
@@ -267,32 +267,34 @@
       </div>
       <div class="contact-form-box reveal">
         <h3>Aktivera erbjudandet</h3>
-        <form class="lead-form">
+        <form class="lead-form" action="https://formspree.io/f/xjkvrpke" method="POST">
+          <input type="hidden" name="_subject" value="Ny Qopla-lead">
+          <input type="hidden" name="source" value="qopla">
           <div class="form-row">
             <div class="form-group">
               <label class="form-label">Namn</label>
-              <input type="text" class="form-input" placeholder="Ditt namn" required>
+              <input type="text" name="namn" class="form-input" placeholder="Ditt namn" required>
             </div>
             <div class="form-group">
               <label class="form-label">Restaurangnamn</label>
-              <input type="text" class="form-input" placeholder="Din restaurang" required>
+              <input type="text" name="restaurang" class="form-input" placeholder="Din restaurang" required>
             </div>
           </div>
           <div class="form-group">
             <label class="form-label">Qopla-kundkod</label>
-            <input type="text" class="form-input" placeholder="Din Qopla-kod (valfritt)">
+            <input type="text" name="qopla_kod" class="form-input" placeholder="Din Qopla-kod (valfritt)">
           </div>
           <div class="form-group">
             <label class="form-label">E-post</label>
-            <input type="email" class="form-input" placeholder="din@email.se" required>
+            <input type="email" name="email" class="form-input" placeholder="din@email.se" required>
           </div>
           <div class="form-group">
             <label class="form-label">Telefon</label>
-            <input type="tel" class="form-input" placeholder="070 000 00 00">
+            <input type="tel" name="telefon" class="form-input" placeholder="070 000 00 00">
           </div>
           <div class="form-group">
             <label class="form-label">Vilket paket intresserar dig?</label>
-            <select class="form-input">
+            <select name="paket" class="form-input">
               <option>Menyfotografering — 5 000 kr</option>
               <option>Sociala Medier — 11 250 kr/mån</option>
               <option>Hemsida — 500 kr/mån</option>
