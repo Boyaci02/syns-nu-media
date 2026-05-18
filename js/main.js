@@ -204,6 +204,15 @@
 
       var formData = new FormData(form);
 
+      // Also send to KK webhook for lead tracking + push notifications
+      var kkData = {};
+      formData.forEach(function(value, key) { kkData[key] = value; });
+      fetch('https://kunder-kontroll.vercel.app/api/leads/webhook', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(kkData)
+      }).catch(function() {}); // fire-and-forget
+
       fetch(form.action, {
         method: 'POST',
         body: formData,
