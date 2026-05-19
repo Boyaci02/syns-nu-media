@@ -238,14 +238,17 @@
 
     <div class="reveal" style="max-width: 640px; margin: 0 auto;">
       <form action="https://formspree.io/f/xjkvrpke" method="POST" class="contact-form" style="display: flex; flex-direction: column; gap: 1.25rem;">
+        <input type="hidden" name="source" value="hemsida">
+        <input type="hidden" name="tjanst" value="Matfotografering">
+        <input type="hidden" name="_subject" value="Ny matfotografering-lead">
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
           <div>
             <label for="first-name" style="display:block; font-weight:600; margin-bottom:0.5rem; font-size:0.875rem;">Förnamn</label>
-            <input type="text" id="first-name" name="first_name" required placeholder="Ditt förnamn" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--border); border-radius:0.75rem; font-size:1rem; background:var(--surface); color:var(--text);">
+            <input type="text" id="first-name" name="namn" required placeholder="Ditt förnamn" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--border); border-radius:0.75rem; font-size:1rem; background:var(--surface); color:var(--text);">
           </div>
           <div>
             <label for="last-name" style="display:block; font-weight:600; margin-bottom:0.5rem; font-size:0.875rem;">Efternamn</label>
-            <input type="text" id="last-name" name="last_name" required placeholder="Ditt efternamn" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--border); border-radius:0.75rem; font-size:1rem; background:var(--surface); color:var(--text);">
+            <input type="text" id="last-name" name="efternamn" required placeholder="Ditt efternamn" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--border); border-radius:0.75rem; font-size:1rem; background:var(--surface); color:var(--text);">
           </div>
         </div>
         <div>
@@ -254,17 +257,16 @@
         </div>
         <div>
           <label for="phone" style="display:block; font-weight:600; margin-bottom:0.5rem; font-size:0.875rem;">Telefon</label>
-          <input type="tel" id="phone" name="phone" placeholder="070-XXX XX XX" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--border); border-radius:0.75rem; font-size:1rem; background:var(--surface); color:var(--text);">
+          <input type="tel" id="phone" name="telefon" placeholder="070-XXX XX XX" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--border); border-radius:0.75rem; font-size:1rem; background:var(--surface); color:var(--text);">
         </div>
         <div>
           <label for="restaurant" style="display:block; font-weight:600; margin-bottom:0.5rem; font-size:0.875rem;">Restaurangnamn</label>
-          <input type="text" id="restaurant" name="restaurant" required placeholder="Din restaurang" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--border); border-radius:0.75rem; font-size:1rem; background:var(--surface); color:var(--text);">
+          <input type="text" id="restaurant" name="restaurang" required placeholder="Din restaurang" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--border); border-radius:0.75rem; font-size:1rem; background:var(--surface); color:var(--text);">
         </div>
         <div>
           <label for="message" style="display:block; font-weight:600; margin-bottom:0.5rem; font-size:0.875rem;">Meddelande</label>
-          <textarea id="message" name="message" rows="4" placeholder="Berätta gärna vad du vill fotografera..." style="width:100%; padding:0.75rem 1rem; border:1px solid var(--border); border-radius:0.75rem; font-size:1rem; background:var(--surface); color:var(--text); resize:vertical;"></textarea>
+          <textarea id="message" name="meddelande" rows="4" placeholder="Berätta gärna vad du vill fotografera..." style="width:100%; padding:0.75rem 1rem; border:1px solid var(--border); border-radius:0.75rem; font-size:1rem; background:var(--surface); color:var(--text); resize:vertical;"></textarea>
         </div>
-        <input type="hidden" name="_subject" value="Ny bokning: Matfotografering">
         <button type="submit" class="btn btn--primary btn--lg" style="width:100%;">Boka matfotografering</button>
       </form>
     </div>
