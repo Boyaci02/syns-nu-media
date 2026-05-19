@@ -255,15 +255,15 @@
 <section class="section section--soft">
   <div class="container">
     <div class="testimonial-split">
-      <div class="video-wrap reveal" onclick="this.classList.add('playing'); this.querySelector('video').play();">
-        <video src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/66fae28a5cef956031c6d083.mp4" preload="metadata" playsinline></video>
-        <div class="video-overlay">
-          <button class="video-play-btn" aria-label="Spela upp video">▶</button>
+      <div class="video-wrap reveal" onclick="var v=this.querySelector('video'); if(v.muted){v.muted=false;v.currentTime=0;v.play();this.classList.add('playing');}">
+        <video src="https://storage.googleapis.com/msgsndr/1FYpgqYgXr6SzFnCzKew/media/66fae28a5cef956031c6d083.mp4" preload="metadata" playsinline autoplay muted loop style="cursor:pointer" ondblclick="if(this.requestFullscreen)this.requestFullscreen();else if(this.webkitRequestFullscreen)this.webkitRequestFullscreen();"></video>
+        <div class="video-overlay" style="pointer-events:none;opacity:0;transition:opacity 0.3s;">
+          <button class="video-play-btn" aria-label="Spela upp video med ljud">▶</button>
         </div>
       </div>
       <div class="reveal">
         <span class="eyebrow">Kundberättelse</span>
-        <h2 style="margin-bottom: 1.25rem;">Restaurang Mezze fick <span class="gradient-text">3 000 nya följare</span> på 60 dagar</h2>
+        <h2 style="margin-bottom: 1.25rem;">Östermalmsgrillen ökade omsättningen med <span class="gradient-text">närmare 50%</span></h2>
         <div class="testimonial-stars" style="margin-bottom: 1rem;" aria-label="5 av 5">
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -271,12 +271,12 @@
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
-        <p class="testimonial-quote">"Sedan vi anlitade Syns Nu Media har vår Instagram exploderat. Vi syns i Göteborgs matscen på ett helt nytt sätt."</p>
+        <p class="testimonial-quote">"Fantastiskt team bakom företaget! Från starten har det känts genomgående bra ända till slutresultatet. Kreativa idéer, hög kvalitet samt toppen kundbemötande. Skulle gett 6 stjärnor om det var möjligt!"</p>
         <div class="testimonial-author">
-          <div class="testimonial-author__avatar">AK</div>
+          <div class="testimonial-author__avatar">GA</div>
           <div>
-            <div class="testimonial-author__name">Ahmed Khalil</div>
-            <div class="testimonial-author__role">Ägare · Restaurang Mezze, Göteborg</div>
+            <div class="testimonial-author__name">Garo</div>
+            <div class="testimonial-author__role">Ägare — Östermalmsgrillen</div>
           </div>
         </div>
       </div>
