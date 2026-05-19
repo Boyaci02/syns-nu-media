@@ -207,7 +207,7 @@
       // Also send to KK webhook for lead tracking + push notifications
       var kkData = {};
       formData.forEach(function(value, key) { kkData[key] = value; });
-      fetch('https://kunder-kontroll.vercel.app/api/leads/webhook', {
+      fetch('https://synsnumedia.com/api/leads/webhook', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(kkData)
