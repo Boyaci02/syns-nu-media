@@ -372,7 +372,7 @@ p { color: var(--text-2); font-size: 1rem; line-height: 1.65; overflow-wrap: bre
 
 .nav__dropdown-menu {
   position: absolute;
-  top: calc(100% + 8px);
+  top: 100%;
   left: 50%;
   transform: translateX(-50%) translateY(-4px);
   min-width: 220px;
@@ -380,11 +380,22 @@ p { color: var(--text-2); font-size: 1rem; line-height: 1.65; overflow-wrap: bre
   border: 1px solid var(--border);
   border-radius: var(--r-md);
   padding: 0.5rem;
+  padding-top: calc(0.5rem + 8px);
   box-shadow: var(--shadow-lg);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease), visibility 0s linear var(--dur);
+}
+
+/* Osynlig brygga mellan trigger och dropdown — förhindrar att hover bryts */
+.nav__dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 0;
+  right: 0;
+  height: 12px;
 }
 
 .nav__dropdown:hover .nav__dropdown-menu,
