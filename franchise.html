@@ -54,11 +54,15 @@
     /* Stats band */
     .fr-stats{display:grid; grid-template-columns:repeat(4,1fr); gap:1.25rem;}
     .fr-stat{
-      background:var(--bg); border:1px solid var(--border); border-radius:var(--r-xl);
-      padding:1.75rem 1.5rem; text-align:center; box-shadow:var(--shadow-xs);
+      background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.14); border-radius:var(--r-xl);
+      padding:1.75rem 1.5rem; text-align:center;
     }
-    .fr-stat strong{display:block; font-size:clamp(2rem,3.4vw,2.9rem); font-weight:800; letter-spacing:-0.03em; line-height:1;}
-    .fr-stat span{display:block; margin-top:.5rem; color:var(--text-3); font-size:.9rem; font-weight:500;}
+    .fr-stat strong{display:block; color:#fff; font-size:clamp(2rem,3.4vw,2.9rem); font-weight:800; letter-spacing:-0.03em; line-height:1;}
+    .fr-stat span{display:block; margin-top:.5rem; color:rgba(255,255,255,.6); font-size:.9rem; font-weight:500;}
+
+    /* Mörka sektioner: gör accent-text läsbar (gradient-text renderar mörk → tvinga ljus) */
+    .section--dark .gradient-text,
+    .fr-upside .gradient-text{ color:#fff; -webkit-text-fill-color:#fff; background:none; }
 
     /* Two-column model */
     .fr-split{display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;}
@@ -353,7 +357,7 @@
 <section class="section section--dark">
   <div class="container">
     <div class="section-head reveal">
-      <span class="eyebrow" style="color:#fff;">Varför Syns Nu</span>
+      <span class="eyebrow" style="color:var(--text);">Varför Syns Nu</span>
       <h2 style="color:#fff;">Det här är ingen idé. <span class="gradient-text">Det är ett bevisat system.</span></h2>
     </div>
     <div class="fr-stats reveal">
@@ -413,7 +417,7 @@
 <section class="section section--soft">
   <div class="container">
     <div class="fr-upside reveal">
-      <span class="eyebrow" style="color:#fff;">Den långsiktiga uppsidan</span>
+      <span class="eyebrow" style="color:var(--text);">Den långsiktiga uppsidan</span>
       <h2>Från partner <span class="gradient-text">till delägare</span></h2>
       <p>Presterar du? Då startar vi ett gemensamt dotterbolag i ditt område. Du fakturerar 2 500 kr per inspelning och vi delar 50/50 på all vinst i bolaget.</p>
       <div class="fr-upside__flow">
