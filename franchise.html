@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Syns Nu Franchise — Äg restaurangmarknadsföringen i din stad</title>
+  <meta name="description" content="Bli partner till Sveriges största marknadsföringsbyrå för restauranger. Vi fyller din kalender med kunder — du filmar. 3 500 kr per inspelning, exklusivt per stad.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta property="og:title" content="Syns Nu Franchise — Bli partner i din stad">
+  <meta property="og:description" content="Vi fyller din kalender med restaurangkunder. Du filmar. Vi sköter resten.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="icon" type="image/png" href="assets/hash-mark-black.png">
+
+  <style>
+    /* ───────── Franchise-sida — SaaS-polish ovanpå designsystemet ───────── */
+    .fr-hero{
+      position:relative; overflow:hidden;
+      padding: calc(var(--nav-h) + clamp(48px,7vw,96px)) 0 clamp(56px,7vw,104px);
+      background:
+        radial-gradient(60% 50% at 50% 0%, rgba(26,115,232,.08), transparent 70%),
+        linear-gradient(180deg, var(--g-blue-50) 0%, var(--bg) 60%);
+    }
+    .fr-hero__grid{
+      position:absolute; inset:0; z-index:0; pointer-events:none;
+      background-image:
+        linear-gradient(to right, rgba(15,15,16,.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15,15,16,.035) 1px, transparent 1px);
+      background-size:56px 56px;
+      mask-image:linear-gradient(180deg,#000,transparent 75%);
+    }
+    .fr-hero__inner{position:relative; z-index:1; max-width:920px; text-align:center; margin:0 auto;}
+    .fr-hero h1{
+      font-size:clamp(2.2rem,5vw,3.85rem); line-height:1.05; letter-spacing:-0.03em;
+      font-weight:800; margin:1.25rem 0 0;
+      hyphens:manual; -webkit-hyphens:manual; text-wrap:balance;
+    }
+    .fr-hero__sub{
+      font-size:clamp(1.05rem,1.6vw,1.3rem); color:var(--text-2);
+      max-width:640px; margin:1.5rem auto 0; line-height:1.6;
+    }
+    .fr-hero__cta{display:flex; gap:.75rem; justify-content:center; flex-wrap:wrap; margin-top:2.25rem;}
+    .fr-trust{
+      display:flex; flex-wrap:wrap; justify-content:center; gap:.75rem 2rem;
+      margin-top:2.5rem; color:var(--text-3); font-weight:600; font-size:.9rem;
+    }
+    .fr-trust span{display:inline-flex; align-items:center; gap:.5rem;}
+    .fr-trust svg{color:var(--g-blue);}
+
+    /* Stats band */
+    .fr-stats{display:grid; grid-template-columns:repeat(4,1fr); gap:1.25rem;}
+    .fr-stat{
+      background:var(--bg); border:1px solid var(--border); border-radius:var(--r-xl);
+      padding:1.75rem 1.5rem; text-align:center; box-shadow:var(--shadow-xs);
+    }
+    .fr-stat strong{display:block; font-size:clamp(2rem,3.4vw,2.9rem); font-weight:800; letter-spacing:-0.03em; line-height:1;}
+    .fr-stat span{display:block; margin-top:.5rem; color:var(--text-3); font-size:.9rem; font-weight:500;}
+
+    /* Two-column model */
+    .fr-split{display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;}
+    .fr-col{border-radius:var(--r-2xl); padding:clamp(1.75rem,3vw,2.5rem); border:1px solid var(--border);}
+    .fr-col--us{background:var(--bg-dark); color:#fff; border-color:transparent;}
+    .fr-col--you{background:var(--bg); box-shadow:var(--shadow-sm);}
+    .fr-col h3{font-size:1.4rem; margin-bottom:1.25rem; font-weight:700;}
+    .fr-col--us h3{color:#fff;}
+    .fr-col ul{list-style:none; padding:0; margin:0; display:grid; gap:.85rem;}
+    .fr-col li{display:flex; gap:.65rem; align-items:flex-start; font-size:1rem; line-height:1.45;}
+    .fr-col--us li{color:rgba(255,255,255,.82);}
+    .fr-col--you li{color:var(--text-2);}
+    .fr-col li svg{flex:none; margin-top:.15rem;}
+    .fr-col--us li svg{color:#7Fb0F5;}
+    .fr-col--you li svg{color:var(--g-blue);}
+
+    /* Bento — vad du får */
+    .fr-bento{display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem;}
+    .fr-bento .card-pad{
+      background:var(--bg); border:1px solid var(--border); border-radius:var(--r-xl);
+      padding:1.75rem; box-shadow:var(--shadow-xs);
+      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .fr-bento .card-pad:hover{transform:translateY(-3px); box-shadow:var(--shadow-md); border-color:var(--border-strong);}
+    .fr-bento h4{font-size:1.1rem; font-weight:700; margin:.85rem 0 .4rem;}
+    .fr-bento p{color:var(--text-3); font-size:.95rem; line-height:1.55;}
+    .fr-ico{width:42px; height:42px; border-radius:var(--r-md); display:grid; place-items:center; background:var(--g-blue-50); color:var(--g-blue);}
+
+    /* Economics highlight */
+    .fr-econ{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem; align-items:stretch;
+    }
+    .fr-econ__card{
+      border-radius:var(--r-2xl); padding:clamp(1.75rem,3vw,2.5rem); text-align:center;
+      border:1px solid var(--border); background:var(--bg);
+    }
+    .fr-econ__card--hero{background:var(--g-gradient); color:#fff; border-color:transparent; box-shadow:var(--shadow-lg);}
+    .fr-econ__num{font-size:clamp(2.4rem,4.5vw,3.4rem); font-weight:800; letter-spacing:-0.03em; line-height:1;}
+    .fr-econ__lbl{margin-top:.6rem; color:var(--text-3); font-weight:500;}
+    .fr-econ__card--hero .fr-econ__lbl{color:rgba(255,255,255,.85);}
+
+    /* Steps */
+    .fr-steps{display:grid; grid-template-columns:repeat(4,1fr); gap:1.25rem; counter-reset:s;}
+    .fr-step{background:var(--bg); border:1px solid var(--border); border-radius:var(--r-xl); padding:1.75rem;}
+    .fr-step__n{
+      width:36px; height:36px; border-radius:var(--r-pill); background:var(--text); color:#fff;
+      display:grid; place-items:center; font-weight:700; font-size:.95rem; margin-bottom:1rem;
+    }
+    .fr-step h4{font-size:1.05rem; font-weight:700; margin-bottom:.35rem;}
+    .fr-step p{color:var(--text-3); font-size:.92rem; line-height:1.5;}
+
+    /* Checklist (who we look for / terms) */
+    .fr-check{display:grid; gap:.9rem; margin-top:1.5rem;}
+    .fr-check li{display:flex; gap:.7rem; align-items:flex-start; font-size:1.05rem; color:var(--text-2); line-height:1.45;}
+    .fr-check svg{flex:none; margin-top:.2rem; color:var(--g-blue);}
+
+    /* Upside / dotterbolag band */
+    .fr-upside{
+      background:var(--bg-dark); color:#fff; border-radius:var(--r-2xl);
+      padding:clamp(2rem,4vw,3.5rem); text-align:center;
+      position:relative; overflow:hidden;
+    }
+    .fr-upside::before{
+      content:""; position:absolute; inset:0;
+      background:radial-gradient(60% 80% at 50% 0%, rgba(139,92,246,.25), transparent 65%);
+      pointer-events:none;
+    }
+    .fr-upside > *{position:relative;}
+    .fr-upside h2{color:#fff;}
+    .fr-upside p{color:rgba(255,255,255,.8); max-width:620px; margin:1rem auto 0; font-size:1.05rem; line-height:1.6;}
+    .fr-upside__flow{display:inline-flex; align-items:center; gap:1rem; margin-top:1.75rem; flex-wrap:wrap; justify-content:center;}
+    .fr-pill{background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.16); border-radius:var(--r-pill); padding:.6rem 1.25rem; font-weight:600;}
+    .fr-pill--bright{background:#fff; color:var(--text); border-color:#fff;}
+
+    /* Form intro layout */
+    .fr-formgrid{display:grid; grid-template-columns:1fr 1fr; gap:clamp(1.5rem,4vw,3.5rem); align-items:start;}
+    .fr-formgrid .fr-check{margin-top:1.75rem;}
+
+    .section-head{max-width:680px; margin:0 auto clamp(2.5rem,4vw,3.5rem); text-align:center;}
+    .section-head--left{text-align:left; margin-left:0;}
+    .section-head p{color:var(--text-3); font-size:1.05rem; margin-top:.85rem; line-height:1.6;}
+
+    @media (max-width:900px){
+      .fr-stats{grid-template-columns:repeat(2,1fr);}
+      .fr-split{grid-template-columns:1fr;}
+      .fr-bento{grid-template-columns:1fr 1fr;}
+      .fr-econ{grid-template-columns:1fr;}
+      .fr-steps{grid-template-columns:1fr 1fr;}
+      .fr-formgrid{grid-template-columns:1fr;}
+    }
+    @media (max-width:560px){
+      .fr-stats,.fr-bento,.fr-steps{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav" role="navigation" aria-label="Huvudnavigering">
+  <div class="nav__inner">
+    <a class="nav__logo" href="index.html" aria-label="Syns Nu Media — Hem">
+      <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/699641283fd420658d5267af.png" alt="Syns Nu Media" width="100" height="26">
+    </a>
+    <div class="nav__links" role="menubar">
+      <a href="index.html">Hem</a>
+      <div class="nav__dropdown">
+        <span class="nav__dropdown-toggle" tabindex="0" aria-haspopup="true">
+          Tjänster
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </span>
+        <div class="nav__dropdown-menu">
+          <a href="sociala-medier.html">Sociala Medier</a>
+          <a href="hemsida.html">Webbdesign</a>
+          <a href="marknadsforing.html">Marknadsföring</a>
+          <a href="matfotografering.html">Matfotografering</a>
+          <a href="qopla-erbjudande.html">Qopla-erbjudande</a>
+        </div>
+      </div>
+      <a href="om-oss.html">Om oss</a>
+      <a href="kundcase.html">Kundcase</a>
+      <a href="jobb.html">Jobb</a>
+    </div>
+    <div class="nav__cta">
+      <a href="https://synsnumedia.com/portal/login" class="nav__login" target="_blank" rel="noopener">Logga in</a>
+      <a href="#intresse" class="btn btn--blue btn--sm">Anmäl ditt intresse</a>
+    </div>
+    <button id="hamburger" aria-label="Öppna meny" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div id="mobile-menu" role="dialog" aria-modal="true">
+  <nav class="mobile-menu__links">
+    <a href="index.html">Hem</a>
+    <a href="sociala-medier.html">Sociala Medier</a>
+    <a href="hemsida.html">Webbdesign</a>
+    <a href="om-oss.html">Om oss</a>
+    <a href="kundcase.html">Kundcase</a>
+    <a href="jobb.html">Jobb</a>
+    <a href="kontakt.html">Kontakt</a>
+  </nav>
+  <a href="#intresse" class="btn btn--blue">Anmäl ditt intresse</a>
+  <a href="https://synsnumedia.com/portal/login" target="_blank" rel="noopener" class="btn btn--ghost">Logga in</a>
+</div>
+
+<!-- HERO -->
+<section class="fr-hero">
+  <div class="fr-hero__grid" aria-hidden="true"></div>
+  <div class="container">
+    <div class="fr-hero__inner reveal">
+      <span class="eyebrow">Syns Nu Franchise</span>
+      <h1>Äg restaurang&shy;marknads&shy;föringen<br><span class="gradient-text">i din stad</span></h1>
+      <p class="fr-hero__sub">Bli partner till Sveriges största marknadsföringsbyrå för restauranger. Vi fyller din kalender med kunder — du filmar. Vi sköter resten.</p>
+      <div class="fr-hero__cta">
+        <a href="#intresse" class="btn btn--blue btn--lg">Anmäl ditt intresse
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="#modell" class="btn btn--ghost btn--lg">Se hur det funkar</a>
+      </div>
+      <div class="fr-trust">
+        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> 200+ restauranger</span>
+        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> +30–50% i omsättning</span>
+        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Snart 3 år i branschen</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISION -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Visionen</span>
+      <h2>Vi ska äga restaurangbranschens marknadsföring <span class="gradient-text">i hela Sverige</span></h2>
+      <p>Vi har byggt motorn — varumärket, kunderna, systemen och annonsbudgeten. Nu öppnar vi upp den för byråer som vill äga sitt område tillsammans med oss.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="section section--soft">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Problemet</span>
+      <h2>Din videograf är guld värd. <span class="gradient-text">Men hen sitter och väntar.</span></h2>
+      <p>De flesta byråer har kompetensen och utrustningen — men kämpar med samma sak: att fylla kalendern med nya, återkommande kunder. Tid och talang går till spillo mellan jobben.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION + MODEL -->
+<section class="section" id="modell">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Så funkar modellen</span>
+      <h2>Du sköter kameran. <span class="gradient-text">Vi sköter resten.</span></h2>
+      <p>Med Syns Nu Franchise blir du vår lokala produktionsarm. Vi skickar kunderna, du levererar inspelningarna. Tänk det som att vi abonnerar på din videograf.</p>
+    </div>
+    <div class="fr-split reveal">
+      <div class="fr-col fr-col--us">
+        <h3>Syns Nu — motorn</h3>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Varumärke och kundanskaffning</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Annonsbudget — vi betalar marknadsföringen</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> All administration och kundkontakt</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> All redigering av bild och video</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Manus, vinklar och scener inför varje inspelning</li>
+        </ul>
+      </div>
+      <div class="fr-col fr-col--you">
+        <h3>Du — den lokala produktionsarmen</h3>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Filmar på plats hos restaurangerna i ditt område</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Dyker upp startklar — vi har förberett allt</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Bär Syns Nu-arbetskläder — du blir Syns Nu lokalt</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Får alla icke-restaurangkunder vi fångar i området</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="section section--soft">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Vad du får</span>
+      <h2>Allt du behöver för att <span class="gradient-text">växa stabilt</span></h2>
+    </div>
+    <div class="fr-bento reveal">
+      <div class="card-pad">
+        <div class="fr-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></div>
+        <h4>Jämn ström av kunder</h4>
+        <p>Återkommande restaurangkunder varje månad — vi står för marknadsföringskostnaderna.</p>
+      </div>
+      <div class="card-pad">
+        <div class="fr-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <h4>En fylld kalender</h4>
+        <p>Håll dina heltidsanställda i rullning istället för att de sitter och rullar tummarna.</p>
+      </div>
+      <div class="card-pad">
+        <div class="fr-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h4>100% av övriga kunder</h4>
+        <p>Alla icke-restaurangkunder vi fångar upp i ditt område går rakt till dig.</p>
+      </div>
+      <div class="card-pad">
+        <div class="fr-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+        <h4>Noll administration</h4>
+        <p>Vi sköter all kundkontakt, all bokning och all redigering. Du fokuserar på filmningen.</p>
+      </div>
+      <div class="card-pad">
+        <div class="fr-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+        <h4>Manus klara i förväg</h4>
+        <p>Vinklar, scener och manus är förberedda inför varje inspelning. Du kommer startklar.</p>
+      </div>
+      <div class="card-pad">
+        <div class="fr-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg></div>
+        <h4>Syns Nu i fält</h4>
+        <p>Du representerar Syns Nu med våra arbetskläder — du blir varumärket i din stad.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ECONOMICS -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Ekonomin</span>
+      <h2>Vad du <span class="gradient-text">tjänar</span></h2>
+      <p>Vi börjar smått och rampar upp tillsammans. Klarar du fler än 20 kunder i månaden? Ta gärna fler.</p>
+    </div>
+    <div class="fr-econ reveal">
+      <div class="fr-econ__card">
+        <div class="fr-econ__num">3 500 kr</div>
+        <div class="fr-econ__lbl">per inspelning</div>
+      </div>
+      <div class="fr-econ__card fr-econ__card--hero">
+        <div class="fr-econ__num">~70 000 kr</div>
+        <div class="fr-econ__lbl">per månad vid målet 20 återkommande kunder — bara på filmningen</div>
+      </div>
+      <div class="fr-econ__card">
+        <div class="fr-econ__num">100%</div>
+        <div class="fr-econ__lbl">av alla icke-restaurangkunder du får genom oss</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="section section--dark">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow" style="color:#fff;">Varför Syns Nu</span>
+      <h2 style="color:#fff;">Det här är ingen idé. <span class="gradient-text">Det är ett bevisat system.</span></h2>
+    </div>
+    <div class="fr-stats reveal">
+      <div class="fr-stat"><strong>200+</strong><span>restauranger i hela Sverige</span></div>
+      <div class="fr-stat"><strong>+30–50%</strong><span>i omsättning i snitt</span></div>
+      <div class="fr-stat"><strong>~3 år</strong><span>i restaurangbranschen</span></div>
+      <div class="fr-stat"><strong>KK</strong><span>vårt egna system som styr allt</span></div>
+    </div>
+    <p class="reveal" style="text-align:center; color:rgba(255,255,255,.6); margin-top:2rem; font-size:.95rem;">Bakom kunder som Brams Burgers, Stekt, Fluffy House med flera.</p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section section--soft">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Så går det till</span>
+      <h2>Noll administrativ <span class="gradient-text">huvudvärk för dig</span></h2>
+    </div>
+    <div class="fr-steps reveal">
+      <div class="fr-step">
+        <div class="fr-step__n">1</div>
+        <h4>Vi bokar kunderna</h4>
+        <p>Vi hittar tider i din kalender — precis som med en egen anställd.</p>
+      </div>
+      <div class="fr-step">
+        <div class="fr-step__n">2</div>
+        <h4>Du filmar på plats</h4>
+        <p>Du dyker upp med utrustningen, förberedd med manus och vinklar.</p>
+      </div>
+      <div class="fr-step">
+        <div class="fr-step__n">3</div>
+        <h4>Vi redigerar allt</h4>
+        <p>Du lämnar materialet till oss — vi gör resten och levererar till kunden.</p>
+      </div>
+      <div class="fr-step">
+        <div class="fr-step__n">4</div>
+        <h4>Vi växer ihop</h4>
+        <p>Vi utvärderar löpande tillsammans så samarbetet håller över tid.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXCLUSIVITY -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Exklusivt per område</span>
+      <h2>En partner <span class="gradient-text">per stad</span></h2>
+      <p>Vi jobbar bara med en byrå per område. När din stad är tagen är den tagen. Du äger din region — och växer med oss i den.</p>
+    </div>
+  </div>
+</section>
+
+<!-- UPSIDE -->
+<section class="section section--soft">
+  <div class="container">
+    <div class="fr-upside reveal">
+      <span class="eyebrow" style="color:#fff;">Den långsiktiga uppsidan</span>
+      <h2>Från partner <span class="gradient-text">till delägare</span></h2>
+      <p>Presterar du? Då startar vi ett gemensamt dotterbolag i ditt område. Du fakturerar 2 500 kr per inspelning och vi delar 50/50 på all vinst i bolaget.</p>
+      <div class="fr-upside__flow">
+        <span class="fr-pill">Leverantör</span>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        <span class="fr-pill fr-pill--bright">Delägare</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE LOOK FOR -->
+<section class="section">
+  <div class="container">
+    <div class="split-grid split-grid--start">
+      <div class="reveal">
+        <span class="eyebrow">Vem vi söker</span>
+        <h2>Är det här <span class="gradient-text">du?</span></h2>
+        <p style="color:var(--text-3); margin-top:1rem; font-size:1.05rem; line-height:1.6;">Vi letar efter rätt partner — inte flest partners. Känner du igen dig är det dig vi vill prata med.</p>
+      </div>
+      <ul class="fr-check reveal">
+        <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> En halvt etablerad byrå som kan sin sak och vill växa</li>
+        <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Ett team på runt tre personer — med någon som bara vill snurra inspelningar</li>
+        <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> En videograf bekväm med både telefon och kamera</li>
+        <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Någon som vill ha återkommande kunder utan den administrativa bördan</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TERMS -->
+<section class="section section--soft">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Villkoren</span>
+      <h2>Enkelt och <span class="gradient-text">rättvist</span></h2>
+    </div>
+    <ul class="fr-check reveal" style="max-width:680px; margin-inline:auto;">
+      <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Vi börjar med en testperiod på 3 månader — ingen uppsägningstid efter den.</li>
+      <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Därefter löpande samarbete med 3 månaders uppsägning.</li>
+      <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Alla restaurangkunder går under Syns Nu — du tar inga egna vid sidan om.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- INTEREST FORM -->
+<section class="section" id="intresse">
+  <div class="container">
+    <div class="fr-formgrid">
+      <div class="reveal">
+        <span class="eyebrow">Nästa steg</span>
+        <h2>Ta din <span class="gradient-text">stad</span></h2>
+        <p style="color:var(--text-2); margin-top:1rem; font-size:1.05rem; line-height:1.6;">Fyll i en intresseanmälan så bokar vi ett möte och går igenom allt tillsammans — du ställer dina frågor, vi ställer våra.</p>
+        <ul class="fr-check">
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Ett område per byrå — säkra ditt först</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Inga förpliktelser — bara ett samtal</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Vi återkommer inom 24 timmar</li>
+        </ul>
+      </div>
+
+      <div class="contact-form-box reveal">
+        <h3>Anmäl ditt intresse</h3>
+        <p style="color: var(--text-3); font-size: 0.9375rem; margin-top: -0.75rem; margin-bottom: 1.5rem;">Berätta lite om din byrå så hör vi av oss.</p>
+        <form class="lead-form" action="https://formspree.io/f/xjkvrpke" method="POST">
+          <input type="hidden" name="_subject" value="Ny franchise-intresseanmälan">
+          <input type="hidden" name="source" value="franchise">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Namn</label>
+              <input type="text" name="namn" class="form-input" placeholder="Ditt namn" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Byråns namn</label>
+              <input type="text" name="byra" class="form-input" placeholder="Din byrå" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">E-post</label>
+              <input type="email" name="email" class="form-input" placeholder="du@byra.se" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Telefon</label>
+              <input type="tel" name="telefon" class="form-input" placeholder="070 000 00 00">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Stad / område</label>
+              <input type="text" name="stad" class="form-input" placeholder="Var finns ni?" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Antal i teamet</label>
+              <select name="team" class="form-input">
+                <option value="">Välj...</option>
+                <option>Bara jag</option>
+                <option>2–3 personer</option>
+                <option>4–6 personer</option>
+                <option>7+ personer</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Har ni en videograf/fotograf?</label>
+            <select name="videograf" class="form-input">
+              <option value="">Välj...</option>
+              <option>Ja — bekväm med både telefon och kamera</option>
+              <option>Ja — främst kamera</option>
+              <option>Ja — främst telefon</option>
+              <option>Nej, men vi kan lösa det</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Berätta kort om din byrå</label>
+            <textarea name="meddelande" class="form-input" rows="4" placeholder="Vilka kunder har ni idag, vad vill ni uppnå, och varför passar Syns Nu Franchise er?"></textarea>
+          </div>
+          <button type="submit" class="btn btn--blue btn--lg" style="width:100%;">Skicka intresseanmälan
+            <svg class="icon icon--arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+          <p style="font-size: 0.75rem; color: var(--text-3); text-align: center; margin-top: 0.75rem;">Vi återkommer inom 24 timmar · Inga förpliktelser</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/699641283fd420658d5267af.png" alt="Syns Nu Media">
+        <p>Sveriges största marknadsföringsbyrå för restauranger. Vi hjälper dig synas, växa och öka omsättningen.</p>
+        <div class="footer__social">
+          <a href="https://www.instagram.com/synsnumedia/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="https://www.tiktok.com/@synsnumedia" target="_blank" rel="noopener" aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a>
+          <a href="https://www.facebook.com/synsnumedia" target="_blank" rel="noopener" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://www.linkedin.com/company/synsnumedia" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h5>Tjänster</h5>
+        <ul>
+          <li><a href="sociala-medier.html">Sociala Medier</a></li>
+          <li><a href="hemsida.html">Webbdesign</a></li>
+          <li><a href="kundcase.html">Kundcase</a></li>
+          <li><a href="qopla-erbjudande.html">Qopla-erbjudande</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Företag</h5>
+        <ul>
+          <li><a href="om-oss.html">Om oss</a></li>
+          <li><a href="jobb.html">Jobb</a></li>
+          <li><a href="franchise.html">Franchise</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Kontakt</h5>
+        <ul>
+          <li><a href="tel:+46708425833">070-842 58 33</a></li>
+          <li><a href="mailto:info@synsnumedia.se">info@synsnumedia.se</a></li>
+          <li>Stockholm, Sverige</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© Syns Nu AB 2026. Alla rättigheter förbehållna.</span>
+      <a href="integritetspolicy.html">Integritetspolicy</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
