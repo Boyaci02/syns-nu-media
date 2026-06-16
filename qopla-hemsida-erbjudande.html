@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hemsida &amp; SEO för din restaurang — Syns Nu Media × Qopla</title>
+<meta name="description" content="Som Qopla-partner får du hemsida och SEO byggd för restauranger av Syns Nu Media. Boka ett kostnadsfritt möte.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0A0A0B">
+<meta property="og:title" content="Hemsida &amp; SEO för din restaurang">
+<meta property="og:description" content="Hemsida och SEO byggd för restauranger — en partnerförmån via Qopla.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F4F2; --card:#FFFFFF; --ink:#0F0F10; --ink2:#52525B; --ink3:#71717A;
+  --line:#EAEAE6; --dark:#0A0A0B; --dark2:#141416;
+  --orange:#FF9C6B; --teal:#4EBFB8; --purple:#7C5CD6; --purple-soft:#F4EFFF; --purple-line:#E8E1FF; --lime:#E5EE9E;
+  --maxw:1080px; --ease:cubic-bezier(.2,.7,.25,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',-apple-system,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.serif{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;letter-spacing:-.01em}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)}
+.dots{display:inline-flex;gap:5px;vertical-align:middle}
+.dots i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.dots i:nth-child(1){background:var(--orange)}.dots i:nth-child(2){background:var(--teal)}.dots i:nth-child(3){background:var(--purple)}
+
+.btn{display:inline-flex;align-items:center;gap:.5em;font-weight:600;font-size:16px;letter-spacing:-.01em;padding:15px 30px;border-radius:9999px;cursor:pointer;border:0;transition:transform .22s var(--ease),box-shadow .22s,background .22s,color .22s}
+.btn-dark{background:var(--dark);color:#fff}
+.btn-dark:hover{transform:translateY(-2px);box-shadow:0 16px 30px -14px rgba(10,10,11,.5)}
+.btn-light{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.btn-light:hover{transform:translateY(-2px)}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(244,244,242,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;padding:15px 0}
+.brand{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:.03em;font-size:16px}
+.brand .muted{color:#A1A1AA;font-weight:600}
+.nav .tag{font-size:12px;font-weight:600;color:var(--ink3);border:1px solid var(--line);background:#fff;padding:6px 12px;border-radius:9999px}
+.nav .btn{padding:10px 20px;font-size:14px}
+.nav-cta-wrap{display:flex;align-items:center;gap:14px}
+
+/* Hero */
+.hero{padding:84px 0 70px;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.hero .eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:22px}
+.hero h1{font-size:clamp(40px,5.4vw,66px);line-height:1.04;letter-spacing:-.035em;font-weight:700}
+.hero p.lead{font-size:18px;color:var(--ink2);margin:24px 0 32px;max-width:46ch}
+.hero-cta{display:flex;gap:13px;flex-wrap:wrap}
+.hero-card{background:var(--dark);border-radius:24px;padding:30px;color:#fff;box-shadow:0 30px 70px -34px rgba(10,10,11,.6)}
+.hero-card h3{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#B9A3F7;margin-bottom:18px}
+.price-row{display:flex;gap:12px}
+.price-cell{flex:1;background:var(--dark2);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:18px 18px}
+.price-cell .k{font-size:13px;color:rgba(255,255,255,.6);margin-bottom:7px}
+.price-cell .v{font-size:26px;font-weight:700;letter-spacing:-.03em}
+.price-cell .v span{font-size:14px;font-weight:500;color:rgba(255,255,255,.55)}
+.hero-card .offer{margin-top:16px;background:rgba(124,92,214,.16);border:1px solid rgba(124,92,214,.4);border-radius:13px;padding:15px 17px;font-size:14.5px;line-height:1.45}
+.hero-card .offer b{color:#CDBBFF}
+
+/* Section */
+.sec{padding:70px 0}
+.sec-head{max-width:620px;margin-bottom:42px}
+.sec-head h2{font-size:clamp(28px,3.6vw,42px);letter-spacing:-.025em;font-weight:700;line-height:1.08}
+.sec-head p{font-size:17px;color:var(--ink2);margin-top:14px}
+
+/* Value points */
+.vals{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.val{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px}
+.val .dot{width:11px;height:11px;border-radius:50%;margin-bottom:16px}
+.val:nth-child(1) .dot{background:var(--teal)}.val:nth-child(2) .dot{background:var(--orange)}.val:nth-child(3) .dot{background:var(--purple)}
+.val h3{font-size:18px;font-weight:700;letter-spacing:-.01em;margin-bottom:9px}
+.val p{font-size:15px;color:var(--ink2)}
+
+/* Examples */
+.ex{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.ex-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.ex-card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:transform .25s var(--ease),box-shadow .25s}
+.ex-card:hover{transform:translateY(-4px);box-shadow:0 18px 36px -22px rgba(15,15,16,.4)}
+.ex-card img{width:100%;height:138px;object-fit:cover;border-bottom:1px solid var(--line)}
+.ex-card .b{padding:14px 16px 16px}
+.ex-card .b h4{font-size:15.5px;font-weight:600;letter-spacing:-.01em;margin-bottom:8px}
+.ex-card .b a{font-size:13.5px;font-weight:600;color:var(--purple)}
+
+/* Contact */
+.contact{background:var(--dark);color:#fff}
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:center}
+.contact h2{color:#fff;font-size:clamp(30px,3.8vw,46px);letter-spacing:-.03em;line-height:1.06;font-weight:700}
+.contact .lead{color:rgba(255,255,255,.72);font-size:17.5px;margin-top:18px;max-width:40ch}
+.contact .quick{margin-top:28px;display:grid;gap:13px;font-size:15px;color:rgba(255,255,255,.8)}
+.contact .quick b{color:#fff;font-weight:600}
+.form{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:32px}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:12.5px;font-weight:600;letter-spacing:.03em;color:rgba(255,255,255,.7);margin-bottom:7px}
+.field input,.field textarea{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:13px 15px;color:#fff;font-family:inherit;font-size:15px;transition:border .2s,background .2s}
+.field input:focus,.field textarea:focus{outline:none;border-color:#B9A3F7;background:rgba(255,255,255,.1)}
+.field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,.4)}
+.field textarea{resize:vertical;min-height:110px}
+.form .btn{width:100%;justify-content:center;background:#fff;color:var(--ink);margin-top:4px}
+.form .btn:hover{background:#f0eefb}
+.form-note{font-size:12.5px;color:rgba(255,255,255,.5);margin-top:13px;text-align:center}
+.hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
+
+/* Footer */
+.foot{background:var(--dark);color:rgba(255,255,255,.6);padding:34px 0 40px;border-top:1px solid rgba(255,255,255,.1)}
+.foot .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.foot .brand{color:#fff}
+.foot p{font-size:13px}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:900px){
+  .hero-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-card{order:-1}
+  .vals{grid-template-columns:1fr}
+  .ex-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:560px){
+  .nav .tag{display:none}
+  .ex-grid{grid-template-columns:1fr}
+  .form .row{grid-template-columns:1fr}
+  .form{padding:24px}
+  .hero{padding:54px 0 50px}
+  .sec{padding:54px 0}
+}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-in">
+    <div class="brand"><span class="dots"><i></i><i></i><i></i></span> SYNSNU <span class="muted">MEDIA</span></div>
+    <div class="nav-cta-wrap">
+      <span class="tag">Partner till Qopla</span>
+      <a href="#kontakt" class="btn btn-dark">Boka möte</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow"><span class="dots"><i></i><i></i><i></i></span> Partnerförmån · Qopla × Syns Nu Media</span>
+      <h1>Hemsida och SEO <span class="serif">för din restaurang</span></h1>
+      <p class="lead">Vi bygger snabba, mobilanpassade hemsidor kopplade till din Qopla-meny — och ser till att gästerna hittar er när de söker efter mat i närheten. Som Qopla-partner får du ett särskilt pris.</p>
+      <div class="hero-cta">
+        <a href="#kontakt" class="btn btn-dark">Boka ett kostnadsfritt möte</a>
+        <a href="#exempel" class="btn btn-light">Se exempel</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Tydliga priser</h3>
+      <div class="price-row">
+        <div class="price-cell"><div class="k">Hemsida</div><div class="v">500 kr<span>/mån</span></div></div>
+        <div class="price-cell"><div class="k">SEO</div><div class="v">1 000 kr<span>/mån</span></div></div>
+      </div>
+      <div class="offer">Som Qopla-partner: <b>hemsida + SEO tillsammans för 1 250 kr/mån</b> — istället för 1 500 kr. Pris per månad, 2 års avtal.</div>
+    </div>
+  </div>
+</header>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Allt en restaurang behöver för att synas</h2>
+      <p>Tre saker som tillsammans fyller fler bord — byggt och skött av oss.</p>
+    </div>
+    <div class="vals">
+      <div class="val reveal"><div class="dot"></div><h3>Hemsida byggd för restauranger</h3><p>Snabb, mobilanpassad och kopplad till din Qopla-meny och onlinebeställning. Gästen hittar maten på sekunder.</p></div>
+      <div class="val reveal"><div class="dot"></div><h3>SEO som rankar lokalt</h3><p>Vi optimerar så att ni hamnar högt upp när gästerna googlar efter mat nära dem — där besluten faktiskt tas.</p></div>
+      <div class="val reveal"><div class="dot"></div><h3>Synlig även i AI-sök</h3><p>Allt fler frågar ChatGPT och AI om var de ska äta. Vi ser till att er restaurang dyker upp även där.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec ex" id="exempel">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Exempel på hemsidor vi byggt</h2>
+      <p>Några restauranger vi redan hjälpt att synas och fylla fler bord.</p>
+    </div>
+    <div class="ex-grid">
+      <a class="ex-card reveal" href="https://brams.se" target="_blank" rel="noopener">
+        <img src="assets/qopla-card-brams.jpg" alt="Brams Burgers hemsida">
+        <div class="b"><h4>Brams Burgers</h4><span><a>Besök sidan →</a></span></div>
+      </a>
+      <a class="ex-card reveal" href="https://fluffyhouse.se" target="_blank" rel="noopener">
+        <img src="assets/qopla-card-fluffy.jpg" alt="Fluffy House hemsida">
+        <div class="b"><h4>Fluffy House</h4><span><a>Besök sidan →</a></span></div>
+      </a>
+      <a class="ex-card reveal" href="https://kebabdudes.com" target="_blank" rel="noopener">
+        <img src="assets/qopla-card-kebabdudes.jpg" alt="Kebab Dudes hemsida">
+        <div class="b"><h4>Kebab Dudes</h4><span><a>Besök sidan →</a></span></div>
+      </a>
+      <a class="ex-card reveal" href="https://thw.se" target="_blank" rel="noopener">
+        <img src="assets/qopla-card-thw.jpg" alt="Thai House Wok hemsida">
+        <div class="b"><h4>Thai House Wok</h4><span><a>Besök sidan →</a></span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="sec contact" id="kontakt">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <h2>Hör av dig så tar vi det därifrån</h2>
+      <p class="lead">Lämna dina uppgifter så ringer vi upp och bokar ett kostnadsfritt möte. Inget krångel, ingen bindning för att prata.</p>
+      <div class="quick">
+        <div><b>Mejl</b> &nbsp;info@synsnumedia.com</div>
+        <div><b>Telefon</b> &nbsp;070-888 01 98</div>
+        <div><b>Ort</b> &nbsp;Stockholm</div>
+      </div>
+    </div>
+    <form class="form" action="https://formsubmit.co/info@synsnumedia.com" method="POST">
+      <input type="hidden" name="_subject" value="Ny förfrågan — Qopla landningssida (hemsida/SEO)">
+      <input type="hidden" name="_next" value="https://www.synsnumedia.se/qopla-hemsida-tack">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <div class="hp" aria-hidden="true"><label>Lämna tomt<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+      <div class="row">
+        <div class="field"><label for="namn">Namn</label><input id="namn" type="text" name="Namn" placeholder="Ditt namn" required></div>
+        <div class="field"><label for="rest">Restaurang</label><input id="rest" type="text" name="Restaurang" placeholder="Restaurangens namn" required></div>
+      </div>
+      <div class="row">
+        <div class="field"><label for="epost">E-post</label><input id="epost" type="email" name="E-post" placeholder="din@epost.se" required></div>
+        <div class="field"><label for="tel">Telefon</label><input id="tel" type="tel" name="Telefon" placeholder="070-000 00 00"></div>
+      </div>
+      <div class="field"><label for="medd">Meddelande (valfritt)</label><textarea id="medd" name="Meddelande" placeholder="Berätta gärna kort vad du är intresserad av…"></textarea></div>
+      <button type="submit" class="btn">Boka ett kostnadsfritt möte</button>
+      <p class="form-note">Vi hör av oss inom en arbetsdag.</p>
+    </form>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="brand"><span class="dots"><i></i><i></i><i></i></span> SYNSNU <span class="muted" style="color:#A1A1AA">MEDIA</span></div>
+    <p>© <span id="yr">2026</span> Syns Nu Media — Sveriges marknadsföringsbyrå för restauranger. I samarbete med Qopla.</p>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+(function(){
+  var items=[].slice.call(document.querySelectorAll('.reveal'));
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+    items.forEach(function(el){io.observe(el);});
+    window.addEventListener('scroll',function(){items.forEach(function(el){if(!el.classList.contains('in')&&el.getBoundingClientRect().top<window.innerHeight*1.4)el.classList.add('in');});},{passive:true});
+    setTimeout(function(){items.forEach(function(el){el.classList.add('in');});},3000);
+  } else { items.forEach(function(el){el.classList.add('in');}); }
+})();
+</script>
+</body>
+</html>
