@@ -139,6 +139,16 @@
     revealObs.observe(parent);
   });
 
+  /* Resilient fallback: om observern av någon anledning aldrig triggar (vissa
+     Safari/scrollfall) får innehåll ALDRIG fastna osynligt på opacity 0 —
+     George såg en helt tom FAQ på /seo 25/8. Allt som inte hunnit bli synligt
+     inom ett par sekunder visas ändå. */
+  setTimeout(function () {
+    document.querySelectorAll('.reveal:not(.visible), .reveal-stagger:not(.visible)').forEach(function (el) {
+      el.classList.add('visible');
+    });
+  }, 2000);
+
   /* ──────────────────────────────────────────────
      6. COUNTER ANIMATION
   ────────────────────────────────────────────── */
