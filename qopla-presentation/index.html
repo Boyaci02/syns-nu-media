@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8" />
+<meta name="robots" content="noindex,nofollow">
+<title>Syns Nu Media × Qopla — Tjänster, kickback och ersättning</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<script src="deck-stage.js"></script>
+<style>
+  /* ============== DECK-LEVEL OVERRIDES ============== */
+  /* The design system uses fluid clamp() type, but slides are fixed at 1920×1080,
+     so we set hard pixel sizes that match the spirit of the system. */
+
+  html, body { background: #0A0A0B; }
+  deck-stage { background: #0A0A0B; }
+
+  section.slide {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    display: block;
+    font-size: 22px;
+    line-height: var(--lh-body);
+  }
+  section.slide.dark      { background: var(--bg-dark);    color: rgba(255,255,255,0.92); }
+  section.slide.soft      { background: var(--bg-soft); }
+  section.slide.lavender  { background: var(--edit-lavender); }
+  section.slide.peach     { background: var(--edit-peach-soft); }
+  section.slide.olive     { background: var(--edit-olive); }
+  section.slide.cream     { background: var(--edit-warm); }
+
+  .slide-inner {
+    position: absolute;
+    inset: 0;
+    padding: 96px 120px;
+    box-sizing: border-box;
+  }
+
+  /* ============== TYPE PRIMITIVES (slide-scaled) ============== */
+  .eyebrow-d {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    color: var(--text-3);
+    text-transform: uppercase;
+  }
+  .dark .eyebrow-d { color: rgba(255,255,255,0.55); }
+  .eyebrow-d::before {
+    content: ""; width: 8px; height: 8px; border-radius: 50%;
+    background: var(--edit-peach-chip);
+  }
+
+  h1.h1, h2.h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+  }
+  h1.h1 {
+    font-size: 88px;
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+  }
+  h2.h2 {
+    font-size: 64px;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+  }
+  .dark h1.h1, .dark h2.h2 { color: #fff; }
+
+  /* The signature italic-serif emphasis word */
+  em.gs {
+    font-family: var(--font-italic);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    color: inherit;
+  }
+
+  .lead-d {
+    font-family: var(--font-sans);
+    font-size: 26px;
+    line-height: 1.55;
+    color: var(--text-3);
+    max-width: 1080px;
+    margin: 0;
+    font-weight: 400;
+  }
+  .dark .lead-d { color: rgba(255,255,255,0.65); }
+
+  /* ============== BRAND MARK ============== */
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 700;
+    display: inline-flex; align-items: center; gap: 0.42em;
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
+    line-height: 1;
+    display: inline-flex; align-items: center; gap: 0.25em;
+    color: var(--text);
+  }
+  .dark .wordmark { color: #fff; }
+  .wordmark .hash-mark {
+    width: 1.05em; height: 1.05em; flex: 0 0 auto;
+    object-fit: contain;
+    content: url("assets/hash-mark-black.png");
+  }
+  .dark .wordmark .hash-mark { content: url("assets/hash-mark-white.png"); }
+  /* legacy class names kept harmless in case any slide still uses them */
+  .tri-dot { display: none; }
+  .wordmark .dash { font-weight: 300; opacity: .55; margin: 0 .15em; }
+
+  /* slide chrome wordmark */
+  .chrome-mark {
+    position: absolute; bottom: 56px; left: 120px;
+    font-size: 18px;
+  }
+  .chrome-mark .wordmark { font-size: 18px; }
+  .chrome-page {
+    position: absolute; bottom: 56px; right: 120px;
+    font-family: var(--font-sans); font-size: 14px; font-weight: 500;
+    letter-spacing: 0.18em; color: var(--text-3); text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+  }
+  .dark .chrome-page { color: rgba(255,255,255,0.45); }
+
+  /* ============== UTILITIES ============== */
+  .row { display: flex; gap: 24px; }
+  .col { display: flex; flex-direction: column; }
+  .grow{ flex: 1; }
+  .em-dash { font-weight: 300; opacity: 0.4; margin: 0 0.2em; }
+
+  /* ============== COMPONENTS ============== */
+
+  /* Pill button (display only, non-interactive on slides) */
+  .pill-btn {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 14px 18px 14px 28px;
+    background: #fff; color: var(--text);
+    border-radius: var(--r-pill);
+    font-family: var(--font-sans); font-weight: 500; font-size: 18px;
+    letter-spacing: -0.01em;
+    border: 1px solid var(--border);
+  }
+  .pill-btn--dark { background: var(--text); color: #fff; border-color: transparent; }
+  .pill-btn--lav  { background: var(--edit-lavender); border-color: transparent; }
+  .pill-btn__arrow {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--text); color: #fff;
+    display: inline-grid; place-items: center;
+  }
+  .pill-btn--dark .pill-btn__arrow { background: #fff; color: var(--text); }
+
+  /* Standard editorial card (white) */
+  .ed-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--r-card);
+    padding: 32px;
+    box-sizing: border-box;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .ed-card h3 {
+    font-family: var(--font-display); font-weight: 600;
+    font-size: 26px; letter-spacing: -0.025em; color: var(--text); margin: 0;
+    line-height: 1.2;
+  }
+  .ed-card p {
+    font-size: 18px; line-height: 1.55; color: var(--text-3); margin: 0;
+  }
+  .ed-card .icon-chip {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: var(--bg-soft); border: 1px solid var(--border);
+    display: inline-grid; place-items: center; color: var(--text);
+  }
+
+  /* Service / pastel cards */
+  .svc-card {
+    border-radius: var(--r-card); padding: 32px; box-sizing: border-box;
+    display: flex; flex-direction: column; gap: 14px;
+    color: var(--text); flex: 1;
+  }
+  .svc-card.dark { background: #101010; color: #fff; }
+  .svc-card.dark h3, .svc-card.dark h4, .svc-card.dark h5 { color: #fff; }
+  .svc-card.dark p, .svc-card.dark .small { color: rgba(255,255,255,0.78); }
+  .svc-card.dark .small { color: rgba(255,255,255,0.62); }
+  /* Dark slides — make all card heads white when card sits on near-black */
+  section.slide.dark .ed-card { background: #141416; border-color: rgba(255,255,255,0.08); }
+  section.slide.dark .ed-card h3,
+  section.slide.dark .ed-card h4 { color: #fff; }
+  section.slide.dark .ed-card p { color: rgba(255,255,255,0.72); }
+  section.slide.dark .ed-card .icon-chip { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1); color: #fff; }
+  section.slide.dark .svc-card h3,
+  section.slide.dark .svc-card h4,
+  section.slide.dark .svc-card h5 { color: #fff; }
+  .svc-card.lav   { background: var(--edit-lavender-chip); }
+  .svc-card.peach { background: var(--edit-peach); }
+  .svc-card.olive { background: var(--edit-olive-chip); }
+  .svc-card.teal  { background: var(--edit-teal); color: #fff; }
+  .svc-card.teal p, .svc-card.teal .small { color: rgba(255,255,255,0.85); }
+  .svc-card.cream { background: var(--edit-warm); }
+
+  .svc-card h4 {
+    font-family: var(--font-display); font-weight: 600;
+    font-size: 28px; letter-spacing: -0.025em; line-height: 1.15; margin: 0;
+  }
+  .svc-card p { font-size: 18px; line-height: 1.5; margin: 0; }
+  .svc-card .small { font-size: 15px; opacity: 0.78; margin-top: auto; }
+
+  /* Check + cross */
+  .check, .xmark {
+    display: inline-grid; place-items: center;
+    width: 26px; height: 26px; border-radius: 50%;
+    flex: 0 0 26px;
+    margin-top: 4px;
+  }
+  .check { background: rgba(16,185,129,0.14); color: var(--success); }
+  .xmark { background: rgba(15,15,16,0.06); color: var(--text-3); }
+  .dark .xmark { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5); }
+
+  ul.bullets { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+  ul.bullets li { display: flex; gap: 14px; font-size: 19px; line-height: 1.5; align-items: flex-start; }
+
+  /* Stat ring (from stat-card preview) */
+  .ring-card {
+    background: #141416; color: #fff;
+    border-radius: 22px; padding: 28px;
+    display: flex; flex-direction: column; gap: 14px;
+    position: relative; box-sizing: border-box;
+    overflow: visible;
+  }
+  .ring { width: 460px; aspect-ratio: 1/1; align-self: center; position: relative; margin-top: -160px; z-index: 1; }
+  .ring svg { width: 100%; height: 100%; transform: rotate(-90deg); overflow: visible; }
+  .ring .track { fill: none; stroke: rgba(255,255,255,0.08); stroke-width: 14; }
+  .ring .seg   { fill: none; stroke-width: 14; stroke-linecap: round; }
+  .ring .txt   { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .ring .val   { font-family: var(--font-display); font-size: 76px; font-weight: 600; letter-spacing: -0.04em; line-height: 1; }
+  .ring .lbl   { font-size: 13px; color: rgba(255,255,255,0.55); letter-spacing: 0.18em; font-weight: 500; text-transform: uppercase; margin-top: 8px; }
+
+  .badge-chip {
+    position: absolute; padding: 6px 12px; border-radius: 9999px;
+    font-size: 12px; font-weight: 600; color: var(--text);
+    font-family: var(--font-sans); letter-spacing: -0.005em;
+    z-index: 3;
+  }
+
+  /* Page number tag */
+  .num-tag {
+    font-family: var(--font-italic); font-style: italic;
+    font-size: 32px; color: var(--edit-peach-chip);
+    letter-spacing: -0.01em;
+  }
+  .dark .num-tag { color: var(--edit-peach); }
+
+  /* Hairline */
+  .hr { height: 1px; background: var(--border); width: 100%; }
+  .dark .hr { background: rgba(255,255,255,0.08); }
+
+  /* Nav / cover stripe */
+  .ds-nav {
+    position: absolute; top: 56px; left: 120px; right: 120px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+
+
+/* ── Qopla-decket: tillagg ovanpa partnerdeckets stil ── */
+.fx-up { opacity: 0; transform: translateY(28px); transition: opacity 800ms cubic-bezier(0.22,1,0.36,1), transform 800ms cubic-bezier(0.22,1,0.36,1); transition-delay: calc(var(--i, 0) * 90ms); }
+.fx-up.visible { opacity: 1; transform: none; }
+@media print { .fx-up { opacity: 1 !important; transform: none !important; transition: none !important; } }
+/* Kundcase-kortet, samma matt och ytor som .case-feature pa synsnumedia.se, i deckets skala */
+.cf { display: grid; grid-template-columns: 780px 1fr; gap: 0; background: #fff; border-radius: 18px; overflow: hidden; box-shadow: 0 20px 40px -12px rgba(0,0,0,0.12); height: 830px; }
+.cf-img { overflow: hidden; } .cf-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.cf-body { padding: 44px 52px; display: flex; flex-direction: column; min-height: 0; }
+.cf-tag { display: inline-block; align-self: flex-start; padding: 8px 16px; background: #F3F1EC; border: 1px solid #E5E5E0; color: var(--text-2); border-radius: 9999px; font-size: 15px; font-weight: 500; letter-spacing: 0.04em; margin-bottom: 22px; }
+.cf h3 { font-size: 40px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; margin: 0 0 18px; }
+.cf h3 em { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; }
+.cf-lead { font-size: 20px; color: var(--text-2); line-height: 1.5; margin: 0 0 24px; }
+.cf-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: auto; }
+.cf-stat { padding: 16px 20px; border: 1px solid #ECECE6; border-radius: 12px; background: #FAF8F4; }
+.cf-val { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; color: var(--text); font-variant-numeric: tabular-nums; }
+.cf-label { font-size: 16px; color: var(--text-3); margin-top: 6px; }
+/* Uppdelningstabellen */
+table.split { width: 100%; border-collapse: collapse; margin-top: 28px; font-size: 20px; }
+table.split th { text-align: left; font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-3); font-weight: 500; padding: 0 18px 14px; border-bottom: 1px solid var(--border-strong); }
+table.split td { padding: 13px 18px; border-bottom: 1px solid var(--border); vertical-align: middle; font-variant-numeric: tabular-nums; }
+table.split td.q { font-weight: 700; } table.split td.s { font-weight: 700; color: var(--g-blue-dark); }
+table.split .small { font-size: 14px; color: var(--text-3); }
+.badge-chip.fast { background: #E7F6EE; color: #0B6B3F; border-color: #BFE7CF; }
+.badge-chip.forslag { background: #FFE6D2; color: #8A3F12; border-color: #FFCFA8; }
+.big-num { font-family: var(--font-display); font-weight: 600; font-size: 120px; letter-spacing: -0.04em; line-height: 1; }
+.flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; margin-top: 48px; }
+.flow .step { background: #fff; border: 1px solid var(--border); border-radius: 18px; padding: 30px 28px; min-height: 300px; }
+.flow .step .n { font-family: var(--font-display); font-size: 48px; font-weight: 600; letter-spacing: -0.04em; color: var(--edit-peach-chip); }
+.flow .step h4 { font-size: 24px; margin: 14px 0 10px; } .flow .step p { font-size: 18px; color: var(--text-2); line-height: 1.5; margin: 0; }
+.dark table.split td, .dark table.split th { border-color: rgba(255,255,255,.12); color: rgba(255,255,255,.9); }
+</style>
+</head>
+<body>
+<deck-stage width="1920" height="1080">
+
+<section class="slide dark" data-label="01 Cover">
+  <div class="slide-inner" style="display:flex;flex-direction:column;justify-content:flex-end">
+    <div class="eyebrow-d fx-up" style="--i:0">Syns Nu Media × Qopla · september 2026</div>
+    <h1 class="h1 fx-up" style="--i:1;font-size:132px;line-height:.98;max-width:1600px;margin-top:24px;color:#fff">Tjänsterna ni säljer.<br>Vad Qopla får.<br>Vad <em class="gs">säljaren</em> får.</h1>
+    <p class="lead-d fx-up" style="--i:2;margin-top:32px;font-size:26px;color:rgba(255,255,255,.7);max-width:1200px">Ett upplägg där varje såld tjänst ger kickback till Qopla och en fast ersättning till säljaren som stängde affären.</p>
+  </div>
+</section>
+
+<section class="slide" data-label="02 Innehåll">
+  <div class="slide-inner">
+    <div class="eyebrow-d fx-up" style="--i:0">Innehåll</div>
+    <h1 class="h1 fx-up" style="--i:1;margin-top:24px">Fyra delar.</h1>
+    <div class="row fx-up" style="--i:2;margin-top:64px;gap:24px;align-items:stretch">
+      <div class="ed-card" style="flex:1;padding:40px"><div class="num-tag">01</div><h4 style="margin-top:18px;font-size:30px">Så funkar samarbetet</h4><p style="color:var(--text-2);font-size:20px">Vem gör vad, vem fakturerar, när kickbacken betalas.</p></div>
+      <div class="ed-card" style="flex:1;padding:40px"><div class="num-tag">02</div><h4 style="margin-top:18px;font-size:30px">Tjänsterna och priserna</h4><p style="color:var(--text-2);font-size:20px">Sociala medier, hemsida, SEO och menyfotografering.</p></div>
+      <div class="ed-card" style="flex:1;padding:40px"><div class="num-tag">03</div><h4 style="margin-top:18px;font-size:30px">Uppdelningen</h4><p style="color:var(--text-2);font-size:20px">Per tjänst: pris till kund, kickback till Qopla, ersättning till säljaren.</p></div>
+      <div class="ed-card" style="flex:1;padding:40px"><div class="num-tag">04</div><h4 style="margin-top:18px;font-size:30px">Kundcase</h4><p style="color:var(--text-2);font-size:20px">Fem restauranger med riktiga siffror från Metricool.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide soft" data-label="03 Samarbetet">
+  <div class="slide-inner">
+    <div class="eyebrow-d fx-up" style="--i:0">01 — Så funkar samarbetet</div>
+    <h1 class="h1 fx-up" style="--i:1;margin-top:24px">Qopla säljer in. <em class="gs">Syns Nu levererar.</em></h1>
+    <div class="flow">
+      <div class="step fx-up" style="--i:2"><div class="n">1</div><h4>Säljaren stänger</h4><p>Qoplas säljare erbjuder tjänsten i samma samtal som kassan eller onlinebeställningen.</p></div>
+      <div class="step fx-up" style="--i:3"><div class="n">2</div><h4>Posta i kanalen</h4><p>Restaurangnamn, kontakt och vald tjänst i #hemsidor-synsnu-qopla på Slack.</p></div>
+      <div class="step fx-up" style="--i:4"><div class="n">3</div><h4>Syns Nu levererar</h4><p>Avtal signeras digitalt, sen bygger, filmar eller fotograferar vi. Kunden får en kontaktperson hos oss.</p></div>
+      <div class="step fx-up" style="--i:5"><div class="n">4</div><h4>Syns Nu fakturerar kunden</h4><p>Qopla har ingen fakturering eller support att sköta. Vi tar hela kundrelationen.</p></div>
+      <div class="step fx-up" style="--i:6"><div class="n">5</div><h4>Kickback den 1:a</h4><p>Rapport till Qopla varje månad med varje såld tjänst, kickback och säljarersättning. Qopla fakturerar Syns Nu.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-label="04 Tjänsterna">
+  <div class="slide-inner">
+    <div class="eyebrow-d fx-up" style="--i:0">02 — Tjänsterna</div>
+    <h1 class="h1 fx-up" style="--i:1;margin-top:24px">Fyra tjänster som <em class="gs">passar ihop</em> med Qopla.</h1>
+    <div class="row" style="margin-top:56px;gap:20px;align-items:stretch">
+      <div class="svc-card dark fx-up" style="--i:2"><span class="eyebrow-d" style="color:rgba(255,255,255,.55)">01</span><h4>Sociala medier</h4><p>Inspelning på plats varje månad, klippta videos och bilder, publicering på Instagram, TikTok och Facebook, Google-profil.</p><span class="small">Från 7 500 kr/mån · 3 mån bindning</span></div>
+      <div class="svc-card lav fx-up" style="--i:3"><span class="eyebrow-d">02</span><h4>Hemsida</h4><p>Mobilanpassad restauranghemsida med meny, öppettider och Beställ online direkt till Qopla. Klar på en vecka.</p><span class="small">4 000 kr engångs via Qopla</span></div>
+      <div class="svc-card peach fx-up" style="--i:4"><span class="eyebrow-d">03</span><h4>SEO-autopilot</h4><p>Teknisk optimering varje vecka, Google-profil och recensioner, synlighet i AI-sök. Ett fast pris, allt ingår.</p><span class="small">1 000 kr/mån · 24 mån</span></div>
+      <div class="svc-card fx-up" style="--i:5;background:#fff;border:1px solid var(--border)"><span class="eyebrow-d">04</span><h4>Menyfotografering</h4><p>Hela menyn fotograferad och stylad på plats, redigerad och klar för Qopla, Foodora, Wolt och hemsidan.</p><span class="small">5 000 kr engångs via Qopla · ordinarie 8 000 kr</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide soft" data-label="05 Sociala medier">
+  <div class="slide-inner">
+    <div class="eyebrow-d fx-up" style="--i:0">02 — Sociala medier, fyra paket</div>
+    <h1 class="h1 fx-up" style="--i:1;margin-top:24px;font-size:72px">Samma leverans, <em class="gs">olika volym</em>.</h1>
+    <div class="row" style="margin-top:44px;gap:22px;align-items:stretch">
+      <div class="ed-card fx-up" style="--i:2;background:#fff;padding:36px;flex:1;gap:16px"><div class="eyebrow-d" style="color:var(--text-3)">Basic</div><div style="font-family:var(--font-display);font-weight:600;font-size:52px;letter-spacing:-.04em;line-height:1">7 500 kr<span style="font-family:var(--font-sans);font-weight:500;font-size:18px;color:var(--text-3);margin-left:8px;letter-spacing:0">/ mån</span></div><div class="hr"></div><ul class="bullets"><li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:17px">1 inspelning / mån</span></li><li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:17px">2 videos / mån</span></li><li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:17px">6 bilder / mån</span></li><li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:17px">Sociala medier och Google-profil</span></li></ul></div>
+      <div class="ed-card fx-up" style="--i:3;background:#fff;padding:36px;flex:1;gap:16px;outline:2px solid var(--g-blue);"><div class="eyebrow-d" style="color:var(--g-blue)">Mest populär</div><div class=eyebrow-d style=color:var(--text-3)>Pro</div><div style="font-family:var(--font-display);font-weight:600;font-size:52px;letter-spacing:-.04em;line-height:1">12 500 kr<span style="font-family:var(--font-sans);font-weight:500;font-size:18px;color:var(--text-3);margin-left:8px;letter-spacing:0">/ mån</span></div><div class="hr"></div><ul class="bullets"><li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:17px">1 inspelning / mån</span></li><li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:17px">4 videos / mån</span></li><li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:17px">4 bilder / mån</span></li><li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:17px">Strategi och marknadsföring</span></li></ul></div>
+      <div class="ed-card fx-up" style="--i:4;background:#fff;padding:36px;flex:1;gap:16px"><div class="eyebrow-d" style="color:var(--text-3)">Premium</div><div style="font-family:var(--font-display);font-weight:600;font-size:52px;letter-spacing:-.04em;line-height:1">20 000 kr<span style="font-family:var(--font-sans);font-weight:500;font-size:18px;color:var(--text-3);margin-left:8px;letter-spacing:0">/ mån</span></div><div class="hr"></div><ul class="bullets"><li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:17px">1 inspelning / mån</span></li><li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:17px">8 videos / mån</span></li><li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:17px">6 bilder / mån</span></li><li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:17px">Strategi och marknadsföring</span></li></ul></div>
+      <div class="ed-card fx-up" style="--i:5;background:#fff;padding:36px;flex:1;gap:16px"><div class="eyebrow-d" style="color:var(--text-3)">Turbo</div><div style="font-family:var(--font-display);font-weight:600;font-size:52px;letter-spacing:-.04em;line-height:1">28 000 kr<span style="font-family:var(--font-sans);font-weight:500;font-size:18px;color:var(--text-3);margin-left:8px;letter-spacing:0">/ mån</span></div><div class="hr"></div><ul class="bullets"><li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:17px">Inspelningar efter behov</span></li><li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:17px">12 videos / mån</span></li><li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:17px">Bilder efter behov</span></li><li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:17px">Fler enheter och lanseringar</span></li></ul></div>
+    </div>
+    <p class="small fx-up" style="--i:6;margin-top:22px;color:var(--text-3)">Priser exkl. moms. 3 månaders bindningstid, därefter 1 månads uppsägning. Extra video utöver paketet 2 500 kr.</p>
+  </div>
+</section>
+
+<section class="slide" data-label="06 Uppdelningen">
+  <div class="slide-inner">
+    <div class="eyebrow-d fx-up" style="--i:0">03 — Uppdelningen per såld tjänst</div>
+    <h1 class="h1 fx-up" style="--i:1;margin-top:16px;font-size:60px">Vad Qopla får. <em class="gs">Vad säljaren får.</em></h1>
+    <table class="split fx-up" style="--i:2">
+      <thead><tr><th>Tjänst</th><th>Pris till kund</th><th>Kickback Qopla</th><th>Ersättning säljaren</th><th>Status</th></tr></thead>
+      <tbody><tr><td><b>Hemsida</b><br><span class=small>Syns Nu bygger, levererar och fakturerar kunden</span></td><td>4 000 kr engångs</td><td class="q">1 500 kr</td><td class="s">700 kr</td><td><span class="badge-chip fast">Fastställt</span></td></tr><tr><td><b>SEO-autopilot</b><br><span class=small>engångs vid signerat avtal, 24 mån</span></td><td>1 000 kr/mån</td><td class="q">1 500 kr</td><td class="s">700 kr</td><td><span class="badge-chip forslag">Förslag</span></td></tr><tr><td><b>Sociala medier · Basic</b><br><span class=small>engångs vid signerat avtal</span></td><td>7 500 kr/mån</td><td class="q">600 kr</td><td class="s">300 kr</td><td><span class="badge-chip forslag">Förslag</span></td></tr><tr><td><b>Sociala medier · Pro</b><br><span class=small>engångs vid signerat avtal</span></td><td>12 500 kr/mån</td><td class="q">1 250 kr</td><td class="s">600 kr</td><td><span class="badge-chip forslag">Förslag</span></td></tr><tr><td><b>Sociala medier · Premium</b><br><span class=small>engångs vid signerat avtal</span></td><td>20 000 kr/mån</td><td class="q">2 500 kr</td><td class="s">1 200 kr</td><td><span class="badge-chip forslag">Förslag</span></td></tr><tr><td><b>Sociala medier · Turbo</b><br><span class=small>engångs vid signerat avtal</span></td><td>28 000 kr/mån</td><td class="q">2 500 kr</td><td class="s">1 200 kr</td><td><span class="badge-chip forslag">Förslag</span></td></tr><tr><td><b>Menyfotografering</b><br><span class=small>Qopla-pris, ordinarie 8 000 kr</span></td><td>5 000 kr engångs</td><td class="q">300 kr</td><td class="s">150 kr</td><td><span class="badge-chip forslag">Förslag</span></td></tr></tbody>
+    </table>
+    <p class="small fx-up" style="--i:3;margin-top:14px;color:var(--text-3)">Kickback och ersättning betalas när avtalet är signerat och tjänsten levererad. Sammanställs i månadsrapporten den 1:a. Rader märkta Förslag fastställs tillsammans.</p>
+  </div>
+</section>
+
+<section class="slide dark" data-label="07 Räkneexempel">
+  <div class="slide-inner">
+    <div class="eyebrow-d fx-up" style="--i:0">03 — Räkneexempel, hemsida</div>
+    <h1 class="h1 fx-up" style="--i:1;margin-top:24px;color:#fff">En hemsida såld i samma samtal som kassan.</h1>
+    <div class="row" style="margin-top:72px;gap:28px;align-items:stretch">
+      <div class="ed-card fx-up" style="--i:2;flex:1;padding:44px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#fff"><div class="eyebrow-d" style="color:rgba(255,255,255,.55)">Kunden betalar</div><div class="big-num" style="margin-top:18px">4 000<span style="font-size:36px;margin-left:10px">kr</span></div><p style="color:rgba(255,255,255,.7);font-size:20px;margin-top:16px">Engångs. Syns Nu fakturerar och levererar sidan.</p></div>
+      <div class="ed-card fx-up" style="--i:3;flex:1;padding:44px;background:var(--edit-lavender);color:var(--text)"><div class="eyebrow-d">Qopla får</div><div class="big-num" style="margin-top:18px">1 500<span style="font-size:36px;margin-left:10px">kr</span></div><p style="color:var(--text-2);font-size:20px;margin-top:16px">Kickback vid levererad och godkänd sida.</p></div>
+      <div class="ed-card fx-up" style="--i:4;flex:1;padding:44px;background:var(--edit-peach-soft);color:var(--text)"><div class="eyebrow-d">Säljaren får</div><div class="big-num" style="margin-top:18px">700<span style="font-size:36px;margin-left:10px">kr</span></div><p style="color:var(--text-2);font-size:20px;margin-top:16px">Fast ersättning per såld hemsida, betald via Qopla.</p></div>
+    </div>
+    <p class="lead-d fx-up" style="--i:5;margin-top:48px;color:rgba(255,255,255,.7);font-size:24px">Tio hemsidor i månaden ger Qopla 15 000 kr och säljaren 7 000 kr, utan att Qopla bygger, supportar eller fakturerar något.</p>
+  </div>
+</section>
+
+<section class="slide soft" data-label="08 Kundcase">
+  <div class="slide-inner">
+    <div class="eyebrow-d fx-up">Kundcase 1 av 5 · riktiga siffror från Metricool</div>
+    <div class="cf fx-up" style="margin-top:28px">
+      <div class="cf-img"><img src="assets/case-5.jpg" alt=""></div>
+      <div class="cf-body">
+        <span class="cf-tag">Sociala medier</span>
+        <h3>Fluffy House — <em>från noll till två städer</em></h3>
+        <p class="cf-lead">Stockholm · Uppsala. Turbo-paketet sedan september 2025. På 8 månader: 8,68M visningar, 25 100 följare över tre plattformar och två fysiska expansioner.</p>
+        <div class="cf-stats"><div class="cf-stat"><div class="cf-val" data-count="8.68" data-dec="2" data-suffix="M" data-prefix="">8,68M</div><div class="cf-label">Visningar</div></div><div class="cf-stat"><div class="cf-val" data-count="201.0" data-dec="0" data-suffix="K" data-prefix="">201K</div><div class="cf-label">Interaktioner</div></div><div class="cf-stat"><div class="cf-val" data-count="25.1" data-dec="1" data-suffix="K" data-prefix="">25,1K</div><div class="cf-label">Följare (3 plattformar)</div></div><div class="cf-stat"><div class="cf-val" data-count="261.0" data-dec="0" data-suffix="" data-prefix="">261</div><div class="cf-label">Inlägg på 8 mån</div></div></div>
+        <p class="small" style="margin-top:16px;color:var(--text-3)">https://www.synsnumedia.se/case-fluffy-house</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide soft" data-label="09 Kundcase">
+  <div class="slide-inner">
+    <div class="eyebrow-d fx-up">Kundcase 2 av 5 · riktiga siffror från Metricool</div>
+    <div class="cf fx-up" style="margin-top:28px">
+      <div class="cf-img"><img src="assets/case-1.jpg" alt=""></div>
+      <div class="cf-body">
+        <span class="cf-tag">Sociala medier</span>
+        <h3>Mazra'a — <em>en palestinsk klassiker hittar sin digitala röst</em></h3>
+        <p class="cf-lead">Skånegatan, Stockholm. Pro-paketet sedan november 2025. På 5,5 månader: 1,42 miljoner visningar och +13 499% interaktioner.</p>
+        <div class="cf-stats"><div class="cf-stat"><div class="cf-val" data-count="1.42" data-dec="2" data-suffix="M" data-prefix="">1,42M</div><div class="cf-label">Visningar (+640%)</div></div><div class="cf-stat"><div class="cf-val" data-count="47.9" data-dec="1" data-suffix="K" data-prefix="">47,9K</div><div class="cf-label">Interaktioner (+13 499%)</div></div><div class="cf-stat"><div class="cf-val" data-count="46.0" data-dec="0" data-suffix="%" data-prefix="+">+46%</div><div class="cf-label">Instagram-följare</div></div><div class="cf-stat"><div class="cf-val" data-count="78.0" data-dec="0" data-suffix="" data-prefix="">78</div><div class="cf-label">Inlägg (+1 460%)</div></div></div>
+        <p class="small" style="margin-top:16px;color:var(--text-3)">https://www.synsnumedia.se/case-mazraa</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide soft" data-label="10 Kundcase">
+  <div class="slide-inner">
+    <div class="eyebrow-d fx-up">Kundcase 3 av 5 · riktiga siffror från Metricool</div>
+    <div class="cf fx-up" style="margin-top:28px">
+      <div class="cf-img"><img src="assets/case-2.jpg" alt=""></div>
+      <div class="cf-body">
+        <span class="cf-tag">Sociala medier</span>
+        <h3>Falafelbaren — <em>en lokal favorit hittar fler gäster</em></h3>
+        <p class="cf-lead">Hornsgatan, Stockholm. Nidal Kerch och teamet. Från noll TikTok till över 1 miljon visningar på 3,5 månader — riktiga siffror från Metricool.</p>
+        <div class="cf-stats"><div class="cf-stat"><div class="cf-val" data-count="1.0" data-dec="0" data-suffix="M" data-prefix="">1M</div><div class="cf-label">Visningar (+856%)</div></div><div class="cf-stat"><div class="cf-val" data-count="39.6" data-dec="1" data-suffix="K" data-prefix="">39,6K</div><div class="cf-label">Interaktioner (+3 760%)</div></div><div class="cf-stat"><div class="cf-val" data-count="10.17" data-dec="2" data-suffix="K" data-prefix="">10,17K</div><div class="cf-label">Följare (+41%)</div></div><div class="cf-stat"><div class="cf-val" data-count="3481.0" data-dec="0" data-suffix="%" data-prefix="+">+3 481%</div><div class="cf-label">TikTok-tillväxt</div></div></div>
+        <p class="small" style="margin-top:16px;color:var(--text-3)">https://www.synsnumedia.se/case-falafelbaren</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide soft" data-label="11 Kundcase">
+  <div class="slide-inner">
+    <div class="eyebrow-d fx-up">Kundcase 4 av 5 · riktiga siffror från Metricool</div>
+    <div class="cf fx-up" style="margin-top:28px">
+      <div class="cf-img"><img src="assets/case-3.jpg" alt=""></div>
+      <div class="cf-body">
+        <span class="cf-tag">Sociala medier</span>
+        <h3>Sushi Revolution — <em>från lansering till 2,56M visningar</em></h3>
+        <p class="cf-lead">Mall of Scandinavia, Solna. Pro-paketet sedan november 2025. Helt nystartade konton — 3 655 följare och 1,72M TikTok-visningar på 7,5 månader.</p>
+        <div class="cf-stats"><div class="cf-stat"><div class="cf-val" data-count="2.56" data-dec="2" data-suffix="M" data-prefix="">2,56M</div><div class="cf-label">Visningar</div></div><div class="cf-stat"><div class="cf-val" data-count="133.0" data-dec="0" data-suffix="K" data-prefix="">133K</div><div class="cf-label">Interaktioner</div></div><div class="cf-stat"><div class="cf-val" data-count="3655.0" data-dec="0" data-suffix="" data-prefix="">3 655</div><div class="cf-label">Följare (från noll)</div></div><div class="cf-stat"><div class="cf-val" data-count="7.46" data-dec="2" data-suffix="%" data-prefix="">7,46%</div><div class="cf-label">TikTok-engagement</div></div></div>
+        <p class="small" style="margin-top:16px;color:var(--text-3)">https://www.synsnumedia.se/case-sushirevolution</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide soft" data-label="12 Kundcase">
+  <div class="slide-inner">
+    <div class="eyebrow-d fx-up">Kundcase 5 av 5 · riktiga siffror från Metricool</div>
+    <div class="cf fx-up" style="margin-top:28px">
+      <div class="cf-img"><img src="assets/case-4.jpg" alt=""></div>
+      <div class="cf-body">
+        <span class="cf-tag">Sociala medier</span>
+        <h3>Brams Burgers — <em>från Skärholmen till tre städer</em></h3>
+        <p class="cf-lead">Stockholm · Uppsala · Göteborg. Turbo-paketet sedan 2025. På 14 månader: 4,30M visningar, 25 540 följare över fyra plattformar och två fysiska expansioner.</p>
+        <div class="cf-stats"><div class="cf-stat"><div class="cf-val" data-count="4.3" data-dec="2" data-suffix="M" data-prefix="">4,30M</div><div class="cf-label">Visningar (+4 971%)</div></div><div class="cf-stat"><div class="cf-val" data-count="88.5" data-dec="1" data-suffix="K" data-prefix="">88,5K</div><div class="cf-label">Interaktioner (+8 264%)</div></div><div class="cf-stat"><div class="cf-val" data-count="25540.0" data-dec="0" data-suffix="" data-prefix="">25 540</div><div class="cf-label">Följare (4 plattformar)</div></div><div class="cf-stat"><div class="cf-val" data-count="423.0" data-dec="0" data-suffix="" data-prefix="">423</div><div class="cf-label">Inlägg (+1 310%)</div></div></div>
+        <p class="small" style="margin-top:16px;color:var(--text-3)">https://www.synsnumedia.se/case-brams-burgers</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide dark" data-label="13 Nästa steg">
+  <div class="slide-inner" style="display:flex;flex-direction:column;justify-content:center">
+    <div class="eyebrow-d fx-up" style="--i:0">Nästa steg</div>
+    <h1 class="h1 fx-up" style="--i:1;font-size:120px;line-height:.98;max-width:1700px;margin-top:24px;color:#fff">Fastställ raderna,<br>sen <em class="gs">kör vi</em>.</h1>
+    <p class="lead-d fx-up" style="--i:2;margin-top:36px;font-size:26px;color:rgba(255,255,255,.7);max-width:1300px">Hemsidan är fastställd. Övriga rader stämmer vi av på ett möte, sedan går upplägget ut till säljarna i #hemsidor-synsnu-qopla.</p>
+    <p class="fx-up" style="--i:3;margin-top:48px;font-size:24px;color:#fff">Emanuel Boyaci · Syns Nu Media · emanuel@synsnumedia.com · 070-888 01 98 · www.synsnumedia.se</p>
+  </div>
+</section>
+</deck-stage>
+
+<script>
+// Kundcasens siffror rullar upp och lagren tonar in nar sliden blir aktiv, samma
+// kansla som kundcase.html pa synsnumedia.se. I print star allt fardigt.
+(function(){
+  function fmt(n, dec){ return n.toLocaleString('sv-SE', {minimumFractionDigits: dec, maximumFractionDigits: dec}); }
+  function count(el){
+    if (el.dataset.done) return; el.dataset.done = "1";
+    var target = parseFloat(el.dataset.count), dec = parseInt(el.dataset.dec||"0"), suf = el.dataset.suffix||"", pre = el.dataset.prefix||"";
+    var dur = 1800, start = performance.now();
+    function tick(now){ var t = Math.min((now-start)/dur, 1), ease = 1-Math.pow(1-t,3);
+      el.textContent = pre + fmt(target*ease, dec) + suf; if (t<1) requestAnimationFrame(tick); }
+    requestAnimationFrame(tick);
+  }
+  function aktivera(slide){
+    if (!slide) return;
+    slide.querySelectorAll('.fx-up').forEach(function(el){ el.classList.add('visible'); });
+    slide.querySelectorAll('[data-count]').forEach(count);
+  }
+  var stage = document.querySelector('deck-stage');
+  stage.addEventListener('slidechange', function(e){
+    if (e.detail.previousSlide) e.detail.previousSlide.querySelectorAll('.fx-up').forEach(function(el){ el.classList.remove('visible'); });
+    setTimeout(function(){ aktivera(e.detail.slide); }, 60);
+  });
+  if (window.matchMedia('print').matches) document.querySelectorAll('.fx-up').forEach(function(el){ el.classList.add('visible'); });
+})();
+</script>
+</body>
+</html>
