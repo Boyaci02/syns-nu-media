@@ -285,6 +285,8 @@
 .cf-stat { padding: 16px 20px; border: 1px solid #ECECE6; border-radius: 12px; background: #FAF8F4; }
 .cf-val { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; color: var(--text); font-variant-numeric: tabular-nums; }
 .cf-label { font-size: 16px; color: var(--text-3); margin-top: 6px; }
+/* Ljusa kort pa morka slides: etiketten far aldrig arva den vita farg som .dark ger .eyebrow-d. */
+.dark .ed-card[style*="--edit-"] .eyebrow-d, .dark .ed-card[style*="lavender"] .eyebrow-d, .dark .ed-card[style*="peach"] .eyebrow-d { color: var(--text-3); }
 /* Uppdelningstabellen */
 table.split { width: 100%; border-collapse: collapse; margin-top: 28px; font-size: 20px; }
 table.split th { text-align: left; font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-3); font-weight: 500; padding: 0 18px 14px; border-bottom: 1px solid var(--border-strong); }
@@ -384,8 +386,8 @@ table.split .small { font-size: 14px; color: var(--text-3); }
     <h1 class="h1 fx-up" style="--i:1;margin-top:24px;color:#fff">En hemsida såld i samma samtal som kassan.</h1>
     <div class="row" style="margin-top:72px;gap:28px;align-items:stretch">
       <div class="ed-card fx-up" style="--i:2;flex:1;padding:44px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#fff"><div class="eyebrow-d" style="color:rgba(255,255,255,.55)">Kunden betalar</div><div class="big-num" style="margin-top:18px">4 000<span style="font-size:36px;margin-left:10px">kr</span></div><p style="color:rgba(255,255,255,.7);font-size:20px;margin-top:16px">Engångs. Syns Nu fakturerar och levererar sidan.</p></div>
-      <div class="ed-card fx-up" style="--i:3;flex:1;padding:44px;background:var(--edit-lavender);color:var(--text)"><div class="eyebrow-d">Qopla får</div><div class="big-num" style="margin-top:18px">1 500<span style="font-size:36px;margin-left:10px">kr</span></div><p style="color:var(--text-2);font-size:20px;margin-top:16px">Kickback vid levererad och godkänd sida.</p></div>
-      <div class="ed-card fx-up" style="--i:4;flex:1;padding:44px;background:var(--edit-peach-soft);color:var(--text)"><div class="eyebrow-d">Säljaren får</div><div class="big-num" style="margin-top:18px">700<span style="font-size:36px;margin-left:10px">kr</span></div><p style="color:var(--text-2);font-size:20px;margin-top:16px">Fast ersättning per såld hemsida, betald via Qopla.</p></div>
+      <div class="ed-card fx-up" style="--i:3;flex:1;padding:44px;background:var(--edit-lavender);color:var(--text)"><div class="eyebrow-d" style="color:var(--text-3)">Qopla får</div><div class="big-num" style="margin-top:18px">1 500<span style="font-size:36px;margin-left:10px">kr</span></div><p style="color:var(--text-2);font-size:20px;margin-top:16px">Kickback vid levererad och godkänd sida.</p></div>
+      <div class="ed-card fx-up" style="--i:4;flex:1;padding:44px;background:var(--edit-peach-soft);color:var(--text)"><div class="eyebrow-d" style="color:var(--text-3)">Säljaren får</div><div class="big-num" style="margin-top:18px">700<span style="font-size:36px;margin-left:10px">kr</span></div><p style="color:var(--text-2);font-size:20px;margin-top:16px">Fast ersättning per såld hemsida, betald via Qopla.</p></div>
     </div>
     <p class="lead-d fx-up" style="--i:5;margin-top:48px;color:rgba(255,255,255,.7);font-size:24px">Tio hemsidor i månaden ger Qopla 15 000 kr och säljaren 7 000 kr, utan att Qopla bygger, supportar eller fakturerar något.</p>
   </div>
