@@ -17,7 +17,7 @@
 | Befintlig webbplats | https://syns-nu-media.vercel.app |
 | Instagram | @synsnumedia |
 | Kontakt-e-post | info@synsnumedia.se |
-| Telefon | 070-888 01 98 |
+| Telefon | 070-842 58 33 |
 
 ---
 

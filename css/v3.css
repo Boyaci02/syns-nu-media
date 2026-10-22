@@ -1,0 +1,85 @@
+/* ============================================================
+   SYNS NU v3 — brand-spec-v3 (godkänd 22/10 2026)
+   Laddas efter global.css och pages.css.
+   ============================================================ */
+:root {
+  /* Pastelltokens ligger i global.css */
+  --frame: 16px; --panel-r: 32px;
+  --tillvaxt: linear-gradient(90deg, #1A73E8, #8B5CF6, #EC4899);
+}
+body { background: var(--bg-soft); }
+
+/* Serif-accenten: nytt namn, samma utseende */
+.accent { font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif; font-style: italic; font-weight: 400; letter-spacing: -0.015em; color: inherit; }
+.gradient-text { color: inherit; }
+
+/* Aurex: innehåll i rundade paneler med ram runt */
+.big-hero { margin: 12px var(--frame) 0 !important; border-radius: var(--panel-r); }
+.page-hero, .cases-hero { margin: 12px var(--frame) 0; border-radius: var(--panel-r); background: var(--bg); }
+.footer, .sec-footer-big { margin: 0 var(--frame) var(--frame); border-radius: var(--panel-r); }
+.section--dark { margin-inline: var(--frame); border-radius: var(--panel-r); }
+
+/* Tjänstefärger i undersidornas hero */
+.page-hero--sand { background: var(--sand); }
+.page-hero--persika { background: var(--persika); }
+.page-hero--lime { background: var(--lime); }
+.page-hero--sand .eyebrow, .page-hero--persika .eyebrow, .page-hero--lime .eyebrow { background: rgba(255,255,255,0.45); border-color: rgba(0,0,0,0.08); color: var(--text); }
+.page-hero--sand .page-hero__subtitle, .page-hero--persika .page-hero__subtitle, .page-hero--lime .page-hero__subtitle,
+.page-hero--sand p, .page-hero--persika p, .page-hero--lime p { color: rgba(0,0,0,0.68); }
+.page-hero--sand .btn--ghost, .page-hero--persika .btn--ghost, .page-hero--lime .btn--ghost { border-color: rgba(0,0,0,0.25); }
+.page-hero--sand::after, .page-hero--persika::after, .page-hero--lime::after { opacity: 0.35; }
+.page-hero--natt { background: var(--bg-dark); }
+.page-hero--natt h1, .page-hero--natt h2 { color: #fff; }
+.page-hero--natt .page-hero__subtitle, .page-hero--natt p { color: rgba(255,255,255,0.68); }
+.page-hero--natt .eyebrow { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); color: rgba(255,255,255,0.75); }
+.page-hero--natt .btn--primary, .page-hero--natt .btn--blue { background: #fff; color: var(--text); }
+.page-hero--natt .btn--ghost { color: #fff; border-color: rgba(255,255,255,0.3); }
+.page-hero--natt .btn--ghost:hover { background: rgba(255,255,255,0.08); border-color: #fff; }
+.page-hero--natt::after { background: radial-gradient(ellipse at 40% 30%, rgba(139,92,246,0.22) 0%, transparent 55%), radial-gradient(ellipse at 70% 40%, rgba(236,72,153,0.12) 0%, transparent 55%) !important; }
+
+/* Vattenstämpeln i tjänstesidornas hero */
+.page-hero--sand::before, .page-hero--persika::before, .page-hero--lime::before {
+  content: ''; position: absolute; right: -4%; bottom: -18%; width: clamp(220px, 30vw, 440px); aspect-ratio: 1;
+  background: url('/assets/brand/symbol.svg') center/contain no-repeat; opacity: 0.07; pointer-events: none;
+}
+.page-hero--natt::before {
+  content: ''; position: absolute; right: -4%; bottom: -18%; width: clamp(220px, 30vw, 440px); aspect-ratio: 1;
+  background: url('/assets/brand/hash-white.svg') center/contain no-repeat; opacity: 0.08; pointer-events: none;
+}
+.page-hero > * { position: relative; z-index: 1; }
+
+/* Sidfot */
+.footer__brand img { filter: none; height: 26px; }
+.footer__col h5 { text-transform: none; letter-spacing: 0; font-size: 0.875rem; }
+.footer-big__bottom { color: rgba(255,255,255,0.55) !important; }
+.footer-big__mark { display: block; }
+.footer-big__mark img.v3-lockup { width: 100%; height: auto; display: block; }
+
+/* Ögonbryn: en stil, gemener */
+.big-hero__eyebrow, .sec-stats__eyebrow { text-transform: none !important; letter-spacing: 0.02em !important; }
+
+/* Ytor */
+.sec-collection { background: var(--mjol) !important; }
+
+/* Kontrast */
+.compare-check { color: var(--success-text) !important; }
+
+/* Blått: en blå, och platshållare i pastell */
+.case-card__photo { background: var(--lavendel) !important; }
+.portfolio-card, .blog-featured__photo { background: linear-gradient(135deg, var(--lavendel), var(--persika)) !important; }
+
+@media (max-width: 768px) {
+  :root { --frame: 8px; --panel-r: 24px; }
+}
+
+/* Polish 22/10: två mörka ytor i rad får ramen emellan, aldrig hörn mot hörn */
+.section--dark + .footer, .section--dark + .sec-footer-big { margin-top: var(--frame); }
+.case-quote + .sec-footer-big { margin-top: var(--frame); }
+.sec-cta-cases { margin: 0 var(--frame) var(--frame); border-radius: var(--panel-r); }
+
+/* Vattenstämpeln står inte bakom knapparna på mobil */
+@media (max-width: 768px) {
+  .page-hero--sand::before, .page-hero--persika::before, .page-hero--lime::before, .page-hero--natt::before {
+    width: 150px; right: -12%; bottom: -10%;
+  }
+}

@@ -10,7 +10,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/pages.css">
-  <link rel="icon" type="image/png" href="assets/hash-mark-black.png">
+  <link rel="stylesheet" href="css/v3.css">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
 
   <style>
     /* ════════════════════════════════════════════════════════════════
@@ -72,7 +76,7 @@
       width: 100%; height: 100%;
       object-fit: cover;
       display: block;
-      animation: caseHeroImgIn 1800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+      animation: caseHeroImgIn 1800ms var(--ease-out) both;
     }
     .sec-combined__bg::after {
       content: '';
@@ -84,7 +88,7 @@
           rgba(10,10,11,0.25) 75%,
           rgba(10,10,11,0.1) 100%),
         linear-gradient(180deg, rgba(10,10,11,0.3) 0%, transparent 30%, rgba(10,10,11,0.55) 100%);
-      animation: caseHeroOverlayIn 1200ms cubic-bezier(0.22, 1, 0.36, 1) 200ms both;
+      animation: caseHeroOverlayIn 1200ms var(--ease-out) 200ms both;
     }
 
     /* Header panel sits over the sticky bg via margin-top: -100vh */
@@ -128,7 +132,7 @@
     }
     .case-header__back {
       left: calc(var(--gutter) + 0.5rem);
-      animation: casePillIn 900ms cubic-bezier(0.22, 1, 0.36, 1) 350ms both;
+      animation: casePillIn 900ms var(--ease-out) 350ms both;
     }
     .case-header__back:hover {
       background: rgba(255, 255, 255, 0.18);
@@ -139,7 +143,7 @@
       padding: 0.5rem 0.875rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      animation: casePillIn 900ms cubic-bezier(0.22, 1, 0.36, 1) 500ms both;
+      animation: casePillIn 900ms var(--ease-out) 500ms both;
     }
     .case-header__label::before {
       content: '';
@@ -172,7 +176,7 @@
     }
     .case-header__title .word > span {
       display: inline-block;
-      animation: caseTitleWordIn 1100ms cubic-bezier(0.22, 1, 0.36, 1) 600ms both;
+      animation: caseTitleWordIn 1100ms var(--ease-out) 600ms both;
     }
     .case-header__meta {
       position: relative;
@@ -191,10 +195,10 @@
       height: 1px;
       background: rgba(255, 255, 255, 0.18);
       transform-origin: left;
-      animation: caseMetaBorderIn 900ms cubic-bezier(0.22, 1, 0.36, 1) 950ms both;
+      animation: caseMetaBorderIn 900ms var(--ease-out) 950ms both;
     }
     .case-header__meta-item {
-      animation: caseMetaIn 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+      animation: caseMetaIn 800ms var(--ease-out) both;
     }
     .case-header__meta-item:nth-child(1) { animation-delay: 1050ms; }
     .case-header__meta-item:nth-child(2) { animation-delay: 1200ms; }
@@ -251,7 +255,7 @@
     }
     .sec-stats__eyebrow .word > span {
       display: inline-block; transform: translateY(110%);
-      transition: transform 750ms cubic-bezier(0.22, 1, 0.36, 1);
+      transition: transform 750ms var(--ease-out);
     }
     .sec-stats__eyebrow.is-revealed .word > span { transform: translateY(0); }
     .sec-stats__title {
@@ -272,7 +276,7 @@
     }
     .sec-stats__title .word > span {
       display: inline-block; transform: translateY(110%);
-      transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+      transition: transform 900ms var(--ease-out);
     }
     .sec-stats__title.is-revealed .word > span { transform: translateY(0); }
 
@@ -299,8 +303,8 @@
       transform: translate3d(80px, 0, 0);
       backface-visibility: hidden;
       transition:
-        opacity 950ms cubic-bezier(0.22, 1, 0.36, 1),
-        transform 950ms cubic-bezier(0.22, 1, 0.36, 1);
+        opacity 950ms var(--ease-out),
+        transform 950ms var(--ease-out);
       will-change: opacity, transform;
     }
     .sec-stats__cards.is-revealed .stat-card { opacity: 1; transform: translate3d(0, 0, 0); }
@@ -322,7 +326,7 @@
       gap: 0.75rem;
       color: white;
       overflow: hidden;
-      transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+      transition: transform 400ms var(--ease-out);
     }
     .stat-card--photo { padding: 0; }
     .stat-card--photo img,
@@ -358,8 +362,8 @@
       fill: none;
       stroke-width: 18;
       stroke-linecap: round;
-      transition: stroke-dashoffset 1.6s cubic-bezier(0.22, 1, 0.36, 1),
-                  stroke-dasharray 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+      transition: stroke-dashoffset 1.6s var(--ease-out),
+                  stroke-dasharray 1.6s var(--ease-out);
       filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.35));
     }
     .stat-card__ring-text {
@@ -605,7 +609,7 @@
       font-weight: 500;
       font-size: 1rem;
       text-decoration: none;
-      transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms cubic-bezier(0.22, 1, 0.36, 1);
+      transition: transform 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
     }
     .case-cta__btn:hover {
       transform: translateY(-1px);
@@ -697,7 +701,7 @@
       font-weight: 500;
       font-size: calc(0.9375rem + 0.25rem * var(--p, 0));
       text-decoration: none;
-      transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms cubic-bezier(0.22, 1, 0.36, 1);
+      transition: transform 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
     }
     .case-quote__cta:hover {
       transform: translateY(-2px);
@@ -710,7 +714,7 @@
       background: white;
       color: var(--text);
       display: grid; place-items: center;
-      transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+      transition: transform 300ms var(--ease-out);
     }
     .case-quote__cta:hover .case-quote__cta-arrow { transform: translateX(4px); }
     .case-quote__cta-arrow svg { width: 14px; height: 14px; }
@@ -789,7 +793,7 @@
     body.index-v6 #nav:not(.scrolled) .nav__links > a,
     body.index-v6 #nav:not(.scrolled) .nav__dropdown-toggle { color: rgba(255,255,255,0.82); }
     body.index-v6 #nav:not(.scrolled) .nav__login { color: rgba(255,255,255,0.82); }
-    body.index-v6 #nav:not(.scrolled) .nav__logo img { filter: brightness(0) invert(1); opacity: 0.95; }
+    body.index-v6 #nav:not(.scrolled) .nav__logo img { content: url(/assets/brand/ordbild-negativ.svg); opacity: 0.95; }
     body.index-v6 #nav:not(.scrolled) .nav__links > a:hover,
     body.index-v6 #nav:not(.scrolled) .nav__dropdown-toggle:hover,
     body.index-v6 #nav:not(.scrolled) .nav__login:hover {
@@ -805,21 +809,6 @@
     }
 
     /* ── Tri-dot (used in footer logo) ─────────── */
-    .tri-dot {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.08em;
-      margin-right: 0.18em;
-    }
-    .tri-dot b {
-      width: 0.22em;
-      height: 0.22em;
-      border-radius: 50%;
-      display: inline-block;
-    }
-    .tri-dot b:nth-child(1) { background: var(--edit-peach, #FFCFA8); }
-    .tri-dot b:nth-child(2) { background: var(--edit-teal, #4EBFB8); }
-    .tri-dot b:nth-child(3) { background: var(--edit-lavender, #E8E1FF); }
 
     /* ── Big footer (matches homepage) ─────────── */
     .sec-footer-big {
@@ -902,8 +891,7 @@
 <nav id="nav" role="navigation" aria-label="Huvudnavigering">
   <div class="nav__inner">
     <a class="nav__logo" href="index.html" aria-label="Syns Nu Media — Hem">
-      <img src="/assets/media/699641283fd420658d5267af.webp"
-           alt="Syns Nu Media" width="100" height="26" decoding="async">
+      <img src="/assets/brand/ordbild.svg" alt="Syns Nu Media" width="130" height="13" style="height:13px;width:auto" decoding="async">
     </a>
 
     <div class="nav__links" role="menubar">
@@ -914,7 +902,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </span>
         <div class="nav__dropdown-menu" role="menu">
-          <a href="sociala-medier.html" role="menuitem">Sociala Medier</a>
+          <a href="sociala-medier.html" role="menuitem">Sociala medier</a>
           <a href="hemsida.html" role="menuitem">Webbdesign</a>
           <a href="seo.html" role="menuitem">SEO</a>
           <a href="marknadsforing.html" role="menuitem">Marknadsföring</a>
@@ -941,7 +929,7 @@
 <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobilmeny">
   <nav class="mobile-menu__links">
     <a href="index.html">Hem</a>
-    <a href="sociala-medier.html">Sociala Medier</a>
+    <a href="sociala-medier.html">Sociala medier</a>
     <a href="hemsida.html">Webbdesign</a>
     <a href="seo.html">SEO</a>
     <a href="om-oss.html">Om oss</a>
@@ -1206,9 +1194,7 @@
     </div>
 
     <div class="footer-big__mark" aria-hidden="true">
-      <div class="footer-big__mark-row">
-        <img class="footer-big__mark-img" src="assets/hash-mark-white.webp" alt="Syns Nu Media" loading="lazy" decoding="async">
-        <span class="footer-big__mark-logo">SYNS NU MEDIA</span>
+      <div class="footer-big__mark-row"><img class="v3-lockup" src="/assets/brand/liggande-negativ.svg" alt="Syns Nu Media" decoding="async">
       </div>
     </div>
 

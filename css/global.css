@@ -17,7 +17,6 @@
 
   /* Gradient — used SPARINGLY */
   --g-gradient:     linear-gradient(135deg, #1A73E8 0%, #8B5CF6 50%, #EC4899 100%);
-  --g-gradient-soft: linear-gradient(135deg, rgba(26,115,232,0.08) 0%, rgba(139,92,246,0.06) 50%, rgba(236,72,153,0.04) 100%);
 
   /* Neutrals — quieter, more breathable */
   --bg:             #FFFFFF;
@@ -36,7 +35,20 @@
   --border-strong:  #D4D4D0;
   --border-dark:    rgba(255,255,255,0.08);
 
-  --success:        #10B981;
+  --success:        #10B981;   /* bara ikoner och ytor */
+  --success-text:   #047857;   /* grönt som text, 5,5:1 */
+
+  /* Pasteller (brand-spec v3, 3.2) */
+  --lime:           #E5EE9E;
+  --lavendel:       #E8E1FF;
+  --lavendel-ljus:  #F4EFFF;
+  --persika:        #FFCFA8;
+  --persika-ljus:   #FFE6D2;
+  --sand:           #E5CDAB;
+  --kola:           #F5D7B8;
+  --mynta:          #4EBFB8;
+  --gradde:         #F3F1EC;
+  --mjol:           #F4F4F2;
 
   /* Typography */
   --font-body:      'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -56,7 +68,6 @@
   --shadow-sm:  0 2px 8px rgba(15, 15, 16, 0.06);
   --shadow-md:  0 8px 24px rgba(15, 15, 16, 0.08);
   --shadow-lg:  0 20px 48px rgba(15, 15, 16, 0.12);
-  --shadow-glow: 0 0 0 1px rgba(26, 115, 232, 0.2), 0 20px 40px -12px rgba(26, 115, 232, 0.25);
 
   /* Layout */
   --nav-h:      76px;
@@ -67,7 +78,7 @@
 
   /* Motion */
   --ease:       cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out:   cubic-bezier(0.22, 1, 0.36, 1);
   --dur-fast:   150ms;
   --dur:        260ms;
   --dur-slow:   500ms;
@@ -171,6 +182,8 @@ p { color: var(--text-2); font-size: 1rem; line-height: 1.65; overflow-wrap: bre
   text-transform: none;
 }
 
+/* .accent är namnet; .gradient-text finns kvar som alias */
+.accent,
 .gradient-text {
   font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif;
   font-style: italic;
@@ -236,6 +249,7 @@ p { color: var(--text-2); font-size: 1rem; line-height: 1.65; overflow-wrap: bre
 
 .btn:active { transform: translateY(1px); }
 
+/* .btn--primary är namnet; .btn--blue finns kvar som alias */
 .btn--primary,
 .btn--blue {
   background: var(--text);
@@ -265,17 +279,6 @@ p { color: var(--text-2); font-size: 1rem; line-height: 1.65; overflow-wrap: bre
 .btn--light:hover {
   background: var(--bg-soft);
   box-shadow: var(--shadow-sm);
-}
-
-.btn--gradient {
-  background: var(--g-gradient);
-  color: var(--text-inv);
-  border: none;
-  position: relative;
-}
-.btn--gradient:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 12px 32px -8px rgba(139, 92, 246, 0.45);
 }
 
 .btn--sm { padding: 0.625rem 1.125rem; font-size: 0.875rem; }

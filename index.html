@@ -10,18 +10,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/pages.css">
-  <link rel="icon" type="image/png" href="assets/hash-mark-black.png">
+  <link rel="stylesheet" href="css/v3.css">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
 
   <!-- Editorial-page overrides (index v6, CIRLO-inspired) -->
   <style>
     :root {
-      --edit-lavender: #E8E1FF;
-      --edit-lavender-soft: #F4EFFF;
-      --edit-peach: #FFCFA8;
-      --edit-peach-soft: #FFE6D2;
-      --edit-olive: #E5EE9E;
-      --edit-teal: #4EBFB8;
-      --edit-warm: #F5D7B8;
+      --edit-lavender: var(--lavendel);
+      --edit-lavender-soft: var(--lavendel-ljus);
+      --edit-peach: var(--persika);
+      --edit-peach-soft: var(--persika-ljus);
+      --edit-olive: var(--lime);
+      --edit-teal: var(--mynta);
+      --edit-warm: var(--kola);
     }
 
     /* Nav transparency over the lime hero — dark text stays dark, no
@@ -130,21 +134,6 @@
       align-items: center;
       gap: 0.3em;
     }
-    .tri-dot {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.08em;
-      margin-right: 0.18em;
-    }
-    .tri-dot b {
-      width: 0.22em;
-      height: 0.22em;
-      border-radius: 50%;
-      display: inline-block;
-    }
-    .tri-dot b:nth-child(1) { background: var(--edit-peach); }
-    .tri-dot b:nth-child(2) { background: var(--edit-teal); }
-    .tri-dot b:nth-child(3) { background: var(--edit-lavender); }
     .big-hero__mark-dash {
       display: inline-block;
       font-weight: 300;
@@ -307,7 +296,7 @@
     .sec-transition__title .word > span {
       display: inline-block;
       transform: translateY(110%);
-      transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+      transition: transform 900ms var(--ease-out);
       will-change: transform;
     }
     .sec-transition__title.is-revealed .word > span {
@@ -334,7 +323,7 @@
     .sec-transition__photo-reveal {
       position: absolute; inset: 0;
       transform: translate3d(0, 100%, 0);
-      transition: transform 1200ms cubic-bezier(0.22, 1, 0.36, 1);
+      transition: transform 1200ms var(--ease-out);
       will-change: transform;
     }
     .sec-transition__photo.is-revealed .sec-transition__photo-reveal {
@@ -350,7 +339,7 @@
       height: 100%;
       object-fit: cover;
       transform: scale(1.18);
-      transition: transform 1600ms cubic-bezier(0.22, 1, 0.36, 1);
+      transition: transform 1600ms var(--ease-out);
     }
     .sec-transition__photo.is-revealed img { transform: scale(1); }
     .sec-transition__photo:hover img { transform: scale(1.06); transition-duration: 900ms; }
@@ -431,7 +420,7 @@
     .sec-collection__head h2 .word > span {
       display: inline-block;
       transform: translateY(110%);
-      transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+      transition: transform 900ms var(--ease-out);
       will-change: transform;
     }
     .sec-collection__head h2.is-revealed .word > span { transform: translateY(0); }
@@ -498,7 +487,7 @@
       flex-direction: column;
       text-decoration: none;
       transform: translate3d(0, 0, 0);
-      transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+      transition: transform 400ms var(--ease-out);
     }
     .service-card:hover { transform: translate3d(0, -6px, 0); }
 
@@ -541,7 +530,7 @@
       object-fit: cover;
       border-radius: 12px;
       filter: drop-shadow(0 20px 30px rgba(0,0,0,0.25));
-      transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+      transition: transform 500ms var(--ease-out);
     }
     .service-card:hover .service-card__visual img { transform: scale(1.04); }
 
@@ -554,7 +543,7 @@
       background: linear-gradient(180deg, #F3ECB8 0%, #E8DE9A 100%);
       display: flex;
       flex-direction: column;
-      transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+      transition: transform 500ms var(--ease-out);
     }
     .service-card:hover .gmap-mockup { transform: scale(1.04); }
     /* Map window — slightly narrower than the results card below so the
@@ -779,7 +768,7 @@
     .sec-stats__eyebrow .word > span {
       display: inline-block;
       transform: translateY(110%);
-      transition: transform 750ms cubic-bezier(0.22, 1, 0.36, 1);
+      transition: transform 750ms var(--ease-out);
       will-change: transform;
     }
     .sec-stats__eyebrow.is-revealed .word > span { transform: translateY(0); }
@@ -803,7 +792,7 @@
     .sec-stats__title .word > span {
       display: inline-block;
       transform: translateY(110%);
-      transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+      transition: transform 900ms var(--ease-out);
       will-change: transform;
     }
     .sec-stats__title.is-revealed .word > span { transform: translateY(0); }
@@ -835,8 +824,8 @@
       transform: translate3d(80px, 0, 0);
       backface-visibility: hidden;
       transition:
-        opacity 950ms cubic-bezier(0.22, 1, 0.36, 1),
-        transform 950ms cubic-bezier(0.22, 1, 0.36, 1);
+        opacity 950ms var(--ease-out),
+        transform 950ms var(--ease-out);
       will-change: opacity, transform;
     }
     .sec-stats__cards.is-revealed .stat-card { opacity: 1; transform: translate3d(0, 0, 0); }
@@ -900,8 +889,8 @@
       fill: none;
       stroke-width: 18;
       stroke-linecap: round;
-      transition: stroke-dashoffset 1.6s cubic-bezier(0.22, 1, 0.36, 1),
-                  stroke-dasharray 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+      transition: stroke-dashoffset 1.6s var(--ease-out),
+                  stroke-dasharray 1.6s var(--ease-out);
       filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.35));
     }
     .stat-card__ring-text {
@@ -1027,7 +1016,7 @@
     .sec-insights__head h2 .word > span {
       display: inline-block;
       transform: translateY(110%);
-      transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+      transition: transform 900ms var(--ease-out);
       will-change: transform;
     }
     .sec-insights__head h2.is-revealed .word > span { transform: translateY(0); }
@@ -1046,8 +1035,8 @@
       opacity: 0;
       transform: translateX(28px);
       transition:
-        opacity 750ms cubic-bezier(0.22, 1, 0.36, 1) 450ms,
-        transform 750ms cubic-bezier(0.22, 1, 0.36, 1) 450ms;
+        opacity 750ms var(--ease-out) 450ms,
+        transform 750ms var(--ease-out) 450ms;
     }
     .sec-insights__head .keep-scroll.visible {
       opacity: 1;
@@ -1104,8 +1093,8 @@
       opacity: 0;
       transform: translate3d(80px, 0, 0);
       transition:
-        opacity 950ms cubic-bezier(0.22, 1, 0.36, 1),
-        transform 950ms cubic-bezier(0.22, 1, 0.36, 1);
+        opacity 950ms var(--ease-out),
+        transform 950ms var(--ease-out);
       will-change: opacity, transform;
     }
     .sec-insights__grid.is-revealed .insight-panel__motion {
@@ -1177,7 +1166,7 @@
     .sec-detail__title .word > span {
       display: inline-block;
       transform: translateY(110%);
-      transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+      transition: transform 900ms var(--ease-out);
       will-change: transform;
     }
     .sec-detail__title.is-revealed .word > span { transform: translateY(0); }
@@ -1199,15 +1188,15 @@
       opacity: 0;
       transform: translateY(40px);
       transition:
-        opacity 1100ms cubic-bezier(0.22, 1, 0.36, 1),
-        transform 1100ms cubic-bezier(0.22, 1, 0.36, 1);
+        opacity 1100ms var(--ease-out),
+        transform 1100ms var(--ease-out);
       will-change: opacity, transform;
     }
     .sec-detail__visual.is-revealed { opacity: 1; transform: translateY(0); }
     .sec-detail__visual img {
       width: 100%; height: 100%; object-fit: cover;
       transform: scale(1.12);
-      transition: transform 1500ms cubic-bezier(0.22, 1, 0.36, 1);
+      transition: transform 1500ms var(--ease-out);
     }
     .sec-detail__visual.is-revealed img { transform: scale(1); }
     .sec-detail__visual::after {
@@ -1228,8 +1217,8 @@
       opacity: 0;
       transform: translate3d(0, 30px, 0);
       transition:
-        opacity 800ms cubic-bezier(0.22, 1, 0.36, 1),
-        transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
+        opacity 800ms var(--ease-out),
+        transform 800ms var(--ease-out);
       will-change: opacity, transform;
     }
     .sec-detail__features.is-revealed .feat { opacity: 1; transform: translate3d(0, 0, 0); }
@@ -1659,8 +1648,7 @@
     body.index-v6 #nav:not(.scrolled) .nav__login {
       color: rgba(255,255,255,0.82);
     }
-    body.index-v6 #nav:not(.scrolled) .nav__logo img {
-      filter: brightness(0) invert(1);
+    body.index-v6 #nav:not(.scrolled) .nav__logo img { content: url(/assets/brand/ordbild-negativ.svg);
       opacity: 0.95;
     }
     body.index-v6 #nav:not(.scrolled) .nav__links > a:hover,
@@ -1687,8 +1675,7 @@
 <nav id="nav" role="navigation" aria-label="Huvudnavigering">
   <div class="nav__inner">
     <a class="nav__logo" href="index.html" aria-label="Syns Nu Media — Hem">
-      <img src="/assets/media/699641283fd420658d5267af.webp"
-           alt="Syns Nu Media" width="100" height="26" decoding="async">
+      <img src="/assets/brand/ordbild-pastell.svg" alt="Syns Nu Media" width="130" height="13" style="height:13px;width:auto" decoding="async">
     </a>
 
     <div class="nav__links" role="menubar">
@@ -1699,7 +1686,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </span>
         <div class="nav__dropdown-menu" role="menu">
-          <a href="sociala-medier.html" role="menuitem">Sociala Medier</a>
+          <a href="sociala-medier.html" role="menuitem">Sociala medier</a>
           <a href="hemsida.html" role="menuitem">Webbdesign</a>
           <a href="seo.html" role="menuitem">SEO</a>
           <a href="marknadsforing.html" role="menuitem">Marknadsföring</a>
@@ -1726,7 +1713,7 @@
 <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobilmeny">
   <nav class="mobile-menu__links">
     <a href="index.html">Hem</a>
-    <a href="sociala-medier.html">Sociala Medier</a>
+    <a href="sociala-medier.html">Sociala medier</a>
     <a href="hemsida.html">Webbdesign</a>
     <a href="seo.html">SEO</a>
     <a href="om-oss.html">Om oss</a>
@@ -1791,7 +1778,7 @@
 <section class="sec-transition" id="precision">
   <div class="sec-transition__inner">
     <h2 class="sec-transition__title" data-reveal-words aria-label="Inget slumpmässigt flow — bara innehåll som når rätt gäst vid rätt tid.">
-      Inget slumpmässigt flow — bara innehåll som når <em class="gradient-text">rätt gäst</em> vid rätt tid.
+      Inget slumpmässigt flow — bara innehåll som når <em class="accent">rätt gäst</em> vid rätt tid.
     </h2>
 
     <div class="sec-transition__grid">
@@ -1837,7 +1824,7 @@
         <div class="service-card__motion">
           <a href="sociala-medier.html" class="service-card service-card--cream">
             <div>
-              <div class="service-card__name">Sociala Medier</div>
+              <div class="service-card__name">Sociala medier</div>
               <div class="service-card__desc">Komplett Instagram, TikTok & Facebook — inspelning, publicering, resultat.</div>
               <div class="service-card__price">Från 7 500 kr/mån</div>
             </div>
@@ -1894,17 +1881,17 @@
                   </div>
                   <div class="gmap-mockup__map">
                     <svg class="gmap-pin" viewBox="0 0 24 30" width="20" height="26" style="top: 38%; left: 48%;" aria-hidden="true">
-                      <path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 18 12 18s12-9 12-18C24 5.4 18.6 0 12 0z" fill="#DC2626"/>
+                      <path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 18 12 18s12-9 12-18C24 5.4 18.6 0 12 0z" fill="#EF4444"/>
                       <circle cx="12" cy="12" r="5" fill="white"/>
                     </svg>
                     <svg class="gmap-pin" viewBox="0 0 24 30" width="14" height="18" style="top: 55%; left: 22%;" aria-hidden="true">
-                      <path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 18 12 18s12-9 12-18C24 5.4 18.6 0 12 0z" fill="#DC2626"/>
+                      <path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 18 12 18s12-9 12-18C24 5.4 18.6 0 12 0z" fill="#EF4444"/>
                     </svg>
                     <svg class="gmap-pin" viewBox="0 0 24 30" width="14" height="18" style="top: 42%; left: 76%;" aria-hidden="true">
-                      <path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 18 12 18s12-9 12-18C24 5.4 18.6 0 12 0z" fill="#DC2626"/>
+                      <path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 18 12 18s12-9 12-18C24 5.4 18.6 0 12 0z" fill="#EF4444"/>
                     </svg>
                     <svg class="gmap-pin" viewBox="0 0 24 30" width="14" height="18" style="top: 72%; left: 56%;" aria-hidden="true">
-                      <path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 18 12 18s12-9 12-18C24 5.4 18.6 0 12 0z" fill="#DC2626"/>
+                      <path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 18 12 18s12-9 12-18C24 5.4 18.6 0 12 0z" fill="#EF4444"/>
                     </svg>
                   </div>
                 </div>
@@ -1973,7 +1960,7 @@
       <div class="fx-up">
         <h2 class="sec-combined__title">
           <span class="lt-line">Byggd för</span> <span class="lt-line">restauranger.</span><br>
-          <em class="gradient-text" style="color:white;">Varje dag.</em>
+          <em class="accent" style="color:white;">Varje dag.</em>
         </h2>
         <p class="sec-combined__sub">
           Vi åker till er, filmar hantverket på plats och bygger content som känns äkta — inte som en reklambyrå som råkade svänga förbi.
@@ -1986,7 +1973,7 @@
     <div class="sec-combined__inner">
     <div class="sec-stats__eyebrow" data-reveal-words aria-label="Bevis i siffror">Bevis i siffror</div>
     <h2 class="sec-stats__title" data-reveal-words aria-label="Riktiga siffror från riktiga restauranger — inte uppskattningar.">
-      Riktiga siffror från riktiga restauranger — <em class="gradient-text" style="color:white;">inte uppskattningar.</em>
+      Riktiga siffror från riktiga restauranger — <em class="accent" style="color:white;">inte uppskattningar.</em>
     </h2>
 
     <div class="sec-stats__cards" data-reveal-cards>
@@ -2174,7 +2161,7 @@
   <div class="sec-accel__body">
     <div class="fx-up">
       <h2>
-        Accelerera din restaurang med <em class="gradient-text">riktiga gäster</em> — inte bara räckvidd.
+        Accelerera din restaurang med <em class="accent">riktiga gäster</em> — inte bara räckvidd.
       </h2>
     </div>
     <div class="fx-up">
@@ -2200,7 +2187,7 @@
   <div class="sec-footer-big__inner footer-big">
     <div class="footer-big__grid">
       <div class="footer-big__brand-col">
-        <img src="/assets/media/699641283fd420658d5267af.webp" alt="Syns Nu Media" style="width: 120px; height: auto; margin-bottom: 1rem; filter: brightness(0) invert(1);" decoding="async">
+        <img src="/assets/brand/ordbild-negativ.svg" alt="Syns Nu Media" style="height:14px;width:auto;margin-bottom:1rem" decoding="async">
         <p style="font-size: 0.875rem; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 1.25rem;">Sveriges största marknadsföringsbyrå för restauranger. Vi hjälper dig synas, växa och öka omsättningen.</p>
         <div style="display: flex; gap: 10px;">
           <a href="https://www.instagram.com/synsnumedia/" target="_blank" rel="noopener" aria-label="Instagram" style="width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.5); transition: all 200ms;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
@@ -2246,9 +2233,7 @@
     </div>
 
     <div class="footer-big__mark" aria-hidden="true">
-      <div class="footer-big__mark-row">
-        <img class="footer-big__mark-img" src="assets/hash-mark-white.webp" alt="Syns Nu Media" loading="lazy" decoding="async">
-        <span class="footer-big__mark-logo">SYNS NU MEDIA</span>
+      <div class="footer-big__mark-row"><img class="v3-lockup" src="/assets/brand/liggande-negativ.svg" alt="Syns Nu Media" decoding="async">
       </div>
     </div>
 
@@ -2269,7 +2254,7 @@
         <svg viewBox="0 0 120 120" width="80" height="80">
           <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="6"/>
           <circle cx="60" cy="60" r="52" fill="none" stroke="url(#scoreGrad)" stroke-width="6" stroke-dasharray="327" stroke-dashoffset="327" stroke-linecap="round" class="seo-popup__score-circle"/>
-          <defs><linearGradient id="scoreGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#22c55e"/><stop offset="100%" stop-color="#3b82f6"/></linearGradient></defs>
+          <defs><linearGradient id="scoreGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1A73E8"/><stop offset="50%" stop-color="#8B5CF6"/><stop offset="100%" stop-color="#EC4899"/></linearGradient></defs>
         </svg>
         <span class="seo-popup__score-num">0</span>
       </div>
@@ -2344,7 +2329,7 @@
     left: 0;
     right: 0;
     height: 2px;
-    background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+    background: linear-gradient(90deg, transparent, #1A73E8, transparent);
     animation: scanDown 2.5s ease-in-out infinite;
   }
   @keyframes scanDown {
@@ -2397,7 +2382,7 @@
     height: 100%;
     width: 0;
     border-radius: 3px;
-    background: linear-gradient(90deg, #3b82f6, #22c55e);
+    background: var(--tillvaxt);
   }
   .seo-popup--visible .seo-popup__bar span {
     animation: fillBar 1.5s ease-out .8s forwards;
@@ -2422,7 +2407,7 @@
     font-weight: 600;
     letter-spacing: .15em;
     text-transform: uppercase;
-    color: #3b82f6;
+    color: #1A73E8;
     margin: 0 0 4px;
   }
   .seo-popup__title {
@@ -2755,7 +2740,7 @@
         });
         node.parentNode.replaceChild(frag, node);
       } else if (node.nodeType === Node.ELEMENT_NODE) {
-        // Preserve inline elements (e.g. <em class="gradient-text">) as one atomic word
+        // Preserve inline elements (e.g. <em class="accent">) as one atomic word
         // so background-clip:text styling stays intact.
         const clone = node.cloneNode(true);
         const word = wrapAsWord(clone);

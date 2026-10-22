@@ -188,7 +188,7 @@
   height: 22px;
   border-radius: 50%;
   background: rgba(16, 185, 129, 0.12);
-  color: var(--success);
+  color: var(--success-text);
   font-weight: 700;
   margin-right: 0.5rem;
   font-size: 0.8125rem;
@@ -202,7 +202,7 @@
   height: 22px;
   border-radius: 50%;
   background: rgba(239, 68, 68, 0.12);
-  color: #EF4444;
+  color: #DC2626;
   font-weight: 700;
   margin-right: 0.5rem;
   font-size: 0.8125rem;
@@ -1078,7 +1078,7 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
 .hero__trust svg {
   width: 16px;
   height: 16px;
-  color: var(--success);
+  color: var(--success-text);
 }
 
 /* ============================================================
@@ -1220,7 +1220,7 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
 .dashboard__metric-delta {
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--success);
+  color: var(--success-text);
   margin-top: 0.25rem;
   display: inline-flex;
   align-items: center;
@@ -1838,7 +1838,7 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
   flex-shrink: 0;
   width: 18px;
   height: 18px;
-  color: var(--success);
+  color: var(--success-text);
   margin-top: 2px;
 }
 
@@ -2397,7 +2397,7 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
 }
 
 .compare-x {
-  color: #EF4444;
+  color: #DC2626;
   font-size: 18px;
 }
 
@@ -2524,7 +2524,7 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
   overflow: hidden;
   position: relative;
   aspect-ratio: 4/3;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--lavendel), var(--persika));
   cursor: pointer;
   transition: transform 0.3s;
 }
@@ -2781,7 +2781,7 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
 
 .case-card__photo {
   height: 200px;
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  background: var(--lavendel);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2892,7 +2892,7 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
 
 .blog-featured__photo {
   aspect-ratio: 4/3;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, var(--lavendel), var(--persika));
   min-height: 320px;
 }
 
@@ -3398,7 +3398,7 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.35s cubic-bezier(0.22,1,0.36,1);
+  transition: transform 0.35s var(--ease-out);
 }
 
 .sp-post__bg {
@@ -3488,7 +3488,7 @@ textarea.form-input { resize: vertical; min-height: 100px; font-family: inherit;
 
 .sp-clients__list li svg {
   flex-shrink: 0;
-  color: #3b82f6;
+  color: #1A73E8;
 }
 
 .sp-clients__cta {
