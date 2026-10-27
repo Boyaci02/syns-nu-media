@@ -224,11 +224,9 @@ a{color:inherit;text-decoration:none}
         <div><b>Ort</b> &nbsp;Stockholm</div>
       </div>
     </div>
-    <form class="form" action="https://formsubmit.co/info@synsnumedia.com" method="POST">
-      <input type="hidden" name="_subject" value="Ny förfrågan — Qopla landningssida (hemsida/SEO)">
-      <input type="hidden" name="_next" value="https://www.synsnumedia.se/qopla-hemsida-tack">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_template" value="table">
+    <form class="form" id="qopla-form" method="POST">
+      <input type="hidden" name="source" value="qopla">
+      <input type="hidden" name="tjanst" value="Hemsida och SEO">
       <div class="hp" aria-hidden="true"><label>Lämna tomt<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
       <div class="row">
         <div class="field"><label for="namn">Namn</label><input id="namn" type="text" name="Namn" placeholder="Ditt namn" required></div>
@@ -252,7 +250,22 @@ a{color:inherit;text-decoration:none}
   </div>
 </footer>
 
+<script src="js/lead.js"></script>
 <script>
+// Formuläret går till KK:s lead-webhook och sedan till tacksidan
+(function(){
+  var form=document.getElementById('qopla-form'); if(!form) return;
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var btn=form.querySelector('[type="submit"]'); if(btn.disabled) return;
+    var orig=btn.innerHTML; btn.disabled=true;
+    var p=window.synsnuLead?window.synsnuLead.skicka(window.synsnuLead.franForm(form)):Promise.reject(new Error('lead.js saknas'));
+    p.then(function(){ window.location.href='/qopla-hemsida-tack'; }).catch(function(){
+      btn.textContent='Fel — försök igen';
+      setTimeout(function(){ btn.innerHTML=orig; btn.disabled=false; },4000);
+    });
+  });
+})();
 document.getElementById('yr').textContent = new Date().getFullYear();
 (function(){
   var items=[].slice.call(document.querySelectorAll('.reveal'));

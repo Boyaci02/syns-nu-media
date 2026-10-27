@@ -1195,7 +1195,7 @@
       <h3 class="form-title">Se alla problem vi hittade + konkret åtgärdsplan</h3>
       <p class="form-sub">Fyll i dina uppgifter så låser vi upp den fullständiga analysen direkt — plus att vi skickar den på mejl så du har den sparad.</p>
 
-      <form id="lead-form" action="https://formspree.io/f/xjkvrpke" method="POST" onsubmit="submitForm(event)">
+      <form id="lead-form" method="POST" onsubmit="submitForm(event)">
         <input type="hidden" name="_subject" value="Ny förfrågan från Hemsida-analys">
         <div class="form-grid">
           <div class="form-field">
@@ -1288,6 +1288,7 @@
   </footer>
 </div>
 
+<script src="js/lead.js"></script>
 <script>
   // ============================================================
   // TODO: koppla in Google PageSpeed (via Vercel serverless) + webhook
@@ -1854,32 +1855,34 @@
     e.preventDefault();
 
     const form = document.getElementById('lead-form');
-    const formData = new FormData(form);
+    const btn = form.querySelector('[type="submit"]');
+    if (btn.disabled) return;
 
-    // Add extra context fields
-    formData.append('website', websiteUrl || 'Ingen hemsida');
-    formData.append('score', totalScoreCached);
+    // Fälten till KK:s lead-webhook. Hemsidans adress skickas som "hemsida",
+    // aldrig "website": webhooken läser "website" som honungsfälla och kastar leaden.
+    const falt = window.synsnuLead ? window.synsnuLead.franForm(form) : {};
+    falt.hemsida = websiteUrl || 'Ingen hemsida';
+    falt.poang = String(totalScoreCached);
     if (simulatedMetrics) {
-      formData.append('metrics_performance', simulatedMetrics.performance);
-      formData.append('metrics_seo', simulatedMetrics.seo);
-      formData.append('metrics_mobile', simulatedMetrics.mobile);
-      formData.append('metrics_accessibility', simulatedMetrics.accessibility);
+      falt.prestanda = String(simulatedMetrics.performance);
+      falt.seo = String(simulatedMetrics.seo);
+      falt.mobil = String(simulatedMetrics.mobile);
+      falt.tillganglighet = String(simulatedMetrics.accessibility);
     }
     answers.forEach((a, i) => {
-      formData.append('fraga_' + (i + 1), questions[i].title + ': ' + a.label);
+      falt['fraga_' + (i + 1)] = questions[i].title + ': ' + a.label;
     });
 
-    // Send to Formspree
-    fetch(form.action, {
-      method: 'POST',
-      body: formData,
-      headers: { 'Accept': 'application/json' }
-    }).then(function (response) {
-      if (!response.ok) console.error('Formspree error:', response.statusText);
-    }).catch(function (err) {
-      console.error('Formspree error:', err);
+    const origHTML = btn.innerHTML;
+    btn.disabled = true;
+    const skickat = window.synsnuLead ? window.synsnuLead.skicka(falt) : Promise.reject(new Error('lead.js saknas'));
+    skickat.then(function () { lasUpp(); }).catch(function () {
+      btn.textContent = 'Fel — försök igen';
+      setTimeout(function () { btn.innerHTML = origHTML; btn.disabled = false; }, 4000);
     });
+  }
 
+  function lasUpp() {
     const firstName = document.getElementById('name').value.split(' ')[0];
 
     // Hide the gate form, show inline thanks

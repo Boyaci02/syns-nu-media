@@ -208,55 +208,30 @@
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var btn = form.querySelector('[type="submit"]');
-      if (!btn) return;
-      var orig   = btn.textContent;
+      if (!btn || btn.disabled) return;
+      // jobb-formuläret har novalidate, så obligatoriska fält kontrolleras här
+      if (form.checkValidity && !form.checkValidity()) { form.reportValidity(); return; }
+      var orig   = btn.innerHTML;
       var origBg = btn.style.background;
+      btn.disabled = true;
 
-      var formData = new FormData(form);
-
-      // Also send to KK webhook for lead tracking + push notifications
-      var kkData = {};
-      formData.forEach(function(value, key) { kkData[key] = value; });
-      fetch('https://synsnumedia.com/api/leads/webhook', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(kkData)
-      }).catch(function() {}); // fire-and-forget
-
-      fetch(form.action, {
-        method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-      }).then(function (response) {
-        if (response.ok) {
-          btn.textContent = '✓ Skickat!';
-          btn.style.background = '#16a34a';
-          btn.disabled = true;
-          setTimeout(function () {
-            btn.textContent     = orig;
-            btn.style.background = origBg;
-            btn.disabled = false;
-            form.reset();
-          }, 4000);
-        } else {
-          btn.textContent = 'Fel — försök igen';
-          btn.style.background = '#dc2626';
-          btn.disabled = true;
-          setTimeout(function () {
-            btn.textContent     = orig;
-            btn.style.background = origBg;
-            btn.disabled = false;
-          }, 4000);
-        }
-      }).catch(function () {
-        btn.textContent = 'Fel — försök igen';
-        btn.style.background = '#dc2626';
-        btn.disabled = true;
+      function visa(text, bg, nollstall) {
+        btn.textContent = text;
+        btn.style.background = bg;
         setTimeout(function () {
-          btn.textContent     = orig;
+          btn.innerHTML       = orig;
           btn.style.background = origBg;
           btn.disabled = false;
+          if (nollstall) form.reset();
         }, 4000);
+      }
+
+      // KK:s lead-webhook är enda mottagaren (Formspree är borta sedan oktober 2026)
+      if (!window.synsnuLead) { visa('Fel — försök igen', '#dc2626', false); return; }
+      window.synsnuLead.skicka(window.synsnuLead.franForm(form)).then(function () {
+        visa('✓ Skickat!', '#16a34a', true);
+      }).catch(function () {
+        visa('Fel — försök igen', '#dc2626', false);
       });
     });
   });
